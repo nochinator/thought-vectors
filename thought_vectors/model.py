@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
-
 import torch
 from torch import nn
 
@@ -120,11 +118,7 @@ class ThoughtDecoder(nn.Module):
         return self.lm_head(decoded)
 
 
-@dataclass
 class ThoughtVectorModel(nn.Module):
-    encoder: ThoughtEncoder
-    decoder: ThoughtDecoder
-
     def __init__(self, encoder: ThoughtEncoder, decoder: ThoughtDecoder) -> None:
         super().__init__()
         self.encoder = encoder

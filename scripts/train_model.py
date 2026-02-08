@@ -1,0 +1,114 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+import torch
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, ThoughtVectorModel, train_model
+
+
+def load_groups(path: Path) -> list[list[str]]:
+    if path.suffix == ".json":
+        data = json.loads(path.read_text())
+        if not isinstance(data, list):
+            raise ValueError("JSON file must contain a top-level list of text groups.")
+        return [[str(x) for x in group] for group in data]
+
+    groups: list[list[str]] = []
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        obj = json.loads(line)
+        groups.append([str(x) for x in obj["texts"]])
+    return groups
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Train a Thought Vector model on grouped text data.")
+    parser.add_argument("--data", type=Path, required=True, help="Path to dataset (.json list-of-lists or .jsonl with {'texts': []}).")
+    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--lr", type=float, default=1e-4)
+    parser.add_argument("--weight-decay", type=float, default=1e-5)
+    parser.add_argument("--length-penalty", type=float, default=0.01)
+    parser.add_argument("--num-thoughts", type=int, default=16)
+    parser.add_argument("--d-model", type=int, default=256)
+    parser.add_argument("--layers", type=int, default=2)
+    parser.add_argument("--heads", type=int, default=8)
+    parser.add_argument("--dropout", type=float, default=0.1)
+    parser.add_argument("--max-seq-len", type=int, default=512)
+    parser.add_argument("--output", type=Path, default=Path("artifacts/thought_vectors.pt"))
+    args = parser.parse_args()
+
+    groups = load_groups(args.data)
+    tokenizer = SimpleTokenizer()
+    tokenizer.fit(groups)
+
+    encoder = ThoughtEncoder(
+        vocab_size=tokenizer.vocab_size,
+        d_model=args.d_model,
+        nhead=args.heads,
+        num_layers=args.layers,
+        dropout=args.dropout,
+        max_seq_len=args.max_seq_len,
+        num_thoughts=args.num_thoughts,
+    )
+    decoder = ThoughtDecoder(
+        vocab_size=tokenizer.vocab_size,
+        d_model=args.d_model,
+        nhead=args.heads,
+        num_layers=args.layers,
+        dropout=args.dropout,
+        max_seq_len=args.max_seq_len,
+    )
+    model = ThoughtVectorModel(encoder, decoder)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    history = train_model(
+        model,
+        groups,
+        tokenizer.encode,
+        tokenizer.pad_token_id,
+        device=device,
+        epochs=args.epochs,
+        batch_size=args.batch_size,
+        learning_rate=args.lr,
+        weight_decay=args.weight_decay,
+        length_penalty=args.length_penalty,
+    )
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(
+        {
+            "model_state": model.state_dict(),
+            "config": {
+                "vocab_size": tokenizer.vocab_size,
+                "d_model": args.d_model,
+                "heads": args.heads,
+                "layers": args.layers,
+                "dropout": args.dropout,
+                "max_seq_len": args.max_seq_len,
+                "num_thoughts": args.num_thoughts,
+            },
+            "token_to_id": tokenizer.token_to_id,
+            "history": history,
+        },
+        args.output,
+    )
+
+    print(f"Device: {device}")
+    print(f"Epoch losses: {history}")
+    print(f"Saved checkpoint: {args.output}")
+
+
+if __name__ == "__main__":
+    main()

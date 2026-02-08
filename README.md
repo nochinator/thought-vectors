@@ -1,25 +1,33 @@
-# Thought Vectors (Initial Implementation)
+# Thought Vectors
 
-This repository now contains a concrete implementation scaffold for the Thought Vector System described in the specification.
+Implementation scaffold for the Thought Vector System specification.
 
 ## Included
 
-- `ThoughtEncoder` with embeddings, positional encoding, transformer encoder, GRU thought generator, and cross-attention.
-- `ThoughtDecoder` with transformer decoder, causal masking, and vocabulary projection.
-- Group-based dataset utilities.
-- Training-step loss computation with reconstruction + length penalty.
-- Inference helpers for encode, greedy decode, and compression via reconstruction-loss threshold.
+- `ThoughtEncoder` with token embeddings, positional encoding, transformer encoder, GRU thought generation, and cross-attention.
+- `ThoughtDecoder` with transformer decoder, causal masking, and vocabulary projection head.
+- Group-based dataset utilities (`GroupTextDataset`, `collate_group_batch`).
+- Training helpers (`training_step`, `train_model`) with reconstruction loss + length penalty.
+- Inference helpers (`encode`, `decode_greedy`, `encode_with_compression`).
+- `SimpleTokenizer` for local smoke tests and tiny experiments.
 
-## Quick usage
+## Training script
 
-```python
-from thought_vectors import ThoughtEncoder, ThoughtDecoder, ThoughtVectorModel
+Use `scripts/train_model.py` with either:
 
-encoder = ThoughtEncoder(vocab_size=50257)
-decoder = ThoughtDecoder(vocab_size=50257)
-model = ThoughtVectorModel(encoder, decoder)
+- `.json`: top-level `list[list[str]]`, or
+- `.jsonl`: one object per line with `{"texts": ["...", "..."]}`.
+
+Example:
+
+```bash
+python scripts/train_model.py --data data/groups.json --epochs 10 --batch-size 8 --output artifacts/thought_vectors.pt
 ```
 
-## Notes
+## Unit tests
 
-This is Phase-1/2 oriented code and ready to be integrated into a full training script and tokenizer setup.
+```bash
+pytest -q
+```
+
+`tests/test_train_two_models.py` trains two small models on a tiny grouped dataset to verify the training loop runs and losses trend down.
