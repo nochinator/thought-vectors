@@ -39,6 +39,8 @@ python scripts/train_model.py --data data/dataset.csv --resume-from artifacts/th
 
 When resuming, tokenizer vocabulary is extended with tokens from the new dataset, and model embeddings/LM head are expanded to match (avoids `<unk>` spikes when switching datasets).
 
+For large datasets, bound tokenizer RAM with `--tokenizer-count-memory-limit` and optionally set `--tokenizer-max-vocab-size` / `--tokenizer-min-frequency` to constrain vocab growth during fitting.
+
 If you press `Ctrl+C` during training, the current state is saved to checkpoint before exit.
 
 The training loop logs detailed progress per epoch/batch, compression target details, trainable parameter counts, and a reconstruction sample every 8 batches by default (`--sample-every`).

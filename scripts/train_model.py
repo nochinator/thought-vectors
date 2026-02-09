@@ -109,6 +109,9 @@ def main() -> None:
     parser.add_argument("--target-extreme-prob", type=float, default=0.12)
     parser.add_argument("--log-every", type=int, default=10)
     parser.add_argument("--sample-every", type=int, default=8, help="Print reconstruction sample every N batches.")
+    parser.add_argument("--tokenizer-min-frequency", type=int, default=1, help="Minimum token frequency retained in tokenizer vocab.")
+    parser.add_argument("--tokenizer-max-vocab-size", type=int, default=None, help="Cap tokenizer vocab size.")
+    parser.add_argument("--tokenizer-count-memory-limit", type=int, default=400_000, help="Bound intermediate token counter size to reduce RAM while fitting tokenizer.")
     parser.add_argument("--output", type=Path, default=Path("artifacts/thought_vectors.pt"))
     args = parser.parse_args()
 
@@ -121,7 +124,12 @@ def main() -> None:
         payload = torch.load(args.resume_from, map_location=device, weights_only=False)
         config = payload["config"]
         tokenizer = SimpleTokenizer.from_token_to_id(payload["token_to_id"])
-        tokenizer.fit(groups)
+        tokenizer.fit(
+            groups,
+            min_frequency=args.tokenizer_min_frequency,
+            max_vocab_size=args.tokenizer_max_vocab_size,
+            count_memory_limit=args.tokenizer_count_memory_limit,
+        )
 
         model = build_model_from_config(config)
         model.load_state_dict(payload["model_state"])
@@ -132,7 +140,12 @@ def main() -> None:
         print(f"[train] resumed from checkpoint: {args.resume_from}")
     else:
         tokenizer = SimpleTokenizer()
-        tokenizer.fit(groups)
+        tokenizer.fit(
+            groups,
+            min_frequency=args.tokenizer_min_frequency,
+            max_vocab_size=args.tokenizer_max_vocab_size,
+            count_memory_limit=args.tokenizer_count_memory_limit,
+        )
         config = {
             "vocab_size": tokenizer.vocab_size,
             "d_model": args.d_model,
