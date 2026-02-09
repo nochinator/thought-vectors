@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import sys
+import os
+
 import argparse
 import json
 import sys
 from pathlib import Path
 
 import torch
+
+os.environ["ROC_DISABLE_PROFILING"] = "1"
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -34,7 +39,7 @@ def load_groups(path: Path) -> list[list[str]]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train a Thought Vector model on grouped text data.")
-    parser.add_argument("--data", type=Path, required=True, help="Path to dataset (.json list-of-lists or .jsonl with {'texts': []}).")
+    parser.add_argument("--data", type=Path, default=Path("toy_data.json"), help="Path to dataset.")
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--lr", type=float, default=1e-4)
