@@ -37,6 +37,10 @@ To continue training from a checkpoint:
 python scripts/train_model.py --data data/dataset.csv --resume-from artifacts/thought_vectors.pt --epochs 5 --output artifacts/thought_vectors.pt
 ```
 
+When resuming, tokenizer vocabulary is extended with tokens from the new dataset, and model embeddings/LM head are expanded to match (avoids `<unk>` spikes when switching datasets).
+
+If you press `Ctrl+C` during training, the current state is saved to checkpoint before exit.
+
 The training loop logs detailed progress per epoch/batch, compression target details, trainable parameter counts, and a reconstruction sample every 8 batches by default (`--sample-every`).
 
 ## Preset runner script

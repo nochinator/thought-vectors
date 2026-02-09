@@ -151,82 +151,91 @@ def train_model(
         f"encoder={encoder_params:,} decoder={decoder_params:,} total={(encoder_params + decoder_params):,}"
     )
 
-    for epoch in range(epochs):
-        model.train()
-        epoch_total = 0.0
-        batches = 0
-        t0 = time.time()
+    batches = 0
+    epoch_total = 0.0
+    try:
+        for epoch in range(epochs):
+            model.train()
+            epoch_total = 0.0
+            batches = 0
+            t0 = time.time()
 
-        print(f"[train] epoch {epoch + 1}/{epochs} starting...")
+            print(f"[train] epoch {epoch + 1}/{epochs} starting...")
 
-        for batch_idx, input_ids in enumerate(loader, start=1):
-            input_ids = input_ids.to(device)
+            for batch_idx, input_ids in enumerate(loader, start=1):
+                input_ids = input_ids.to(device)
 
-            loss_target: float | None = None
-            if use_dynamic_loss_target:
-                mean_seq_len = float((~input_ids.eq(pad_token_id)).sum(dim=1).float().mean().item())
-                loss_target = compute_dynamic_loss_target(
-                    step_index=global_step,
-                    total_steps=total_steps,
-                    mean_sequence_len=mean_seq_len,
-                    max_sequence_len=input_ids.size(1),
-                    start_target=target_start,
-                    end_target=target_end,
-                    length_weight=target_length_weight,
-                    noise_std=target_noise_std,
-                    extreme_prob=target_extreme_prob,
-                )
-
-            optimizer.zero_grad(set_to_none=True)
-            loss, stats, thoughts = training_step(
-                model,
-                input_ids,
-                pad_token_id=pad_token_id,
-                length_penalty=length_penalty,
-                loss_target=loss_target,
-                max_vectors=max_vectors,
-                selection_stride=selection_stride,
-            )
-            loss.backward()
-            optimizer.step()
-
-            epoch_total += float(loss.detach().cpu())
-            batches += 1
-            global_step += 1
-
-            if (batch_idx % max(1, log_every) == 0) or (batch_idx == len(loader)):
-                elapsed = time.time() - t0
-                avg = epoch_total / max(1, batches)
-                print(
-                    "[train] "
-                    f"epoch={epoch + 1}/{epochs} "
-                    f"batch={batch_idx}/{len(loader)} "
-                    f"loss={stats['total_loss']:.4f} "
-                    f"recon={stats['reconstruction_loss']:.4f} "
-                    f"vectors={int(stats['selected_vectors'])} "
-                    f"target={stats['loss_target']:.4f} "
-                    f"epoch_avg={avg:.4f} "
-                    f"elapsed={elapsed:.1f}s"
-                )
-
-            if (batch_idx % max(1, sample_every_batches) == 0) and tokenizer_decode is not None and bos_token_id is not None and eos_token_id is not None:
-                with torch.no_grad():
-                    sample_count = int(stats["selected_vectors"])
-                    sample_vectors = thoughts[:1, :sample_count, :]
-                    sample_generated = decode_greedy(
-                        model,
-                        sample_vectors,
-                        bos_token_id=bos_token_id,
-                        eos_token_id=eos_token_id,
-                        max_length=sample_max_generate_length,
+                loss_target: float | None = None
+                if use_dynamic_loss_target:
+                    mean_seq_len = float((~input_ids.eq(pad_token_id)).sum(dim=1).float().mean().item())
+                    loss_target = compute_dynamic_loss_target(
+                        step_index=global_step,
+                        total_steps=total_steps,
+                        mean_sequence_len=mean_seq_len,
+                        max_sequence_len=input_ids.size(1),
+                        start_target=target_start,
+                        end_target=target_end,
+                        length_weight=target_length_weight,
+                        noise_std=target_noise_std,
+                        extreme_prob=target_extreme_prob,
                     )
-                input_text = tokenizer_decode(input_ids[0].detach().cpu().tolist())
-                recon_text = tokenizer_decode(sample_generated[0].detach().cpu().tolist())
-                print(f"[sample] batch={batch_idx} input={input_text!r}")
-                print(f"[sample] batch={batch_idx} recon={recon_text!r}")
 
-        epoch_avg = epoch_total / max(1, batches)
-        history.append(epoch_avg)
-        print(f"[train] epoch {epoch + 1}/{epochs} done: avg_loss={epoch_avg:.4f}")
+                optimizer.zero_grad(set_to_none=True)
+                loss, stats = training_step(
+                    model,
+                    input_ids,
+                    pad_token_id=pad_token_id,
+                    length_penalty=length_penalty,
+                    loss_target=loss_target,
+                    max_vectors=max_vectors,
+                    selection_stride=selection_stride,
+                )
+                loss.backward()
+                optimizer.step()
+
+                epoch_total += float(loss.detach().cpu())
+                batches += 1
+                global_step += 1
+
+                if (batch_idx % max(1, log_every) == 0) or (batch_idx == len(loader)):
+                    elapsed = time.time() - t0
+                    avg = epoch_total / max(1, batches)
+                    print(
+                        "[train] "
+                        f"epoch={epoch + 1}/{epochs} "
+                        f"batch={batch_idx}/{len(loader)} "
+                        f"loss={stats['total_loss']:.4f} "
+                        f"recon={stats['reconstruction_loss']:.4f} "
+                        f"vectors={int(stats['selected_vectors'])} "
+                        f"target={stats['loss_target']:.4f} "
+                        f"epoch_avg={avg:.4f} "
+                        f"elapsed={elapsed:.1f}s"
+                    )
+
+                if (batch_idx % max(1, sample_every_batches) == 0) and tokenizer_decode is not None and bos_token_id is not None and eos_token_id is not None:
+                    with torch.no_grad():
+                        sample_count = int(stats["selected_vectors"])
+                        sample_vectors = thoughts[:1, :sample_count, :]
+                        sample_generated = decode_greedy(
+                            model,
+                            sample_vectors,
+                            bos_token_id=bos_token_id,
+                            eos_token_id=eos_token_id,
+                            max_length=sample_max_generate_length,
+                        )
+                    input_text = tokenizer_decode(input_ids[0].detach().cpu().tolist())
+                    recon_text = tokenizer_decode(sample_generated[0].detach().cpu().tolist())
+                    print(f"[sample] batch={batch_idx} input={input_text!r}")
+                    print(f"[sample] batch={batch_idx} recon={recon_text!r}")
+
+            epoch_avg = epoch_total / max(1, batches)
+            history.append(epoch_avg)
+            print(f"[train] epoch {epoch + 1}/{epochs} done: avg_loss={epoch_avg:.4f}")
+    except KeyboardInterrupt:
+        if batches > 0:
+            epoch_avg = epoch_total / max(1, batches)
+            history.append(epoch_avg)
+            print(f"[train] interrupted: saved partial epoch avg_loss={epoch_avg:.4f}")
+        raise
 
     return history

@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import sys
-import os
-
 import argparse
-import json
+import sys
 from pathlib import Path
 
 import torch
+from torch import nn
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -16,7 +14,6 @@ if str(ROOT) not in sys.path:
 
 from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, ThoughtVectorModel, train_model
 from thought_vectors.data_loading import load_groups_from_path
-
 
 
 def build_model_from_config(config: dict) -> ThoughtVectorModel:
@@ -40,10 +37,55 @@ def build_model_from_config(config: dict) -> ThoughtVectorModel:
     return ThoughtVectorModel(encoder, decoder)
 
 
+def _resize_embedding(old_embedding: nn.Embedding, new_vocab_size: int) -> nn.Embedding:
+    old_vocab_size, d_model = old_embedding.weight.shape
+    new_embedding = nn.Embedding(new_vocab_size, d_model)
+    nn.init.normal_(new_embedding.weight, mean=0.0, std=0.02)
+    copy_size = min(old_vocab_size, new_vocab_size)
+    with torch.no_grad():
+        new_embedding.weight[:copy_size] = old_embedding.weight[:copy_size]
+    return new_embedding
+
+
+def _resize_linear(old_linear: nn.Linear, new_out_features: int) -> nn.Linear:
+    old_out, d_model = old_linear.weight.shape
+    new_linear = nn.Linear(d_model, new_out_features)
+    nn.init.normal_(new_linear.weight, mean=0.0, std=0.02)
+    nn.init.zeros_(new_linear.bias)
+    copy_size = min(old_out, new_out_features)
+    with torch.no_grad():
+        new_linear.weight[:copy_size] = old_linear.weight[:copy_size]
+        new_linear.bias[:copy_size] = old_linear.bias[:copy_size]
+    return new_linear
+
+
+def maybe_expand_vocab(model: ThoughtVectorModel, new_vocab_size: int) -> None:
+    old_vocab_size = model.encoder.token_embedding.num_embeddings
+    if new_vocab_size <= old_vocab_size:
+        return
+
+    model.encoder.token_embedding = _resize_embedding(model.encoder.token_embedding, new_vocab_size)
+    model.decoder.token_embedding = _resize_embedding(model.decoder.token_embedding, new_vocab_size)
+    model.decoder.lm_head = _resize_linear(model.decoder.lm_head, new_vocab_size)
+    print(f"[train] expanded vocabulary: {old_vocab_size} -> {new_vocab_size}")
+
+
+def save_checkpoint(path: Path, model: ThoughtVectorModel, config: dict, tokenizer: SimpleTokenizer, history: list[float]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(
+        {
+            "model_state": model.state_dict(),
+            "config": config,
+            "token_to_id": tokenizer.token_to_id,
+            "history": history,
+        },
+        path,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train a Thought Vector model on grouped text data.")
     parser.add_argument("--data", type=Path, required=True, help="Path to dataset (.json, .jsonl, or .csv). CSV uses first column as text.")
-    parser.add_argument("--tokenizer_texts", type=Path, nargs="+", required=True, help="One or more paths to datasets (.json, .jsonl, .csv).")
     parser.add_argument("--no-preprocess", action="store_true", help="Disable text normalization preprocessing.")
     parser.add_argument("--resume-from", type=Path, default=None, help="Checkpoint path to resume model weights/history from.")
     parser.add_argument("--epochs", type=int, default=10)
@@ -71,7 +113,6 @@ def main() -> None:
     args = parser.parse_args()
 
     groups = load_groups_from_path(args.data, preprocess=not args.no_preprocess)
-
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     prior_history: list[float] = []
@@ -104,49 +145,48 @@ def main() -> None:
         }
         model = build_model_from_config(config)
 
-    history = train_model(
-        model,
-        groups,
-        tokenizer.encode,
-        tokenizer.pad_token_id,
-        device=device,
-        epochs=args.epochs,
-        batch_size=args.batch_size,
-        learning_rate=args.lr,
-        weight_decay=args.weight_decay,
-        length_penalty=args.length_penalty,
-        use_dynamic_loss_target=not args.disable_dynamic_target,
-        target_start=args.target_start,
-        target_end=args.target_end,
-        target_length_weight=args.target_length_weight,
-        target_noise_std=args.target_noise_std,
-        target_extreme_prob=args.target_extreme_prob,
-        max_vectors=args.max_vectors,
-        selection_stride=args.selection_stride,
-        log_every=args.log_every,
-        sample_every_batches=args.sample_every,
-        tokenizer_decode=tokenizer.decode,
-        bos_token_id=tokenizer.bos_token_id,
-        eos_token_id=tokenizer.eos_token_id,
-    )
+    interrupted = False
+    history: list[float] = []
+    try:
+        history = train_model(
+            model,
+            groups,
+            tokenizer.encode,
+            tokenizer.pad_token_id,
+            device=device,
+            epochs=args.epochs,
+            batch_size=args.batch_size,
+            learning_rate=args.lr,
+            weight_decay=args.weight_decay,
+            length_penalty=args.length_penalty,
+            use_dynamic_loss_target=not args.disable_dynamic_target,
+            target_start=args.target_start,
+            target_end=args.target_end,
+            target_length_weight=args.target_length_weight,
+            target_noise_std=args.target_noise_std,
+            target_extreme_prob=args.target_extreme_prob,
+            max_vectors=args.max_vectors,
+            selection_stride=args.selection_stride,
+            log_every=args.log_every,
+            sample_every_batches=args.sample_every,
+            tokenizer_decode=tokenizer.decode,
+            bos_token_id=tokenizer.bos_token_id,
+            eos_token_id=tokenizer.eos_token_id,
+        )
+    except KeyboardInterrupt:
+        print("\n[train] keyboard interrupt received, saving checkpoint before exit...")
+    finally:
+        interrupted = True
 
     full_history = prior_history + history
-
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    torch.save(
-        {
-            "model_state": model.state_dict(),
-            "config": config,
-            "token_to_id": tokenizer.token_to_id,
-            "history": full_history,
-        },
-        args.output,
-    )
+    save_checkpoint(args.output, model, config, tokenizer, full_history)
 
     print(f"Device: {device}")
     print(f"Epoch losses (new): {history}")
     print(f"Epoch losses (full): {full_history}")
     print(f"Saved checkpoint: {args.output}")
+    if interrupted:
+        print("[train] exited early due to keyboard interrupt.")
 
 
 if __name__ == "__main__":
