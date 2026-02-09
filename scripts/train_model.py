@@ -10,37 +10,20 @@ from pathlib import Path
 
 import torch
 
-os.environ["ROC_DISABLE_PROFILING"] = "1"
-
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, ThoughtVectorModel, train_model
-
-
-def load_groups(path: Path) -> list[list[str]]:
-    if path.suffix == ".json":
-        data = json.loads(path.read_text())
-        if not isinstance(data, list):
-            raise ValueError("JSON file must contain a top-level list of text groups.")
-        return [[str(x) for x in group] for group in data]
-
-    groups: list[list[str]] = []
-    for line in path.read_text().splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        obj = json.loads(line)
-        groups.append([str(x) for x in obj["texts"]])
-    return groups
+from thought_vectors.data_loading import load_groups_from_path
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train a Thought Vector model on grouped text data.")
-    parser.add_argument("--data", type=Path, default=Path("scripts/toy_data.json"), help="Path to dataset.")
-    parser.add_argument("--epochs", type=int, default=100)
-    parser.add_argument("--batch-size", type=int, default=64)
+    parser.add_argument("--data", type=Path, required=True, help="Path to dataset (.json, .jsonl, or .csv). CSV uses first column as text.")
+    parser.add_argument("--no-preprocess", action="store_true", help="Disable text normalization preprocessing.")
+    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--weight-decay", type=float, default=1e-5)
     parser.add_argument("--length-penalty", type=float, default=0.01)
@@ -62,7 +45,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=Path("artifacts/thought_vectors.pt"))
     args = parser.parse_args()
 
-    groups = load_groups(args.data)
+    groups = load_groups_from_path(args.data, preprocess=not args.no_preprocess)
     tokenizer = SimpleTokenizer()
     tokenizer.fit(groups)
 

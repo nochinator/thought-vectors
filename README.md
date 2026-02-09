@@ -7,6 +7,8 @@ Implementation scaffold for the Thought Vector System specification.
 - `ThoughtEncoder` with token embeddings, positional encoding, transformer encoder, GRU thought generation, and cross-attention.
 - `ThoughtDecoder` with transformer decoder, causal masking, and vocabulary projection head.
 - Group-based dataset utilities (`GroupTextDataset`, `collate_group_batch`).
+- Data loading for `.json`, `.jsonl`, and `.csv` (`load_groups_from_path`); CSV uses the first column as text.
+- Preprocessing (`normalize_apostrophes`, `normalize_text`) for mixed apostrophes and general cleanup.
 - Training helpers (`training_step`, `train_model`) with reconstruction loss + length penalty.
 - Dynamic target compression curriculum (`compute_dynamic_loss_target`) for training.
 - Inference helpers (`encode`, `decode_greedy`, `find_minimum_vectors_for_target`, `encode_with_compression`).
@@ -16,16 +18,19 @@ Implementation scaffold for the Thought Vector System specification.
 
 Use `scripts/train_model.py` with either:
 
-- `.json`: top-level `list[list[str]]`, or
-- `.jsonl`: one object per line with `{"texts": ["...", "..."]}`.
+- `.json`: top-level `list[list[str]]` or list of strings,
+- `.jsonl`: one object per line with `{"texts": ["...", "..."]}`,
+- `.csv`: first column only is used as training text.
 
 Example:
 
 ```bash
-python scripts/train_model.py --data data/groups.json --epochs 10 --batch-size 8 --output artifacts/thought_vectors.pt
+python scripts/train_model.py --data data/dataset.csv --epochs 10 --batch-size 8 --output artifacts/thought_vectors.pt
 ```
 
-The training loop now logs detailed progress per epoch/batch and supports dynamic loss-target compression controls.
+By default, text preprocessing is enabled (apostrophe normalization + cleanup). Use `--no-preprocess` to disable it.
+
+The training loop logs detailed progress per epoch/batch, compression target details, and trainable parameter counts for encoder/decoder/combined.
 
 ## Preset runner script
 
