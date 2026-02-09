@@ -9,7 +9,7 @@ from torch import optim
 from torch.utils.data import DataLoader
 
 from thought_vectors.data import GroupTextDataset, collate_group_batch
-from thought_vectors.inference import find_minimum_vectors_for_target
+from thought_vectors.inference import decode_greedy, find_minimum_vectors_for_target
 from thought_vectors.model import ThoughtVectorModel
 
 
@@ -120,6 +120,11 @@ def train_model(
     max_vectors: int | None = None,
     selection_stride: int = 2,
     log_every: int = 10,
+    sample_every_batches: int = 8,
+    tokenizer_decode=None,
+    bos_token_id: int | None = None,
+    eos_token_id: int | None = None,
+    sample_max_generate_length: int = 32,
 ) -> list[float]:
     """Train thought-vector model on grouped text data and return epoch losses."""
     random.seed(seed)
@@ -204,6 +209,22 @@ def train_model(
                     f"epoch_avg={avg:.4f} "
                     f"elapsed={elapsed:.1f}s"
                 )
+
+            if (batch_idx % max(1, sample_every_batches) == 0) and tokenizer_decode is not None and bos_token_id is not None and eos_token_id is not None:
+                with torch.no_grad():
+                    sample_count = int(stats["selected_vectors"])
+                    sample_vectors = thoughts[:1, :sample_count, :]
+                    sample_generated = decode_greedy(
+                        model,
+                        sample_vectors,
+                        bos_token_id=bos_token_id,
+                        eos_token_id=eos_token_id,
+                        max_length=sample_max_generate_length,
+                    )
+                input_text = tokenizer_decode(input_ids[0].detach().cpu().tolist())
+                recon_text = tokenizer_decode(sample_generated[0].detach().cpu().tolist())
+                print(f"[sample] batch={batch_idx} input={input_text!r}")
+                print(f"[sample] batch={batch_idx} recon={recon_text!r}")
 
         epoch_avg = epoch_total / max(1, batches)
         history.append(epoch_avg)

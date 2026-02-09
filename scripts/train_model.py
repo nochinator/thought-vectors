@@ -18,10 +18,32 @@ from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, Tho
 from thought_vectors.data_loading import load_groups_from_path
 
 
+def build_model_from_config(config: dict) -> ThoughtVectorModel:
+    encoder = ThoughtEncoder(
+        vocab_size=config["vocab_size"],
+        d_model=config["d_model"],
+        nhead=config["heads"],
+        num_layers=config["layers"],
+        dropout=config["dropout"],
+        max_seq_len=config["max_seq_len"],
+        num_thoughts=config["num_thoughts"],
+    )
+    decoder = ThoughtDecoder(
+        vocab_size=config["vocab_size"],
+        d_model=config["d_model"],
+        nhead=config["heads"],
+        num_layers=config["layers"],
+        dropout=config["dropout"],
+        max_seq_len=config["max_seq_len"],
+    )
+    return ThoughtVectorModel(encoder, decoder)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train a Thought Vector model on grouped text data.")
     parser.add_argument("--data", type=Path, required=True, help="Path to dataset (.json, .jsonl, or .csv). CSV uses first column as text.")
     parser.add_argument("--no-preprocess", action="store_true", help="Disable text normalization preprocessing.")
+    parser.add_argument("--resume-from", type=Path, default=None, help="Checkpoint path to resume model weights/history from.")
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--lr", type=float, default=1e-4)
@@ -42,33 +64,37 @@ def main() -> None:
     parser.add_argument("--target-noise-std", type=float, default=0.07)
     parser.add_argument("--target-extreme-prob", type=float, default=0.12)
     parser.add_argument("--log-every", type=int, default=10)
+    parser.add_argument("--sample-every", type=int, default=8, help="Print reconstruction sample every N batches.")
     parser.add_argument("--output", type=Path, default=Path("artifacts/thought_vectors.pt"))
     args = parser.parse_args()
 
     groups = load_groups_from_path(args.data, preprocess=not args.no_preprocess)
-    tokenizer = SimpleTokenizer()
-    tokenizer.fit(groups)
-
-    encoder = ThoughtEncoder(
-        vocab_size=tokenizer.vocab_size,
-        d_model=args.d_model,
-        nhead=args.heads,
-        num_layers=args.layers,
-        dropout=args.dropout,
-        max_seq_len=args.max_seq_len,
-        num_thoughts=args.num_thoughts,
-    )
-    decoder = ThoughtDecoder(
-        vocab_size=tokenizer.vocab_size,
-        d_model=args.d_model,
-        nhead=args.heads,
-        num_layers=args.layers,
-        dropout=args.dropout,
-        max_seq_len=args.max_seq_len,
-    )
-    model = ThoughtVectorModel(encoder, decoder)
-
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    prior_history: list[float] = []
+
+    if args.resume_from is not None:
+        payload = torch.load(args.resume_from, map_location=device, weights_only=False)
+        config = payload["config"]
+        tokenizer = SimpleTokenizer.from_token_to_id(payload["token_to_id"])
+        model = build_model_from_config(config)
+        model.load_state_dict(payload["model_state"])
+        prior_history = [float(x) for x in payload.get("history", [])]
+        print(f"[train] resumed from checkpoint: {args.resume_from}")
+    else:
+        tokenizer = SimpleTokenizer()
+        tokenizer.fit(groups)
+        config = {
+            "vocab_size": tokenizer.vocab_size,
+            "d_model": args.d_model,
+            "heads": args.heads,
+            "layers": args.layers,
+            "dropout": args.dropout,
+            "max_seq_len": args.max_seq_len,
+            "num_thoughts": args.num_thoughts,
+        }
+        model = build_model_from_config(config)
+
     history = train_model(
         model,
         groups,
@@ -89,29 +115,28 @@ def main() -> None:
         max_vectors=args.max_vectors,
         selection_stride=args.selection_stride,
         log_every=args.log_every,
+        sample_every_batches=args.sample_every,
+        tokenizer_decode=tokenizer.decode,
+        bos_token_id=tokenizer.bos_token_id,
+        eos_token_id=tokenizer.eos_token_id,
     )
+
+    full_history = prior_history + history
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     torch.save(
         {
             "model_state": model.state_dict(),
-            "config": {
-                "vocab_size": tokenizer.vocab_size,
-                "d_model": args.d_model,
-                "heads": args.heads,
-                "layers": args.layers,
-                "dropout": args.dropout,
-                "max_seq_len": args.max_seq_len,
-                "num_thoughts": args.num_thoughts,
-            },
+            "config": config,
             "token_to_id": tokenizer.token_to_id,
-            "history": history,
+            "history": full_history,
         },
         args.output,
     )
 
     print(f"Device: {device}")
-    print(f"Epoch losses: {history}")
+    print(f"Epoch losses (new): {history}")
+    print(f"Epoch losses (full): {full_history}")
     print(f"Saved checkpoint: {args.output}")
 
 

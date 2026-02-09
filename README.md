@@ -25,12 +25,19 @@ Use `scripts/train_model.py` with either:
 Example:
 
 ```bash
-python scripts/train_model.py --data data/dataset.csv --epochs 10 --batch-size 8 --output artifacts/thought_vectors.pt
+python scripts/train_model.py --data data/dataset.csv --epochs 10 --batch-size 8 --sample-every 8 --output artifacts/thought_vectors.pt
 ```
 
 By default, text preprocessing is enabled (apostrophe normalization + cleanup). Use `--no-preprocess` to disable it.
 
-The training loop logs detailed progress per epoch/batch, compression target details, and trainable parameter counts for encoder/decoder/combined.
+
+To continue training from a checkpoint:
+
+```bash
+python scripts/train_model.py --data data/dataset.csv --resume-from artifacts/thought_vectors.pt --epochs 5 --output artifacts/thought_vectors.pt
+```
+
+The training loop logs detailed progress per epoch/batch, compression target details, trainable parameter counts, and a reconstruction sample every 8 batches by default (`--sample-every`).
 
 ## Preset runner script
 
