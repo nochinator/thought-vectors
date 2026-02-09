@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import csv
 import json
+import sys
 from pathlib import Path
 
 from thought_vectors.preprocessing import normalize_text
 
+csv.field_size_limit(sys.maxsize)
 
 def _clean(text: str, preprocess: bool) -> str:
     return normalize_text(text) if preprocess else text
