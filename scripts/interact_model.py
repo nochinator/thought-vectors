@@ -48,7 +48,7 @@ def load_model(checkpoint_path: Path, device: torch.device) -> tuple[ThoughtVect
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Interactive reconstruction loop for a trained Thought Vector model.")
-    parser.add_argument("--checkpoint", type=Path, required=True)
+    parser.add_argument("--checkpoint", type=Path, default=Path("artifacts/thought_vectors.pt"))
     parser.add_argument("--loss-target", type=float, default=0.6)
     parser.add_argument("--max-vectors", type=int, default=None)
     parser.add_argument("--selection-stride", type=int, default=2)

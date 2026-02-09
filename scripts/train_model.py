@@ -6,7 +6,6 @@ import os
 
 import argparse
 import json
-import sys
 from pathlib import Path
 
 import torch
@@ -39,9 +38,9 @@ def load_groups(path: Path) -> list[list[str]]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train a Thought Vector model on grouped text data.")
-    parser.add_argument("--data", type=Path, default=Path("toy_data.json"), help="Path to dataset.")
-    parser.add_argument("--epochs", type=int, default=10)
-    parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--data", type=Path, default=Path("scripts/toy_data.json"), help="Path to dataset.")
+    parser.add_argument("--epochs", type=int, default=100)
+    parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--weight-decay", type=float, default=1e-5)
     parser.add_argument("--length-penalty", type=float, default=0.01)
