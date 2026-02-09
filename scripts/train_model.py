@@ -4,10 +4,6 @@ from __future__ import annotations
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, ThoughtVectorModel, train_model
-
 import argparse
 import json
 import sys
@@ -21,19 +17,16 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, ThoughtVectorModel, train_model
+
 
 def load_groups(path: Path) -> list[list[str]]:
-    if not path.exists():
-        raise FileNotFoundError(f"Could not find the file at {path}")
-
     if path.suffix == ".json":
         data = json.loads(path.read_text())
-        # The JSON must be a list (e.g., [ ["str"], ["str"] ])
         if not isinstance(data, list):
             raise ValueError("JSON file must contain a top-level list of text groups.")
         return [[str(x) for x in group] for group in data]
 
-    # This part handles JSONL (JSON Lines) format
     groups: list[list[str]] = []
     for line in path.read_text().splitlines():
         line = line.strip()
@@ -58,6 +51,15 @@ def main() -> None:
     parser.add_argument("--heads", type=int, default=8)
     parser.add_argument("--dropout", type=float, default=0.1)
     parser.add_argument("--max-seq-len", type=int, default=512)
+    parser.add_argument("--max-vectors", type=int, default=None)
+    parser.add_argument("--selection-stride", type=int, default=2)
+    parser.add_argument("--disable-dynamic-target", action="store_true")
+    parser.add_argument("--target-start", type=float, default=1.8)
+    parser.add_argument("--target-end", type=float, default=0.45)
+    parser.add_argument("--target-length-weight", type=float, default=0.65)
+    parser.add_argument("--target-noise-std", type=float, default=0.07)
+    parser.add_argument("--target-extreme-prob", type=float, default=0.12)
+    parser.add_argument("--log-every", type=int, default=10)
     parser.add_argument("--output", type=Path, default=Path("artifacts/thought_vectors.pt"))
     args = parser.parse_args()
 
@@ -96,6 +98,15 @@ def main() -> None:
         learning_rate=args.lr,
         weight_decay=args.weight_decay,
         length_penalty=args.length_penalty,
+        use_dynamic_loss_target=not args.disable_dynamic_target,
+        target_start=args.target_start,
+        target_end=args.target_end,
+        target_length_weight=args.target_length_weight,
+        target_noise_std=args.target_noise_std,
+        target_extreme_prob=args.target_extreme_prob,
+        max_vectors=args.max_vectors,
+        selection_stride=args.selection_stride,
+        log_every=args.log_every,
     )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -120,6 +131,7 @@ def main() -> None:
     print(f"Device: {device}")
     print(f"Epoch losses: {history}")
     print(f"Saved checkpoint: {args.output}")
+
 
 if __name__ == "__main__":
     main()

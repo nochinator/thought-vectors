@@ -21,6 +21,13 @@ class SimpleTokenizer:
         }
         self.id_to_token = {idx: token for token, idx in self.token_to_id.items()}
 
+    @classmethod
+    def from_token_to_id(cls, token_to_id: dict[str, int]) -> "SimpleTokenizer":
+        tokenizer = cls()
+        tokenizer.token_to_id = dict(token_to_id)
+        tokenizer.id_to_token = {idx: token for token, idx in tokenizer.token_to_id.items()}
+        return tokenizer
+
     @property
     def pad_token_id(self) -> int:
         return self.token_to_id[self.pad_token]
