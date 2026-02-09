@@ -13,6 +13,10 @@ from thought_vectors.inference import find_minimum_vectors_for_target
 from thought_vectors.model import ThoughtVectorModel
 
 
+def _count_trainable_parameters(module: torch.nn.Module) -> int:
+    return sum(p.numel() for p in module.parameters() if p.requires_grad)
+
+
 def compute_dynamic_loss_target(
     *,
     step_index: int,
@@ -135,6 +139,13 @@ def train_model(
 
     total_steps = max(1, epochs * len(loader))
     global_step = 0
+
+    encoder_params = _count_trainable_parameters(model.encoder)
+    decoder_params = _count_trainable_parameters(model.decoder)
+    print(
+        "[train] parameters "
+        f"encoder={encoder_params:,} decoder={decoder_params:,} total={(encoder_params + decoder_params):,}"
+    )
 
     for epoch in range(epochs):
         model.train()
