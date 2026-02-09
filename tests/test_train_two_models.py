@@ -1,10 +1,16 @@
 from __future__ import annotations
 
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, ThoughtVectorModel, train_model
+
 import pytest
 
 torch = pytest.importorskip("torch")
 
-from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, ThoughtVectorModel, train_model
 
 
 def _build_tiny_groups() -> list[list[str]]:
