@@ -12,7 +12,7 @@ Implementation scaffold for the Thought Vector System specification.
 - Training helpers (`training_step`, `train_model`) with reconstruction loss + length penalty.
 - Dynamic target compression curriculum (`compute_dynamic_loss_target`) for training.
 - Inference helpers (`encode`, `decode_greedy`, `find_minimum_vectors_for_target`, `encode_with_compression`).
-- `SimpleTokenizer` for local smoke tests and tiny experiments.
+- `SimpleTokenizer` with regex tokenization, lowercasing, punctuation support, and deterministic vocab building for local experiments.
 
 ## Training script
 

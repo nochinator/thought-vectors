@@ -13,3 +13,13 @@ def test_tokenizer_from_checkpoint_can_fit_new_dataset_tokens() -> None:
     encoded = restored.encode("new tokens arrive", add_special_tokens=False)
     unk_id = restored.token_to_id[restored.unk_token]
     assert all(token_id != unk_id for token_id in encoded)
+
+
+def test_tokenizer_handles_punctuation_and_case_consistently() -> None:
+    tokenizer = SimpleTokenizer()
+    tokenizer.fit([["Hello, WORLD!"]])
+
+    encoded = tokenizer.encode("hello, world!", add_special_tokens=False)
+    decoded = tokenizer.decode(encoded)
+
+    assert decoded == "hello, world!"

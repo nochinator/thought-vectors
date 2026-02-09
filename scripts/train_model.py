@@ -121,19 +121,18 @@ def main() -> None:
         payload = torch.load(args.resume_from, map_location=device, weights_only=False)
         config = payload["config"]
         tokenizer = SimpleTokenizer.from_token_to_id(payload["token_to_id"])
+        tokenizer.fit(groups)
+
         model = build_model_from_config(config)
         model.load_state_dict(payload["model_state"])
+        maybe_expand_vocab(model, tokenizer.vocab_size)
+        config["vocab_size"] = tokenizer.vocab_size
+
         prior_history = [float(x) for x in payload.get("history", [])]
         print(f"[train] resumed from checkpoint: {args.resume_from}")
     else:
-        tokenizer_texts = load_groups_from_path(args.data, preprocess=not args.no_preprocess)
-        for data_path in args.tokenizer_texts:
-            print(f"[loader] Loading: {data_path}")
-            path_groups = load_groups_from_path(data_path, preprocess=not args.no_preprocess)
-            tokenizer_texts.extend(path_groups)
-        
         tokenizer = SimpleTokenizer()
-        tokenizer.fit(tokenizer_texts)
+        tokenizer.fit(groups)
         config = {
             "vocab_size": tokenizer.vocab_size,
             "d_model": args.d_model,
@@ -174,9 +173,8 @@ def main() -> None:
             eos_token_id=tokenizer.eos_token_id,
         )
     except KeyboardInterrupt:
-        print("\n[train] keyboard interrupt received, saving checkpoint before exit...")
-    finally:
         interrupted = True
+        print("\n[train] keyboard interrupt received, saving checkpoint before exit...")
 
     full_history = prior_history + history
     save_checkpoint(args.output, model, config, tokenizer, full_history)
