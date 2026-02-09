@@ -18,6 +18,7 @@ from thought_vectors import SimpleTokenizer, ThoughtDecoder, ThoughtEncoder, Tho
 from thought_vectors.data_loading import load_groups_from_path
 
 
+
 def build_model_from_config(config: dict) -> ThoughtVectorModel:
     encoder = ThoughtEncoder(
         vocab_size=config["vocab_size"],
@@ -42,6 +43,7 @@ def build_model_from_config(config: dict) -> ThoughtVectorModel:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train a Thought Vector model on grouped text data.")
     parser.add_argument("--data", type=Path, required=True, help="Path to dataset (.json, .jsonl, or .csv). CSV uses first column as text.")
+    parser.add_argument("--tokenizer_texts", type=Path, nargs="+", required=True, help="One or more paths to datasets (.json, .jsonl, .csv).")
     parser.add_argument("--no-preprocess", action="store_true", help="Disable text normalization preprocessing.")
     parser.add_argument("--resume-from", type=Path, default=None, help="Checkpoint path to resume model weights/history from.")
     parser.add_argument("--epochs", type=int, default=10)
@@ -69,6 +71,7 @@ def main() -> None:
     args = parser.parse_args()
 
     groups = load_groups_from_path(args.data, preprocess=not args.no_preprocess)
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     prior_history: list[float] = []
@@ -82,8 +85,14 @@ def main() -> None:
         prior_history = [float(x) for x in payload.get("history", [])]
         print(f"[train] resumed from checkpoint: {args.resume_from}")
     else:
+        tokenizer_texts = load_groups_from_path(args.data, preprocess=not args.no_preprocess)
+        for data_path in args.tokenizer_texts:
+            print(f"[loader] Loading: {data_path}")
+            path_groups = load_groups_from_path(data_path, preprocess=not args.no_preprocess)
+            tokenizer_texts.extend(path_groups)
+        
         tokenizer = SimpleTokenizer()
-        tokenizer.fit(groups)
+        tokenizer.fit(tokenizer_texts)
         config = {
             "vocab_size": tokenizer.vocab_size,
             "d_model": args.d_model,

@@ -56,7 +56,7 @@ def training_step(
     loss_target: float | None = None,
     max_vectors: int | None = None,
     selection_stride: int = 2,
-) -> tuple[torch.Tensor, dict[str, float]]:
+) -> tuple[torch.Tensor, dict[str, float], torch.Tensor]:
     padding_mask = input_ids.eq(pad_token_id)
 
     thoughts = model.encoder(input_ids, padding_mask)
@@ -94,8 +94,7 @@ def training_step(
         "selected_vectors": float(selected_vector_count),
         "loss_target": float(loss_target) if loss_target is not None else -1.0,
     }
-    return total, stats
-
+    return total, stats, thoughts
 
 def train_model(
     model: ThoughtVectorModel,
@@ -179,7 +178,7 @@ def train_model(
                 )
 
             optimizer.zero_grad(set_to_none=True)
-            loss, stats = training_step(
+            loss, stats, thoughts = training_step(
                 model,
                 input_ids,
                 pad_token_id=pad_token_id,
