@@ -181,7 +181,7 @@ def train_model(
                     )
 
                 optimizer.zero_grad(set_to_none=True)
-                loss, stats = training_step(
+                loss, stats, thoughts = training_step(
                     model,
                     input_ids,
                     pad_token_id=pad_token_id,

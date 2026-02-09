@@ -12,7 +12,7 @@ Implementation scaffold for the Thought Vector System specification.
 - Training helpers (`training_step`, `train_model`) with reconstruction loss + length penalty.
 - Dynamic target compression curriculum (`compute_dynamic_loss_target`) for training.
 - Inference helpers (`encode`, `decode_greedy`, `find_minimum_vectors_for_target`, `encode_with_compression`).
-- `SimpleTokenizer` for local smoke tests and tiny experiments.
+- `SimpleTokenizer` with regex tokenization, lowercasing, punctuation support, and deterministic vocab building for local experiments.
 
 ## Training script
 
@@ -38,6 +38,8 @@ python scripts/train_model.py --data data/dataset.csv --resume-from artifacts/th
 ```
 
 When resuming, tokenizer vocabulary is extended with tokens from the new dataset, and model embeddings/LM head are expanded to match (avoids `<unk>` spikes when switching datasets).
+
+For large datasets, bound tokenizer RAM with `--tokenizer-count-memory-limit` and optionally set `--tokenizer-max-vocab-size` / `--tokenizer-min-frequency` to constrain vocab growth during fitting.
 
 If you press `Ctrl+C` during training, the current state is saved to checkpoint before exit.
 
