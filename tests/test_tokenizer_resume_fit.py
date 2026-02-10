@@ -23,3 +23,12 @@ def test_tokenizer_handles_punctuation_and_case_consistently() -> None:
     decoded = tokenizer.decode(encoded)
 
     assert decoded == "hello, world!"
+
+
+def test_tokenizer_fit_with_memory_limited_counter_bounds_vocab_growth() -> None:
+    tokenizer = SimpleTokenizer()
+    groups = [[f"token_{i}"] for i in range(50)]
+
+    tokenizer.fit(groups, count_memory_limit=10)
+
+    assert tokenizer.vocab_size <= 14  # 4 special + at most 10 retained candidates

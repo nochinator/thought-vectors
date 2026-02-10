@@ -3,6 +3,8 @@ from __future__ import annotations
 import re
 from collections import Counter
 from dataclasses import dataclass, field
+from heapq import nlargest
+from typing import Iterable
 
 
 @dataclass
@@ -61,21 +63,22 @@ class SimpleTokenizer:
 
     def fit(
         self,
-        groups: list[list[str]],
+        groups: Iterable[list[str]],
         *,
         min_frequency: int = 1,
         max_vocab_size: int | None = None,
+        count_memory_limit: int | None = None,
     ) -> None:
         counts: Counter[str] = Counter()
         for group in groups:
             for text in group:
                 counts.update(self._tokenize(text))
+                if count_memory_limit is not None and len(counts) > count_memory_limit:
+                    # Keep only the highest-frequency candidates to bound RAM usage.
+                    counts = Counter(dict(nlargest(count_memory_limit, counts.items(), key=lambda item: item[1])))
 
-        candidates = [
-            token
-            for token, frequency in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
-            if frequency >= min_frequency and token not in self.token_to_id
-        ]
+        candidates = [token for token, frequency in counts.items() if frequency >= min_frequency and token not in self.token_to_id]
+        candidates.sort(key=lambda token: (-counts[token], token))
 
         if max_vocab_size is not None:
             free_slots = max(0, max_vocab_size - len(self.token_to_id))
