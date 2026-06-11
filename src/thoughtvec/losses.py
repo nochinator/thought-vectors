@@ -31,19 +31,34 @@ def kl_divergence(mu: torch.Tensor, logvar: torch.Tensor) -> torch.Tensor:
     return (-0.5 * (1 + logvar - mu.pow(2) - logvar.exp())).mean()
 
 
+def _pred_mse(cols: torch.Tensor, actual: torch.Tensor, log_space: bool) -> torch.Tensor:
+    if log_space:
+        # MSE in log1p space: equal relative weight to the low-CE region the
+        # tau knob lives in (linear MSE lets rare CE-15 labels dominate and
+        # leaves small-k predictions badly under-calibrated).
+        return F.mse_loss(torch.log1p(cols), torch.log1p(actual.detach()))
+    return F.mse_loss(cols, actual.detach())
+
+
 def predictor_loss(
-    predicted: torch.Tensor, k: int, actual_per_sample_ce: torch.Tensor
+    predicted: torch.Tensor,
+    k: int,
+    actual_per_sample_ce: torch.Tensor,
+    log_space: bool = False,
 ) -> torch.Tensor:
     """MSE between the predictor's column for prefix length k and observed CE.
 
     predicted [B, N] (column k-1 = prefix of k vectors), actual [B] detached.
     """
-    return F.mse_loss(predicted[:, k - 1], actual_per_sample_ce.detach())
+    return _pred_mse(predicted[:, k - 1], actual_per_sample_ce, log_space)
 
 
 def predictor_loss_per_k(
-    predicted: torch.Tensor, ks: torch.Tensor, actual_per_sample_ce: torch.Tensor
+    predicted: torch.Tensor,
+    ks: torch.Tensor,
+    actual_per_sample_ce: torch.Tensor,
+    log_space: bool = False,
 ) -> torch.Tensor:
     """Per-sample variant: row b is compared at its own prefix length ks[b]."""
     cols = predicted.gather(1, (ks - 1).clamp(min=0).unsqueeze(1)).squeeze(1)
-    return F.mse_loss(cols, actual_per_sample_ce.detach())
+    return _pred_mse(cols, actual_per_sample_ce, log_space)

@@ -206,11 +206,11 @@ class Trainer:
         if use_nar:
             p_terms = []
         elif per_sample_k:
-            p_terms = [predictor_loss_per_k(pred, ks, per_sample)]
+            p_terms = [predictor_loss_per_k(pred, ks, per_sample, cfg.train.predictor_log)]
         else:
-            p_terms = [predictor_loss(pred, k, per_sample)]
+            p_terms = [predictor_loss(pred, k, per_sample, cfg.train.predictor_log)]
         if anchor is not None:
-            p_terms.append(predictor_loss(pred, n, anchor_per_sample))
+            p_terms.append(predictor_loss(pred, n, anchor_per_sample, cfg.train.predictor_log))
         if cfg.train.predictor_extra_k > 0:
             with torch.no_grad():
                 if per_sample_k:
@@ -222,7 +222,7 @@ class Trainer:
                             thoughts.detach(), dec_in, dec_pad, memory_padding_mask=e_pad
                         )
                         _, e_ps = reconstruction_ce(e_logits, dec_tgt)
-                        p_terms.append(predictor_loss_per_k(pred, eks, e_ps))
+                        p_terms.append(predictor_loss_per_k(pred, eks, e_ps, cfg.train.predictor_log))
                 else:
                     extra_ks = self.ksampler.sample_distinct(
                         mean_len, cfg.train.predictor_extra_k, k
@@ -230,7 +230,7 @@ class Trainer:
                     for ek in extra_ks:
                         e_logits = model.decode(thoughts[:, :ek].detach(), dec_in, dec_pad)
                         _, e_ps = reconstruction_ce(e_logits, dec_tgt)
-                        p_terms.append(predictor_loss(pred, ek, e_ps))
+                        p_terms.append(predictor_loss(pred, ek, e_ps, cfg.train.predictor_log))
         p_loss = sum(p_terms) / len(p_terms) if p_terms else torch.zeros_like(recon)
 
         total = recon + cfg.train.predictor_weight * p_loss
