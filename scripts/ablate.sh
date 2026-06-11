@@ -15,7 +15,8 @@ overrides_for() {
     D)    echo "reg.nar_frac=0.25" ;;                 # NAR-mixed batches
     B384) echo "model.d_model=384 model.nhead=6 model.enc_layers=5 model.dec_layers=5 train.batch_size=32" ;;
     B512) echo "model.d_model=512 model.nhead=8 model.enc_layers=6 model.dec_layers=6 train.batch_size=32" ;;
-    E256) echo "data.shard_dir=data/mix_long model.max_seq_len=256 train.batch_size=32" ;;
+    # E256 is the frontier dress rehearsal: chosen shape + regularizers on paragraph data.
+    E256) echo "data.shard_dir=data/mix_long model.d_model=384 model.nhead=6 model.enc_layers=5 model.dec_layers=5 model.max_seq_len=256 model.num_thoughts=256 train.batch_size=32 reg.kl_beta=0.01 reg.noise_std=0.05 train.predictor_extra_k=1" ;;
     *)    echo "unknown ablation: $1" >&2; return 1 ;;
   esac
 }

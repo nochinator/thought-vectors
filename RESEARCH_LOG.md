@@ -136,3 +136,34 @@ the freshly written token shards (zero-byte files). Working tree + tokenizer
 survived; repo repaired (reset to last good commit, re-committed), shards
 regenerated. Trainer gained `train.max_seconds` (hard wall-clock stop + final
 val) for the equal-wall-clock ablation protocol.
+
+### 2026-06-11: Ablation bracket — equal wall-clock (1500s each), c4_500k, blended-k
+
+All runs: blended-k from step 0, joint detached predictor, wall-clock LR
+schedule (5% warmup, cosine to 0.1x). Full eval tables in logs/ab_*/eval/.
+
+| run | config | steps | full-k val CE | CE@k16 (50-80) | CE@k128 (80-129) | F1@k128 (80-129) |
+|---|---|---|---|---|---|---|
+| A | d256 4+4 BS64 (parity) | 10466 | 0.059 | 0.386 | 1.074 | 0.76 |
+| C | + anchor 0.5 | 6679 | 0.066 | 0.473 | 1.254 | 0.74 |
+| C4th | + anchor 0.5 every 4th | 7903 | 0.085 | 0.473 | 1.555 | 0.67 |
+| D | + nar_frac 0.25 | 10337 | 0.122 | 1.368 | 2.309 | 0.63 |
+| B384 | d384 5+5 6h BS32 | 12486 | 0.064 | 0.413 | 1.118 | 0.74 |
+| B512 | d512 6+6 8h BS32 | 8275 | 0.094 | 0.565 | 1.663 | 0.67 |
+
+**Verdicts:**
+- **Anchor REJECTED.** Loses at every k at equal wall-clock; even at full-k
+  (its target) it only ties A while paying ~35% throughput. The blended
+  sampler's 10% full-k share already anchors the top end.
+- **NAR-mix REJECTED for main training.** Uniformly worse on AR eval. NAR
+  stays as an optional post-hoc fine-tune (the original's recipe).
+- **B512 REJECTED** at this budget. Too slow to pay back.
+- **B384 ≈ A at 25 min** with B384 slightly ahead in most cells despite BS32
+  → 2x capacity reaching parity this fast picks d384 for the 12h run.
+- Predictor MAE is good near sampled-k mass but noisy mid-k (0.5-0.9 at
+  k=48-64) with extra_k=0 → frontier uses predictor_extra_k=1.
+- ab_A at 25 min already matches/beats legacy multi-hour results (full-k val
+  CE 0.059 vs legacy parity 0.62; F1 0.76 on 80-128 tok). Caveat: c4_500k val
+  rows can be document-continuations of train rows; mix_long eval is the
+  honest benchmark. The init-scale fix + AdamW + blended-from-step-0 is a
+  step-change over the original three-phase recipe.
