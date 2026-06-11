@@ -235,3 +235,25 @@ W-series: 1500s each, warm-started from a 60-min frontier-config base
   softplus increments).
 - Low-k repetition loops ("mid mid mid") at k=2-3 on short texts: decoding
   pathology; no_repeat_ngram option added for inference (not used in eval).
+
+### 2026-06-11: W-series round 2 — tau cliff eliminated; W7 is the frontier recipe
+
+| run | change | tau=1.0 CE (range) | tau=1.0 ratio | r=1.0 biF1 129-257 |
+|---|---|---|---|---|
+| W3 | (round-1 winner) | 5.6-6.7 (GARBAGE) | 0.01-0.09 | 0.75 |
+| W6 | + monotone predictor head | 0.20-0.62 | 0.38-0.93 | 0.72 |
+| W7 | + scaled word-dropout 0.3 | 0.25-0.46 | 0.52-1.33 | **0.76** |
+
+- **Monotone head works as designed**: tau is now a graded dial —
+  0.25/0.5/1.0/2.0 trades ratio ~4.0/1.2/0.5/0.2 against CE
+  0.08/0.16/0.46/1.5. No garbage regime anywhere. ADOPTED.
+- **Ratio-scaled word-dropout (W7)** recovers W2's top-end win (best long
+  bigram F1 + CE at r=1.0) with low-ratio cells ≈ W3/W6 within noise. ADOPTED.
+- Remaining idea inventory (EMA, bag-of-words aux head, k-curriculum, BS40)
+  assessed low-value or risky (7.9GB/12GB at BS32; OOM on an unattended 12h
+  run not worth ~10% tokens). Ablation campaign CLOSED; spending the budget.
+
+**12h frontier launched**: W7 recipe (per-sample k, log+monotone predictor,
+scaled word-dropout 0.3, noise 0.05, extra_k 1), d384 5+5 6h N=256 seq 256,
+mix_uni, BS32, warm-started from the 60-min warm_base, fresh 12h wall-clock
+cosine. ~2.0 it/s -> ~86K steps ≈ 0.7B tokens.

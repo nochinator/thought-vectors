@@ -9,6 +9,7 @@
 #     thought channel (E256 collapse), short samples bootstrap it
 #   - wall-clock LR schedule: max_seconds drives warmup/cosine exactly to 12h
 model:
+  predictor_monotone: true   # CE non-increasing in k -> graded tau knob (W6)
   d_model: 384
   nhead: 6
   ffn_dim: 2048
@@ -17,9 +18,11 @@ model:
   max_seq_len: 256
   num_thoughts: 256
 ksampler:
-  mode: blended
+  mode: per_sample           # W3: the step-change — every sample at its own ratio
 reg:
   noise_std: 0.05
+  word_dropout: 0.3          # W7: rate scaled by k/len — top-end exactness,
+  word_dropout_scaled: true  # no low-ratio penalty
 data:
   shard_dir: data/mix_uni
 train:
@@ -28,6 +31,7 @@ train:
   max_steps: 1000000          # never reached; max_seconds stops the run
   max_seconds: 43200          # 12h hard cap
   predictor_extra_k: 1
+  predictor_log: true        # log1p(CE) MSE: calibrates the low-CE region
   log_every: 100
   sample_every: 2000
   val_every: 2000
