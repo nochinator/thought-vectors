@@ -94,6 +94,7 @@ class Trainer:
         self.step = 0
         self.best_val = float("inf")
         self.nan_streak = 0
+        self.prior_elapsed = 0.0  # cumulative train seconds from resumed ckpts
 
         self.run_dir = Path(cfg.run.out_dir) / cfg.run.name
         self.log_dir = Path(cfg.run.log_dir) / cfg.run.name
@@ -318,6 +319,7 @@ class Trainer:
                 "optimizer": self.optimizer.state_dict(),
                 "scheduler": self.scheduler.state_dict(),
                 "best_val": self.best_val,
+                "elapsed": (time.time() - self.train_start) if self.train_start else 0.0,
                 "config": to_dict(self.cfg),
                 "tokenizer_path": self.cfg.run.tokenizer_path,
                 "rng": {
@@ -344,6 +346,7 @@ class Trainer:
             self.scheduler.load_state_dict(ckpt["scheduler"])
             self.step = ckpt["step"]
             self.best_val = ckpt["best_val"]
+            self.prior_elapsed = ckpt.get("elapsed", 0.0)
             self.rng.setstate(ckpt["rng"]["python"])
             torch.set_rng_state(ckpt["rng"]["torch"])
             if ckpt["rng"]["cuda"] is not None and torch.cuda.is_available():
@@ -354,15 +357,16 @@ class Trainer:
     def fit(self, train_loader, val_loader) -> None:
         cfg = self.cfg
         self.model.train()
-        start = time.time()
-        self.train_start = start
-        t0 = start
+        # Backdating by prior_elapsed makes the wall-clock LR schedule and the
+        # max_seconds cap CUMULATIVE across crash-resumes.
+        self.train_start = time.time() - self.prior_elapsed
+        t0 = time.time()
         window: list[float] = []
         data_iter = iter(train_loader)
         sample_batch = None
 
         while self.step < cfg.train.max_steps:
-            if cfg.train.max_seconds and time.time() - start > cfg.train.max_seconds:
+            if cfg.train.max_seconds and time.time() - self.train_start > cfg.train.max_seconds:
                 print(f"wall-clock cap {cfg.train.max_seconds}s reached at step {self.step}", flush=True)
                 break
             try:
