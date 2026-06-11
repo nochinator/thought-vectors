@@ -49,13 +49,22 @@ def build_optimizer(model: ThoughtAutoencoder, cfg: Config) -> torch.optim.AdamW
     )
 
 
-def lr_lambda(step: int, cfg: Config) -> float:
-    warmup = max(cfg.train.warmup_steps, 1)
-    if step < warmup:
-        return step / warmup
-    progress = (step - warmup) / max(cfg.train.max_steps - warmup, 1)
-    progress = min(progress, 1.0)
+def lr_lambda(step: int, cfg: Config, elapsed_frac: float | None = None) -> float:
+    """Warmup + cosine. When elapsed_frac is given (wall-clock-capped runs),
+    the whole schedule runs on wall-clock: warmup over the first 5% of the
+    budget, cosine over the rest — identical LR profiles across configs with
+    different throughput (the equal-wall-clock ablation protocol)."""
     floor = cfg.train.min_lr_frac
+    if elapsed_frac is not None:
+        warmup_frac = 0.05
+        if elapsed_frac < warmup_frac:
+            return max(elapsed_frac / warmup_frac, 1e-3)
+        progress = min((elapsed_frac - warmup_frac) / (1 - warmup_frac), 1.0)
+    else:
+        warmup = max(cfg.train.warmup_steps, 1)
+        if step < warmup:
+            return step / warmup
+        progress = min((step - warmup) / max(cfg.train.max_steps - warmup, 1), 1.0)
     return floor + (1 - floor) * 0.5 * (1 + math.cos(math.pi * progress))
 
 
@@ -71,9 +80,15 @@ class Trainer:
         self.model = model.to(self.device)
         self.tokenizer = tokenizer
         self.optimizer = build_optimizer(model, cfg)
-        self.scheduler = torch.optim.lr_scheduler.LambdaLR(
-            self.optimizer, lambda s: lr_lambda(s, cfg)
-        )
+        self.train_start: float | None = None  # set when fit() begins
+
+        def _lr(step: int) -> float:
+            frac = None
+            if cfg.train.max_seconds and self.train_start is not None:
+                frac = (time.time() - self.train_start) / cfg.train.max_seconds
+            return lr_lambda(step, cfg, frac)
+
+        self.scheduler = torch.optim.lr_scheduler.LambdaLR(self.optimizer, _lr)
         self.rng = random.Random(cfg.train.seed)
         self.ksampler = KSampler(cfg.ksampler, cfg.model.num_thoughts, self.rng)
         self.step = 0
@@ -151,7 +166,11 @@ class Trainer:
         # multi-granularity step). Also yields a free predictor label at N.
         anchor = None
         n = cfg.model.num_thoughts
-        if cfg.train.anchor_full_k_weight > 0 and k < n:
+        anchor_step = (
+            cfg.train.anchor_full_k_weight > 0
+            and self.step % max(cfg.train.anchor_every, 1) == 0
+        )
+        if anchor_step and k < n:
             a_logits = model.decode(thoughts_for_dec, dec_in, dec_pad)
             anchor, anchor_per_sample = reconstruction_ce(a_logits, dec_tgt)
 
@@ -287,6 +306,7 @@ class Trainer:
         cfg = self.cfg
         self.model.train()
         start = time.time()
+        self.train_start = start
         t0 = start
         window: list[float] = []
         data_iter = iter(train_loader)

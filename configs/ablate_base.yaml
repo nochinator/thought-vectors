@@ -1,0 +1,20 @@
+# Equal-wall-clock ablation base: blended-k compression training on c4_500k.
+# Runs are stopped by train.max_seconds (driver sets it); LR schedule is
+# wall-clock-based so every config gets the same warmup/cosine profile.
+model:
+  num_thoughts: 128
+  max_seq_len: 128
+ksampler:
+  mode: blended
+data:
+  shard_dir: data/c4_500k
+train:
+  batch_size: 64
+  max_steps: 1000000          # never reached; max_seconds stops the run
+  max_seconds: 1500
+  log_every: 100
+  sample_every: 1000000       # greedy sample dumps off (eval covers this)
+  val_every: 1000
+  ckpt_every: 1000000         # best + final only
+run:
+  name: ablate_override_me

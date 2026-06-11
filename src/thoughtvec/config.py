@@ -78,7 +78,8 @@ class TrainCfg:
     grad_clip: float = 1.0
     predictor_weight: float = 1.0
     predictor_extra_k: int = 0      # extra no-grad decodes per step for predictor labels
-    anchor_full_k_weight: float = 0.0  # extra full-k decode loss per step (anchors top-end)
+    anchor_full_k_weight: float = 0.0  # extra full-k decode loss (anchors top-end)
+    anchor_every: int = 1           # apply the anchor decode every Nth step (it costs 35-50%)
     detach_encoder_below_k: int = 0 # legacy Phase-1 trick, off by default
     amp: str = "off"                # "off" | "bf16" (experimental on RDNA2 — abandon at first NaN)
     seed: int = 1234
