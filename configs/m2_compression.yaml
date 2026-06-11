@@ -1,0 +1,15 @@
+# M2: blended-k compression + joint predictor, warm-started from M1 best
+# (tv-train --config ... --init-from checkpoints/m1_autoencoder/best.pt)
+model:
+  num_thoughts: 128
+ksampler:
+  mode: blended
+data:
+  shard_dir: data/c4_500k
+train:
+  batch_size: 64
+  lr: 1.0e-4
+  max_steps: 35000
+  predictor_extra_k: 2
+run:
+  name: m2_compression

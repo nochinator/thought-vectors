@@ -1,0 +1,17 @@
+# M0: pipeline smoke test — tiny steps, real architecture
+model:
+  num_thoughts: 128
+ksampler:
+  mode: full
+data:
+  shard_dir: data/c4_100k
+train:
+  batch_size: 64
+  max_steps: 300
+  warmup_steps: 50
+  log_every: 20
+  sample_every: 100
+  val_every: 150
+  ckpt_every: 300
+run:
+  name: m0_smoke

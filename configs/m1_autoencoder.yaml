@@ -1,0 +1,13 @@
+# M1: full-k autoencoder baseline on C4 (~3h). Gate: val CE <= 0.7.
+model:
+  num_thoughts: 128
+ksampler:
+  mode: full
+data:
+  shard_dir: data/c4_500k
+train:
+  batch_size: 64
+  lr: 3.0e-4
+  max_steps: 60000   # recalibrate from M0 it/s measurement
+run:
+  name: m1_autoencoder

@@ -1,0 +1,20 @@
+# M3a: VAE-lite smoothing on top of M2 (--init-from checkpoints/m2_compression/best.pt)
+# For M3b (NAR fine-tune) override: reg.nar=true train.max_steps=8000 run.name=m3b_nar
+model:
+  num_thoughts: 128
+ksampler:
+  mode: blended
+reg:
+  kl_beta: 0.01
+  kl_warmup_steps: 1000
+  noise_std: 0.05
+  mixup_prob: 0.1
+data:
+  shard_dir: data/c4_500k
+train:
+  batch_size: 64
+  lr: 1.0e-4
+  max_steps: 18000
+  predictor_extra_k: 2
+run:
+  name: m3a_vae

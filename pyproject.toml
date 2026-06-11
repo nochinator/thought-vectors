@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thoughtvec"
+version = "0.1.0"
+description = "Thought vectors: ordered latent compression of text with prefix-decodable representations"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy",
+    "pyyaml",
+    "sentencepiece",
+]
+
+[project.scripts]
+tv-train = "thoughtvec.cli:train_main"
+tv-eval = "thoughtvec.cli:eval_main"
+tv-tokenizer = "thoughtvec.cli:tokenizer_main"
+tv-pretokenize = "thoughtvec.cli:pretokenize_main"
+tv-chat = "thoughtvec.cli:chat_main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
