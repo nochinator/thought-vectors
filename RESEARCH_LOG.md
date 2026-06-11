@@ -46,10 +46,27 @@ to be artifacts, not fundamentals:
 3. Their corpus was sentence fragments (median ~14 words); merged C4
    paragraphs + minipile at seq 256 is far stronger data.
 
-Hence M5 "frontier" (configs/m5_frontier.yaml): d=512, 6+6, N=256, seq 256,
-blended-k + full-k anchor + NAR-mixed + VAE-lite + joint predictor in one run,
-resumable across overnight sessions. M1/M2 at d=256 remain as cheap pipeline
-validation against the legacy numbers before committing GPU-days.
+**Budget constraint (user, 2026-06-10): the final run is 12 hours MAX — no
+multi-day training. This is a task of efficiency, not brute force.**
+
+Protocol: explore with many short ablations (~15-45 min each, fixed
+wall-clock), keep what wins, discard what doesn't, log everything here. All
+architecture comparisons are at equal WALL-CLOCK on this GPU, not equal steps
+— a config that takes 2x longer per step must earn it in loss-per-hour. The
+single 12h frontier run (configs/m5_frontier.yaml, hyperparameters to be
+finalized from the ablations) combines the winners: candidate recipe is
+blended-k + full-k anchor + NAR-mixed + VAE-lite + joint predictor, d/layers
+/seq chosen by the ablation bracket, warm-started from the best short
+checkpoint if that proves worthwhile.
+
+Planned ablation bracket (each vs. the same val shard, same wall-clock):
+- A. d=256 4+4 (legacy shape, parity anchor point)
+- B. d=384 vs d=512, 4+4 vs 6+6 — loss-per-hour scaling on gfx1031
+- C. anchor_full_k_weight 0 vs 0.5
+- D. nar_frac 0 vs 0.25
+- E. seq 128 fragments vs seq 192/256 merged paragraphs
+- F. (cheap, last) bf16 autocast stability probe — if it survives 2K steps
+  without NaN it nearly doubles the 12h budget; abandon at first NaN.
 
 ## Milestone gates
 

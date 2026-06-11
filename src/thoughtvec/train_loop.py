@@ -100,6 +100,21 @@ class Trainer:
         lengths = (~padding_mask).sum(dim=1).float()
         mean_len = lengths.mean().item()
 
+        import contextlib
+
+        amp_ctx = (
+            torch.autocast(device_type="cuda", dtype=torch.bfloat16)
+            if cfg.train.amp == "bf16" and self.device.type == "cuda"
+            else contextlib.nullcontext()
+        )
+        with amp_ctx:
+            return self._compute_step(input_ids, padding_mask, mean_len)
+
+    def _compute_step(
+        self, input_ids: torch.Tensor, padding_mask: torch.Tensor, mean_len: float
+    ) -> dict | None:
+        cfg = self.cfg
+        model = self.model
         use_vae = cfg.reg.kl_beta > 0
         if use_vae:
             thoughts, mu, logvar = model.encoder.encode_with_kl(input_ids, padding_mask)

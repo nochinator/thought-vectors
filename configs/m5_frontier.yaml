@@ -1,12 +1,9 @@
-# M5 "frontier": the best model this card can train — everything combined.
-# Breaks the original's documented ceilings on purpose:
-#   - d_model 512 (their "256 is best" came from undertrained post-norm runs;
-#     d is exactly what capped long-text quality at ~50-60% overlap)
-#   - seq 256 on paragraph-scale data (they trained on sentence fragments)
+# M5 "frontier": the best model trainable in ONE 12-hour run (hard cap).
+# Everything combined, sized by the ablation bracket in RESEARCH_LOG.md:
+#   - d/layers/seq below are CANDIDATES; the equal-wall-clock ablations decide
 #   - all refinements trained TOGETHER from step 0 instead of sequentially:
 #     blended-k + full-k anchor + NAR-mixed batches + VAE-lite + predictor
-# Expect to resume across multiple overnight sessions; recalibrate max_steps
-# from the measured it/s. Final hyperparameters set after M1/M2 parity runs.
+# max_steps = measured it/s x 12h x 3600, set just before launch.
 model:
   d_model: 512
   nhead: 8
