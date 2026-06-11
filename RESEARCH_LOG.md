@@ -198,3 +198,40 @@ steps); the jittered mix_uni PASSES at 4000 steps: CE 5.79/4.99/4.65/4.61 at
 k=4/16/64/256, monotone in k. Frontier launched: d384 5+5 6h, N=256, seq 256,
 mix_uni (11M samples, 1.4B tok), blended-k, noise 0.05, no KL,
 predictor_extra_k=1, BS32, ~2.2 it/s -> ~95K steps/12h (~660M tokens).
+
+### 2026-06-11: Objective reframed (user) + W-series round 1 — per-sample k is a step-change
+
+User directive: k is pointless, COMPRESSION is the point — low k/length
+ratio, runtime lossiness knob, graceful degradation into readable English.
+Eval harness rebuilt: ratio-based tables (k = r*len), bigram F1 (order
+sensitivity — scrambles keep unigram F1, lose bigram F1), tau knob table
+(predictor-chosen k at tolerance tau).
+
+W-series: 1500s each, warm-started from a 60-min frontier-config base
+(d384 5+5, N=256, seq 256, mix_uni). Full tables in logs/ab_W*/eval/.
+
+| run | change | full-k val | CE r=.25 (20-50) | biF1 r=.25 (50-80) | tau=0.5 usable? |
+|---|---|---|---|---|---|
+| W0 | control | 0.588 | 3.33 | 0.39 | no (falls to full k) |
+| W1 | word_dropout .15 | 0.461 | 3.72 | 0.39 | — |
+| W2 | word_dropout .30 | 0.293 | 4.37 | 0.38 | — |
+| W3 | per-sample k + log-CE pred | 0.305 | **1.46** | **0.53** | YES (CE .11-.40 @ ratio ~1) |
+| W4 | W3 + wd .15 | 0.349 | 1.66 | 0.45 | yes |
+| W5 | low-k-skewed bands | 0.397 | 2.74 | 0.52 | — |
+
+**Verdicts:**
+- **Per-sample k (W3) is the step-change**: every sample trains at its own
+  ratio every step (vs one batch-mean k) -> CE at r=0.25 drops 2-3x across
+  buckets, bigram F1 up ~35%, and the predictor (32 labels/step at varied k,
+  log1p target) makes tau=0.5 a usable knob for the first time. ~8% it/s
+  cost. ADOPTED.
+- **Word-dropout helps the top end, hurts the low end**: W2 best at r=1.0 on
+  long texts (CE .39, biF1 .81 on 129-257) but worst at r<=0.25; naive combo
+  (W4) inherits the low-ratio penalty. -> Round 2 tests ratio-SCALED
+  word-dropout (rate ∝ k/len).
+- Low-k-skewed sampler (W5): mid, dominated by W3. REJECTED.
+- Remaining tau cliff (tau>=1 picks k=2 garbage): predictor curve not
+  monotone in k. -> Round 2: monotone head (right-to-left cumsum of
+  softplus increments).
+- Low-k repetition loops ("mid mid mid") at k=2-3 on short texts: decoding
+  pathology; no_repeat_ngram option added for inference (not used in eval).
