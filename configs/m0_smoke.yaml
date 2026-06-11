@@ -4,7 +4,7 @@ model:
 ksampler:
   mode: full
 data:
-  shard_dir: data/c4_100k
+  shard_dir: data/c4_500k
 train:
   batch_size: 64
   max_steps: 300

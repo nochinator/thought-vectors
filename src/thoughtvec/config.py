@@ -73,6 +73,7 @@ class TrainCfg:
     weight_decay: float = 0.01
     warmup_steps: int = 1000
     max_steps: int = 60000
+    max_seconds: int = 0            # hard wall-clock stop, 0 = off (LR schedule still follows max_steps)
     min_lr_frac: float = 0.1
     grad_clip: float = 1.0
     predictor_weight: float = 1.0

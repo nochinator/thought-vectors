@@ -286,12 +286,16 @@ class Trainer:
     def fit(self, train_loader, val_loader) -> None:
         cfg = self.cfg
         self.model.train()
-        t0 = time.time()
+        start = time.time()
+        t0 = start
         window: list[float] = []
         data_iter = iter(train_loader)
         sample_batch = None
 
         while self.step < cfg.train.max_steps:
+            if cfg.train.max_seconds and time.time() - start > cfg.train.max_seconds:
+                print(f"wall-clock cap {cfg.train.max_seconds}s reached at step {self.step}", flush=True)
+                break
             try:
                 batch = next(data_iter)
             except StopIteration:
@@ -339,9 +343,16 @@ class Trainer:
             if self.step % cfg.train.ckpt_every == 0:
                 self.save_checkpoint()
 
+        final_val = self.validate(val_loader)
+        self.metrics_file.write(json.dumps({"step": self.step, "val_recon": final_val}) + "\n")
+        self.metrics_file.flush()
+        if final_val < self.best_val:
+            self.best_val = final_val
+            self.save_checkpoint("best")
         self.save_checkpoint("final")
         print(
-            f"\nRun '{cfg.run.name}' done: {self.step} steps, best val {self.best_val:.4f}\n"
+            f"\nRun '{cfg.run.name}' done: {self.step} steps, "
+            f"final val {final_val:.4f}, best val {self.best_val:.4f}\n"
             f"Paste into RESEARCH_LOG.md:\n"
             f"| {cfg.run.name} | steps={self.step} | bs={cfg.train.batch_size} | "
             f"k-mode={cfg.ksampler.mode} | best val CE {self.best_val:.4f} |",
