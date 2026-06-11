@@ -59,6 +59,7 @@ class ThoughtDecoder(nn.Module):
         target_input_ids: torch.Tensor,
         target_padding_mask: torch.Tensor | None = None,
         causal: bool = True,
+        memory_padding_mask: torch.Tensor | None = None,
     ) -> torch.Tensor:
         seq_len = target_input_ids.size(1)
         tgt = self.token_embedding(target_input_ids) * math.sqrt(self.d_model)
@@ -71,6 +72,13 @@ class ThoughtDecoder(nn.Module):
             )
 
         thoughts = self.thought_dropout(thoughts)
+
+        if memory_padding_mask is not None and memory_padding_mask.dtype == torch.bool:
+            # Float position bias + bool padding mask is a deprecated combo;
+            # convert to additive float.
+            memory_padding_mask = torch.zeros_like(
+                memory_padding_mask, dtype=thoughts.dtype
+            ).masked_fill_(memory_padding_mask, float("-inf"))
 
         memory_mask = None
         if self.position_attn_bias is not None:
@@ -85,5 +93,6 @@ class ThoughtDecoder(nn.Module):
             tgt_mask=tgt_mask,
             memory_mask=memory_mask,
             tgt_key_padding_mask=target_padding_mask,
+            memory_key_padding_mask=memory_padding_mask,
         )
         return self.lm_head(decoded)

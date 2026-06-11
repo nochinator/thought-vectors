@@ -33,7 +33,7 @@ class ModelCfg:
 
 @dataclass
 class KSamplerCfg:
-    mode: str = "full"  # "full" (always k=N) or "blended"
+    mode: str = "full"  # "full" (always k=N), "blended", or "per_sample"
     min_k: int = 2
     full_frac: float = 0.10
     uniform_frac: float = 0.45
@@ -56,6 +56,9 @@ class RegCfg:
     mixup_prob: float = 0.0         # convex blend of batch items
     nar: bool = False               # always non-autoregressive (legacy M3b mode)
     nar_frac: float = 0.0           # probability per batch of NAR reconstruction
+    word_dropout: float = 0.0       # blank this frac of decoder input tokens; blanked
+                                    # positions are only predictable via the thoughts
+                                    # (anti-LM-attractor, Bowman et al. 2016)
 
 
 @dataclass

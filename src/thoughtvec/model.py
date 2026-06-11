@@ -42,8 +42,15 @@ class ThoughtAutoencoder(nn.Module):
         target_input_ids: torch.Tensor,
         target_padding_mask: torch.Tensor | None = None,
         causal: bool = True,
+        memory_padding_mask: torch.Tensor | None = None,
     ) -> torch.Tensor:
-        return self.decoder(thoughts, target_input_ids, target_padding_mask, causal=causal)
+        return self.decoder(
+            thoughts,
+            target_input_ids,
+            target_padding_mask,
+            causal=causal,
+            memory_padding_mask=memory_padding_mask,
+        )
 
     def forward(
         self,

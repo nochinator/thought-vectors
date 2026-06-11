@@ -39,3 +39,11 @@ def predictor_loss(
     predicted [B, N] (column k-1 = prefix of k vectors), actual [B] detached.
     """
     return F.mse_loss(predicted[:, k - 1], actual_per_sample_ce.detach())
+
+
+def predictor_loss_per_k(
+    predicted: torch.Tensor, ks: torch.Tensor, actual_per_sample_ce: torch.Tensor
+) -> torch.Tensor:
+    """Per-sample variant: row b is compared at its own prefix length ks[b]."""
+    cols = predicted.gather(1, (ks - 1).clamp(min=0).unsqueeze(1)).squeeze(1)
+    return F.mse_loss(cols, actual_per_sample_ce.detach())

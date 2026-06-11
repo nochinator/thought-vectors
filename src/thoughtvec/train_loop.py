@@ -23,7 +23,7 @@ import torch.nn as nn
 from .config import Config, to_dict
 from .generate import greedy_decode
 from .ksampler import KSampler
-from .losses import kl_divergence, predictor_loss, reconstruction_ce
+from .losses import kl_divergence, predictor_loss, predictor_loss_per_k, reconstruction_ce
 from .model import PAD_ID, ThoughtAutoencoder, make_padding_mask
 from .tokenizer import Tokenizer
 
@@ -144,7 +144,17 @@ class Trainer:
             perm = torch.randperm(thoughts.size(0), device=thoughts.device)
             thoughts = lam * thoughts + (1 - lam) * thoughts[perm]
 
-        k = self.ksampler.sample(mean_len)
+        per_sample_k = cfg.ksampler.mode == "per_sample"
+        n = cfg.model.num_thoughts
+        if per_sample_k:
+            lengths = (~padding_mask).sum(dim=1)
+            ks = self.ksampler.sample_per_sample(lengths).to(input_ids.device)
+            k = int(ks.float().mean().item())  # for logging
+            slot = torch.arange(n, device=input_ids.device)
+            mem_pad = slot[None, :] >= ks[:, None]  # True = masked-out thought
+        else:
+            ks = mem_pad = None
+            k = self.ksampler.sample(mean_len)
         if 0 < cfg.train.detach_encoder_below_k and k < cfg.train.detach_encoder_below_k:
             thoughts_for_dec = thoughts.detach()
         else:
@@ -154,9 +164,23 @@ class Trainer:
         dec_tgt = input_ids[:, 1:]
         dec_pad = padding_mask[:, :-1]
         use_nar = cfg.reg.nar or (cfg.reg.nar_frac > 0 and self.rng.random() < cfg.reg.nar_frac)
+        if not use_nar and cfg.reg.word_dropout > 0:
+            # Blanked inputs (zeroed PAD embedding + position only) can't be
+            # LM'd from context; the thoughts are the only path to them.
+            drop = torch.rand_like(dec_in, dtype=torch.float) < cfg.reg.word_dropout
+            drop[:, 0] = False
+            drop &= ~dec_pad
+            dec_in = dec_in.masked_fill(drop, PAD_ID)
         if use_nar:
             blank = torch.full_like(dec_in, PAD_ID)
-            logits = model.decode(thoughts_for_dec[:, :k], blank, None, causal=False)
+            if per_sample_k:
+                logits = model.decode(
+                    thoughts_for_dec, blank, None, causal=False, memory_padding_mask=mem_pad
+                )
+            else:
+                logits = model.decode(thoughts_for_dec[:, :k], blank, None, causal=False)
+        elif per_sample_k:
+            logits = model.decode(thoughts_for_dec, dec_in, dec_pad, memory_padding_mask=mem_pad)
         else:
             logits = model.decode(thoughts_for_dec[:, :k], dec_in, dec_pad)
         recon, per_sample = reconstruction_ce(logits, dec_tgt)
@@ -164,10 +188,12 @@ class Trainer:
         # Full-k anchor: a second decode at k=N keeps top-end reconstruction
         # sharp while the sampled-k path trains compression (matryoshka-style
         # multi-granularity step). Also yields a free predictor label at N.
+        # (Rejected by the 2026-06-11 bracket; kept behind its flag, per-batch
+        # k mode only.)
         anchor = None
-        n = cfg.model.num_thoughts
         anchor_step = (
-            cfg.train.anchor_full_k_weight > 0
+            not per_sample_k
+            and cfg.train.anchor_full_k_weight > 0
             and self.step % max(cfg.train.anchor_every, 1) == 0
         )
         if anchor_step and k < n:
@@ -177,16 +203,34 @@ class Trainer:
         # Predictor labels must all be AR CEs (that's what it predicts at
         # inference), so the main term is skipped on NAR batches.
         pred = model.predictor(thoughts.detach())
-        p_terms = [] if use_nar else [predictor_loss(pred, k, per_sample)]
+        if use_nar:
+            p_terms = []
+        elif per_sample_k:
+            p_terms = [predictor_loss_per_k(pred, ks, per_sample)]
+        else:
+            p_terms = [predictor_loss(pred, k, per_sample)]
         if anchor is not None:
             p_terms.append(predictor_loss(pred, n, anchor_per_sample))
         if cfg.train.predictor_extra_k > 0:
-            extra_ks = self.ksampler.sample_distinct(mean_len, cfg.train.predictor_extra_k, k)
             with torch.no_grad():
-                for ek in extra_ks:
-                    e_logits = model.decode(thoughts[:, :ek].detach(), dec_in, dec_pad)
-                    _, e_ps = reconstruction_ce(e_logits, dec_tgt)
-                    p_terms.append(predictor_loss(pred, ek, e_ps))
+                if per_sample_k:
+                    for _ in range(cfg.train.predictor_extra_k):
+                        lengths = (~padding_mask).sum(dim=1)
+                        eks = self.ksampler.sample_per_sample(lengths).to(input_ids.device)
+                        e_pad = slot[None, :] >= eks[:, None]
+                        e_logits = model.decode(
+                            thoughts.detach(), dec_in, dec_pad, memory_padding_mask=e_pad
+                        )
+                        _, e_ps = reconstruction_ce(e_logits, dec_tgt)
+                        p_terms.append(predictor_loss_per_k(pred, eks, e_ps))
+                else:
+                    extra_ks = self.ksampler.sample_distinct(
+                        mean_len, cfg.train.predictor_extra_k, k
+                    )
+                    for ek in extra_ks:
+                        e_logits = model.decode(thoughts[:, :ek].detach(), dec_in, dec_pad)
+                        _, e_ps = reconstruction_ce(e_logits, dec_tgt)
+                        p_terms.append(predictor_loss(pred, ek, e_ps))
         p_loss = sum(p_terms) / len(p_terms) if p_terms else torch.zeros_like(recon)
 
         total = recon + cfg.train.predictor_weight * p_loss
