@@ -144,6 +144,9 @@ def _update_dataclass(obj: Any, data: dict) -> None:
         cur = getattr(obj, k)
         if dataclasses.is_dataclass(cur):
             _update_dataclass(cur, v)
+        elif isinstance(v, str) and isinstance(cur, (int, float)) and not isinstance(cur, bool):
+            # YAML 1.1 parses "3e-4" (no dot) as a string, not a float.
+            setattr(obj, k, _coerce(v, cur))
         else:
             setattr(obj, k, v)
 

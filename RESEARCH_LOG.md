@@ -187,3 +187,14 @@ Fixes adopted:
 2. kl_beta=0 for the 12h run. VAE can return later as a fine-tune on a
    working autoencoder (the original's recipe — they never trained it from
    scratch either).
+
+### 2026-06-11: Engagement-window correction + frontier gate PASSED
+
+Window analysis of bracket metrics (recon grouped by sampled k): even the
+healthy c4_500k runs are k-FLAT for their first ~1500 steps; the thought
+channel engages at ~1500-3500 steps. So a 10-min sanity run can't diagnose
+collapse. The long-only mix_long verdict stands (still byte-flat at 3207
+steps); the jittered mix_uni PASSES at 4000 steps: CE 5.79/4.99/4.65/4.61 at
+k=4/16/64/256, monotone in k. Frontier launched: d384 5+5 6h, N=256, seq 256,
+mix_uni (11M samples, 1.4B tok), blended-k, noise 0.05, no KL,
+predictor_extra_k=1, BS32, ~2.2 it/s -> ~95K steps/12h (~660M tokens).

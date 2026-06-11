@@ -3,7 +3,10 @@
 #   - d384 5+5: tied d256 at 25 min despite BS32 -> capacity wins over 12h
 #   - anchor + nar_frac REJECTED (lose at equal wall-clock); NAR stays an
 #     optional post-hoc fine-tune
-#   - VAE-lite + noise kept (cheap, smooths the latent space for the thinker)
+#   - KL REJECTED from-scratch (E256 collapse); noise kept. VAE returns as a
+#     fine-tune on the trained model if M4 needs it
+#   - data is the length-jittered mix_uni: long-only data never engages the
+#     thought channel (E256 collapse), short samples bootstrap it
 #   - wall-clock LR schedule: max_seconds drives warmup/cosine exactly to 12h
 model:
   d_model: 384
@@ -16,14 +19,12 @@ model:
 ksampler:
   mode: blended
 reg:
-  kl_beta: 0.01
-  kl_warmup_steps: 2000
   noise_std: 0.05
 data:
-  shard_dir: data/mix_long
+  shard_dir: data/mix_uni
 train:
   batch_size: 32
-  lr: 3e-4
+  lr: 3.0e-4
   max_steps: 1000000          # never reached; max_seconds stops the run
   max_seconds: 43200          # 12h hard cap
   predictor_extra_k: 1
