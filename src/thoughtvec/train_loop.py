@@ -348,9 +348,10 @@ class Trainer:
             self.best_val = ckpt["best_val"]
             self.prior_elapsed = ckpt.get("elapsed", 0.0)
             self.rng.setstate(ckpt["rng"]["python"])
-            torch.set_rng_state(ckpt["rng"]["torch"])
+            # map_location may have moved these to GPU; RNG state must be CPU.
+            torch.set_rng_state(ckpt["rng"]["torch"].cpu())
             if ckpt["rng"]["cuda"] is not None and torch.cuda.is_available():
-                torch.cuda.set_rng_state_all(ckpt["rng"]["cuda"])
+                torch.cuda.set_rng_state_all([s.cpu() for s in ckpt["rng"]["cuda"]])
 
     # ----- main loop -----
 
