@@ -167,7 +167,12 @@ class Trainer:
         if not use_nar and cfg.reg.word_dropout > 0:
             # Blanked inputs (zeroed PAD embedding + position only) can't be
             # LM'd from context; the thoughts are the only path to them.
-            drop = torch.rand_like(dec_in, dtype=torch.float) < cfg.reg.word_dropout
+            if cfg.reg.word_dropout_scaled and per_sample_k:
+                ratio = (ks.float() / lengths.float().clamp(min=1)).clamp(max=1.0)
+                thresh = (cfg.reg.word_dropout * ratio)[:, None]
+            else:
+                thresh = torch.tensor(cfg.reg.word_dropout, device=dec_in.device)
+            drop = torch.rand_like(dec_in, dtype=torch.float) < thresh
             drop[:, 0] = False
             drop &= ~dec_pad
             dec_in = dec_in.masked_fill(drop, PAD_ID)

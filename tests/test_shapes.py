@@ -150,3 +150,13 @@ def test_predictor_loss_per_k_matches_scalar():
     scalar = predictor_loss(pred, k, actual)
     vector = predictor_loss_per_k(pred, torch.full((4,), k, dtype=torch.long), actual)
     assert torch.allclose(scalar, vector)
+
+
+def test_monotone_predictor_non_increasing():
+    from thoughtvec.predictor import LossPredictor
+
+    torch.manual_seed(2)
+    p = LossPredictor(32, 16, monotone=True)
+    out = p(torch.randn(5, 16, 32))
+    diffs = out[:, 1:] - out[:, :-1]
+    assert (diffs <= 1e-6).all(), "monotone predictor must be non-increasing in k"

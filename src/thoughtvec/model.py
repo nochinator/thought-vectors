@@ -29,7 +29,9 @@ class ThoughtAutoencoder(nn.Module):
             self.token_embedding.weight[PAD_ID].zero_()
         self.encoder = ThoughtEncoder(cfg, self.token_embedding)
         self.decoder = ThoughtDecoder(cfg, self.token_embedding)
-        self.predictor = LossPredictor(cfg.d_model, cfg.num_thoughts)
+        self.predictor = LossPredictor(
+            cfg.d_model, cfg.num_thoughts, monotone=cfg.predictor_monotone
+        )
 
     def encode(
         self, input_ids: torch.Tensor, padding_mask: torch.Tensor | None = None

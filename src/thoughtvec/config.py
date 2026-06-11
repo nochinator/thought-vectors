@@ -29,6 +29,7 @@ class ModelCfg:
     num_thoughts: int = 128
     activation: str = "gelu"  # "relu" fallback for ROCm NaN bisection
     position_attn_bias: bool = True
+    predictor_monotone: bool = False  # CE non-increasing in k by construction
 
 
 @dataclass
@@ -59,6 +60,9 @@ class RegCfg:
     word_dropout: float = 0.0       # blank this frac of decoder input tokens; blanked
                                     # positions are only predictable via the thoughts
                                     # (anti-LM-attractor, Bowman et al. 2016)
+    word_dropout_scaled: bool = False  # per-sample rate = word_dropout * min(1, k/len):
+                                    # full pressure where thoughts can be exact, none
+                                    # where they can't (per_sample k mode only)
 
 
 @dataclass

@@ -18,6 +18,8 @@ overrides_for() {
     W2)   echo "reg.word_dropout=0.30" ;;
     W3)   echo "ksampler.mode=per_sample train.predictor_log=true" ;;
     W4)   echo "ksampler.mode=per_sample reg.word_dropout=0.15 train.predictor_log=true" ;;
+    W6)   echo "ksampler.mode=per_sample train.predictor_log=true model.predictor_monotone=true" ;;
+    W7)   echo "ksampler.mode=per_sample train.predictor_log=true model.predictor_monotone=true reg.word_dropout=0.3 reg.word_dropout_scaled=true" ;;
     W5)   echo "ksampler.full_frac=0.05 ksampler.uniform_frac=0.25 ksampler.ratio_bands=[[0.1,0.25,0.35],[0.25,0.4,0.35],[0.4,0.6,0.2],[0.6,1.0,0.1]]" ;;
     A)    echo "" ;;                                  # d256 4+4 parity anchor point
     C)    echo "train.anchor_full_k_weight=0.5" ;;    # full-k anchor decode
