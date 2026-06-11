@@ -20,7 +20,13 @@ class ThoughtAutoencoder(nn.Module):
         super().__init__()
         self.cfg = cfg
         # One 16384x256 table serving encoder input, decoder input and LM head.
+        # std = 1/sqrt(d): inputs are unit-scale after the sqrt(d) embedding
+        # multiplier, and logits from LayerNorm'd states (norm sqrt(d)) are
+        # unit-variance, so init CE starts at ~ln(vocab).
         self.token_embedding = nn.Embedding(cfg.vocab_size, cfg.d_model, padding_idx=PAD_ID)
+        nn.init.normal_(self.token_embedding.weight, std=cfg.d_model**-0.5)
+        with torch.no_grad():
+            self.token_embedding.weight[PAD_ID].zero_()
         self.encoder = ThoughtEncoder(cfg, self.token_embedding)
         self.decoder = ThoughtDecoder(cfg, self.token_embedding)
         self.predictor = LossPredictor(cfg.d_model, cfg.num_thoughts)

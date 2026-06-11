@@ -111,3 +111,28 @@ nmt_nfkc). C4 fragment rows: mean 24 tokens, p90 43.
 **FAILED: bf16 autocast on RDNA2.** ~4x SLOWER than fp32 (no bf16 matmul
 acceleration on gfx1031) and hard GPU hang ("HW Exception … GPU Hang") at the
 mid-384 shape. fp32 only, permanently. Do not retry.
+
+### 2026-06-11: M0 follow-up — init-scale bug found via real-data smoke run
+
+The 300-step smoke run on c4_500k started at CE ~4100 instead of ln(16384)≈9.7.
+Two compounding causes, both invisible to the toy-scale overfit test:
+
+1. **Pre-norm stacks had no final LayerNorm** — `nn.TransformerEncoder/Decoder`
+   with `norm_first=True` but no `norm=` lets the residual stream (carrying the
+   sqrt(d)-scaled embeddings) hit cross-attention / the tied LM head raw.
+   Fixed: final `nn.LayerNorm(d)` on both stacks.
+2. **Tied embedding init scale** — default N(0,1) is wrong for a table that is
+   both a sqrt(d)-scaled input and the LM head against LayerNorm'd states
+   (per-token norm sqrt(d)). Fixed: init N(0, 1/sqrt(d)) → unit-scale inputs
+   AND unit-variance logits. Init CE now 10.5.
+
+After the fix: smoke run CE 10.5 → 6.5 in 300 steps at 6-7 it/s (BS64,
+legacy-256 shape, full-k). Throughput probe numbers are unaffected (init scale
+doesn't change FLOPs). Lesson: overfit tests pass despite catastrophic init —
+always check init CE ≈ ln(vocab) on the real shape.
+
+Also: machine crash on 2026-06-10 truncated the latest git commit's objects and
+the freshly written token shards (zero-byte files). Working tree + tokenizer
+survived; repo repaired (reset to last good commit, re-committed), shards
+regenerated. Trainer gained `train.max_seconds` (hard wall-clock stop + final
+val) for the equal-wall-clock ablation protocol.

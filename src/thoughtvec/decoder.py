@@ -32,7 +32,12 @@ class ThoughtDecoder(nn.Module):
             batch_first=True,
             norm_first=True,
         )
-        self.decoder = nn.TransformerDecoder(layer, num_layers=cfg.dec_layers)
+        # Pre-norm stacks need a final norm; without it the unnormalized
+        # residual stream hits the tied LM head and logits start at std ~150
+        # (init CE in the thousands instead of ln(vocab)).
+        self.decoder = nn.TransformerDecoder(
+            layer, num_layers=cfg.dec_layers, norm=nn.LayerNorm(cfg.d_model)
+        )
         # Dropout on the thought memory: the decoder can't rely on any single
         # slot always being present, so it must actually read the thoughts
         # (posterior-collapse guard).

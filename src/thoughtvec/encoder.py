@@ -37,7 +37,11 @@ class ThoughtEncoder(nn.Module):
             batch_first=True,
             norm_first=True,
         )
-        self.encoder = nn.TransformerEncoder(layer, num_layers=cfg.enc_layers)
+        # Pre-norm stacks need a final norm or the residual stream (carrying
+        # the sqrt(d)-scaled embeddings) reaches cross-attention unnormalized.
+        self.encoder = nn.TransformerEncoder(
+            layer, num_layers=cfg.enc_layers, norm=nn.LayerNorm(cfg.d_model)
+        )
 
         self.thought_seed = nn.Parameter(torch.randn(1, cfg.num_thoughts, cfg.d_model) * 0.02)
         self.thought_gru = nn.GRU(cfg.d_model, cfg.d_model, batch_first=True)
