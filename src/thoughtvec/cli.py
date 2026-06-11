@@ -143,7 +143,7 @@ def tokenizer_main() -> None:
 
 def pretokenize_main() -> None:
     parser = argparse.ArgumentParser(prog="tv-pretokenize")
-    parser.add_argument("--csv", required=True)
+    parser.add_argument("--csv", required=True, action="append")
     parser.add_argument("--out", required=True)
     parser.add_argument("--tokenizer", default="artifacts/tokenizer/spm16k_bpe.model")
     parser.add_argument("--min-tokens", type=int, default=4)

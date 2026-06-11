@@ -20,7 +20,7 @@ from .tokenizer import Tokenizer, iter_csv_texts
 
 
 def pretokenize(
-    csv_path: str | Path,
+    csv_paths: str | Path | list,
     out_dir: str | Path,
     tokenizer: Tokenizer,
     min_tokens: int = 4,
@@ -36,7 +36,10 @@ def pretokenize(
     max_tokens excludes BOS/EOS (stored length is max_tokens + 2).
     merge_rows: concatenate consecutive short rows up to max_tokens (for
     fragment-style corpora). chunk_long: split over-long docs into pieces.
+    max_rows applies per CSV.
     """
+    if isinstance(csv_paths, (str, Path)):
+        csv_paths = [csv_paths]
     out_dir = Path(out_dir)
     val_dir = out_dir.parent / (out_dir.name + "_val")
     rng = np.random.default_rng(seed)
@@ -62,31 +65,32 @@ def pretokenize(
         w["pos"] += len(ids)
         w["hist"][len(ids)] += 1
 
-    pending: list[int] = []
-    rows_read = 0
     from .tokenizer import BOS_ID, EOS_ID
 
-    for text in iter_csv_texts(csv_path, max_chars=20000):
-        rows_read += 1
-        if max_rows is not None and rows_read > max_rows:
-            break
-        body = tokenizer.encode(text, add_special=False)
-        if merge_rows:
-            if pending and len(pending) + len(body) > max_tokens:
-                emit([BOS_ID] + pending + [EOS_ID])
-                pending = []
-            if len(body) <= max_tokens:
-                pending.extend(body)
-                continue
-        if len(body) > max_tokens:
-            if not chunk_long:
-                continue
-            for j in range(0, len(body), max_tokens):
-                emit([BOS_ID] + body[j : j + max_tokens] + [EOS_ID])
-        else:
-            emit([BOS_ID] + body + [EOS_ID])
-    if pending:
-        emit([BOS_ID] + pending + [EOS_ID])
+    for csv_path in csv_paths:
+        pending: list[int] = []
+        rows_read = 0
+        for text in iter_csv_texts(csv_path, max_chars=20000):
+            rows_read += 1
+            if max_rows is not None and rows_read > max_rows:
+                break
+            body = tokenizer.encode(text, add_special=False)
+            if merge_rows:
+                if pending and len(pending) + len(body) > max_tokens:
+                    emit([BOS_ID] + pending + [EOS_ID])
+                    pending = []
+                if len(body) <= max_tokens:
+                    pending.extend(body)
+                    continue
+            if len(body) > max_tokens:
+                if not chunk_long:
+                    continue
+                for j in range(0, len(body), max_tokens):
+                    emit([BOS_ID] + body[j : j + max_tokens] + [EOS_ID])
+            else:
+                emit([BOS_ID] + body + [EOS_ID])
+        if pending:
+            emit([BOS_ID] + pending + [EOS_ID])
 
     meta_out = {}
     for name, w in writers.items():
@@ -96,7 +100,7 @@ def pretokenize(
         lengths = offsets[:, 1].astype(np.int64) if len(offsets) else np.array([], dtype=np.int64)
         meta = {
             "tokenizer": tokenizer.model_path,
-            "source_csv": str(csv_path),
+            "source_csv": [str(p) for p in csv_paths],
             "num_samples": int(len(offsets)),
             "total_tokens": int(w["pos"]),
             "length_mean": float(lengths.mean()) if len(lengths) else 0.0,

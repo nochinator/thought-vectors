@@ -85,4 +85,29 @@ Planned ablation bracket (each vs. the same val shard, same wall-clock):
 
 ## Experiments
 
-(append below)
+### 2026-06-10: M0 — environment, tokenizer, throughput probe
+
+**Environment:** torch 2.9.1+rocm6.4 on Python 3.12 venv (system lacks
+python3-venv; bootstrapped via --without-pip + get-pip). GPU visible and
+stable under HSA_OVERRIDE_GFX_VERSION=10.3.0. All 8 tests pass including
+1-batch overfit on GPU (CE < 0.05) — full loss path works.
+
+**Tokenizer:** 16K SentencePiece BPE on sampled C4 + minipile, frozen at
+`artifacts/tokenizer/spm16k_bpe.model`. Round-trip clean (only \n→space from
+nmt_nfkc). C4 fragment rows: mean 24 tokens, p90 43.
+
+**Throughput probe (fp32, real fwd+bwd+AdamW, scripts/probe.py):**
+
+| shape | params | best config | tok/s | 12h token budget |
+|---|---|---|---|---|
+| legacy-256 (d256 4+4 N128 seq128) | 16.6M | BS128, 9.0GB | 48.7K | ~2.1B |
+| mid-384 (d384 5+5 N192 seq192) | 32.9M | BS32/64 | ~25K | ~1.1B |
+| big-512 (d512 6+6 N256 seq256) | 56.0M | BS16/32 | ~14.5K | ~0.63B |
+
+- Full-k anchor decode costs 35-50% throughput at these N — needs to earn it
+  in the ablation, or be applied intermittently (e.g. every 4th step).
+- mid-384 is the a-priori sweet spot: ~33M params x ~1.1B tokens in 12h.
+
+**FAILED: bf16 autocast on RDNA2.** ~4x SLOWER than fp32 (no bf16 matmul
+acceleration on gfx1031) and hard GPU hang ("HW Exception … GPU Hang") at the
+mid-384 shape. fp32 only, permanently. Do not retry.
