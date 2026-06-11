@@ -29,14 +29,40 @@ Known ROCm landmines (from prior project): float32_matmul_precision("high")
 NaNs after ~20K steps; dropout inside the thinker NaNs even in eval; always
 `HSA_OVERRIDE_GFX_VERSION=10.3.0`.
 
+## Goal
+
+Per user direction (2026-06-10): do not stop at the original's documented
+limits — those are validation baselines, not targets. The end goal is the best
+combined model this hardware can train. The original's ceilings are believed
+to be artifacts, not fundamentals:
+
+1. "d=256 beats 512/768" came from 10-epoch runs on 100K sentence fragments
+   with post-norm layers, no warmup, plain Adam — an undertraining artifact.
+   d_model is exactly what caps long-text quality (the 50-62% overlap ceiling
+   at 100+ tokens is per-vector information capacity).
+2. Refinements (VAE, NAR, blended-k) were only applied *sequentially* as
+   fine-tunes; training them together from step 0 should give a strictly
+   better latent space.
+3. Their corpus was sentence fragments (median ~14 words); merged C4
+   paragraphs + minipile at seq 256 is far stronger data.
+
+Hence M5 "frontier" (configs/m5_frontier.yaml): d=512, 6+6, N=256, seq 256,
+blended-k + full-k anchor + NAR-mixed + VAE-lite + joint predictor in one run,
+resumable across overnight sessions. M1/M2 at d=256 remain as cheap pipeline
+validation against the legacy numbers before committing GPU-days.
+
 ## Milestone gates
 
 - M0: tokenizer round-trips; pytest green; 1-batch overfit CE<0.05; it/s probe.
-- M1: val full-k CE ≤ 0.7; <20-tok exact-match ≥ 90%; 20-50-tok F1 ≥ 0.90.
-- M2: CE strictly improves with k; ~60-tok texts near-perfect at k=16;
-  predictor MAE < 0.3 for k ∈ [8, 64].
-- M3a: VAE on, full-k CE regression ≤ 0.05. M3b: NAR, +8% F1 on 80-128 bucket.
-- M4: thinker chat produces relevant simple responses.
+- M1 (parity check): val full-k CE ≤ 0.7; <20-tok exact-match ≥ 90%;
+  20-50-tok F1 ≥ 0.90.
+- M2 (parity check): CE strictly improves with k; ~60-tok texts near-perfect
+  at k=16; predictor MAE < 0.3 for k ∈ [8, 64].
+- M5 frontier: beat the legacy ceiling — F1 ≥ 0.75 on the 80-128-token bucket
+  (legacy plateaued at ~0.50-0.62); near-perfect reconstruction of 100-token
+  texts at k ≤ 48; smooth latent (interpolations decode coherently).
+- M4 thinker (on top of frontier): relevant multi-turn responses; scaled
+  thinker (8 layers, d=512).
 
 ---
 

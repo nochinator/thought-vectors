@@ -50,11 +50,12 @@ class KSamplerCfg:
 
 @dataclass
 class RegCfg:
-    kl_beta: float = 0.0           # VAE KL weight (M3)
+    kl_beta: float = 0.0           # VAE KL weight
     kl_warmup_steps: int = 1000
-    noise_std: float = 0.0          # gaussian noise on thoughts (M3)
-    mixup_prob: float = 0.0         # convex blend of batch items (M3)
-    nar: bool = False               # non-autoregressive reconstruction (M3b)
+    noise_std: float = 0.0          # gaussian noise on thoughts
+    mixup_prob: float = 0.0         # convex blend of batch items
+    nar: bool = False               # always non-autoregressive (legacy M3b mode)
+    nar_frac: float = 0.0           # probability per batch of NAR reconstruction
 
 
 @dataclass
@@ -76,6 +77,7 @@ class TrainCfg:
     grad_clip: float = 1.0
     predictor_weight: float = 1.0
     predictor_extra_k: int = 0      # extra no-grad decodes per step for predictor labels
+    anchor_full_k_weight: float = 0.0  # extra full-k decode loss per step (anchors top-end)
     detach_encoder_below_k: int = 0 # legacy Phase-1 trick, off by default
     seed: int = 1234
     log_every: int = 50

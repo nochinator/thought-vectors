@@ -123,26 +123,41 @@ class Trainer:
         dec_in = input_ids[:, :-1]
         dec_tgt = input_ids[:, 1:]
         dec_pad = padding_mask[:, :-1]
-        if cfg.reg.nar:
-            dec_in = torch.full_like(dec_in, PAD_ID)
-            logits = model.decode(thoughts_for_dec[:, :k], dec_in, None, causal=False)
+        use_nar = cfg.reg.nar or (cfg.reg.nar_frac > 0 and self.rng.random() < cfg.reg.nar_frac)
+        if use_nar:
+            blank = torch.full_like(dec_in, PAD_ID)
+            logits = model.decode(thoughts_for_dec[:, :k], blank, None, causal=False)
         else:
             logits = model.decode(thoughts_for_dec[:, :k], dec_in, dec_pad)
         recon, per_sample = reconstruction_ce(logits, dec_tgt)
 
+        # Full-k anchor: a second decode at k=N keeps top-end reconstruction
+        # sharp while the sampled-k path trains compression (matryoshka-style
+        # multi-granularity step). Also yields a free predictor label at N.
+        anchor = None
+        n = cfg.model.num_thoughts
+        if cfg.train.anchor_full_k_weight > 0 and k < n:
+            a_logits = model.decode(thoughts_for_dec, dec_in, dec_pad)
+            anchor, anchor_per_sample = reconstruction_ce(a_logits, dec_tgt)
+
+        # Predictor labels must all be AR CEs (that's what it predicts at
+        # inference), so the main term is skipped on NAR batches.
         pred = model.predictor(thoughts.detach())
-        p_loss = predictor_loss(pred, k, per_sample)
-        extra_ks = []
+        p_terms = [] if use_nar else [predictor_loss(pred, k, per_sample)]
+        if anchor is not None:
+            p_terms.append(predictor_loss(pred, n, anchor_per_sample))
         if cfg.train.predictor_extra_k > 0:
             extra_ks = self.ksampler.sample_distinct(mean_len, cfg.train.predictor_extra_k, k)
             with torch.no_grad():
                 for ek in extra_ks:
                     e_logits = model.decode(thoughts[:, :ek].detach(), dec_in, dec_pad)
                     _, e_ps = reconstruction_ce(e_logits, dec_tgt)
-                    p_loss = p_loss + predictor_loss(pred, ek, e_ps)
-            p_loss = p_loss / (1 + len(extra_ks))
+                    p_terms.append(predictor_loss(pred, ek, e_ps))
+        p_loss = sum(p_terms) / len(p_terms) if p_terms else torch.zeros_like(recon)
 
         total = recon + cfg.train.predictor_weight * p_loss
+        if anchor is not None:
+            total = total + cfg.train.anchor_full_k_weight * anchor
         kl = None
         if use_vae:
             beta = cfg.reg.kl_beta * min(1.0, self.step / max(cfg.reg.kl_warmup_steps, 1))
