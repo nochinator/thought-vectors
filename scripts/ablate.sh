@@ -7,8 +7,18 @@ cd "$(dirname "$0")/.."
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
 DUR=${DUR:-1500}
 
+# W-series: compression-objective ablations, warm-started from the shared
+# 60-min base (checkpoints/warm_base/final.pt) for sharper contrasts.
+WARM="checkpoints/warm_base/final.pt"
+
 overrides_for() {
   case "$1" in
+    W0)   echo "" ;;                                  # control: base config continues
+    W1)   echo "reg.word_dropout=0.15" ;;
+    W2)   echo "reg.word_dropout=0.30" ;;
+    W3)   echo "ksampler.mode=per_sample" ;;
+    W4)   echo "ksampler.mode=per_sample reg.word_dropout=0.15" ;;
+    W5)   echo "ksampler.full_frac=0.05 ksampler.uniform_frac=0.25 ksampler.ratio_bands=[[0.1,0.25,0.35],[0.25,0.4,0.35],[0.4,0.6,0.2],[0.6,1.0,0.1]]" ;;
     A)    echo "" ;;                                  # d256 4+4 parity anchor point
     C)    echo "train.anchor_full_k_weight=0.5" ;;    # full-k anchor decode
     C4th) echo "train.anchor_full_k_weight=0.5 train.anchor_every=4" ;;
@@ -24,8 +34,19 @@ overrides_for() {
 for name in "$@"; do
   ov=$(overrides_for "$name")
   echo "=== ablation $name (${DUR}s): $ov ==="
+  extra=()
+  if [[ "$name" == W* ]]; then
+    extra=(--init-from "$WARM" --config configs/m5_frontier.yaml)
+  else
+    extra=(--config configs/ablate_base.yaml)
+  fi
   # shellcheck disable=SC2086
-  .venv/bin/tv-train --config configs/ablate_base.yaml \
+  .venv/bin/tv-train "${extra[@]}" \
     run.name="ab_${name}" train.max_seconds="$DUR" $ov
+  if [[ "$name" == W* ]]; then
+    .venv/bin/tv-eval --ckpt "checkpoints/ab_${name}/final.pt" --shard data/mix_uni_val \
+      --max-texts 1200 --decode-per-bucket 60 --out "logs/ab_${name}/eval" >/dev/null \
+      && echo "eval ab_${name} done"
+  fi
 done
 echo "ABLATIONS_DONE: $*"

@@ -18,7 +18,6 @@ the original project's tables.
 from __future__ import annotations
 
 import json
-import math
 from collections import Counter
 from pathlib import Path
 
@@ -156,40 +155,56 @@ def evaluate(
     tau_ratio_table = _avg(tau_ratio_sum)
     calibration = {k: pred_abs_err[k] / max(pred_n, 1) for k in ks}
 
-    # --- greedy decode: unigram + bigram F1 at ratio ks and absolute ks ---
+    # --- greedy decode: unigram + bigram F1 at ratio ks and absolute ks,
+    # batched per bucket (one decode per (bucket, k-or-ratio)) ---
     overlap = {k: [[] for _ in range(nb)] for k in ks}
     exact = {k: [0] * nb for k in ks}
     r_f1 = {r: [[] for _ in range(nb)] for r in RATIOS}
     r_f2 = {r: [[] for _ in range(nb)] for r in RATIOS}
     taken = [0] * nb
     samples_dump = []
+
+    by_bucket: dict[int, list[int]] = {b: [] for b in range(nb)}
     for i in idxs:
-        row = ds[i].unsqueeze(0).to(dev)
-        length = row.size(1)
-        b = bucket_of(length)
-        if taken[b] >= decode_per_bucket:
+        b = bucket_of(len(ds[i]))
+        if len(by_bucket[b]) < decode_per_bucket:
+            by_bucket[b].append(i)
+
+    for b, rows in by_bucket.items():
+        if not rows:
             continue
-        taken[b] += 1
-        mask = make_padding_mask(row)
-        thoughts = model.encode(row, mask)
-        original = tokenizer.decode(row[0].tolist())
-        dump = {"text": original, "tokens": length, "recon": {}}
+        taken[b] = len(rows)
+        batch = collate([ds[i] for i in rows]).to(dev)
+        mask = make_padding_mask(batch)
+        lengths = (~mask).sum(dim=1)
+        thoughts = model.encode(batch, mask)
+        originals = [
+            tokenizer.decode([t for t in r.tolist() if t != 0]) for r in batch
+        ]
+        max_len = min(model.cfg.max_seq_len, int(lengths.max()) + 16)
+        dumps = [{"text": o, "tokens": int(le), "recon": {}}
+                 for o, le in zip(originals, lengths.tolist())]
+
         for k in ks:
-            ids = greedy_decode(model, thoughts[:, :k], model.cfg.max_seq_len)
-            recon = tokenizer.decode(ids[0].tolist())
-            overlap[k][b].append(word_overlap_f1(original, recon))
-            if recon.strip() == original.strip():
-                exact[k][b] += 1
+            ids = greedy_decode(model, thoughts[:, :k], max_len)
+            for row, orig in enumerate(originals):
+                recon = tokenizer.decode(ids[row].tolist())
+                overlap[k][b].append(word_overlap_f1(orig, recon))
+                if recon.strip() == orig.strip():
+                    exact[k][b] += 1
         for r in RATIOS:
-            k_r = max(2, min(n, math.ceil(r * length)))
-            ids = greedy_decode(model, thoughts[:, :k_r], model.cfg.max_seq_len)
-            recon = tokenizer.decode(ids[0].tolist())
-            r_f1[r][b].append(_ngram_f1(original, recon, 1))
-            r_f2[r][b].append(_ngram_f1(original, recon, 2))
-            if len(samples_dump) < 60 and r in (0.125, 0.25, 0.5):
-                dump["recon"][f"r={r} (k={k_r})"] = recon
-        if dump["recon"]:
-            samples_dump.append(dump)
+            ks_r = _ratio_ks(lengths, r, n)
+            ids = greedy_decode(
+                model, thoughts, max_len, memory_padding_mask=_mem_mask(ks_r, n)
+            )
+            for row, orig in enumerate(originals):
+                recon = tokenizer.decode(ids[row].tolist())
+                r_f1[r][b].append(_ngram_f1(orig, recon, 1))
+                r_f2[r][b].append(_ngram_f1(orig, recon, 2))
+                if r in (0.125, 0.25, 0.5) and row < 4:
+                    dumps[row]["recon"][f"r={r} (k={int(ks_r[row])})"] = recon
+        samples_dump.extend(d for d in dumps if d["recon"])
+        samples_dump = samples_dump[:60]
 
     def _avg_lists(table):
         return {key: [sum(v) / len(v) if v else float("nan") for v in vals]

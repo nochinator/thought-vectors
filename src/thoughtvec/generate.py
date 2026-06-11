@@ -9,9 +9,14 @@ from .model import BOS_ID, EOS_ID, ThoughtAutoencoder
 
 @torch.no_grad()
 def greedy_decode(
-    model: ThoughtAutoencoder, thoughts: torch.Tensor, max_len: int = 128
+    model: ThoughtAutoencoder,
+    thoughts: torch.Tensor,
+    max_len: int = 128,
+    memory_padding_mask: torch.Tensor | None = None,
 ) -> torch.Tensor:
-    return sample_decode(model, thoughts, max_len, temperature=0.0)
+    return sample_decode(
+        model, thoughts, max_len, temperature=0.0, memory_padding_mask=memory_padding_mask
+    )
 
 
 @torch.no_grad()
@@ -22,15 +27,19 @@ def sample_decode(
     temperature: float = 0.0,
     top_k: int = 0,
     top_p: float = 0.0,
+    memory_padding_mask: torch.Tensor | None = None,
 ) -> torch.Tensor:
-    """Decode token ids [B, <=max_len] from thoughts. temperature=0 -> greedy."""
+    """Decode token ids [B, <=max_len] from thoughts. temperature=0 -> greedy.
+
+    memory_padding_mask [B, N] (True = masked) enables per-sample prefix
+    lengths in one batched decode."""
     device = thoughts.device
     batch = thoughts.size(0)
     ids = torch.full((batch, 1), BOS_ID, dtype=torch.long, device=device)
     finished = torch.zeros(batch, dtype=torch.bool, device=device)
 
     for _ in range(max_len - 1):
-        logits = model.decode(thoughts, ids)[:, -1]  # [B, V]
+        logits = model.decode(thoughts, ids, memory_padding_mask=memory_padding_mask)[:, -1]
         if temperature <= 0:
             next_ids = logits.argmax(dim=-1)
         else:
