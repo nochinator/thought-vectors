@@ -152,6 +152,7 @@ def pretokenize_main() -> None:
     parser.add_argument("--max-rows", type=int, default=None)
     parser.add_argument("--merge-rows", action="store_true")
     parser.add_argument("--no-chunk-long", action="store_true")
+    parser.add_argument("--chunk-jitter", action="store_true")
     args = parser.parse_args()
 
     import json
@@ -169,6 +170,7 @@ def pretokenize_main() -> None:
         max_rows=args.max_rows,
         merge_rows=args.merge_rows,
         chunk_long=not args.no_chunk_long,
+        chunk_jitter=args.chunk_jitter,
     )
     print(json.dumps(meta, indent=2))
 

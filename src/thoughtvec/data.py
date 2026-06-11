@@ -29,6 +29,7 @@ def pretokenize(
     max_rows: int | None = None,
     merge_rows: bool = False,
     chunk_long: bool = True,
+    chunk_jitter: bool = False,
     seed: int = 1234,
 ) -> dict:
     """Stream a CSV, tokenize, write train + val shard dirs.
@@ -36,6 +37,10 @@ def pretokenize(
     max_tokens excludes BOS/EOS (stored length is max_tokens + 2).
     merge_rows: concatenate consecutive short rows up to max_tokens (for
     fragment-style corpora). chunk_long: split over-long docs into pieces.
+    chunk_jitter: randomize piece/merge target lengths (uniform 16..max_tokens)
+    so the shard covers the whole length spectrum — on long-only corpora the
+    decoder can minimize CE by pure LM-ing and the thought channel never
+    engages (see RESEARCH_LOG 2026-06-11 E256 collapse).
     max_rows applies per CSV.
     """
     if isinstance(csv_paths, (str, Path)):
@@ -67,8 +72,14 @@ def pretokenize(
 
     from .tokenizer import BOS_ID, EOS_ID
 
+    def next_target() -> int:
+        if chunk_jitter:
+            return int(rng.integers(min(16, max_tokens), max_tokens + 1))
+        return max_tokens
+
     for csv_path in csv_paths:
         pending: list[int] = []
+        target = next_target()
         rows_read = 0
         for text in iter_csv_texts(csv_path, max_chars=20000):
             rows_read += 1
@@ -76,17 +87,21 @@ def pretokenize(
                 break
             body = tokenizer.encode(text, add_special=False)
             if merge_rows:
-                if pending and len(pending) + len(body) > max_tokens:
+                if pending and len(pending) + len(body) > target:
                     emit([BOS_ID] + pending + [EOS_ID])
                     pending = []
-                if len(body) <= max_tokens:
+                    target = next_target()
+                if len(body) <= target:
                     pending.extend(body)
                     continue
-            if len(body) > max_tokens:
+            if len(body) > target:
                 if not chunk_long:
                     continue
-                for j in range(0, len(body), max_tokens):
-                    emit([BOS_ID] + body[j : j + max_tokens] + [EOS_ID])
+                j = 0
+                while j < len(body):
+                    emit([BOS_ID] + body[j : j + target] + [EOS_ID])
+                    j += target
+                    target = next_target()
             else:
                 emit([BOS_ID] + body + [EOS_ID])
         if pending:

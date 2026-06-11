@@ -167,3 +167,23 @@ schedule (5% warmup, cosine to 0.1x). Full eval tables in logs/ab_*/eval/.
   rows can be document-continuations of train rows; mix_long eval is the
   honest benchmark. The init-scale fix + AdamW + blended-from-step-0 is a
   step-change over the original three-phase recipe.
+
+### 2026-06-11: FAILED — E256 dress rehearsal: thought channel never engages on long-only data
+
+E256 (d384 5+5, N=256, seq 256, mix_long, kl 0.01 + noise 0.05, 1500s): CE
+**byte-identical at every k** (4.50/5.51/5.34/5.51 per bucket at k=2 and
+k=256) — the decoder ignores the thoughts entirely and pure-LMs to CE ~5.5,
+F1 ~0.05. A 300s re-run **without KL was equally flat**, so KL deepened the
+LM-mode (better absolute CE, still flat) but the root cause is the DATA:
+mix_long is long-only (p10=161 tokens). On 235-token teacher-forced
+paragraphs, next-token LM-ing is a strong loss-attractor and the
+cross-attention channel gets no early gradient. The bracket runs engaged
+thoughts immediately because fragment data (median 24 tok) makes them
+essential — short samples are the bootstrap.
+
+Fixes adopted:
+1. `--chunk-jitter` at pretokenize: long docs cut at uniform(16, 254) instead
+   of always 254 → full length spectrum in every batch (data/mix_uni).
+2. kl_beta=0 for the 12h run. VAE can return later as a fine-tune on a
+   working autoencoder (the original's recipe — they never trained it from
+   scratch either).
