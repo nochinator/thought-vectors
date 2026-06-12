@@ -1,10 +1,10 @@
-"""CLI entry points: tv-train, tv-eval, tv-tokenizer, tv-pretokenize, tv-chat."""
+"""CLI entry points: tv-train, tv-train-thinker, tv-eval, tv-tokenizer,
+tv-pretokenize, tv-pretokenize-dialogue, tv-chat."""
 
 from __future__ import annotations
 
 import argparse
 import os
-import sys
 
 
 def _rocm_env() -> None:
@@ -57,6 +57,39 @@ def train_main() -> None:
         seed=cfg.train.seed,
     )
     val_loader = make_loader(val_dir, cfg.train.batch_size, shuffle=False, num_workers=0)
+    trainer.fit(train_loader, val_loader)
+
+
+def train_thinker_main() -> None:
+    _rocm_env()
+    parser = argparse.ArgumentParser(prog="tv-train-thinker")
+    parser.add_argument("--config", required=True)
+    parser.add_argument("--resume", default=None, help="checkpoint to resume from")
+    parser.add_argument("overrides", nargs="*", help="key.subkey=value")
+    args = parser.parse_args()
+
+    import torch
+
+    from .config import load_config
+    from .thinker_train import ThinkerTrainer, make_dialogue_loader
+    from .tokenizer import Tokenizer
+
+    cfg = load_config(args.config, args.overrides)
+    torch.manual_seed(cfg.train.seed)
+
+    trainer = ThinkerTrainer(cfg, Tokenizer(cfg.run.tokenizer_path))
+    if args.resume:
+        trainer.load_checkpoint(args.resume)
+        print(f"resumed from {args.resume} at step {trainer.step}", flush=True)
+
+    val_dir = cfg.data.val_shard_dir or cfg.data.shard_dir + "_val"
+    train_loader = make_dialogue_loader(
+        cfg.data.shard_dir, cfg.train.batch_size, cfg.thinker.max_turns,
+        shuffle=True, num_workers=cfg.data.num_workers, seed=cfg.train.seed,
+    )
+    val_loader = make_dialogue_loader(
+        val_dir, cfg.train.batch_size, cfg.thinker.max_turns, shuffle=False, num_workers=0
+    )
     trainer.fit(train_loader, val_loader)
 
 
@@ -175,6 +208,40 @@ def pretokenize_main() -> None:
     print(json.dumps(meta, indent=2))
 
 
+def pretokenize_dialogue_main() -> None:
+    parser = argparse.ArgumentParser(prog="tv-pretokenize-dialogue")
+    parser.add_argument("--jsonl", required=True, help="conversations.jsonl")
+    parser.add_argument("--out", required=True, help="output shard dir (train; _val sibling)")
+    parser.add_argument("--tokenizer", default="artifacts/tokenizer/spm16k_bpe.model")
+    parser.add_argument("--max-turn-tokens", type=int, default=126)
+    parser.add_argument("--min-turns", type=int, default=2)
+    parser.add_argument("--val-frac", type=float, default=0.01)
+    args = parser.parse_args()
+
+    import json
+
+    from .data import pretokenize_dialogue
+    from .tokenizer import Tokenizer
+
+    meta = pretokenize_dialogue(
+        args.jsonl,
+        args.out,
+        Tokenizer(args.tokenizer),
+        max_turn_tokens=args.max_turn_tokens,
+        min_turns=args.min_turns,
+        val_frac=args.val_frac,
+    )
+    print(json.dumps(meta, indent=2))
+
+
 def chat_main() -> None:
-    print("tv-chat arrives with milestone M4 (thinker).", file=sys.stderr)
-    sys.exit(1)
+    _rocm_env()
+    parser = argparse.ArgumentParser(prog="tv-chat")
+    parser.add_argument("--ckpt", required=True, help="thinker checkpoint")
+    parser.add_argument("--device", default="cuda")
+    parser.add_argument("--temperature", type=float, default=0.0)
+    args = parser.parse_args()
+
+    from .chat import repl
+
+    repl(args.ckpt, device=args.device, temperature=args.temperature)

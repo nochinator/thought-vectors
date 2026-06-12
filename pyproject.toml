@@ -15,9 +15,11 @@ dependencies = [
 
 [project.scripts]
 tv-train = "thoughtvec.cli:train_main"
+tv-train-thinker = "thoughtvec.cli:train_thinker_main"
 tv-eval = "thoughtvec.cli:eval_main"
 tv-tokenizer = "thoughtvec.cli:tokenizer_main"
 tv-pretokenize = "thoughtvec.cli:pretokenize_main"
+tv-pretokenize-dialogue = "thoughtvec.cli:pretokenize_dialogue_main"
 tv-chat = "thoughtvec.cli:chat_main"
 
 [tool.setuptools.packages.find]

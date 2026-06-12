@@ -257,3 +257,62 @@ W-series: 1500s each, warm-started from a 60-min frontier-config base
 scaled word-dropout 0.3, noise 0.05, extra_k 1), d384 5+5 6h N=256 seq 256,
 mix_uni, BS32, warm-started from the 60-min warm_base, fresh 12h wall-clock
 cosine. ~2.0 it/s -> ~86K steps ≈ 0.7B tokens.
+
+### 2026-06-12: M4 thinker — build-out while the frontier run trains
+
+Goal: conversation agent operating in the frozen codec's thought space:
+text -> encoder -> per-turn thought prefixes -> Thinker -> k_out predicted
+thoughts -> decoder -> reply text. Scope: casual small talk + light knowledge.
+
+**Data.** datasets 5.0 removed script-based datasets (daily_dialog,
+blended_skill_talk dead). Working corpus assembled into
+data/conversations.jsonl (412,336 convs, 277MB):
+- allenai/soda 394,523 (capped at 400K of 1.19M; casual social dialogues —
+  exactly the scope)
+- AlekseyKorshuk/persona-chat 16,954 (small talk)
+- OASST1-en best-ranked paths 859 (light knowledge)
+Hedge-filtered ("as an AI..."), ≤600 chars/turn, alternating roles.
+Turn-aware shards via pretokenize_dialogue: every turn stored BOS..EOS in
+tokens.bin + turns.npy (start, len, conv_id); split BY CONVERSATION; role =
+turn parity (even = user). DialogueDataset yields (context up to max_turns,
+response) for EVERY non-first turn — role symmetry doubles the data and the
+resp-role embedding tells the thinker who replies.
+
+**Thinker** (src/thoughtvec/thinker.py): pre-norm transformer trunk over the
+flattened [C*k_ctx] context thought sequence + role/turn-distance/slot-pos
+embeddings. Two output modes (ablated): "query" = GRU-scaffolded slots
+cross-attend the trunk (the codec encoder's proven ordered-seed trick,
+parallel prediction); "prefix" = response slots appended with causal mask
+(AR over thought slots, teacher-forced; iterative at inference). Dropout
+pinned 0.0 (ROCm NaN, legacy M4).
+
+**Trainer** (thinker_train.py) — ablatable loss modes mapped to the agreed
+training-direction ideas:
+- w_thought: MSE+(1-cos) vs frozen-encoder response thoughts (idea a)
+- w_decoder: teacher-forced CE through the frozen decoder (ships what we eval)
+- w_reverse (annealed): predict the dropped last context turn from
+  (context-minus-last + true reply) — "what was said to get this" (idea e)
+- w_cycle on cycle_frac steps: greedy-decode pred, re-encode, pull pred
+  toward what it actually decodes to (idea d)
+- phase 2: unfreeze=decoder|codec at codec_lr_scale, with compress_frac pure
+  compression batches anchoring reconstructability (idea b)
+
+**Wiring**: tv-train-thinker, tv-pretokenize-dialogue, tv-chat REPL
+(chat.py ChatSession; history parity -> roles, bot replies role 1).
+configs/m4_thinker.yaml + scripts/ablate_thinker.sh bracket: T0-T5 (loss
+modes), P0/P1 (prefix), K16/K48 (thought budget), L4/L8 (depth), U1/U2
+(phase-2 previews). 14 new CPU tests green (18 total shapes suite + 7
+trainer/chat smoke incl. all loss modes + resume + REPL roundtrip).
+
+**Bug caught pre-GPU (eval smoke)**: absent context turns are all-PAD rows;
+the codec encoder sees a fully-masked key set and emits NaN thoughts, and
+0-attention-weight * NaN = NaN poisons every downstream position. On GPU this
+would have silently skipped most batches via the NaN guard. Fix: zero the
+thoughts of all-PAD turns after encoding (the thinker's key_pad already hides
+them from attention); smoke tests now assert finite val metrics + zero NaN
+streak. Dialogue shards: train 3.28M turns / 408K convs / 76M tokens (turn
+mean 23 tok, p90 40), val 33K turns — split by conversation.
+
+Ready to fire on frontier completion: scripts/ablate_thinker.sh T0 T1 T2 T3
+T4 T5 P0 K16 L4 (40 min each ≈ 6h), then winner combos, then a 12h-max run;
+phase-2 (U1/U2 unfreeze + compression anchor) as a later round.

@@ -108,6 +108,34 @@ class RunCfg:
 
 
 @dataclass
+class ThinkerCfg:
+    # architecture (d_model inherited from the codec checkpoint)
+    layers: int = 6
+    nhead: int = 6
+    ffn_dim: int = 2048
+    dropout: float = 0.0      # NONZERO dropout in the thinker NaN'd on ROCm (legacy M4)
+    mode: str = "query"       # "query": GRU-scaffold slots cross-attend trunk (parallel)
+                              # "prefix": AR over response slots (teacher-forced)
+    k_ctx: int = 32           # thought prefix kept per context turn
+    k_out: int = 32           # response thoughts predicted
+    max_turns: int = 8        # max context turns
+    # losses
+    w_thought: float = 1.0    # MSE + (1-cos) in thought space vs frozen-encoder target
+    w_decoder: float = 0.0    # teacher-forced CE through the frozen decoder
+    w_reverse: float = 0.0    # aux: predict the last context turn's thoughts
+    reverse_anneal_frac: float = 0.3  # reverse weight linearly hits 0 here
+    cycle_frac: float = 0.0   # frac of steps with re-encode consistency loss
+    w_cycle: float = 0.0
+    # phase 2 (end-to-end)
+    unfreeze: str = "none"    # "none" | "decoder" | "codec"
+    codec_lr_scale: float = 0.1  # lr multiplier for unfrozen codec params
+    compress_frac: float = 0.0   # frac of steps that are pure compression batches
+                                 # (anchors the thought space against drift)
+    compress_shard: str = "data/mix_uni"
+    codec_ckpt: str = "checkpoints/m5_frontier/best.pt"
+
+
+@dataclass
 class Config:
     model: ModelCfg = field(default_factory=ModelCfg)
     ksampler: KSamplerCfg = field(default_factory=KSamplerCfg)
@@ -115,6 +143,7 @@ class Config:
     data: DataCfg = field(default_factory=DataCfg)
     train: TrainCfg = field(default_factory=TrainCfg)
     run: RunCfg = field(default_factory=RunCfg)
+    thinker: ThinkerCfg = field(default_factory=ThinkerCfg)
 
 
 def _coerce(value: str, current: Any) -> Any:

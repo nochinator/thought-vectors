@@ -1,0 +1,41 @@
+# M4 thinker baseline: frozen codec, thought-space loss only, query mode.
+# Ablation bracket varies thinker.* on top of this (scripts/ablate_thinker.sh).
+run:
+  name: m4_thinker
+  device: cuda
+
+data:
+  shard_dir: data/dialogue
+  num_workers: 2
+
+thinker:
+  layers: 6
+  nhead: 6
+  ffn_dim: 2048
+  mode: query
+  k_ctx: 32
+  k_out: 32
+  max_turns: 6
+  w_thought: 1.0
+  w_decoder: 0.0
+  w_reverse: 0.0
+  cycle_frac: 0.0
+  w_cycle: 0.0
+  unfreeze: none
+  codec_ckpt: checkpoints/m5_frontier/best.pt
+
+train:
+  batch_size: 32
+  lr: 3.0e-4
+  weight_decay: 0.01
+  warmup_steps: 500
+  max_steps: 1000000        # wall clock governs
+  max_seconds: 2400         # 40-min ablation slots; frontier run uses 43200
+  min_lr_frac: 0.1
+  grad_clip: 1.0
+  seed: 1234
+  log_every: 50
+  sample_every: 500
+  val_every: 500
+  ckpt_every: 2000
+  keep_ckpts: 2

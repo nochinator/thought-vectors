@@ -1,0 +1,94 @@
+"""tv-chat: terminal REPL for the thinker.
+
+Pipeline per turn: history texts -> codec encoder (k_ctx thoughts each) ->
+thinker -> k_out predicted thoughts -> codec decoder -> reply text. The codec
+is the one recorded in the thinker checkpoint (overridable); the user is role
+0, the bot role 1, matching DialogueDataset parity.
+"""
+
+from __future__ import annotations
+
+import torch
+
+from .config import Config, from_dict
+from .generate import sample_decode
+from .model import ThoughtAutoencoder, make_padding_mask
+from .thinker import Thinker
+from .tokenizer import BOS_ID, EOS_ID, Tokenizer
+
+
+class ChatSession:
+    def __init__(self, ckpt_path: str, device: str = "cuda",
+                 codec_ckpt: str | None = None) -> None:
+        ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+        self.cfg: Config = from_dict(ckpt["config"])
+        tk = self.cfg.thinker
+
+        codec_path = codec_ckpt or ckpt.get("codec_ckpt", tk.codec_ckpt)
+        codec_state = torch.load(codec_path, map_location="cpu", weights_only=False)
+        self.codec_cfg = from_dict(codec_state["config"])
+        self.codec = ThoughtAutoencoder(self.codec_cfg.model)
+        self.codec.load_state_dict(ckpt.get("codec", codec_state["model"]))
+        self.codec.to(device).eval()
+
+        self.thinker = Thinker(tk, self.codec_cfg.model.d_model)
+        self.thinker.load_state_dict(ckpt["thinker"])
+        self.thinker.to(device).eval()
+
+        self.tokenizer = Tokenizer(self.cfg.run.tokenizer_path)
+        self.device = torch.device(device)
+        self.history: list[str] = []  # alternating, history[0] = user
+
+    @torch.no_grad()
+    def reply(self, user_text: str, temperature: float = 0.0,
+              no_repeat_ngram: int = 3) -> str:
+        tk = self.cfg.thinker
+        self.history.append(user_text.strip())
+        turns = self.history[-tk.max_turns :]
+        first_role = (len(self.history) - len(turns)) % 2  # parity of turns[0]
+
+        bodies = [self.tokenizer.encode(t, add_special=False) for t in turns]
+        max_t = min(max(len(b) for b in bodies) + 2, self.codec_cfg.model.max_seq_len)
+        ctx_ids = torch.zeros(1, len(turns), max_t, dtype=torch.long, device=self.device)
+        for j, body in enumerate(bodies):
+            row = torch.tensor([BOS_ID] + body[: max_t - 2] + [EOS_ID], dtype=torch.long)
+            ctx_ids[0, j, : row.size(0)] = row
+
+        flat = ctx_ids.reshape(-1, max_t)
+        th = self.codec.encode(flat, make_padding_mask(flat))[:, : tk.k_ctx]
+        ctx_th = th.reshape(1, len(turns), tk.k_ctx, -1)
+        ctx_roles = torch.tensor(
+            [[(first_role + j) % 2 for j in range(len(turns))]], device=self.device
+        )
+        ctx_turns = torch.tensor([len(turns)], device=self.device)
+        resp_roles = torch.tensor([1], device=self.device)  # bot replies
+
+        pred = self.thinker(ctx_th, ctx_roles, ctx_turns, resp_roles)
+        out = sample_decode(self.codec, pred, self.codec_cfg.model.max_seq_len,
+                            temperature=temperature, no_repeat_ngram=no_repeat_ngram)
+        text = self.tokenizer.decode(out[0].tolist())
+        self.history.append(text)
+        return text
+
+    def reset(self) -> None:
+        self.history.clear()
+
+
+def repl(ckpt_path: str, device: str = "cuda", temperature: float = 0.0) -> None:
+    session = ChatSession(ckpt_path, device=device)
+    print(f"thoughtvec chat — ckpt {ckpt_path} | /reset clears history, /quit exits")
+    while True:
+        try:
+            user = input("you > ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print()
+            break
+        if not user:
+            continue
+        if user == "/quit":
+            break
+        if user == "/reset":
+            session.reset()
+            print("(history cleared)")
+            continue
+        print(f"bot > {session.reply(user, temperature=temperature)}")
