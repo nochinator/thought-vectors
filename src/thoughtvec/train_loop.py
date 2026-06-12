@@ -257,7 +257,16 @@ class Trainer:
         self.nan_streak = 0
 
         total.backward()
-        nn.utils.clip_grad_norm_(self.model.unique_parameters(), cfg.train.grad_clip)
+        norm = nn.utils.clip_grad_norm_(self.model.unique_parameters(), cfg.train.grad_clip)
+        if not norm.isfinite():
+            # finite loss but NaN grads: clip would scale every grad by NaN
+            # and poison the weights permanently. Skip the step.
+            self.nan_streak += 1
+            self.optimizer.zero_grad(set_to_none=True)
+            self.scheduler.step()
+            if self.nan_streak >= 20:
+                raise RuntimeError(f"20 consecutive non-finite grads at step {self.step}")
+            return None
         self.optimizer.step()
         self.scheduler.step()
         self.optimizer.zero_grad(set_to_none=True)

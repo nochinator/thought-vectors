@@ -206,9 +206,19 @@ class ThinkerTrainer:
         self.nan_streak = 0
 
         total.backward()
-        nn.utils.clip_grad_norm_(
+        norm = nn.utils.clip_grad_norm_(
             [p for g in self.optimizer.param_groups for p in g["params"]], cfg.train.grad_clip
         )
+        if not norm.isfinite():
+            # finite loss, NaN grad: clip would scale ALL grads by NaN and the
+            # optimizer would poison the weights permanently (killed ab_T0 at
+            # step 7334). Skip the step; weights stay clean.
+            self.nan_streak += 1
+            self.optimizer.zero_grad(set_to_none=True)
+            self.scheduler.step()
+            if self.nan_streak >= 20:
+                raise RuntimeError(f"20 consecutive non-finite grads at step {self.step}")
+            return None
         self.optimizer.step()
         self.scheduler.step()
         self.optimizer.zero_grad(set_to_none=True)
@@ -252,6 +262,14 @@ class ThinkerTrainer:
             self.optimizer.zero_grad(set_to_none=True)
             return None
         ce.backward()
+        norm = nn.utils.clip_grad_norm_(
+            [p for g in self.optimizer.param_groups for p in g["params"]],
+            self.cfg.train.grad_clip,
+        )
+        if not norm.isfinite():
+            self.optimizer.zero_grad(set_to_none=True)
+            self.scheduler.step()
+            return None
         self.optimizer.step()
         self.scheduler.step()
         self.optimizer.zero_grad(set_to_none=True)

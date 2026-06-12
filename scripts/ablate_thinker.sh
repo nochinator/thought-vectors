@@ -43,7 +43,13 @@ for name in "$@"; do
   # shellcheck disable=SC2086
   .venv/bin/tv-train-thinker --config configs/m4_thinker.yaml \
     run.name="ab_$name" train.max_seconds="$DUR" $ov \
-    2>&1 | tee "logs/ab_$name.out"
-  .venv/bin/python scripts/eval_thinker.py --ckpt "checkpoints/ab_$name/best.pt" \
-    --dump "logs/ab_$name.samples.txt" 2>&1 | tee -a "logs/ab_$name.out"
+    2>&1 | tee "logs/ab_$name.out" \
+    || echo "RUN $name FAILED — continuing bracket" | tee -a "logs/ab_$name.out"
+  if [[ -f "checkpoints/ab_$name/best.pt" ]]; then
+    .venv/bin/python scripts/eval_thinker.py --ckpt "checkpoints/ab_$name/best.pt" \
+      --dump "logs/ab_$name.samples.txt" 2>&1 | tee -a "logs/ab_$name.out" \
+      || echo "EVAL $name FAILED" | tee -a "logs/ab_$name.out"
+  else
+    echo "no best.pt for $name — eval skipped" | tee -a "logs/ab_$name.out"
+  fi
 done
