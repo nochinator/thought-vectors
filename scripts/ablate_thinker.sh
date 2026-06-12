@@ -38,6 +38,7 @@ overrides_for() {
     D8)   echo "thinker.w_thought=0.0 thinker.w_decoder=1.0 thinker.k_ctx=8" ;;  # T1 @ k8
     PN1)  echo "thinker.mode=prefix thinker.tf_noise_std=0.1 thinker.w_decoder=0.5 thinker.k_ctx=8" ;;
     PN3)  echo "thinker.mode=prefix thinker.tf_noise_std=0.3 thinker.w_decoder=0.5 thinker.k_ctx=8" ;;
+    FD)   echo "thinker.flat_context=true thinker.w_decoder=0.5" ;;  # fastest arch + mixed loss
     # --- phase 2 previews (end-to-end, user idea b) ---
     U1)  echo "thinker.w_decoder=1.0 thinker.w_thought=0.0 thinker.unfreeze=decoder thinker.compress_frac=0.15" ;;
     U2)  echo "thinker.w_decoder=1.0 thinker.w_thought=0.25 thinker.unfreeze=codec thinker.compress_frac=0.25" ;;
