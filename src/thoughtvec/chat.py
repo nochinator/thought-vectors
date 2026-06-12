@@ -73,6 +73,13 @@ class ChatSession:
         resp_roles = torch.tensor([1], device=self.device)  # bot replies
 
         pred = self.thinker(ctx_th, ctx_roles, ctx_turns, resp_roles, slot_budgets=budgets)
+        if pred.dim() == 4:  # WTA head: greedy -> most decodable per the codec's
+            # predictor; temperature>0 -> random hypothesis (varied replies)
+            if temperature > 0:
+                pred = pred[:, int(torch.randint(pred.size(1), (1,)))]
+            else:
+                score = self.codec.predictor(pred[0])[:, tk.k_out - 1]
+                pred = pred[:, int(score.argmin())]
         out = sample_decode(self.codec, pred, self.codec_cfg.model.max_seq_len,
                             temperature=temperature, no_repeat_ngram=no_repeat_ngram)
         text = self.tokenizer.decode(out[0].tolist())

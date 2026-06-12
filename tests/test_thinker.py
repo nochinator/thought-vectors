@@ -102,6 +102,26 @@ def test_k_ctx_schedule_matches_explicit_budgets():
     assert torch.allclose(out_sched, out_explicit, atol=1e-6)
 
 
+def test_wta_head_shapes_and_diversity():
+    cfg = ThinkerCfg(layers=2, nhead=2, ffn_dim=64, k_ctx=4, k_out=4, n_hypotheses=3)
+    th = Thinker(cfg, D)
+    th.eval()
+    ctx_th, roles, turns, rr = make_batch()
+    out = th(ctx_th, roles, turns, rr)
+    assert out.shape == (3, 3, 4, D)
+    # hypotheses must differ at init (distinct seeds)
+    assert not torch.allclose(out[:, 0], out[:, 1], atol=1e-3)
+
+    from thoughtvec.thinker_train import wta_select
+
+    tgt = torch.randn(3, 4, D)
+    pred_w, pl, winner = wta_select(out, tgt)
+    assert pred_w.shape == (3, 4, D) and pl.shape == (3, 3)
+    for b in range(3):
+        assert pl[b, winner[b]] == pl[b].min()
+        assert torch.equal(pred_w[b], out[b, winner[b]])
+
+
 def test_predict_reverse_shape():
     cfg = ThinkerCfg(layers=2, nhead=2, ffn_dim=64, k_ctx=4, k_out=4, w_reverse=0.5)
     th = Thinker(cfg, D)

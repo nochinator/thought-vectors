@@ -53,6 +53,7 @@ def main() -> None:
     ap.add_argument("--dump", default=None, help="write decoded samples here")
     args = ap.parse_args()
     dev = torch.device(args.device)
+    torch.manual_seed(0)  # reproducible hypothesis sampling for WTA ckpts
 
     ckpt = torch.load(args.ckpt, map_location="cpu", weights_only=False)
     cfg = from_dict(ckpt["config"])
@@ -89,6 +90,9 @@ def main() -> None:
             pred = thinker(ctx_th, batch["ctx_roles"].to(dev),
                            batch["ctx_turns"].to(dev), batch["resp_roles"].to(dev),
                            slot_budgets=budgets)
+            if pred.dim() == 4:  # WTA head: score a RANDOM hypothesis (honest diversity)
+                rows = torch.arange(pred.size(0), device=dev)
+                pred = pred[rows, torch.randint(pred.size(1), (pred.size(0),), device=dev)]
             cos_sum += F.cosine_similarity(pred, tgt_th, dim=-1).mean().item()
             resp_pad = make_padding_mask(resp_ids)
             logits = codec.decode(pred, resp_ids[:, :-1], resp_pad[:, :-1])

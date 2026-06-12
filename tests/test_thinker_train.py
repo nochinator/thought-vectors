@@ -105,9 +105,10 @@ def make_trainer(setup, **thinker_overrides):
         {"unfreeze": "decoder", "compress_frac": 1.0, "w_decoder": 1.0},  # U1 anchor path
         {"ctx_tau": 0.5},                                # TAU: predictor-adaptive budgets
         {"k_ctx_schedule": [4, 3, 2]},                   # SCHED: recency-decayed budgets
+        {"n_hypotheses": 3, "w_decoder": 0.5},           # WTA multi-hypothesis
     ],
     ids=["thought", "decoder", "mixed_rev", "cycle", "prefix", "unfreeze_compress",
-         "ctx_tau", "sched"],
+         "ctx_tau", "sched", "wta"],
 )
 def test_trainer_modes(setup, ov):
     from thoughtvec.thinker_train import make_dialogue_loader
@@ -153,6 +154,22 @@ def test_trainer_flat_context(setup):
     session.reply("hi")
     reply = session.reply("how are you?")
     assert isinstance(reply, str)
+
+
+def test_chat_session_wta(setup):
+    """Chat must handle [1, M, k, d] predictions: predictor-ranked at temp 0,
+    random hypothesis at temp > 0."""
+    from thoughtvec.chat import ChatSession
+    from thoughtvec.thinker_train import make_dialogue_loader
+
+    trainer = make_trainer(setup, n_hypotheses=3, w_decoder=0.5)
+    _, _, _, shard, _ = setup
+    loader = make_dialogue_loader(shard, 2, max_context=4, shuffle=True, num_workers=0)
+    trainer.fit(loader, loader)
+
+    session = ChatSession(str(trainer.run_dir / "final.pt"), device="cpu")
+    assert isinstance(session.reply("hello!"), str)
+    assert isinstance(session.reply("what's up?", temperature=0.8), str)
 
 
 def test_chat_session(setup):

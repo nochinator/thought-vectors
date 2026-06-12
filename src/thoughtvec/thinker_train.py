@@ -47,6 +47,22 @@ def thought_loss(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
     return mse + cos
 
 
+def wta_losses(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
+    """pred [B, M, k, d], target [B, k, d] -> per-hypothesis thought loss [B, M]."""
+    target = target[:, None]
+    mse = ((pred - target) ** 2).mean(dim=(-1, -2))
+    cos = 1 - F.cosine_similarity(pred, target, dim=-1).mean(dim=-1)
+    return mse + cos
+
+
+def wta_select(pred: torch.Tensor, target: torch.Tensor) -> tuple[torch.Tensor, ...]:
+    """Winner per sample: (winning pred [B, k, d], losses [B, M], winner [B])."""
+    pl = wta_losses(pred, target)
+    winner = pl.argmin(dim=1)
+    rows = torch.arange(pred.size(0), device=pred.device)
+    return pred[rows, winner], pl, winner
+
+
 def encode_turns(
     codec: ThoughtAutoencoder,
     ids: torch.Tensor,
@@ -174,7 +190,15 @@ class ThinkerTrainer:
                             target_thoughts=tgt_th, slot_budgets=budgets)
 
         losses: dict[str, torch.Tensor] = {}
-        if tk.w_thought > 0:
+        if pred.dim() == 4:  # [B, M, k, d] WTA multi-hypothesis head
+            pred, pl, winner = wta_select(pred, tgt_th)
+            if tk.w_thought > 0:
+                rows = torch.arange(pl.size(0), device=pl.device)
+                eps = tk.wta_eps
+                losses["thought"] = tk.w_thought * (
+                    (1 - eps) * pl[rows, winner].mean() + eps * pl.mean()
+                )
+        elif tk.w_thought > 0:
             losses["thought"] = tk.w_thought * thought_loss(pred, tgt_th)
         if tk.w_decoder > 0:
             resp_pad = make_padding_mask(resp_ids)
@@ -297,6 +321,8 @@ class ThinkerTrainer:
                 target_thoughts=tgt_th if self.cfg.thinker.mode == "prefix" else None,
                 slot_budgets=budgets,
             )
+            if pred.dim() == 4:
+                pred, _, _ = wta_select(pred, tgt_th)  # best-of-M validation
             cos_sum += F.cosine_similarity(pred, tgt_th, dim=-1).mean().item()
             resp_pad = make_padding_mask(resp_ids)
             logits = self.codec.decode(pred, resp_ids[:, :-1], resp_pad[:, :-1])
@@ -319,8 +345,19 @@ class ThinkerTrainer:
             batch["ctx_turns"][:max_rows].to(dev), batch["resp_roles"][:max_rows].to(dev),
             slot_budgets=budgets,
         )
-        ids = sample_decode(self.codec, pred, self.codec_cfg.model.max_seq_len,
-                            temperature=0.0, no_repeat_ngram=3)
+        if pred.dim() == 4:  # WTA: decode every hypothesis to eyeball diversity
+            bsz, m = pred.shape[:2]
+            flat_ids = sample_decode(self.codec, pred.reshape(bsz * m, *pred.shape[2:]),
+                                     self.codec_cfg.model.max_seq_len,
+                                     temperature=0.0, no_repeat_ngram=3)
+            hyp_texts = [
+                [self.tokenizer.decode(flat_ids[r * m + h].tolist()) for h in range(m)]
+                for r in range(bsz)
+            ]
+        else:
+            ids = sample_decode(self.codec, pred, self.codec_cfg.model.max_seq_len,
+                                temperature=0.0, no_repeat_ngram=3)
+            hyp_texts = [[self.tokenizer.decode(ids[r].tolist())] for r in range(pred.size(0))]
         lines = [f"--- step {self.step} ---"]
         for row in range(ctx_ids.size(0)):
             nturn = int(batch["ctx_turns"][row])
@@ -330,7 +367,9 @@ class ThinkerTrainer:
                 lines.append(f"  {who}: {self.tokenizer.decode(t)}")
             ref = [x for x in batch["resp_ids"][row].tolist() if x != 0]
             lines.append(f"  REF : {self.tokenizer.decode(ref)}")
-            lines.append(f"  PRED: {self.tokenizer.decode(ids[row].tolist())}")
+            for h, text in enumerate(hyp_texts[row]):
+                tag = f"PRED{h}" if len(hyp_texts[row]) > 1 else "PRED"
+                lines.append(f"  {tag}: {text}")
             lines.append("")
         self.samples_file.write("\n".join(lines) + "\n")
         self.samples_file.flush()

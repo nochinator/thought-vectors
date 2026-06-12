@@ -116,6 +116,12 @@ class ThinkerCfg:
     dropout: float = 0.0      # NONZERO dropout in the thinker NaN'd on ROCm (legacy M4)
     mode: str = "query"       # "query": GRU-scaffold slots cross-attend trunk (parallel)
                               # "prefix": AR over response slots (teacher-forced)
+    n_hypotheses: int = 1     # >1 (query mode): winner-take-all multi-hypothesis
+                              # head — M candidate reply-thought sets; the one
+                              # closest to target gets the gradient, so modes
+                              # specialize instead of averaging to bland filler
+    wta_eps: float = 0.05     # small loss share for non-winners (keeps all
+                              # hypotheses alive; pure WTA strands losers)
     k_ctx: int = 32           # thought prefix kept per context turn
     k_out: int = 32           # response thoughts predicted
     max_turns: int = 8        # max context turns

@@ -50,7 +50,10 @@ class Thinker(nn.Module):
             layer, num_layers=cfg.layers, norm=nn.LayerNorm(d_model)
         )
 
-        self.out_seed = nn.Parameter(torch.randn(1, cfg.k_out, d_model) * 0.02)
+        assert cfg.n_hypotheses == 1 or cfg.mode == "query", "WTA head is query-mode only"
+        self.out_seed = nn.Parameter(
+            torch.randn(cfg.n_hypotheses, cfg.k_out, d_model) * 0.02
+        )
         if cfg.mode == "query":
             self.out_gru = nn.GRU(d_model, d_model, batch_first=True)
             self.cross = nn.MultiheadAttention(d_model, cfg.nhead, batch_first=True)
@@ -94,9 +97,13 @@ class Thinker(nn.Module):
         return seq, key_pad.reshape(bsz, c * k)
 
     def _queries(self, seed: torch.Tensor, resp_roles: torch.Tensor) -> torch.Tensor:
+        """seed [M, k, d] -> queries [B*M, k, d] (hypotheses as extra batch rows)."""
         out, _ = self.out_gru(seed)
-        q = self.slot_pos(out).expand(resp_roles.size(0), -1, -1)
-        return q + self.resp_role_emb(resp_roles)[:, None, :]
+        q = self.slot_pos(out)  # [M, k, d]
+        bsz, m = resp_roles.size(0), seed.size(0)
+        q = q[None].expand(bsz, m, -1, -1).reshape(bsz * m, q.size(1), -1)
+        role = self.resp_role_emb(resp_roles).repeat_interleave(m, dim=0)
+        return q + role[:, None, :]
 
     # ----- forward -----
 
@@ -115,10 +122,19 @@ class Thinker(nn.Module):
 
         if cfg.mode == "query":
             encoded = self.trunk(seq, src_key_padding_mask=key_pad)
+            m = cfg.n_hypotheses
             q = self._queries(self.out_seed, resp_roles)
-            attended, _ = self.cross(q, encoded, encoded, key_padding_mask=key_pad)
+            attended, _ = self.cross(
+                q,
+                encoded.repeat_interleave(m, dim=0),
+                encoded.repeat_interleave(m, dim=0),
+                key_padding_mask=key_pad.repeat_interleave(m, dim=0),
+            )
             h = self.out_norm(q + attended)
-            return self.mlp_norm(h + self.out_mlp(h))
+            out = self.mlp_norm(h + self.out_mlp(h))
+            if m == 1:
+                return out
+            return out.reshape(bsz, m, cfg.k_out, -1)  # [B, M, k_out, d]
 
         # prefix mode: [ctx][response slots], causal over the response region
         if target_thoughts is None:

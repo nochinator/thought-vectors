@@ -30,6 +30,10 @@ overrides_for() {
     SCHED) echo "thinker.k_ctx_schedule=[32,16,8]" ;;          # budget decays with age
     TAU)   echo "thinker.ctx_tau=0.5" ;;                       # predictor-adaptive per turn
     FLAT)  echo "thinker.flat_context=true" ;;                 # whole history, one encode
+    # --- mode-collapse fixes (round 2: deterministic heads averaged the many
+    #     valid replies into bland filler — distinct-1 <= 0.04 across T0-T5) ---
+    WTA4) echo "thinker.n_hypotheses=4 thinker.w_decoder=0.5" ;;
+    WTA8) echo "thinker.n_hypotheses=8 thinker.w_decoder=0.5" ;;
     # --- phase 2 previews (end-to-end, user idea b) ---
     U1)  echo "thinker.w_decoder=1.0 thinker.w_thought=0.0 thinker.unfreeze=decoder thinker.compress_frac=0.15" ;;
     U2)  echo "thinker.w_decoder=1.0 thinker.w_thought=0.25 thinker.unfreeze=codec thinker.compress_frac=0.25" ;;
