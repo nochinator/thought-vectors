@@ -339,3 +339,23 @@ pre-flight that justifies the bracket): tau 0.25/0.5/1.0 -> mean per-turn
 budget 4.1/3.8/3.4 vectors for mean 21.5-token turns (~0.19 vec/token at
 the strictest tau). Casual turns are ~8x cheaper than k_ctx=32; the budget
 bracket should be nearly free in quality and large in efficiency.
+
+### 2026-06-12: M5 frontier run COMPLETE — compression objective achieved
+
+55,140 steps / 12h wall-clock (1 ROCm fault, auto-resumed). Eval on
+mix_uni_val (2K texts, batched greedy decode):
+
+- **r=0.25 (4:1 compression): perfect reconstruction in EVERY bucket** —
+  F1 1.00, CE ~0.001, up to 257 tokens. The legacy headline (62-tok text at
+  k=16) is now "any text at k=len/4", and the original's 0.62 CE ceiling is
+  0.000.
+- r=0.125 (8:1): F1 0.83-0.96, bigram F1 0.76-0.92 — degradation is
+  GRACEFUL (adjective swaps, tail truncation), readable English, exactly
+  the brief.
+- Tau dial (runtime lossiness knob): tau=0.25 -> CE 0.02-0.08 at ratio
+  0.15-0.22 (~6:1); tau=2.0 -> CE ~1.7 at ratio 0.07-0.12 (~12:1, gist).
+  Monotone + graded, no garbage regime.
+- Absolute-k: k=64 perfect through 257 tokens; predictor MAE 0.05 at k=32.
+
+Gates: 80-128-tok F1 >= 0.75 at r=0.5 — actual 1.00 (and 0.90 at r=0.125).
+M5 CLOSED. checkpoints/m5_frontier/best.pt is the project codec.
