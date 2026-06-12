@@ -359,3 +359,33 @@ mix_uni_val (2K texts, batched greedy decode):
 
 Gates: 80-128-tok F1 >= 0.75 at r=0.5 — actual 1.00 (and 0.90 at r=0.125).
 M5 CLOSED. checkpoints/m5_frontier/best.pt is the project codec.
+
+### 2026-06-12: thinker bracket round 1 — full table (30-min equal-wall-clock)
+
+| run | val cos | dec CE | ref F1 | dist-1 | dist-2 | notes |
+|---|---|---|---|---|---|---|
+| T0 thought-only | 0.505 | 11.91 | 0.254 | 0.032 | 0.129 | undecodable thoughts |
+| T1 decoder-only | 0.085 | **3.61** | **0.298** | 0.012 | 0.042 | decodable, blandest |
+| T2 mixed | 0.491 | 3.83 | 0.281 | 0.007 | 0.025 | both signals combine |
+| T3 +reverse | 0.510 | 11.88 | 0.256 | 0.038 | 0.153 | reverse inert |
+| T4 mixed+rev | 0.485 | 3.80 | 0.282 | 0.008 | 0.027 | reverse inert |
+| T5 +cycle | 0.502 | 12.25 | 0.245 | 0.026 | 0.092 | cycle reinforces noise |
+| P0 prefix AR | 0.420 | 13.94 | 0.233 | 0.029 | 0.156 | TF cos 0.94! exposure bias |
+| K16 | 0.500 | 10.25 | 0.253 | **0.041** | **0.180** | 2.0x throughput |
+| K8 (ctx only) | 0.508 | 11.87 | 0.247 | 0.038 | 0.145 | ~2x; ROCm fault, ckpt fine |
+| SCHED 32/16/8 | 0.510 | 11.88 | 0.254 | 0.038 | 0.154 | = K8 |
+| TAU 0.5 | 0.505 | 11.88 | 0.255 | 0.036 | 0.137 | ~4 vec/turn adaptive |
+| FLAT | 0.511 | 11.78 | 0.259 | 0.039 | 0.162 | **3.3x throughput** |
+
+Findings: (1) w_decoder is REQUIRED for decodable thoughts (CE 3.6-3.8 vs
+~12); (2) universal mode collapse — every deterministic arm distinct-1
+<= 0.04, decoder arms worst: the head predicts the mean of valid replies
+("a good thing", "a lot of" filler with correct dialogue acts); (3) context
+budget is FREE: K8/TAU/SCHED/FLAT match T0 quality at 2-3.3x throughput;
+(4) reverse + cycle inert at this scale — DROPPED; (5) prefix AR is the
+sleeper: teacher-forced cos 0.94 (info is there) but free-running 0.42 —
+pure exposure bias, motivating tf-noise arms.
+
+**Round 2** (all k_ctx=8): C8/D8 controls, WTA4/WTA8 (winner-take-all
+multi-hypothesis vs mean-collapse), PN1/PN3 (prefix + tf-noise 0.1/0.3),
+FD (FLAT + mixed — the efficiency combination).
