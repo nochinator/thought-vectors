@@ -47,6 +47,41 @@ def thought_loss(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
     return mse + cos
 
 
+def encode_turns(
+    codec: ThoughtAutoencoder,
+    ids: torch.Tensor,
+    k: int,
+    grad: bool = False,
+    tau: float = 0.0,
+) -> tuple[torch.Tensor, torch.Tensor | None]:
+    """ids [..., T] -> (thoughts [..., k, d], per-turn budgets [...] or None).
+
+    Absent context turns are all-PAD rows: the encoder sees a fully masked
+    key set and emits NaN, and 0-attention-weight * NaN = NaN downstream,
+    so their thoughts must be zeroed (the thinker's key_pad already hides
+    them from attention).
+
+    tau > 0: per-turn adaptive budget from the codec's loss predictor —
+    smallest k' with predicted CE <= tau (predictor output space, log1p CE
+    for predictor_log codecs). The thinker masks slots beyond the budget.
+    """
+    flat = ids.reshape(-1, ids.size(-1))
+    mask = make_padding_mask(flat)
+    ctx = torch.enable_grad() if grad else torch.no_grad()
+    with ctx:
+        th_full = codec.encode(flat, mask)
+    th = th_full[:, :k].masked_fill(mask.all(dim=1)[:, None, None], 0.0)
+    budgets = None
+    if tau > 0:
+        with torch.no_grad():
+            pred = codec.predictor(th_full.detach())[:, :k]  # [rows, k] CE at prefix k'
+            ok = pred <= tau
+            first = ok.float().argmax(dim=1) + 1  # argmax = first True (monotone curve)
+            budgets = torch.where(ok.any(dim=1), first, torch.full_like(first, k))
+            budgets = budgets.clamp(min=2).reshape(ids.shape[:-1])
+    return th.reshape(*ids.shape[:-1], k, th.size(-1)), budgets
+
+
 class ThinkerTrainer:
     def __init__(self, cfg: Config, tokenizer: Tokenizer) -> None:
         assert torch.get_float32_matmul_precision() == "highest"
@@ -112,23 +147,6 @@ class ThinkerTrainer:
         self.metrics_file = open(self.log_dir / "metrics.jsonl", "a")
         self.samples_file = open(self.log_dir / "samples.txt", "a")
 
-    # ----- encoding helpers -----
-
-    def _encode_turns(self, ids: torch.Tensor, k: int, grad: bool = False) -> torch.Tensor:
-        """ids [..., T] -> thoughts [..., k, d] via the codec encoder.
-
-        Absent context turns are all-PAD rows: the encoder sees a fully masked
-        key set and emits NaN, and 0-attention-weight * NaN = NaN downstream,
-        so their thoughts must be zeroed (the thinker's key_pad already hides
-        them from attention)."""
-        flat = ids.reshape(-1, ids.size(-1))
-        mask = make_padding_mask(flat)
-        ctx = torch.enable_grad() if grad else torch.no_grad()
-        with ctx:
-            th = self.codec.encode(flat, mask)[:, :k]
-        th = th.masked_fill(mask.all(dim=1)[:, None, None], 0.0)
-        return th.reshape(*ids.shape[:-1], k, th.size(-1))
-
     # ----- core step -----
 
     def train_step(self, batch: dict) -> dict | None:
@@ -146,11 +164,14 @@ class ThinkerTrainer:
         resp_roles = batch["resp_roles"].to(dev)
 
         grad_enc = tk.unfreeze == "codec"
-        ctx_th = self._encode_turns(ctx_ids, tk.k_ctx, grad=grad_enc)
+        ctx_th, budgets = encode_turns(
+            self.codec, ctx_ids, tk.k_ctx, grad=grad_enc, tau=tk.ctx_tau
+        )
         with torch.no_grad():
-            tgt_th = self._encode_turns(resp_ids, tk.k_out)
+            tgt_th, _ = encode_turns(self.codec, resp_ids, tk.k_out)
 
-        pred = self.thinker(ctx_th, ctx_roles, ctx_turns, resp_roles, target_thoughts=tgt_th)
+        pred = self.thinker(ctx_th, ctx_roles, ctx_turns, resp_roles,
+                            target_thoughts=tgt_th, slot_budgets=budgets)
 
         losses: dict[str, torch.Tensor] = {}
         if tk.w_thought > 0:
@@ -165,7 +186,7 @@ class ThinkerTrainer:
             if w > 0 and int(ctx_turns.min()) >= 1:
                 rev_ctx, rev_tgt = self._reverse_arrangement(ctx_th, tgt_th, ctx_turns)
                 rev_pred = self.thinker.predict_reverse(
-                    rev_ctx, ctx_roles, ctx_turns, resp_roles
+                    rev_ctx, ctx_roles, ctx_turns, resp_roles, slot_budgets=budgets
                 )
                 losses["reverse"] = w * thought_loss(rev_pred, rev_tgt)
         if tk.w_cycle > 0 and torch.rand(()).item() < tk.cycle_frac:
@@ -248,12 +269,15 @@ class ThinkerTrainer:
                 break
             ctx_ids = batch["ctx_ids"].to(self.device)
             resp_ids = batch["resp_ids"].to(self.device)
-            ctx_th = self._encode_turns(ctx_ids, self.cfg.thinker.k_ctx)
-            tgt_th = self._encode_turns(resp_ids, self.cfg.thinker.k_out)
+            ctx_th, budgets = encode_turns(
+                self.codec, ctx_ids, self.cfg.thinker.k_ctx, tau=self.cfg.thinker.ctx_tau
+            )
+            tgt_th, _ = encode_turns(self.codec, resp_ids, self.cfg.thinker.k_out)
             pred = self.thinker(
                 ctx_th, batch["ctx_roles"].to(self.device),
                 batch["ctx_turns"].to(self.device), batch["resp_roles"].to(self.device),
                 target_thoughts=tgt_th if self.cfg.thinker.mode == "prefix" else None,
+                slot_budgets=budgets,
             )
             cos_sum += F.cosine_similarity(pred, tgt_th, dim=-1).mean().item()
             resp_pad = make_padding_mask(resp_ids)
@@ -269,10 +293,13 @@ class ThinkerTrainer:
         self.thinker.eval()
         dev = self.device
         ctx_ids = batch["ctx_ids"][:max_rows].to(dev)
-        ctx_th = self._encode_turns(ctx_ids, self.cfg.thinker.k_ctx)
+        ctx_th, budgets = encode_turns(
+            self.codec, ctx_ids, self.cfg.thinker.k_ctx, tau=self.cfg.thinker.ctx_tau
+        )
         pred = self.thinker(
             ctx_th, batch["ctx_roles"][:max_rows].to(dev),
             batch["ctx_turns"][:max_rows].to(dev), batch["resp_roles"][:max_rows].to(dev),
+            slot_budgets=budgets,
         )
         ids = sample_decode(self.codec, pred, self.codec_cfg.model.max_seq_len,
                             temperature=0.0, no_repeat_ngram=3)
@@ -409,10 +436,11 @@ def iter_cycle(loader):
 
 
 def make_dialogue_loader(shard_dir, batch_size, max_context, shuffle=True, num_workers=2,
-                         seed=1234):
+                         seed=1234, flat_context=False, max_flat_tokens=256):
     from torch.utils.data import DataLoader
 
-    ds = DialogueDataset(shard_dir, max_context=max_context)
+    ds = DialogueDataset(shard_dir, max_context=max_context,
+                         flat_context=flat_context, max_flat_tokens=max_flat_tokens)
     gen = torch.Generator()
     gen.manual_seed(seed)
     return DataLoader(

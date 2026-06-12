@@ -24,6 +24,12 @@ overrides_for() {
     K48) echo "thinker.k_ctx=48 thinker.k_out=48" ;;
     L4)  echo "thinker.layers=4" ;;
     L8)  echo "thinker.layers=8" ;;
+    # --- context-budget bracket (mean turn ~23 tok; k_ctx=32 costs MORE
+    #     vectors than raw text — how few context thoughts suffice?) ---
+    K8)    echo "thinker.k_ctx=8" ;;                           # 3:1 ctx compression
+    SCHED) echo "thinker.k_ctx_schedule=[32,16,8]" ;;          # budget decays with age
+    TAU)   echo "thinker.ctx_tau=0.5" ;;                       # predictor-adaptive per turn
+    FLAT)  echo "thinker.flat_context=true" ;;                 # whole history, one encode
     # --- phase 2 previews (end-to-end, user idea b) ---
     U1)  echo "thinker.w_decoder=1.0 thinker.w_thought=0.0 thinker.unfreeze=decoder thinker.compress_frac=0.15" ;;
     U2)  echo "thinker.w_decoder=1.0 thinker.w_thought=0.25 thinker.unfreeze=codec thinker.compress_frac=0.25" ;;

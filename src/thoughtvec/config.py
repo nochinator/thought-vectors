@@ -119,6 +119,18 @@ class ThinkerCfg:
     k_ctx: int = 32           # thought prefix kept per context turn
     k_out: int = 32           # response thoughts predicted
     max_turns: int = 8        # max context turns
+    # context-budget ablations (mean turn is ~23 tokens, so k_ctx=32 costs
+    # MORE vectors than raw text — these trade context fidelity for budget)
+    k_ctx_schedule: list = field(default_factory=list)
+                              # per-recency slot budgets, e.g. [32,16,8]:
+                              # last turn keeps 32 thoughts, older ones decay
+    ctx_tau: float = 0.0      # >0: per-turn adaptive k via the codec's loss
+                              # predictor (smallest k with pred<=tau, in the
+                              # predictor's output space — log1p CE for the
+                              # m5_frontier codec); overrides k_ctx_schedule
+    flat_context: bool = False  # encode the WHOLE history as one BOS..EOS
+                              # token stream (C=1): cross-turn compression,
+                              # but turn structure only via inline markers
     # losses
     w_thought: float = 1.0    # MSE + (1-cos) in thought space vs frozen-encoder target
     w_decoder: float = 0.0    # teacher-forced CE through the frozen decoder

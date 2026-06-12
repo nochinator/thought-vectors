@@ -212,12 +212,15 @@ class DialogueDataset(Dataset):
     the data; the speaker embedding tells the thinker who is replying).
     """
 
-    def __init__(self, shard_dir: str | Path, max_context: int = 6) -> None:
+    def __init__(self, shard_dir: str | Path, max_context: int = 6,
+                 flat_context: bool = False, max_flat_tokens: int = 256) -> None:
         shard_dir = Path(shard_dir)
         self.tokens = np.memmap(shard_dir / "tokens.bin", dtype=np.uint16, mode="r")
         self.turns = np.load(shard_dir / "turns.npy")
         self.meta = json.loads((shard_dir / "meta.json").read_text())
         self.max_context = max_context
+        self.flat_context = flat_context
+        self.max_flat_tokens = max_flat_tokens
         conv_ids = self.turns[:, 2]
         first_of_conv = np.concatenate([[True], conv_ids[1:] != conv_ids[:-1]])
         self.samples = np.nonzero(~first_of_conv)[0]  # every non-first turn
@@ -237,8 +240,15 @@ class DialogueDataset(Dataset):
         lo = t
         while lo > 0 and self.turns[lo - 1, 2] == cid and t - lo < self.max_context:
             lo -= 1
+        context = [self._turn(j) for j in range(lo, t)]
+        if self.flat_context:
+            # whole history as ONE token stream (turn boundaries stay visible
+            # as inline EOS/BOS pairs); drop oldest turns to fit the window
+            while len(context) > 1 and sum(c.size(0) for c in context) > self.max_flat_tokens:
+                context = context[1:]
+            context = [torch.cat(context)[-self.max_flat_tokens :]]
         return {
-            "context": [self._turn(j) for j in range(lo, t)],
+            "context": context,
             "response": self._turn(t),
             "resp_parity": int((t - self._conv_start(t)) % 2),
         }

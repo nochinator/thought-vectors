@@ -86,9 +86,11 @@ def train_thinker_main() -> None:
     train_loader = make_dialogue_loader(
         cfg.data.shard_dir, cfg.train.batch_size, cfg.thinker.max_turns,
         shuffle=True, num_workers=cfg.data.num_workers, seed=cfg.train.seed,
+        flat_context=cfg.thinker.flat_context,
     )
     val_loader = make_dialogue_loader(
-        val_dir, cfg.train.batch_size, cfg.thinker.max_turns, shuffle=False, num_workers=0
+        val_dir, cfg.train.batch_size, cfg.thinker.max_turns, shuffle=False, num_workers=0,
+        flat_context=cfg.thinker.flat_context,
     )
     trainer.fit(train_loader, val_loader)
 

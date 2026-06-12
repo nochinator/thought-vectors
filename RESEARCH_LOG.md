@@ -316,3 +316,26 @@ mean 23 tok, p90 40), val 33K turns — split by conversation.
 Ready to fire on frontier completion: scripts/ablate_thinker.sh T0 T1 T2 T3
 T4 T5 P0 K16 L4 (40 min each ≈ 6h), then winner combos, then a 12h-max run;
 phase-2 (U1/U2 unfreeze + compression anchor) as a later round.
+
+### 2026-06-12: context-budget axis added to the thinker bracket (user direction)
+
+User raised the encode-each-turn-separately framing — which is the built
+design (per-turn thought prefixes, thinker sees [turns, vectors, d], decoder
+renders only the response turn) — but it surfaced an untested axis: the
+CONTEXT THOUGHT BUDGET. With k_ctx=32 and mean turn ~23 tokens, context
+costs MORE vectors than the raw text. New mechanisms (all CPU-tested):
+- slot_budgets: per-turn slot masking in the thinker; because the codec
+  orders thoughts by importance, masking a turn's tail slots IS that turn
+  at smaller k (no re-encode).
+- thinker.k_ctx_schedule=[32,16,8]: budget decays with turn age (SCHED).
+- thinker.ctx_tau: per-turn ADAPTIVE budget via the frozen codec's monotone
+  loss predictor — the M5 tau dial applied per context turn (TAU).
+- thinker.flat_context: whole history encoded as ONE BOS..EOS token stream,
+  C=1 (FLAT) — cross-turn compression; codec sees dialogue format OOD.
+- K8: fixed k_ctx=8.
+
+**CPU probe of the m5_frontier predictor on real dialogue turns** (the
+pre-flight that justifies the bracket): tau 0.25/0.5/1.0 -> mean per-turn
+budget 4.1/3.8/3.4 vectors for mean 21.5-token turns (~0.19 vec/token at
+the strictest tau). Casual turns are ~8x cheaper than k_ctx=32; the budget
+bracket should be nearly free in quality and large in efficiency.

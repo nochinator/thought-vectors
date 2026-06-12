@@ -72,6 +72,7 @@ class Thinker(nn.Module):
         ctx_thoughts: torch.Tensor,  # [B, C, k, d]
         ctx_roles: torch.Tensor,     # [B, C]
         ctx_turns: torch.Tensor,     # [B] real turn counts
+        slot_budgets: torch.Tensor | None = None,  # [B, C] per-turn thought counts
     ) -> tuple[torch.Tensor, torch.Tensor]:
         bsz, c, k, d = ctx_thoughts.shape
         dist = (ctx_turns[:, None] - torch.arange(c, device=ctx_thoughts.device)[None, :]).clamp(
@@ -81,8 +82,16 @@ class Thinker(nn.Module):
         x = self.slot_pos(x.reshape(bsz * c, k, d)).reshape(bsz, c, k, d)
         seq = x.reshape(bsz, c * k, d)
         turn_real = torch.arange(c, device=seq.device)[None, :] < ctx_turns[:, None]  # [B, C]
-        key_pad = ~turn_real[:, :, None].expand(bsz, c, k).reshape(bsz, c * k)
-        return seq, key_pad
+        key_pad = ~turn_real[:, :, None].expand(bsz, c, k)
+        if slot_budgets is None and self.cfg.k_ctx_schedule:
+            sched = torch.as_tensor(self.cfg.k_ctx_schedule, device=seq.device)
+            slot_budgets = sched[(dist - 1).clamp(min=0, max=sched.numel() - 1)]
+        if slot_budgets is not None:
+            # the codec orders thoughts by importance, so masking the tail of a
+            # turn's slots IS decoding-equivalent to having used a smaller k
+            slots = torch.arange(k, device=seq.device)
+            key_pad = key_pad | (slots[None, None, :] >= slot_budgets[:, :, None])
+        return seq, key_pad.reshape(bsz, c * k)
 
     def _queries(self, seed: torch.Tensor, resp_roles: torch.Tensor) -> torch.Tensor:
         out, _ = self.out_gru(seed)
@@ -98,9 +107,10 @@ class Thinker(nn.Module):
         ctx_turns: torch.Tensor,
         resp_roles: torch.Tensor,
         target_thoughts: torch.Tensor | None = None,  # [B, k_out, d] for prefix-mode TF
+        slot_budgets: torch.Tensor | None = None,     # [B, C] per-turn thought counts
     ) -> torch.Tensor:
         cfg = self.cfg
-        seq, key_pad = self._context_seq(ctx_thoughts, ctx_roles, ctx_turns)
+        seq, key_pad = self._context_seq(ctx_thoughts, ctx_roles, ctx_turns, slot_budgets)
         bsz = seq.size(0)
 
         if cfg.mode == "query":
@@ -166,9 +176,10 @@ class Thinker(nn.Module):
         ctx_roles: torch.Tensor,
         ctx_turns: torch.Tensor,
         resp_roles: torch.Tensor,
+        slot_budgets: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """Aux head: predict the LAST context turn's thoughts (query mode only)."""
-        seq, key_pad = self._context_seq(ctx_thoughts, ctx_roles, ctx_turns)
+        seq, key_pad = self._context_seq(ctx_thoughts, ctx_roles, ctx_turns, slot_budgets)
         encoded = self.trunk(seq, src_key_padding_mask=key_pad)
         q = self.slot_pos(self.rev_seed).expand(seq.size(0), -1, -1)
         q = q + self.resp_role_emb(1 - resp_roles)[:, None, :]

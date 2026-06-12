@@ -12,7 +12,7 @@ import torch
 
 from .config import Config, from_dict
 from .generate import sample_decode
-from .model import ThoughtAutoencoder, make_padding_mask
+from .model import ThoughtAutoencoder
 from .thinker import Thinker
 from .tokenizer import BOS_ID, EOS_ID, Tokenizer
 
@@ -47,23 +47,32 @@ class ChatSession:
         turns = self.history[-tk.max_turns :]
         first_role = (len(self.history) - len(turns)) % 2  # parity of turns[0]
 
-        bodies = [self.tokenizer.encode(t, add_special=False) for t in turns]
-        max_t = min(max(len(b) for b in bodies) + 2, self.codec_cfg.model.max_seq_len)
-        ctx_ids = torch.zeros(1, len(turns), max_t, dtype=torch.long, device=self.device)
-        for j, body in enumerate(bodies):
-            row = torch.tensor([BOS_ID] + body[: max_t - 2] + [EOS_ID], dtype=torch.long)
-            ctx_ids[0, j, : row.size(0)] = row
+        from .thinker_train import encode_turns
 
-        flat = ctx_ids.reshape(-1, max_t)
-        th = self.codec.encode(flat, make_padding_mask(flat))[:, : tk.k_ctx]
-        ctx_th = th.reshape(1, len(turns), tk.k_ctx, -1)
+        seq_max = self.codec_cfg.model.max_seq_len
+        rows = [
+            [BOS_ID] + self.tokenizer.encode(t, add_special=False)[: seq_max - 2] + [EOS_ID]
+            for t in turns
+        ]
+        if tk.flat_context:
+            flat_row: list[int] = []
+            for r in rows:
+                flat_row += r
+            rows = [flat_row[-seq_max:]]
+            first_role = 0
+        max_t = max(len(r) for r in rows)
+        ctx_ids = torch.zeros(1, len(rows), max_t, dtype=torch.long, device=self.device)
+        for j, r in enumerate(rows):
+            ctx_ids[0, j, : len(r)] = torch.tensor(r, dtype=torch.long)
+
+        ctx_th, budgets = encode_turns(self.codec, ctx_ids, tk.k_ctx, tau=tk.ctx_tau)
         ctx_roles = torch.tensor(
-            [[(first_role + j) % 2 for j in range(len(turns))]], device=self.device
+            [[(first_role + j) % 2 for j in range(len(rows))]], device=self.device
         )
-        ctx_turns = torch.tensor([len(turns)], device=self.device)
+        ctx_turns = torch.tensor([len(rows)], device=self.device)
         resp_roles = torch.tensor([1], device=self.device)  # bot replies
 
-        pred = self.thinker(ctx_th, ctx_roles, ctx_turns, resp_roles)
+        pred = self.thinker(ctx_th, ctx_roles, ctx_turns, resp_roles, slot_budgets=budgets)
         out = sample_decode(self.codec, pred, self.codec_cfg.model.max_seq_len,
                             temperature=temperature, no_repeat_ngram=no_repeat_ngram)
         text = self.tokenizer.decode(out[0].tolist())

@@ -103,8 +103,11 @@ def make_trainer(setup, **thinker_overrides):
         {"cycle_frac": 1.0, "w_cycle": 0.5},             # T5: cycle always on
         {"mode": "prefix"},                              # P0
         {"unfreeze": "decoder", "compress_frac": 1.0, "w_decoder": 1.0},  # U1 anchor path
+        {"ctx_tau": 0.5},                                # TAU: predictor-adaptive budgets
+        {"k_ctx_schedule": [4, 3, 2]},                   # SCHED: recency-decayed budgets
     ],
-    ids=["thought", "decoder", "mixed_rev", "cycle", "prefix", "unfreeze_compress"],
+    ids=["thought", "decoder", "mixed_rev", "cycle", "prefix", "unfreeze_compress",
+         "ctx_tau", "sched"],
 )
 def test_trainer_modes(setup, ov):
     from thoughtvec.thinker_train import make_dialogue_loader
@@ -127,6 +130,29 @@ def test_trainer_modes(setup, ov):
     trainer2 = make_trainer(setup, **ov)
     trainer2.load_checkpoint(trainer.run_dir / "final.pt")
     assert trainer2.step == 4
+
+
+def test_trainer_flat_context(setup):
+    from thoughtvec.thinker_train import make_dialogue_loader
+
+    trainer = make_trainer(setup, flat_context=True)
+    _, _, _, shard, _ = setup
+    loader = make_dialogue_loader(shard, 2, max_context=4, shuffle=True, num_workers=0,
+                                  flat_context=True, max_flat_tokens=32)
+    trainer.fit(loader, loader)
+    assert trainer.step == 4
+    val = trainer.validate(loader)
+    import math
+
+    assert math.isfinite(val["val_cos"]) and math.isfinite(val["val_dec_ce"])
+
+    # chat path builds the flat context itself
+    from thoughtvec.chat import ChatSession
+
+    session = ChatSession(str(trainer.run_dir / "final.pt"), device="cpu")
+    session.reply("hi")
+    reply = session.reply("how are you?")
+    assert isinstance(reply, str)
 
 
 def test_chat_session(setup):

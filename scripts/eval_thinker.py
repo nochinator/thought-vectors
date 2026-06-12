@@ -29,7 +29,7 @@ from thoughtvec.generate import sample_decode
 from thoughtvec.losses import reconstruction_ce
 from thoughtvec.model import ThoughtAutoencoder, make_padding_mask
 from thoughtvec.thinker import Thinker
-from thoughtvec.thinker_train import make_dialogue_loader
+from thoughtvec.thinker_train import encode_turns, make_dialogue_loader
 from thoughtvec.tokenizer import Tokenizer
 
 
@@ -68,7 +68,9 @@ def main() -> None:
     tok = Tokenizer(cfg.run.tokenizer_path)
 
     loader = make_dialogue_loader(args.shard, args.batch_size, tk.max_turns,
-                                  shuffle=False, num_workers=0)
+                                  shuffle=False, num_workers=0,
+                                  flat_context=tk.flat_context,
+                                  max_flat_tokens=codec_cfg.model.max_seq_len)
     cos_sum, ce_sum, f1_sum, n_rows, n_batches = 0.0, 0.0, 0.0, 0, 0
     pred_len_sum, ref_len_sum = 0, 0
     grams1: Counter = Counter()
@@ -82,14 +84,11 @@ def main() -> None:
                 break
             ctx_ids = batch["ctx_ids"].to(dev)
             resp_ids = batch["resp_ids"].to(dev)
-            flat = ctx_ids.reshape(-1, ctx_ids.size(-1))
-            fmask = make_padding_mask(flat)
-            th = codec.encode(flat, fmask)[:, : tk.k_ctx]
-            th = th.masked_fill(fmask.all(dim=1)[:, None, None], 0.0)  # absent turns -> NaN
-            ctx_th = th.reshape(*ctx_ids.shape[:2], tk.k_ctx, -1)
-            tgt_th = codec.encode(resp_ids, make_padding_mask(resp_ids))[:, : tk.k_out]
+            ctx_th, budgets = encode_turns(codec, ctx_ids, tk.k_ctx, tau=tk.ctx_tau)
+            tgt_th, _ = encode_turns(codec, resp_ids, tk.k_out)
             pred = thinker(ctx_th, batch["ctx_roles"].to(dev),
-                           batch["ctx_turns"].to(dev), batch["resp_roles"].to(dev))
+                           batch["ctx_turns"].to(dev), batch["resp_roles"].to(dev),
+                           slot_budgets=budgets)
             cos_sum += F.cosine_similarity(pred, tgt_th, dim=-1).mean().item()
             resp_pad = make_padding_mask(resp_ids)
             logits = codec.decode(pred, resp_ids[:, :-1], resp_pad[:, :-1])
