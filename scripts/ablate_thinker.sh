@@ -32,8 +32,12 @@ overrides_for() {
     FLAT)  echo "thinker.flat_context=true" ;;                 # whole history, one encode
     # --- mode-collapse fixes (round 2: deterministic heads averaged the many
     #     valid replies into bland filler — distinct-1 <= 0.04 across T0-T5) ---
-    WTA4) echo "thinker.n_hypotheses=4 thinker.w_decoder=0.5" ;;
-    WTA8) echo "thinker.n_hypotheses=8 thinker.w_decoder=0.5" ;;
+    WTA4) echo "thinker.n_hypotheses=4 thinker.w_decoder=0.5 thinker.k_ctx=8" ;;
+    WTA8) echo "thinker.n_hypotheses=8 thinker.w_decoder=0.5 thinker.k_ctx=8" ;;
+    C8)   echo "thinker.w_decoder=0.5 thinker.k_ctx=8" ;;     # round-2 control: T2 @ k8
+    D8)   echo "thinker.w_thought=0.0 thinker.w_decoder=1.0 thinker.k_ctx=8" ;;  # T1 @ k8
+    PN1)  echo "thinker.mode=prefix thinker.tf_noise_std=0.1 thinker.w_decoder=0.5 thinker.k_ctx=8" ;;
+    PN3)  echo "thinker.mode=prefix thinker.tf_noise_std=0.3 thinker.w_decoder=0.5 thinker.k_ctx=8" ;;
     # --- phase 2 previews (end-to-end, user idea b) ---
     U1)  echo "thinker.w_decoder=1.0 thinker.w_thought=0.0 thinker.unfreeze=decoder thinker.compress_frac=0.15" ;;
     U2)  echo "thinker.w_decoder=1.0 thinker.w_thought=0.25 thinker.unfreeze=codec thinker.compress_frac=0.25" ;;

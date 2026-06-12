@@ -106,9 +106,10 @@ def make_trainer(setup, **thinker_overrides):
         {"ctx_tau": 0.5},                                # TAU: predictor-adaptive budgets
         {"k_ctx_schedule": [4, 3, 2]},                   # SCHED: recency-decayed budgets
         {"n_hypotheses": 3, "w_decoder": 0.5},           # WTA multi-hypothesis
+        {"mode": "prefix", "tf_noise_std": 0.2, "w_decoder": 0.5},  # PN exposure fix
     ],
     ids=["thought", "decoder", "mixed_rev", "cycle", "prefix", "unfreeze_compress",
-         "ctx_tau", "sched", "wta"],
+         "ctx_tau", "sched", "wta", "prefix_noise"],
 )
 def test_trainer_modes(setup, ov):
     from thoughtvec.thinker_train import make_dialogue_loader

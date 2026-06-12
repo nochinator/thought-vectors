@@ -122,6 +122,10 @@ class ThinkerCfg:
                               # specialize instead of averaging to bland filler
     wta_eps: float = 0.05     # small loss share for non-winners (keeps all
                               # hypotheses alive; pure WTA strands losers)
+    tf_noise_std: float = 0.0 # prefix mode: gaussian noise on teacher-forced
+                              # previous-thought inputs (exposure-bias fix —
+                              # P0 hit cos 0.94 teacher-forced but collapsed
+                              # to 0.42 free-running)
     k_ctx: int = 32           # thought prefix kept per context turn
     k_out: int = 32           # response thoughts predicted
     max_turns: int = 8        # max context turns

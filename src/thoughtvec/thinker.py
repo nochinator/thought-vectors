@@ -142,9 +142,12 @@ class Thinker(nn.Module):
         slots = self.slot_pos(self.out_seed.expand(bsz, -1, -1).clone())
         slots = slots + self.resp_role_emb(resp_roles)[:, None, :]
         # teacher forcing: slot j also receives the true thought j-1
-        slots = slots + torch.cat(
+        tf = torch.cat(
             [torch.zeros_like(target_thoughts[:, :1]), target_thoughts[:, :-1]], dim=1
         )
+        if self.training and cfg.tf_noise_std > 0:
+            tf = tf + torch.randn_like(tf) * cfg.tf_noise_std
+        slots = slots + tf
         full = torch.cat([seq, slots], dim=1)
         mask = self._prefix_mask(seq.size(1), cfg.k_out, seq.device)
         pad = torch.cat(
