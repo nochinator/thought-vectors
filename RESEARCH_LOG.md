@@ -389,3 +389,37 @@ pure exposure bias, motivating tf-noise arms.
 **Round 2** (all k_ctx=8): C8/D8 controls, WTA4/WTA8 (winner-take-all
 multi-hypothesis vs mean-collapse), PN1/PN3 (prefix + tf-noise 0.1/0.3),
 FD (FLAT + mixed — the efficiency combination).
+
+### 2026-06-12: thinker bracket round 2 — table (30-min, all k_ctx=8 except FD)
+
+| run | val cos | dec CE | ref F1 | dist-1 | dist-2 | steps | notes |
+|---|---|---|---|---|---|---|---|
+| C8 mixed (T2@k8) | 0.501 | 3.79 | 0.296 | 0.009 | 0.031 | 9,779 | round-2 control |
+| D8 dec-only (T1@k8) | 0.080 | **3.56** | **0.301** | 0.013 | 0.046 | 9,797 | thoughts leave codec space |
+| WTA4 | 0.434 | 4.07 | 0.266 | 0.012 | 0.045 | 9,358 | winner cos **0.555** |
+| WTA8 | 0.421 | 4.14 | 0.266 | 0.011 | 0.041 | 8,883 | winner cos 0.573 |
+| PN1 tf-noise 0.1 | 0.421 | 14.33 | 0.238 | 0.006 | 0.033 | ~4,450* | FAILED free-running |
+| PN3 tf-noise 0.3 | 0.393 | 12.68 | 0.198 | 0.016 | 0.077 | 9,345 | FAILED, len ratio 0.39 |
+| FD flat+mixed | 0.494 | 3.77 | 0.288 | 0.010 | 0.034 | **12,760** | 1.3x steps vs k8 arms |
+
+*PN1 hit a ROCm memory fault mid-run; best.pt evaluated.
+
+Findings: (1) C8/D8 reproduce T2/T1 at k8 — context budget stays free.
+(2) tf-noise does NOT fix prefix exposure bias (PN1/PN3 free-running cos
+0.39-0.42): the model exploits a near-copy shortcut (adjacent slots are
+similar, TF dec CE ~0.001), and isotropic noise can't teach robustness to
+the *structured* drift of its own errors. Scheduled sampling parked as a
+possible round-3 arm. (3) WTA is real but small at this scale: hypotheses
+specialize by length/form (one short "Yeah, what's up?" mode, longer
+modes elsewhere), winner-vs-single-head cos 0.555 vs 0.501; random-hyp
+metrics lag control, consistent with the gradient splitting 4 ways on a
+30-min budget. (4) Eval samples now read as *undertrained* more than
+mode-averaged — content blandness may partly be a scale artifact.
+
+**Frontier run decision:** WTA4 recipe (query, k_ctx=8, w_thought 1.0 +
+w_decoder 0.5, n_hypotheses=4, eps 0.05) for 12h. Rationale: mixed loss
+keeps predicted thoughts in codec distribution (predictor ranking of
+hypotheses in chat stays valid — D8's cos 0.08 would break it), k8 is
+free throughput, and WTA is the only arm that structurally addresses
+mean-collapse; its 30-min CE deficit is the 4-way gradient split, and
+winner cos says the modes are real. ~225K steps expected.
