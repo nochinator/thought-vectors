@@ -423,3 +423,41 @@ hypotheses in chat stays valid — D8's cos 0.08 would break it), k8 is
 free throughput, and WTA is the only arm that structurally addresses
 mean-collapse; its 30-min CE deficit is the 4-way gradient split, and
 winner cos says the modes are real. ~225K steps expected.
+
+### 2026-06-13: M4 frontier thinker run — WTA4 recipe, 12h / 225K steps
+
+Recipe: query mode, k_ctx=8, w_thought 1.0 + w_decoder 0.5, n_hypotheses=4,
+wta_eps 0.05. 15.13M params over the frozen d=384 m5_frontier codec.
+Completed 225,000 steps (full schedule, ~11.4h, ~5.5 it/s), no NaN/fault.
+
+| metric | WTA4 @30min | frontier @225K |
+|---|---|---|
+| best-of-M val cos | 0.434 | **0.584** |
+| best-of-M val dec CE | 4.07 | **3.41** |
+| eval ref F1 (random hyp) | 0.266 | **0.320** |
+| eval distinct-1 | 0.012 | **0.022** |
+| eval distinct-2 | 0.045 | **0.086** |
+
+24x more training helped on every axis: dec CE 4.07->3.41 (beats every
+round-1/2 arm including D8's 3.56, while keeping cos 0.58 so thoughts stay
+in codec space and the chat predictor-ranking stays valid), and diversity
+roughly doubled (distinct-1 0.012->0.022, distinct-2 0.045->0.086).
+
+Sample read (the content-blandness question): **partial win.** The model
+now reliably nails the dialogue act and the opening clause from context —
+REF "No problem, I was happy to help" -> PRED "No problem, I'm happy to
+help you"; REF "I can imagine..." -> PRED "I can imagine. ..."; REF
+"Definitely..." -> PRED "Definitely. ...". First-clause grounding is
+genuinely there. But mid-sentence it still decays into the filler
+attractor ("a good thing", "I've done", "I don't get it"). So the collapse
+moved from whole-reply blandness (round 1-2) to second-half degradation:
+the thinker commits to a grounded start, then loses the thread across the
+k_out thought slots. Reads like the response-slot AR/scaffold running out
+of signal past the first 1-2 thoughts, not pure mode-averaging.
+
+Likely next levers (round 3, unranked): (a) k_out > 8 — reply may need
+more thought capacity than context; (b) per-slot loss weighting / curated
+slot order so later slots get gradient; (c) phase-2 decoder unfreeze
+(U1/U2) so the renderer adapts to thinker-distribution thoughts rather
+than codec-distribution; (d) larger/curated dialogue data (SODA dominates;
+its replies are short and formulaic, which may BE the attractor).
