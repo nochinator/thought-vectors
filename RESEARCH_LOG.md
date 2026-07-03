@@ -461,3 +461,700 @@ slot order so later slots get gradient; (c) phase-2 decoder unfreeze
 (U1/U2) so the renderer adapts to thinker-distribution thoughts rather
 than codec-distribution; (d) larger/curated dialogue data (SODA dominates;
 its replies are short and formulaic, which may BE the attractor).
+
+### 2026-06-24: M4 thinker — ROUND 3 designed (data + slot; tail-starvation) [with Nyx]
+
+Picks up after the 2026-06-13 WTA4 frontier (the log's last run). Reframed the
+frontier's residual failure — grounded opening clause then filler across the
+BACK HALF of the response slots, distinct-1 0.022 — as **one-to-many
+mean-collapse concentrated in the tail slots**, with two structural causes:
+
+1. **Data.** The frontier trained on `data/dialogue` (96% SODA; short formulaic
+   replies = the literal filler attractor). `data/dialogue_combined` (built
+   2026-06-15, never ablated) cuts SODA 6x (394K→61K convs), boosts OASST 10x
+   (859→8.5K), mean turn 23→30 tok. Own M5 lesson says data quality dominates
+   at this scale, so this is the cheapest high-EV lever — it just never ran.
+2. **Too many response slots.** k_out=32, but a ~30-tok reply is near-perfectly
+   reconstructed by the codec in ~8 thoughts (r=0.25). Target slots ~8..31 are
+   low-information refinements; regressing to them yields filler, and at
+   inference the decoder renders all 32 → garbage tail.
+
+**Code change (this session):** per-slot thought weighting was wired only in the
+non-WTA branch, so `slot_weight_decay` was **unreachable from the WTA (frontier)
+recipe** (n_hyp>1). Added optional `slot_weights` to `wta_losses`/`wta_select`
+(reduces exactly to the unweighted mean when uniform) and threaded
+`slot_weight_decay` through the WTA branch of `train_step`. New test
+`test_wta_slot_weights_reduce_to_unweighted` + a `wta_slotw` parametrize arm;
+full thinker suite green (CPU).
+
+**Round-3 bracket** (`scripts/ablate_thinker_r3.sh`, equal wall-clock, one
+change per arm vs the R3_DATA base = WTA4 recipe on `dialogue_combined`):
+
+| arm | change vs base | hypothesis |
+|---|---|---|
+| R3_CTL_OLD | WTA4 recipe, OLD data | reference (reproduce frontier @ slot) |
+| R3_DATA | rebalanced data only | does cleaner data alone move the attractor? |
+| R3_KOUT16/12/8 | k_out 16/12/8 | rightsize response slots to reply info content |
+| R3_SLOT | slot_weight_decay 0.3 | down-weight noisy tail thought-MSE (now WTA-reachable) |
+| R3_KRP | k_out_random_prefix | importance-order output; any short prefix decodes |
+| R3_DIV | diversity_weight 0.1 | explicit batch-variance anti-collapse |
+| R3_WTA8 | n_hypotheses 8 | more modes (frontier: real but gradient-split) |
+| R3_POSW | pos_weight_decay 0.5 | position-weighted decoder CE (token-side analog) |
+| R3_BOTH | k_out16 + slot 0.3 + KRP | stacked tail fixes once isolated arms rank |
+
+Prediction (Nyx, to be falsified): KOUT16/KRP move the tail-filler metric
+(distinct-1/2, second-half ref-F1) more than DATA alone; DATA + a slot lever
+stack. NOT YET RUN — bracket validated (all arms parse, shards present), awaiting
+GPU.
+
+---
+
+### Round-3 core results (2026-06-24, with Nyx) — 4 arms, equal ~40-min wall-clock
+
+Ran `R3_DATA R3_KOUT16 R3_KRP R3_SLOT` (DUR=2400) over frozen M5. Eval on
+`data/dialogue_val`, 32 batches:
+
+| arm | val_cos | dec_ce | ref_f1 | distinct1 | distinct2 | len_ratio | out_vectors |
+|---|---|---|---|---|---|---|---|
+| R3_KRP  | **0.437** | 4.086 | 0.202 | **0.0098** | **0.0409** | 0.66 | **2.31** |
+| R3_DATA | 0.427 | 4.029 | 0.256 | 0.0082 | 0.0309 | 1.09 | 32 |
+| R3_KOUT16 | 0.411 | 4.027 | 0.260 | 0.0079 | 0.0295 | 1.08 | 16 |
+| R3_SLOT | 0.421 | **4.005** | 0.254 | 0.0075 | 0.0283 | 1.12 | 32 |
+
+**Qualitative (the real signal — read `logs/*.samples.txt`):**
+- R3_DATA still collapses onto the **"good thing" attractor**, undisguised:
+  "I have been a good thing." / "That's a good thing. I'm sure you'll have to
+  be a good time." Rebalanced data did NOT kill the filler at 40 min.
+- R3_KRP `out_tau=0.5` **over-truncates to ~2.3 vectors** — below the codec's
+  sentence floor (~8 thoughts at r=0.25), so it emits fragments ("I was", ".").
+  Its higher distinct is **partly artifact**: short fragments score high on
+  distinct while ref_f1 *drops* (0.20, worst) and len_ratio = 0.66. Diversity
+  up + ref_f1 down = noise, not the anti-filler win we want.
+
+**Reads:**
+1. The adaptive-length **mechanism works** (out_vectors 32→2.31 exactly as
+   designed). The **dial is mis-set**: out_tau=0.5 clamps near the budget floor
+   (min 2). nochi's "4–8 vectors" target needs a *lower* out_tau.
+2. **40 min is too short to judge anti-filler** — distinct1 ~0.008 everywhere
+   vs frontier 0.022; all arms in the undertrained-bland regime. Equal-budget
+   ranking is weak here; need a real budget on the surviving lever.
+3. out_tau is **inference-only** ⇒ sweeping it on the existing R3_KRP/best.pt is
+   nearly free. Added `--out-tau` override to `eval_thinker.py`; sweep
+   {0.0..0.5} running to map dial→length and find the 4–8-vector setting.
+
+**Next:** (a) out_tau sweep result picks the dial; (b) give the best lever
+(likely KRP-training + tuned out_tau, possibly + KOUT) a LONG run, not another
+40-min snapshot — the filler question can't be answered at this budget.
+
+### out_tau sweep + output-rank diagnostic (2026-06-24, with Nyx)
+
+out_tau is **inference-only** ⇒ swept on the existing `R3_KRP/best.pt`, no
+retrain (`eval_thinker.py --out-tau`). Curve:
+
+| out_tau | out_vectors | len_ratio | ref_f1 | distinct1 |
+|---|---|---|---|---|
+| 0.0 (all 32) | 32.0 | 0.84 | **0.263** | 0.0106 |
+| 0.1 | 3.51 | 0.91 | 0.224 | 0.0087 |
+| 0.2 | 2.92 | 0.79 | 0.217 | 0.0090 |
+| 0.5 | 2.31 | 0.66 | 0.202 | 0.0098 |
+
+**Cliff, not slope:** any out_tau>0 jumps straight to ~3.5 vectors — the 4-8
+range is unreachable. Inference truncation **monotonically hurts** ref_f1 +
+length. KRP-trained decoded FULL (out_tau=0) = best ref_f1 of the whole study
+(0.263 > R3_DATA 0.256). ⇒ **KRP training helps; out_tau truncation hurts.**
+
+**Output-rank diagnostic** (`scripts/diag_output_rank.py`) — codec predictor on
+TRUE encoded replies vs thinker predictions:
+
+```
+out_tau=0.1:  true_reply_rank 4.11   thinker_pred_rank 3.51
+out_tau=0.5:  true_reply_rank 2.79   thinker_pred_rank 2.31
+```
+
+**Key corrected diagnosis:**
+1. The codec's own predictor says the true ~30-tok replies need **~4 vectors**,
+   not 32 (validates nochi's "4-8, not 32" with data; k_out=32 is ~8x oversized).
+2. The thinker's output *rank* (~3.5) ≈ the true reply's (~4.1) — it is NOT
+   badly under/over-filling slots. So the visible "good thing" failure is
+   **content mean-collapse, not rank collapse.** Length engineering (k_out,
+   out_tau) targets a problem only mildly present.
+3. out_tau is therefore best kept as a **collapse DIAGNOSTIC**, not a runtime
+   length knob.
+
+**Decision:** stop 40-min bracketing (can't see mode-specialization / can't
+judge filler at this budget — all arms distinct1 ~0.008 vs frontier 0.022).
+Commit to ONE long run of the evidence-backed recipe:
+`k_out=8` (headroom over ~4) + KRP training + decode-full (no out_tau) + WTA4 +
+`dialogue_combined`, candidate + `diversity_weight=0.1` (explicit content
+anti-collapse). Long enough for WTA modes to separate — the real test of whether
+the attractor dies.
+
+### Round-4 bracket — content anti-collapse (2026-06-24, with nochi)
+
+Protocol shift (nochi): ablate the levers at 2h each, THEN commit the winner(s)
+to a single **12h** run. Diagnosis-driven base folds in the round-3 findings:
+**k_out=8** (codec says true replies need ~4) + **KRP** training + **decode-full**
+(out_tau dropped — it hurt) + WTA4, on `dialogue_combined`. `scripts/ablate_thinker_r4.sh`.
+
+| arm | change vs base | tests |
+|---|---|---|
+| R4_CTL | — | control at 2h budget |
+| R4_CONTRAST | contrast_weight 0.2 | sharp anti-mean-collapse (NTXent; reaches each reply's OWN target, away from others) |
+| R4_DIV | diversity_weight 0.1 | soft anti-collapse (batch variance) |
+| R4_UNFREEZE | unfreeze=decoder, compress_frac 0.4, codec_lr_scale 0.05 | close TF→free gap; round-trip-guarded |
+| R4_ROLEFLIP | role_flip | data variety |
+| R4_WTA8 | n_hypotheses 8 | more modes |
+
+**Schedule insight (why 12h ≠ scaled-up 40min):** LR anneals on WALL-CLOCK
+fraction, so every 40-min arm compressed its whole warmup→decay into 40 min and
+never reached the low-LR settling regime where WTA modes separate. 2h arms begin
+that regime; the 12h final completes it.
+
+**INVARIANT GUARD (nochi: text→encode→thoughts→decode→text must ALWAYS hold).**
+`scripts/check_roundtrip.py` compares the unfreeze-modified codec's reconstruction
+CE vs the frozen codec at prefixes {2,8,half,full}; FAIL (>0.05 nats) ⇒ the arm is
+DISQUALIFIED from the 12h stack. Validation (180s dry-runs):
+- Codec dropout=0.1 but stays in eval() when unfrozen ⇒ dropout off ⇒ **no NaN** on ROCm. ✓
+- Default anchor (compress_frac 0.2): **FAIL** — k=2 delta +0.100 (full round-trip
+  delta 0 — only the aggressive-compression tail degraded).
+- Strong anchor (compress_frac 0.4, codec_lr_scale 0.05): **PASS** — k=2 +0.049,
+  k=8 +0.010, full 0; and dec CE 3.79 (better than frozen arms' ~4.0). Locked.
+- CPU smoke suite extended (contrast/diversity/roleflip/krp+small-k_out): 20/20 green.
+
+Launching full 6-arm bracket @ 2h (DUR=7200). Winner(s) stack into the 12h final.
+
+---
+
+### Round-4 bracket RESULTS (2026-06-25, Nyx) — 6 arms × 2h complete
+
+| arm | val_cos | val_dec_ce | ref_f1 | distinct1 | distinct2 | len_ratio | note |
+|---|---|---|---|---|---|---|---|
+| R4_CTL       | 0.404 | 4.028 | 0.270 | 0.0113 | 0.0413 | 1.07 | control |
+| R4_CONTRAST  | 0.344 | 4.023 | 0.253 | 0.0086 | 0.0334 | 1.53 | **hurt** — bloated + less diverse |
+| R4_DIV       | 0.403 | 4.013 | 0.269 | 0.0095 | 0.0382 | 1.06 | neutral / slightly below ctl |
+| R4_UNFREEZE  | 0.408 | **3.109** | 0.271 | **0.0159** | **0.0599** | 1.16 | **best diversity + dec_ce; round-trip PASS Δ0.0** |
+| R4_ROLEFLIP  | **0.412** | 4.022 | **0.277** | 0.0120 | 0.0463 | 0.99 | **best ref_f1 + len_ratio + val_cos** |
+| R4_WTA8      | 0.382 | 4.119 | 0.253 | 0.0089 | 0.0358 | 1.35 | hurt at 2h — 8 modes split gradient too thin |
+
+**Result OVERTURNS the prediction (contrast would win).** The explicit anti-collapse
+LOSSES underperformed: CONTRAST destabilized (val_cos 0.344, len 1.53, distinct1 BELOW
+control), DIV did ~nothing. The winners are the **structural / data** interventions:
+- **R4_ROLEFLIP** (user↔bot data augmentation) — best ref_f1 (0.277), best len_ratio
+  (0.99), best val_cos. Cheap, dominant on grounding+length.
+- **R4_UNFREEZE** (decoder adapts to thinker's predicted thoughts, strong anchor) —
+  **best distinct1/2 (0.0159/0.0599) AND val_dec_ce 3.11 (~0.9 nat better than every
+  frozen arm)**, ref_f1 0.271 (≈ top). Round-trip guard **PASS, worst_delta 0.0** (k=8
+  even improved, Δ−0.030; k≥128 exact). Invariant held perfectly over 2h.
+- WTA8 hurt at 2h (gradient split); keep n_hypotheses=4 for the final.
+
+**Read:** content mean-collapse is fixed by (a) more varied supervision (role_flip) and
+(b) letting the decoder actually *express* the thinker's thoughts (unfreeze) — NOT by
+bolting a contrastive/variance penalty onto the objective at short horizons. The two
+winners are **orthogonal** (data aug vs decoder adaptation), each beat control alone,
+both invariant-safe ⇒ stack both.
+
+Caveat: even the best distinct1 (0.0159) is still < frontier 0.022 — but these are 2h
+arms with a compressed LR anneal; the bracket ranks LEVERS, the 12h final realizes them.
+
+**Proposed 12h FINAL recipe (awaiting nochi green-light):**
+BASE (WTA4 · k_out=8 · KRP · k_out_min=4 · decode-full · dialogue_combined)
+  + role_flip=true
+  + unfreeze=decoder · compress_frac=0.4 · codec_lr_scale=0.05 (strong anchor, round-trip-proven)
+Re-run check_roundtrip.py at the end (and ~2h sanity checkpoint) to re-confirm the invariant over the longer horizon.
+
+**Combo interaction test (2026-06-25, nochi: "why not test the combos?"):** before the
+12h commits to the stack, prove role_flip × unfreeze actually clears BOTH singles at
+equal 2h footing (orthogonality is a hypothesis, not a guarantee). Added arm **R4_COMBO**
+= BASE + role_flip=true + unfreeze=decoder + strong anchor; generalized the round-trip
+guard to fire for any unfreeze arm; +1 CPU smoke arm (r4_combo) — 1 passed. Launched @ 2h.
+Decision rule: combo qualifies for the 12h stack only if it ≥ both singles on the content
+metrics (esp. distinct1 > 0.0159, dec_ce < 3.11) AND round-trip PASS. If it underperforms
+a single (negative interaction), the 12h runs the better single instead.
+
+### R4_COMBO interaction RESULT (2026-06-25, Nyx) — gate NOT cleanly cleared ⇒ recommend UNFREEZE alone
+
+| arm | val_cos | dec_ce | ref_f1 | distinct1 | distinct2 | len | round-trip |
+|---|---|---|---|---|---|---|---|
+| **R4_COMBO** (roleflip+unfreeze) | 0.406 | 3.148 | 0.269 | **0.0171** | **0.0656** | 1.11 | **PASS Δ0.0** |
+| R4_UNFREEZE | 0.408 | **3.109** | 0.271 | 0.0159 | 0.0599 | 1.16 | PASS Δ0.0 |
+| R4_ROLEFLIP | 0.412 | 4.022 | **0.277** | 0.0120 | 0.0463 | 0.99 | — |
+| R4_CTL | 0.404 | 4.028 | 0.270 | 0.0113 | 0.0413 | 1.07 | — |
+
+**Pre-registered gate** (distinct1 > 0.0159 AND dec_ce < 3.11, clear BOTH singles): **FAILS.**
+- distinct1 0.0171 ✓ — **best in the entire study.**
+- dec_ce 3.148 ✗ — misses 3.11; retained ~all of unfreeze's ~0.9-nat gain but did not beat it.
+- ref_f1 0.269 ✗ — **regressed below control (0.270) and well below roleflip (0.277).**
+
+**Interaction is axis-split, not additive:** super-additive on **diversity** (distinct1/2 lead the
+field — the disease metric); **redundant** on dec_ce (unfreeze owns it, combo merely keeps it);
+**antagonistic** on **ref_f1** (stacking destroyed roleflip's grounding edge, dropping below control).
+So the combo buys a rounding-error diversity bump (+0.0012 over unfreeze) at the cost of a real
+grounding regression — textbook redundant-to-mildly-antagonistic. Honoring the pre-registered rule
+(and the merits): negative interaction ⇒ **run the better single.**
+
+**DECISION — 12h FINAL = R4_UNFREEZE alone** (the cleaner, more reliable lever): BASE
+(WTA4 · n_hyp=4 · k_out=8 · KRP · k_out_min=4 · decode-full · dialogue_combined) + unfreeze=decoder
+· compress_frac=0.4 · codec_lr_scale=0.05 (strong anchor). Rationale: standout dec_ce 3.11
+(~0.9 nat over every frozen arm), 2nd-best diversity, invariant-safe (round-trip Δ0.0), and **no
+antagonism to babysit over 12h** — the low-LR settling regime will let unfreeze's own diversity
+separate further without roleflip dragging ref_f1. role_flip dropped from the final: its only
+unique win (ref_f1/len/cos) does not survive stacking, and unfreeze already matches its ref_f1.
+Re-run check_roundtrip.py at the end + ~2h sanity checkpoint. **Awaiting nochi green-light + his
+pre-long-run optimization review.**
+
+### Qualitative chat probe (2026-06-25, Nyx) — m4_frontier vs R4_UNFREEZE, real REPL
+
+Chatted both models (CPU, single + multi-turn, temp 0/0.8) to ground-truth the metrics. State:
+**nails the social reflex, fails the content.** Greetings / dialogue-act / emotional register are
+genuinely right ("hey how's it going?"→"Not bad. How about you?"; "new puppy!"→"cool" / "I'm really
+happy for you?"). Content collapses to a per-model attractor: **frontier → "good thing"**, **unfreeze
+→ a more-fluent "great day / great person" positivity attractor** (its lower dec_ce IS visible as
+smoother surface text, but same disease underneath). Facts absent (expected at 15M / casual data).
+
+**NEW finding the metrics missed — multi-turn collapse:** R4_UNFREEZE returned a near-IDENTICAL
+"i'm a great day. i've been a great person." on *every* turn of a 4-turn chat, ignoring context;
+frontier at least varies turn-to-turn. `distinct1` is single-turn only, so it never caught this.
+Caveat: unfreeze is the 2h arm (pre-mode-separation) — may be undertraining the 12h fixes — but it's
+a real flag. **ACTION: add a multi-turn coherence/context-following check to the 12h eval; do not
+trust single-turn distinct1 alone to certify the final.**
+
+---
+
+## 2026-06-25 — R4_BIG30: does 30M (2× capacity) beat 15M at equal 2h? — NO, stay 15M
+
+**Setup (nochi: "do a 30M 2h run").** Same recipe as the 12h candidate (R4_UNFREEZE: BASE · WTA4 ·
+k_out=8 · KRP · k_out_min=4 · decode-full · dialogue_combined · unfreeze=decoder · compress_frac=0.4 ·
+codec_lr_scale=0.05), ONLY change = size: `thinker.layers=8 thinker.ffn_dim=4096` → **32.0M params**
+(2.1× the 15.1M frontier). Width still d=384 (inherited from frozen codec — hard constraint). Equal
+2h wall-clock (DUR=7200), so 30M gets ~half the steps (~24K vs ~45K). Pre-registered rule: *30M earns
+the 12h iff it ≥ 15M-unfreeze on distinct1 AND dec_ce AND holds round-trip; if behind, it's
+maturity-limited → stay 15M.*
+
+**RESULT — 30M loses on every metric (same 2h footing):**
+| arm | val_cos | dec_ce | ref_f1 | distinct1 | distinct2 | len | round-trip |
+|-----|---------|--------|--------|-----------|-----------|-----|-----------|
+| **R4_BIG30 (32M)** | 0.4005 | 3.176 | 0.264 | 0.0151 | 0.0576 | 1.14 | **PASS Δ0.0** |
+| R4_UNFREEZE (15M)  | 0.408  | 3.109  | 0.271  | 0.0159    | 0.0599    | 1.16| PASS Δ0.0 |
+
+Uniformly behind — none of distinct1/dec_ce/ref_f1/cos improved. Round-trip held perfectly (invariant
+safe; size is NOT the risk — maturity is). This is the predicted maturity-vs-capacity trade made
+visible: at a fixed 2h, halving the steps to double the width is a net loss because the disease is
+one-to-many collapse (a loss/data problem), not capacity — 15M was already generous for these short
+seqs (k_ctx=8 × few turns + k_out=8).
+
+**Qualitative probe (CPU, single + multi-turn, temp 0):** same content collapse single-turn ("The
+United States is a great asset to the United States", "i'm a great job!"); social reflex intact ("Not
+too bad. Just getting ready for the day."). Multi-turn does NOT hard-collapse to one identical reply
+like 15M-unfreeze did — it varies turn-to-turn — but only by swapping in a different attractor ("I
+know, but…"). A different collapse mode, not a cure. Marginal multi-turn variety doesn't offset the
+uniform metric regression.
+
+**VERDICT (rule honored): 12h FINAL stays R4_UNFREEZE-15M.** 30M is maturity-limited at this horizon.
+Capacity is not the lever; training maturity + the anti-collapse recipe is. Revisit 30M ONLY if we
+ever run >>12h (where the extra width could finish maturing) — not for the planned 12h. 12h recipe
+unchanged: BASE + unfreeze=decoder (strong anchor), + multi-turn coherence eval, re-run check_roundtrip
+at end. Awaiting nochi green-light + the pre-long-run optimization review he requested.
+
+---
+
+## 2026-06-25 — R4_BIG30_4H: 30M at MATCHED STEPS (not matched wall-clock) — capacity is a tiny metric lever, NOT a cure; 12h stays 15M
+
+**Why this run.** The 2h R4_BIG30 above confounded capacity with steps (30M got ~half the steps at
+equal wall-clock). This run removes the confound: **4h cap → 44,368 steps ≈ the 15M's ~45K**, same
+recipe, full anneal. Pre-registered Q: *30M @ matched steps + anneal BEATS 15M? yes→capacity is a
+lever (30M=12h direction); no→15M confirmed.*
+
+**RESULT — 30M marginally wins the metrics, round-trip intact:**
+| arm | val_cos | dec_ce | ref_f1 | distinct1 | distinct2 | len | round-trip |
+|-----|---------|--------|--------|-----------|-----------|-----|-----------|
+| **R4_BIG30_4H (32M, best.pt)** | **0.4132** | **2.944** | **0.2756** | **0.0186** | **0.0745** | 1.23 | **PASS Δ0.0001** |
+| R4_UNFREEZE (15M, target)      | 0.408  | 3.109  | 0.271  | 0.0159    | 0.0599    | 1.16| PASS |
+
+So at matched steps 30M edges 15M on **every** axis (clearest: dec_ce −0.165, diversity). **This
+flips the 2h "capacity is not the lever" — the 2h loss was a STEP-STARVATION artifact, not a capacity
+ceiling.** Capacity IS a (small) real lever once steps are equal. (NB: the final-step console eval
+read val_cos 0.549 / dec_ce 2.65 — far above best.pt's free-running 0.413 — this is the teacher-forced
+train metric, NOT comparable to best.pt or the 0.584 frontier; do not cite it as a generation result.)
+
+**Qualitative multi-turn probe (CPU, temp 0, side-by-side vs 15M — scratchpad/probe_big30.py):**
+the metric edge does NOT translate to better conversation. 30M still word-salads on abstract prompts
+("interested in learning language language model", "a great place to be a great job") and drifts
+off-affect (replies "That sounds like a lot of fun" to someone saying they're overwhelmed). 15M holds
+grammar better ("a great idea to be a good idea") and tracks emotional register slightly better. Both
+now VARY turn-to-turn (the unfreeze recipe already killed the identical-reply hard-collapse) but both
+keep per-conversation generic attractors. **30M does not cure the one-to-many collapse and is
+arguably slightly worse on coherence.**
+
+**VERDICT: 12h FINAL stays R4_UNFREEZE-15M.** Matched-step proves capacity is a *tiny* metric lever
+(2h regression was steps, now corrected) — but the magnitude is ~+0.005 cos, the core disease
+(one-to-many collapse) is untouched, and coherence slightly regresses. Not worth 2× compute at 12h.
+The lever remains data/loss + training maturity, not width. 30M stays the designated direction for a
+future **>>12h** frontier only (it doesn't hurt, slightly helps metrics, may finish maturing) — exactly
+the prior log's call, now confirmed under the cleaner matched-step test.
+
+**Infra flag:** ChatSession on `device="cuda"` threw `HIP error: invalid device function` on
+`torch.zeros` post-run (training/eval on GPU were fine; CPU inference fine). Likely a ROCm kernel gap
+on the inference path or a post-run device state — probe on CPU. Worth a look before relying on GPU
+chat inference for the 12h multi-turn eval.
+
+---
+
+## 2026-07-02 — ROUND 5 designed + launched: warm-started fine-tune bracket (anti-collapse + multi-turn)
+
+**Directive (nochi):** keep building the thinker; ablate architecture/training levers at a
+consistent 30-60 min per arm; update the log. Reading this as the green-light to continue past
+the R4 stall (12h final was awaiting sign-off) — R5 first, then the long final with the winner.
+
+**Design problem:** R4 proved cold 40-min arms sit in the undertrained-bland regime (distinct1
+~0.008 vs frontier 0.022) — you cannot rank anti-collapse levers there. R5's fix: **warm-start
+every arm from `checkpoints/R4_UNFREEZE/best.pt`** (the 2h-mature 12h-candidate) and fine-tune
+**45 min at lr 1e-4** (⅓ the cold LR, 200-step warmup). Every arm spends its whole budget in the
+low-LR settling regime where mode separation actually happens, honoring the equal-wall-clock
+constraint. Code change: `thinker_init_from` now also restores the **adapted codec** stored in
+unfreeze checkpoints (previously it silently paired the warm thinker with the pristine decoder
+it was never trained against). Thinker CPU suite: 32 passed.
+
+**New metric (closes the R4 action item):** `scripts/eval_multiturn.py` drives 6 scripted 4-turn
+conversations through ChatSession (CPU — GPU chat inference still HIP-broken) and reports:
+- **self_rep** — mean pairwise unigram-F1 between the model's own replies in a conversation
+  (1.0 = the identical-reply hard collapse the R4 probe caught; lower better)
+- **ctx_sens** — unigram-F1 between the final-turn reply with full history vs cleared history
+  (1.0 = context ignored; lower better)
+
+**Baseline to beat (R4_UNFREEZE/best.pt, temp 0):** self_rep **0.3229**, ctx_sens **0.2759**.
+(Softer than the probe's "identical reply every turn" — the probe conversation was adversarially
+repetitive; averaged over 6 varied scripts the collapse is partial.)
+
+**Bracket** (`scripts/ablate_thinker_r5.sh`, DUR=2700, BASE = R4_UNFREEZE recipe + warm-start,
+all arms keep unfreeze=decoder + strong anchor, round-trip guard on every arm):
+
+| arm | change vs base | hypothesis |
+|---|---|---|
+| R5_CTL | — | pure maturity: does 45 min more training alone move the needle? |
+| R5_TURNDROP | turn_dropout=0.25 | never ablated; dropping context turns forces real context use (targets ctx_sens) |
+| R5_CYCLE | cycle_frac=0.25, w_cycle=0.5 | re-encode consistency: predictions must survive decode→re-encode (targets word-salad content) |
+| R5_WDEC | w_decoder=1.0 | doubled token-space grounding |
+| R5_KCTX16 | k_ctx=16 | context-starvation hypothesis: 8 vecs/turn may crush the history below usability |
+
+Prediction (pre-registered): CYCLE moves content coherence (dec_ce, qualitative salad) most;
+TURNDROP is the only lever that moves ctx_sens; CTL shows small uniform gains proving maturity
+alone isn't the cure. Decision rule for the long final: stack any lever that beats CTL on its
+target metric without regressing ref_f1/round-trip.
+
+**Status:** launched 2026-07-02 (~4.3h total). Results below when complete.
+
+### R5 RESULTS (2026-07-02, all 5 arms complete, all round-trip PASS)
+
+| arm | val_cos | dec_ce | ref_f1 | dist1 | self_rep ↓ | ctx_sens ↓ | RT |
+|---|---|---|---|---|---|---|---|
+| R4_UNFREEZE (base) | 0.4080 | 3.109 | 0.271 | 0.0159 | 0.3229 | 0.2759 | PASS |
+| R5_CTL | 0.4072 | 3.090 | 0.2735 | 0.0169 | 0.3496 | 0.2894 | PASS |
+| R5_TURNDROP | 0.4044 | 3.103 | 0.2697 | 0.0164 | 0.3512 | **0.3463** ✗ | PASS |
+| R5_CYCLE | **0.4149** | 3.092 | 0.2729 | 0.0161 | **0.2959** ✓ | 0.2999 | PASS |
+| R5_WDEC | 0.4083 | **3.087** | 0.2688 | 0.0171 | **0.3745** ✗ | **0.1961** ✓? | PASS |
+| R5_KCTX16 | 0.4080 | 3.090 | 0.2722 | 0.0171 | 0.3832 ✗ | 0.3293 ✗ | PASS |
+
+Single-turn metrics are flat across all six rows — the round separates **only** on the new
+multi-turn metrics, vindicating the R4 action item ("do not trust single-turn distinct1").
+
+**Findings vs pre-registered predictions:**
+- **CTL got WORSE multi-turn (0.3496/0.2894).** Plain maturity *deepens* the attractor. This makes
+  the control maximally informative: any arm merely matching baseline actually beat 45 min of
+  additional training.
+- **CYCLE = the round's one clean win** (predicted). self_rep 0.2959 beats baseline and CTL despite
+  ~40% fewer steps (5,915 vs 9,501 — the decode→re-encode loss is expensive), best val_cos of the
+  round, no ref_f1 regression. Transcripts corroborate: hobbies conv answered "what do you do for
+  fun?" with "I like to read and play video games" (baseline: the great-day attractor) and echoed
+  the user's topic. Wedding conv still hard-collapsed (self_rep 0.909) — not a cure, a real dent.
+- **TURNDROP backfired** (prediction WRONG — it was the pre-registered ctx_sens lever). ctx_sens
+  0.3463, worst of the round. Hypothesized mechanism: training with dropped history *teaches*
+  history-independence rather than forcing context use.
+- **WDEC is metric-flattered.** Its ctx_sens 0.1961 "win" dissolves on reading transcripts: replies
+  with/without history differ largely because content got *noisier* ("I like to read a new car"),
+  and two convs collapsed harder than baseline (wedding 0.909, camping loops "I'm going to miss
+  you too"). Different-but-nonsense scores well on ctx_sens for the wrong reason. Same failure
+  family as R4_BIG30_4H: good numbers, worse chat. → **ctx_sens is gameable by noise; only trust
+  it alongside transcripts.**
+- **KCTX16 rejected** on both metrics (0.3832/0.3293) — context starvation is not the bottleneck;
+  doubling context vectors just dilutes history.
+
+**Chat probe (hard gate, nochi's directive), R5_CYCLE vs R4_UNFREEZE on 4 FRESH conversations
+(not the eval scripts), temp 0 and 0.8, CPU:** sobering. At temp 0 on unseen topics both models
+fall into the same attractors ("great day/great job", "I'm sorry but I didn't do it again") —
+CYCLE's measured self_rep gain transfers only weakly off the eval scripts. At temp 0.8 CYCLE is
+visibly more grammatical (mostly well-formed sentences vs R4's word salad "play two tarter that
+all year" / "fresh airlines") — consistent with its mechanism (predictions must survive
+decode→re-encode). Verdict: **CYCLE ≥ baseline everywhere, clearly better fluency at temp>0,
+modest-not-transformative content gains.** Gate result: CYCLE admissible for the final; nothing
+in the chat contradicts the metrics *for this arm* (unlike WDEC, which the chat gate killed).
+
+**Decision (per pre-registered rule):** CYCLE beats CTL on its target metric with no ref_f1/RT
+regression → stacked into the final. WDEC beat CTL on ctx_sens but the transcript audit shows the
+metric was gamed → running one 45-min confirmation arm **R5_STACK** (CYCLE+WDEC) before the long
+run; if its transcripts show WDEC's noise/collapse contaminating the stack, the final is
+BASE+CYCLE only. TURNDROP and KCTX16 are out.
+
+### R5_STACK confirmation + chat gate + FINAL launch (2026-07-02)
+
+**R5_STACK** (BASE + cycle + w_decoder=1.0, 45 min warm-started, 5,972 steps): val_cos 0.4131,
+ref_f1 0.2718, RT PASS, **self_rep 0.2900 / ctx_sens 0.2535 — best of the entire round on both
+multi-turn metrics.** Transcript audit (the WDEC lesson): the improvement is real —
+the wedding hard-collapse broke (self_rep 0.909 → 0.479, four varied replies), and a **novel
+follow-up-question behavior** appeared ("It sounds like you're feeling overwhelmed. What's been
+going on?"). WDEC's "new car" noise leaks twice but bounded; register errors persist ("That
+sounds like a lot of fun" to sleeplessness).
+
+**Chat-probe hard gate (nochi's standing directive):** 3-way probe, 4 FRESH conversations,
+temp 0 + 0.8, CPU, STACK vs CYCLE vs R4_UNFREEZE (`scratchpad/chat_probe_r5_stack.txt`).
+Temp 0: all three fall into the same attractors on unseen topics — STACK never worse, one
+genuinely apt new reply ("That's amazing! I'm so proud of you!"). Temp 0.8: STACK ≈ CYCLE,
+both clearly more grammatical than R4's word salad. No WDEC noise in STACK's fresh convs.
+**Gate: PASS** — chat contradicts nothing the metrics claim for the stack.
+
+**FINAL_12H launched** (`scripts/final_12h.sh`): R4_UNFREEZE base + cycle_frac=0.25 w_cycle=0.5
++ w_decoder=1.0, from scratch at default lr 3e-4 (levers shape the whole trajectory; warm-start
+was only ever a 45-min-budget workaround), 43,200 s + eval_thinker + eval_multiturn + round-trip
+guard. Cycle's ~40% throughput cost accepted — R5 showed the lever beats raw step count.
+Numbers to beat: R4_UNFREEZE (val_cos 0.408, self_rep 0.3229, ctx_sens 0.2759) and
+R5_STACK (self_rep 0.2900, ctx_sens 0.2535).
+
+---
+
+## 2026-07-03 — FINAL_12H results: best checkpoint to date, chat gate PASS
+
+97,263 steps in 12h (~2.25 it/s avg incl. cycle-loss overhead). **Every metric is best-ever,
+and the transcripts back them up.**
+
+| metric | R4_UNFREEZE (prev best) | R5_STACK (45min) | **FINAL_12H** |
+|---|---|---|---|
+| val_cos | 0.4080 | 0.4131 | **0.4281** |
+| dec_ce | 3.109 | 3.107 | **2.686** |
+| ref_f1 | 0.271 | 0.2718 | **0.2969** |
+| distinct1 / 2 | 0.0159 / 0.063 | 0.0161 / 0.061 | **0.0323 / 0.1326** |
+| self_rep ↓ | 0.3229 | 0.2900 | **0.1882** |
+| ctx_sens ↓ | 0.2759 | 0.2535 | **0.1462** |
+| round-trip | PASS | PASS | **PASS** (codec invariant held through 12h of decoder unfreeze) |
+
+**Transcript audit (eval_multiturn):** genuine topic tracking, not template variation — the
+cooking conv stays on food, camping on hiking, books conv asks "What kind of books do you
+like?", stress conv opens "I can imagine. What's been going on?" (follow-up questions are now
+routine, not a one-off). No hard collapse anywhere; the wedding conv (worst, self_rep 0.44)
+varies its replies but stays generic.
+
+**Chat gate (fresh convs, 3-way vs R4_UNFREEZE + R5_CYCLE, temp 0 + 0.8): PASS.** The laptop
+conv — where R4/CYCLE looped "I'm sorry, but I didn't do it again" — now gets "We'll have to
+take a look" and an attempted conditional ("It depends on the process of the process"). Soccer
+conv stays in-domain across all three turns. Self-description produces actual content
+("I've been working on my own business") instead of the sorry/doctor attractor. Temp 0.8 is
+mostly grammatical sentences; semantic drift remains but far above R4's word salad.
+
+**Residual diseases (next targets):** (1) **positivity register errors** — bad news still
+often draws "That's great/good to hear" (the mean-collapse survives in sentiment even though
+content collapse broke); (2) pronoun/person confusion ("You were really proud of you");
+(3) occasional stock-phrase noise ("read a new car" — the WDEC signature, rare); (4) generic
+self-model. Plausible levers: sentiment-contrastive pairs in data, longer training (12h clearly
+wasn't saturated — dec_ce was still falling), or scheduled w_cycle.
+
+**VERDICT: `checkpoints/FINAL_12H/best.pt` is the project's flagship conversational
+checkpoint.** The R5 methodology (warm-start brackets + multi-turn metrics + transcript audits
++ chat gate) is validated end-to-end: both stacked levers survived into the final and their
+predicted effects (cycle → content coherence, w_decoder → grounding) showed up at 12h scale.
+
+---
+
+## 2026-07-03 — ROUND 6 designed + launched: residual-disease bracket (register / stock-phrase attractors)
+
+**Directive (nochi):** web chat UI for FINAL_12H + more ablations if I have ideas.
+
+**Web chat:** `scripts/chat_web.py` — stdlib-only local server (no new deps), ChatSession on
+CPU, single global session, temp slider + reset. `http://localhost:7860/`.
+
+**New metric** `scripts/eval_register.py` (reg_err / reg_err_ctx / pos_ok): the positivity
+register disease is **context-conditional** — single-turn bad news mostly draws apt sympathy
+(reg_err 0.17) but bad news after an upbeat turn draws cheer half the time
+(**reg_err_ctx 0.50**). The probe also exposed a **"i'm a big fan of the ..." stock-phrase
+attractor** — the fallback for inputs the model doesn't parse — which drags pos_ok to 0.17
+(good news gets "big fan of the day" instead of congratulations).
+
+**FINAL_12H baseline:** reg_err 0.1667 · reg_err_ctx 0.5000 · pos_ok 0.1667.
+
+**Bracket** (`scripts/ablate_thinker_r6.sh`, R5 methodology: warm-start thinker+codec from
+FINAL_12H/best.pt, 45 min @ lr 1e-4, DUR=2700; evals: single-turn + multiturn + register +
+round-trip):
+
+| arm | change | hypothesis |
+|---|---|---|
+| R6_CTL | — | maturity control (R5: plain fine-tune made things worse; recheck at 12h maturity) |
+| R6_CYCLE50 | cycle_frac=0.5 | more of the star lever → suppress stock phrases (targets pos_ok, "big fan") |
+| R6_WCYC1 | w_cycle=1.0 | stronger cycle gradient, same coverage |
+| R6_HYP8 | n_hypotheses=8 | WTA winner skews generic-positive; 8 modes may carve out a commiseration mode (targets reg_err_ctx). out_seed re-inits (1 param skipped), trunk warm |
+| R6_UNFCODEC | unfreeze=codec | encoder can sharpen sentiment separation in thought space (targets reg_err_ctx); round-trip guard is the veto |
+
+**Code fix (caught by 2-min dry run):** MIOpen refuses RNN backward in eval mode →
+`unfreeze=codec` crashed (encoder GRU). `thinker_train.py` now puts the codec in train() with
+all dropouts zeroed (numerically identical to eval) when the encoder is unfrozen. No manual
+`self.training` gates exist in codec modules (checked). 32 CPU tests pass.
+
+**Decision rule:** promote a lever iff it beats CTL on its target metric, doesn't regress
+self_rep/ctx_sens/ref_f1/pos_ok/round-trip, AND survives transcript audit + chat probe
+(R5 lesson: one metric has already been gamed by noise).
+
+**Prediction (pre-registered):** HYP8 is the best shot at reg_err_ctx (register errors look
+like WTA picking the generic-positive mode); CYCLE50/WCYC1 move pos_ok via stock-phrase
+suppression; UNFCODEC is high-variance — either the biggest win or a round-trip DQ.
+
+**Status:** launched 2026-07-03 (~4.5h). Results below when complete.
+
+### R6 RESULTS (2026-07-03, all 5 arms complete, all round-trip PASS)
+
+**Register scores below are on the WIDENED lexicon** (see metric note): the R6_CYCLE50
+transcript audit caught the original lexicon missing "terrific / beautiful / nice day / fun",
+which had manufactured a fake reg_err_ctx 0.33 "win" — the third metric-gaming incident
+(R4_BIG30_4H, R5_WDEC, now this), caught by the same rule: **audit transcripts before
+believing any metric win.** All six checkpoints rescored; FINAL_12H's baseline was unaffected
+(its cheer used the original lexicon's words).
+
+| arm | val_cos | ref_f1 | self_rep ↓ | ctx_sens ↓ | reg_err ↓ | reg_err_ctx ↓ | pos_ok ↑ | RT |
+|---|---|---|---|---|---|---|---|---|
+| FINAL_12H (base) | 0.4281 | 0.2969 | **0.1882** | **0.1462** | **0.1667** | **0.5000** | 0.1667 | PASS |
+| R6_CTL | 0.4291 | 0.2994 | 0.2166 | 0.2696 | 0.2500 | 0.8333 | 0.3333 | PASS |
+| R6_CYCLE50 | 0.4280 | 0.3008 | 0.1890 | 0.1682 | 0.3333 | 0.8333 | **0.6667** | PASS |
+| R6_WCYC1 | 0.4301 | 0.3035 | **0.1591** | 0.2532 | 0.2500 | 0.8333 | 0.3333 | PASS |
+| R6_HYP8 | 0.4297 | 0.2977 | 0.2555 | 0.1950 | 0.3333 | 0.6667 | 0.3333 | PASS |
+| R6_UNFCODEC | 0.4262 | 0.2943 | 0.1920 | 0.3103 | 0.1667 | 0.6667 | 0.3333 | PASS |
+
+**Verdict: NEGATIVE ROUND on the register target — nothing is promoted; FINAL_12H stays
+flagship.** Every arm regressed reg_err_ctx vs baseline. The pre-registered HYP8 hypothesis
+(more WTA modes → commiseration mode) is rejected; so is UNFCODEC (encoder unfreeze held
+round-trip — the anchor works — but bought nothing and had the worst ctx_sens).
+
+**Real findings the round still produced:**
+1. **Any continued low-LR fine-tuning on dialogue_combined worsens contextual register**
+   (CTL 0.83 vs base 0.50; every arm ≥0.67). Combined with R5's control regression this is
+   now a replicated result: the data's relentless smalltalk cheerfulness IS the register
+   disease, and more exposure deepens it. **No training lever fixes a data problem.**
+2. **cycle_frac=0.5 protects multi-turn behavior during continued training** (self_rep 0.1890 /
+   ctx_sens 0.1682 ≈ base, while CTL slid to 0.2166/0.2696) — multiturn metrics are
+   lexicon-independent, so this survives the rescore. Worth keeping if training ever continues.
+3. w_cycle=1.0 produced the best self_rep ever (0.1591) but sacrificed ctx_sens — weight and
+   coverage trade off differently; coverage is the safer knob.
+4. pos_ok gains everywhere are just "more positivity", not better register — never read
+   pos_ok without reg_err_ctx.
+
+**Next direction (R7, data-level):** mix bad-news→commiseration dialogue into the shards —
+e.g. facebook/empathetic_dialogues (25k conversations grounded in labeled emotions, incl.
+plenty of negative situations) — and retrain or fine-tune with the CYCLE50 protection lever.
+The register disease needs contrastive sentiment DATA, not another loss.
+
+### 2026-07-03 — ROUND 7 designed + launched: empathetic data mix
+
+User greenlit R7 and explicitly opened the architecture ("no requirement to keep this
+architecture for the thinker — the only requirement is a good model and a good
+architecture"). R7 stays data-level per the R6 verdict; architecture ideas queued behind it.
+
+**Data build.** facebook/empathetic_dialogues via the raw ParlAI tarball (the HF dataset is
+script-based → dead in datasets 5.0). `scripts/extract_empathetic.py`: CSV → conversations
+JSONL; `_comma_` unescaped; speaker parity already matches our convention (turn 0 = sharer
+= user, turn 1 = empathetic listener = bot). Kept 23,074/23,149 convs (train+valid+test —
+our evals are external probes, their split is irrelevant). Mixes (tv-pretokenize-dialogue):
+- `data/dialogue_emp1x` = combined + emp: 93,014 convs / 541,165 turns (~18% empathetic)
+- `data/dialogue_emp2x` = combined + emp×2: 115,875 convs / 639,806 turns (~31%; caveat:
+  duplicated convs can straddle train/val, so EMP2X val_cos is slightly optimistic —
+  decisions use external probes only)
+
+**Arms** (`scripts/ablate_thinker_r7.sh`, R5/R6 methodology: warm-start from FINAL_12H,
+45 min, lr 1e-4):
+- R7_EMP1X    emp1x + cycle_frac=0.5 (R6's protection lever) — main hypothesis
+- R7_EMP2X    emp2x + cycle_frac=0.5 — dosage
+- R7_EMP1X_NC emp1x at base cycle_frac=0.25 — does data alone fix register?
+Controls already on disk: FINAL_12H 0.17/0.50/0.17 (reg_err/reg_err_ctx/pos_ok, widened
+lexicon), R6_CTL 0.25/0.83/0.33, R6_CYCLE50 0.33/0.83/0.67.
+
+**Decision rule:** reg_err_ctx < 0.50 with pos_ok not collapsed, no regression on
+self_rep/ctx_sens/ref_f1/round-trip, transcript audit + chat probe mandatory (three
+metric-gaming incidents to date). If a winner emerges, next step is a long run mixing the
+data in from scratch (chat-probe gate before launch, per standing rule).
+
+### 2026-07-03 — R7 RESULTS: style transferred, routing didn't. Root cause found.
+
+| arm (45 min warm-start) | val_cos | ref_f1 | self_rep↓ | ctx_sens↓ | reg_err↓ | reg_err_ctx↓ | pos_ok↑ |
+|---|---|---|---|---|---|---|---|
+| FINAL_12H (base)     | 0.4281 | 0.2969 | 0.1882 | 0.1462 | 0.17 | 0.50 | 0.17 |
+| R7_EMP1X             | 0.4287 | 0.2977 | 0.1915 | 0.2258 | 0.42 | 0.83 | 0.83 |
+| R7_EMP2X             | 0.4275 | 0.2965 | 0.2209 | 0.2911 | 0.42 | 1.00 | 0.83 |
+| R7_EMP1X_NC          | 0.4291 | 0.2992 | 0.2519 | 0.2055 | 0.42 | 0.83 | 0.83 |
+
+**Headline: the empathetic data transferred STYLE but not ROUTING.** Transcripts show heavy
+ED listener phrasing ("Oh no! I'm so sorry.", short reactive replies, pos_ok 0.17→0.83), but
+register still flips a coin single-turn ("That's cool!" to a dead dog) and contextual bad
+news is ~100% positive. No arm promoted.
+
+**Diagnostics (the round's real product):**
+1. *Thought space separates sentiment.* Encoding the register probes with the FINAL_12H
+   codec: within-class cos > across-class in most slots; nearest-centroid LOO 83%. The
+   signal is available — the failure is downstream. Notably good-news thoughts form a TIGHT
+   cluster (within 0.48) while bad-news is diffuse (0.42, some slots ≈ across): positivity
+   is a compact attractor, commiseration a scattered region.
+2. *Affinity hypothesis selection (zero training):* `ChatSession(hyp_select="affinity")`
+   picks the WTA hypothesis whose pooled thought best matches the LAST user turn instead of
+   the most decodable one. FINAL_12H single-turn reg_err 0.17→0.08 (ctx unchanged 0.50);
+   R7_EMP1X unchanged. Cheap inference-time win on the base model, kept as an option
+   (chat.py; --hyp-select on eval_register/eval_multiturn).
+3. *Hypothesis dump on contextual probes:* after an upbeat turn 1, **ALL 4 hypotheses are
+   positive** in both FINAL_12H and R7_EMP1X — no selection rule can fix contextual
+   register. WTA diversity is style-level, not register-level. (R7_EMP1X's hypotheses also
+   nearly collapsed to one string — the empathy fine-tune reduced hypothesis diversity.)
+
+**Root cause (data absence, one level deeper than R6's verdict):** every training
+conversation — SODA, personachat, AND empathetic_dialogues — holds ONE mood throughout (ED
+convs are each about a single labeled emotion). Mid-conversation register reversal has
+ZERO support in the training distribution, so the trunk learned to condition register on
+conversation-level mood, which is exactly the observed disease.
+
+**→ R8 (launched):** `scripts/build_reversal_splices.py` synthesizes reversal dialogues by
+splicing ED convs by emotion label: pos_conv[:2] + neg_conv[:4] (25% flipped direction to
+teach the rule, not a new bias). Style/parity survive the splice; only mood flips at turn 3.
+Pools: 9,100 pos / 11,429 neg convs. Arms R8_REV20 / R8_REV40 (20k / 40k splices on top of
+emp1x, cycle_frac=0.5, same warm-start methodology). Caveat noted: CTX_BAD probes ARE the
+spliced pattern — a win must also survive transcript audit + chat probe + no multiturn
+regression (Goodhart guard).
+
+### 2026-07-03 — R8 RESULTS + FINAL2_12H launched
+
+| arm (45 min warm-start) | val_cos | self_rep↓ | ctx_sens↓ | reg_err↓ | reg_err_ctx↓ | pos_ok↑ | RT |
+|---|---|---|---|---|---|---|---|
+| FINAL_12H (base) | 0.4281 | 0.1882 | 0.1462 | 0.17 | 0.50 | 0.17 | PASS |
+| R8_REV20 | 0.4279 | 0.2768 | 0.1831 | 0.67 | 0.83 | 0.83 | PASS |
+| R8_REV40 | 0.4276 | 0.1178 | 0.3028 | 0.67 | **0.33*** | 0.83 | PASS |
+
+*Transcript audit: REV40's ctx 0.33 includes a FOURTH lexicon miss ("That is so sweet!" to a
+sick puppy — "sweet" absent from POSITIVE); honest ctx ≈ 0.50 = parity with base, not a win.
+BUT the transcripts contain the first genuine contextual commiserations any arm has ever
+produced ("I'm sorry to hear that." after an upbeat turn 1, twice) — the reversal pattern IS
+learnable; dose matters (REV20 showed nothing). Single-turn register regressed hard in both
+arms (0.67), incl. occasional INVERSION ("Oh no!" to an engagement) — the fine-tune learned
+"reversals happen" as a prior rather than reading sentiment. Not promotable.
+
+**Meta-finding across R6/R7/R8:** 45-min warm-start fine-tuning transfers STYLE readily but
+cannot rewire CONDITIONING; every fine-tune drifts surface behavior while routing stays or
+worsens. Conditioning must be learned during main training with the pattern in-distribution.
+
+**Chat probe (R8_REV40, 3 fresh convs, temp 0):** conversational quality intact on the new
+data (coherent smalltalk, no collapse; register still misroutes live; known 3rd-turn
+degeneracies). Gate PASSED for a from-scratch launch on this data.
+
+**→ FINAL2_12H launched** (scripts/final2_12h.sh): exact FINAL_12H recipe — data is the ONLY
+variable — on data/dialogue_rev40 (combined + ED + 40k reversal splices, ~30% splice turns).
+Hypothesis: from-scratch training with reversals in-distribution learns last-turn register
+routing that no fine-tune could patch in. Evals incl. register with both hyp_select rules.
+
+**v3-lexicon rescore (all 11 checkpoints, +"so sweet"; canonical table for the paper):**
+| ckpt | reg_err↓ | reg_err_ctx↓ | pos_ok↑ |
+|---|---|---|---|
+| FINAL_12H | 0.17 | 0.50 | 0.17 |
+| R6_CTL / CYCLE50 / WCYC1 / HYP8 / UNFCODEC | 0.25/0.33/0.25/0.33/0.17 | 0.83/0.83/0.83/0.67/0.67 | 0.33/0.67/0.33/0.33/0.33 |
+| R7_EMP1X / EMP2X / EMP1X_NC | 0.42/0.42/0.42 | 0.83/1.00/0.83 | 1.00/0.83/1.00 |
+| R8_REV20 / REV40 | 0.67/0.67 | 0.83/**0.50** | 1.00/0.83 |
+Confirms the hand audit: REV40 ctx = parity with base, not a win; the ED-derived arms trade
+single-turn routing for style. FINAL_12H remains the only checkpoint with acceptable
+single-turn register — everything now rides on FINAL2_12H.
