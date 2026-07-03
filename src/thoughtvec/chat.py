@@ -19,7 +19,14 @@ from .tokenizer import BOS_ID, EOS_ID, Tokenizer
 
 class ChatSession:
     def __init__(self, ckpt_path: str, device: str = "cuda",
-                 codec_ckpt: str | None = None) -> None:
+                 codec_ckpt: str | None = None,
+                 hyp_select: str = "decodable") -> None:
+        # hyp_select: WTA winner rule at temp 0. "decodable" = codec predictor
+        # score (default; skews toward the compact positive-register attractor —
+        # see RESEARCH_LOG 2026-07-03 R7 thought-space diagnostic). "affinity" =
+        # highest pooled-thought cosine to the LAST user turn, so the reply is
+        # routed by what was just said rather than by decode confidence.
+        self.hyp_select = hyp_select
         ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
         self.cfg: Config = from_dict(ckpt["config"])
         tk = self.cfg.thinker
@@ -77,6 +84,10 @@ class ChatSession:
             # predictor; temperature>0 -> random hypothesis (varied replies)
             if temperature > 0:
                 pred = pred[:, int(torch.randint(pred.size(1), (1,)))]
+            elif self.hyp_select == "affinity":
+                last = torch.nn.functional.normalize(ctx_th[0, -1].mean(0), dim=-1)
+                hyp = torch.nn.functional.normalize(pred[0].mean(1), dim=-1)
+                pred = pred[:, int((hyp @ last).argmax())]
             else:
                 score = self.codec.predictor(pred[0])[:, tk.k_out - 1]
                 pred = pred[:, int(score.argmin())]

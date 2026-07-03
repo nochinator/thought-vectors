@@ -47,17 +47,93 @@ def thought_loss(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
     return mse + cos
 
 
-def wta_losses(pred: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
-    """pred [B, M, k, d], target [B, k, d] -> per-hypothesis thought loss [B, M]."""
-    target = target[:, None]
-    mse = ((pred - target) ** 2).mean(dim=(-1, -2))
-    cos = 1 - F.cosine_similarity(pred, target, dim=-1).mean(dim=-1)
+def thought_loss_weighted(
+    pred: torch.Tensor, target: torch.Tensor, slot_weights: torch.Tensor
+) -> torch.Tensor:
+    """Slot-weighted thought loss: early slots get higher weight."""
+    w = slot_weights[None, :].to(device=pred.device)  # [1, k]
+    mse = (F.mse_loss(pred, target, reduction="none").mean(dim=-1) * w).mean()
+    cos = (1 - F.cosine_similarity(pred, target, dim=-1)) * w
+    cos = cos.mean()
     return mse + cos
 
 
-def wta_select(pred: torch.Tensor, target: torch.Tensor) -> tuple[torch.Tensor, ...]:
+def contrastive_loss(pred: torch.Tensor, target: torch.Tensor, tau: float = 0.07) -> torch.Tensor:
+    """NTXent: mean-pooled (over slots) pred[i] close to tgt[i], far from tgt[j≠i]."""
+    p = pred.mean(dim=1)  # [B, d]
+    t = target.mean(dim=1)  # [B, d]
+    p = F.normalize(p, dim=-1)
+    t = F.normalize(t, dim=-1)
+    sim = torch.mm(p, t.T) / tau  # [B, B]
+    labels = torch.arange(sim.size(0), device=sim.device)
+    return F.cross_entropy(sim, labels)
+
+
+def diversity_loss(pred: torch.Tensor) -> torch.Tensor:
+    """Penalize low variance: 1 - mean pairwise cosine across batch."""
+    p = pred.mean(dim=1)  # [B, d]
+    p = F.normalize(p, dim=-1)
+    sim = torch.mm(p, p.T)  # [B, B]
+    mask = ~torch.eye(sim.size(0), dtype=torch.bool, device=sim.device)
+    return 1.0 - sim[mask].mean()
+
+
+def _position_weights(seq_len: int, decay: float, device) -> torch.Tensor:
+    """Linear decay from 1.0 to `decay` over `seq_len` positions."""
+    if seq_len <= 1 or decay >= 1.0:
+        return torch.ones(seq_len, device=device)
+    return torch.linspace(1.0, decay, seq_len, device=device)
+
+
+def _slot_weights(k_out: int, decay: float, device) -> torch.Tensor:
+    """Linear decay from 1.0 to `decay` over `k_out` thought slots."""
+    if k_out <= 1 or decay >= 1.0:
+        return torch.ones(k_out, device=device)
+    return torch.linspace(1.0, decay, k_out, device=device)
+
+
+def _ss_schedule(cfg, step: int, max_steps: int, elapsed_frac: float | None) -> float:
+    """Scheduled sampling probability: linear ramp ss_prob → ss_prob_end."""
+    tk = cfg.thinker
+    if tk.ss_prob_end <= tk.ss_prob:
+        return tk.ss_prob
+    if elapsed_frac is not None:
+        frac = elapsed_frac
+    else:
+        frac = min(step / max(max_steps, 1), 1.0)
+    return tk.ss_prob + (tk.ss_prob_end - tk.ss_prob) * frac
+
+
+def wta_losses(
+    pred: torch.Tensor, target: torch.Tensor, slot_weights: torch.Tensor | None = None
+) -> torch.Tensor:
+    """pred [B, M, k, d], target [B, k, d] -> per-hypothesis thought loss [B, M].
+
+    slot_weights [k] (optional): per-slot weight over the k_out response thoughts,
+    applied to BOTH the MSE and cosine terms before the slot-mean. Lets the WTA
+    (frontier) recipe up-weight the starved tail slots — without it the WTA path
+    means every slot equally and slot_weight_decay is unreachable for n_hyp>1.
+    Reduces exactly to the unweighted mean when slot_weights is None / uniform.
+    """
+    target = target[:, None]
+    se = ((pred - target) ** 2).mean(dim=-1)            # [B, M, k]
+    cos_k = 1 - F.cosine_similarity(pred, target, dim=-1)  # [B, M, k]
+    if slot_weights is not None:
+        w = slot_weights.to(pred.device)
+        denom = w.sum().clamp(min=1e-6)
+        mse = (se * w).sum(dim=-1) / denom
+        cos = (cos_k * w).sum(dim=-1) / denom
+    else:
+        mse = se.mean(dim=-1)
+        cos = cos_k.mean(dim=-1)
+    return mse + cos
+
+
+def wta_select(
+    pred: torch.Tensor, target: torch.Tensor, slot_weights: torch.Tensor | None = None
+) -> tuple[torch.Tensor, ...]:
     """Winner per sample: (winning pred [B, k, d], losses [B, M], winner [B])."""
-    pl = wta_losses(pred, target)
+    pl = wta_losses(pred, target, slot_weights)
     winner = pl.argmin(dim=1)
     rows = torch.arange(pred.size(0), device=pred.device)
     return pred[rows, winner], pl, winner
@@ -98,6 +174,28 @@ def encode_turns(
     return th.reshape(*ids.shape[:-1], k, th.size(-1)), budgets
 
 
+def out_budget_mask(
+    codec: ThoughtAutoencoder, pred: torch.Tensor, out_tau: float
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Adaptive response length (inference): per-sample smallest prefix of the
+    importance-ordered predicted thoughts whose codec loss-predictor CE <=
+    out_tau. Returns (budgets [B], memory_padding_mask [B, k_out], True=masked).
+
+    The thinker's output must be importance-ordered for a prefix to be a valid
+    shorter reply — train with k_out_random_prefix. The predictor is the codec's
+    own (frozen) head; it transfers because the WTA recipe keeps predicted
+    thoughts in codec distribution. Budget clamped to [2, k_out].
+    """
+    k = pred.size(1)
+    with torch.no_grad():
+        ce = codec.predictor(pred.detach())[:, :k]  # [B, k] predicted CE per prefix
+        ok = ce <= out_tau
+        first = ok.float().argmax(dim=1) + 1         # monotone curve: argmax = first True
+        budgets = torch.where(ok.any(dim=1), first, torch.full_like(first, k)).clamp(min=2)
+    slots = torch.arange(k, device=pred.device)
+    return budgets, slots[None, :] >= budgets[:, None]
+
+
 class ThinkerTrainer:
     def __init__(self, cfg: Config, tokenizer: Tokenizer) -> None:
         assert torch.get_float32_matmul_precision() == "highest"
@@ -112,10 +210,45 @@ class ThinkerTrainer:
         self.codec.load_state_dict(ckpt["model"])
         self.codec = self.codec.to(self.device)
         self.codec.eval()
+        if cfg.thinker.unfreeze == "codec":
+            # MIOpen refuses RNN backward in eval mode, and encoder grads flow
+            # when the full codec is unfrozen.  train() with every dropout
+            # zeroed is numerically identical to eval() here.
+            self.codec.train()
+            for m in self.codec.modules():
+                if isinstance(m, torch.nn.Dropout):
+                    m.p = 0.0
+                elif isinstance(m, torch.nn.GRU):
+                    m.dropout = 0.0
         for p in self.codec.parameters():
             p.requires_grad_(False)
 
         self.thinker = Thinker(cfg.thinker, codec_cfg.model.d_model).to(self.device)
+        if cfg.thinker.thinker_init_from:
+            init_ckpt = torch.load(cfg.thinker.thinker_init_from, map_location="cpu",
+                                   weights_only=False)
+            # Filter params that match shape (allows warm-start across k_out changes)
+            src = init_ckpt["thinker"]
+            dst = self.thinker.state_dict()
+            filtered = {}
+            skipped = []
+            for k, v in src.items():
+                if k in dst and dst[k].shape == v.shape:
+                    filtered[k] = v
+                else:
+                    skipped.append(k)
+            self.thinker.load_state_dict(filtered, strict=False)
+            print(f"thinker weights warm-started from {cfg.thinker.thinker_init_from}"
+                  f" (loaded: {len(filtered)}, skipped: {len(skipped)})",
+                  flush=True)
+            # Unfreeze checkpoints carry an adapted codec (e.g. R4_UNFREEZE's
+            # decoder) — continue from it, not the pristine codec_ckpt, so the
+            # thinker's warm-started weights see the decoder they were trained
+            # against.
+            if "codec" in init_ckpt:
+                self.codec.load_state_dict(init_ckpt["codec"])
+                print("codec warm-started from the same checkpoint "
+                      "(adapted decoder restored)", flush=True)
         print(f"thinker params: {self.thinker.param_count() / 1e6:.2f}M "
               f"(codec d={codec_cfg.model.d_model}, frozen={cfg.thinker.unfreeze=='none'})",
               flush=True)
@@ -179,6 +312,21 @@ class ThinkerTrainer:
         ctx_turns = batch["ctx_turns"].to(dev)
         resp_roles = batch["resp_roles"].to(dev)
 
+        # --- round-4 augmentations ---
+        if tk.turn_dropout > 0:
+            # Drop intermediate context turns (keep last turn always)
+            for b in range(ctx_ids.size(0)):
+                nturn = int(ctx_turns[b].item())
+                if nturn <= 2:
+                    continue
+                for j in range(nturn - 1):  # all except the last turn
+                    if torch.rand(()).item() < tk.turn_dropout:
+                        ctx_ids[b, j].zero_()
+                        ctx_turns[b] -= 1
+        if tk.role_flip and torch.rand(()).item() < 0.5:
+            ctx_roles = 1 - ctx_roles
+            resp_roles = 1 - resp_roles
+
         grad_enc = tk.unfreeze == "codec"
         ctx_th, budgets = encode_turns(
             self.codec, ctx_ids, tk.k_ctx, grad=grad_enc, tau=tk.ctx_tau
@@ -187,11 +335,19 @@ class ThinkerTrainer:
             tgt_th, _ = encode_turns(self.codec, resp_ids, tk.k_out)
 
         pred = self.thinker(ctx_th, ctx_roles, ctx_turns, resp_roles,
-                            target_thoughts=tgt_th, slot_budgets=budgets)
+                            target_thoughts=tgt_th, slot_budgets=budgets,
+                            ss_prob=_ss_schedule(cfg, self.step, cfg.train.max_steps,
+                                                 (time.time() - self.train_start) / max(cfg.train.max_seconds, 1)
+                                                 if cfg.train.max_seconds and self.train_start else None))
 
         losses: dict[str, torch.Tensor] = {}
         if pred.dim() == 4:  # [B, M, k, d] WTA multi-hypothesis head
-            pred, pl, winner = wta_select(pred, tgt_th)
+            sw = (
+                _slot_weights(pred.size(2), tk.slot_weight_decay, pred.device)
+                if tk.slot_weight_decay > 0
+                else None
+            )
+            pred, pl, winner = wta_select(pred, tgt_th, sw)
             if tk.w_thought > 0:
                 rows = torch.arange(pl.size(0), device=pl.device)
                 eps = tk.wta_eps
@@ -199,12 +355,42 @@ class ThinkerTrainer:
                     (1 - eps) * pl[rows, winner].mean() + eps * pl.mean()
                 )
         elif tk.w_thought > 0:
-            losses["thought"] = tk.w_thought * thought_loss(pred, tgt_th)
+            if tk.slot_weight_decay > 0:
+                sw = _slot_weights(pred.size(1), tk.slot_weight_decay, pred.device)
+                losses["thought"] = tk.w_thought * thought_loss_weighted(pred, tgt_th, sw)
+            else:
+                losses["thought"] = tk.w_thought * thought_loss(pred, tgt_th)
         if tk.w_decoder > 0:
             resp_pad = make_padding_mask(resp_ids)
-            logits = self.codec.decode(pred, resp_ids[:, :-1], resp_pad[:, :-1])
-            ce, _ = reconstruction_ce(logits, resp_ids[:, 1:])
+            # Random-prefix training: the thinker must order its output by
+            # importance so any prefix is decodable (mirrors codec training).
+            dec_pred = pred
+            if tk.k_out_random_prefix:
+                k_full = pred.size(1)
+                if torch.rand(()).item() < tk.k_out_full_frac:
+                    rk = k_full
+                else:
+                    rk = torch.randint(tk.k_out_min, k_full + 1, (1,)).item()
+                dec_pred = pred[:, :rk]
+            logits = self.codec.decode(dec_pred, resp_ids[:, :-1], resp_pad[:, :-1])
+            if tk.pos_weight_decay > 0:
+                seq = logits.size(1)
+                w = _position_weights(seq, tk.pos_weight_decay, logits.device)
+                tok_ce = F.cross_entropy(
+                    logits.reshape(-1, logits.size(-1)),
+                    resp_ids[:, 1:].reshape(-1),
+                    ignore_index=0, reduction="none",
+                ).view(logits.size(0), seq)
+                valid = (resp_ids[:, 1:] != 0).float()
+                total_w = (valid * w[None, :]).sum()
+                ce = (tok_ce * valid * w[None, :]).sum() / total_w.clamp(min=1)
+            else:
+                ce, _ = reconstruction_ce(logits, resp_ids[:, 1:])
             losses["dec_ce"] = tk.w_decoder * ce
+        if tk.contrast_weight > 0:
+            losses["contrast"] = tk.contrast_weight * contrastive_loss(pred, tgt_th)
+        if tk.diversity_weight > 0:
+            losses["diversity"] = tk.diversity_weight * diversity_loss(pred)
         if tk.w_reverse > 0 and tk.mode == "query":
             w = self._reverse_weight()
             if w > 0 and int(ctx_turns.min()) >= 1:
@@ -305,6 +491,7 @@ class ThinkerTrainer:
     @torch.no_grad()
     def validate(self, val_loader, max_batches: int = 16) -> dict:
         self.thinker.eval()
+        tk = self.cfg.thinker
         cos_sum, ce_sum, n = 0.0, 0.0, 0
         for i, batch in enumerate(val_loader):
             if i >= max_batches:
@@ -312,25 +499,29 @@ class ThinkerTrainer:
             ctx_ids = batch["ctx_ids"].to(self.device)
             resp_ids = batch["resp_ids"].to(self.device)
             ctx_th, budgets = encode_turns(
-                self.codec, ctx_ids, self.cfg.thinker.k_ctx, tau=self.cfg.thinker.ctx_tau
+                self.codec, ctx_ids, tk.k_ctx, tau=tk.ctx_tau
             )
-            tgt_th, _ = encode_turns(self.codec, resp_ids, self.cfg.thinker.k_out)
+            tgt_th, _ = encode_turns(self.codec, resp_ids, tk.k_out)
             pred = self.thinker(
                 ctx_th, batch["ctx_roles"].to(self.device),
                 batch["ctx_turns"].to(self.device), batch["resp_roles"].to(self.device),
-                target_thoughts=tgt_th if self.cfg.thinker.mode == "prefix" else None,
+                target_thoughts=tgt_th if tk.mode == "prefix" else None,
                 slot_budgets=budgets,
             )
             if pred.dim() == 4:
                 pred, _, _ = wta_select(pred, tgt_th)  # best-of-M validation
             cos_sum += F.cosine_similarity(pred, tgt_th, dim=-1).mean().item()
-            resp_pad = make_padding_mask(resp_ids)
-            logits = self.codec.decode(pred, resp_ids[:, :-1], resp_pad[:, :-1])
-            ce, _ = reconstruction_ce(logits, resp_ids[:, 1:])
-            ce_sum += ce.item()
             n += 1
+            if tk.w_decoder > 0:
+                resp_pad = make_padding_mask(resp_ids)
+                logits = self.codec.decode(pred, resp_ids[:, :-1], resp_pad[:, :-1])
+                ce, _ = reconstruction_ce(logits, resp_ids[:, 1:])
+                ce_sum += ce.item()
         self.thinker.train()
-        return {"val_cos": cos_sum / max(n, 1), "val_dec_ce": ce_sum / max(n, 1)}
+        out = {"val_cos": cos_sum / max(n, 1)}
+        if tk.w_decoder > 0:
+            out["val_dec_ce"] = ce_sum / max(n, 1)
+        return out
 
     @torch.no_grad()
     def dump_samples(self, batch: dict, max_rows: int = 4) -> None:
@@ -463,12 +654,15 @@ class ThinkerTrainer:
 
             if self.step % cfg.train.val_every == 0:
                 val = self.validate(val_loader)
-                print(f"step {self.step:>7} | VAL cos {val['val_cos']:.4f} "
-                      f"| VAL dec CE {val['val_dec_ce']:.4f}", flush=True)
+                parts = [f"VAL cos {val['val_cos']:.4f}"]
+                if "val_dec_ce" in val:
+                    parts.append(f"VAL dec CE {val['val_dec_ce']:.4f}")
+                print(f"step {self.step:>7} | " + " | ".join(parts), flush=True)
                 self.metrics_file.write(json.dumps({"step": self.step, **val}) + "\n")
                 self.metrics_file.flush()
-                if val["val_dec_ce"] < self.best_val:
-                    self.best_val = val["val_dec_ce"]
+                score = val.get("val_dec_ce", -val["val_cos"])
+                if score < self.best_val:
+                    self.best_val = score
                     self.save_checkpoint("best")
 
             if self.step % cfg.train.ckpt_every == 0:
@@ -477,13 +671,16 @@ class ThinkerTrainer:
         final = self.validate(val_loader)
         self.metrics_file.write(json.dumps({"step": self.step, **final}) + "\n")
         self.metrics_file.flush()
-        if final["val_dec_ce"] < self.best_val:
-            self.best_val = final["val_dec_ce"]
+        score = final.get("val_dec_ce", -final["val_cos"])
+        if score < self.best_val:
+            self.best_val = score
             self.save_checkpoint("best")
         self.save_checkpoint("final")
+        parts = [f"final val cos {final['val_cos']:.4f}"]
+        if "val_dec_ce" in final:
+            parts.append(f"dec CE {final['val_dec_ce']:.4f}")
         print(f"\nRun '{cfg.run.name}' done: {self.step} steps | "
-              f"final val cos {final['val_cos']:.4f} dec CE {final['val_dec_ce']:.4f} "
-              f"(best {self.best_val:.4f})", flush=True)
+              + " | ".join(parts), flush=True)
 
 
 def iter_cycle(loader):

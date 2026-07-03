@@ -115,6 +115,7 @@ class Thinker(nn.Module):
         resp_roles: torch.Tensor,
         target_thoughts: torch.Tensor | None = None,  # [B, k_out, d] for prefix-mode TF
         slot_budgets: torch.Tensor | None = None,     # [B, C] per-turn thought counts
+        ss_prob: float | None = None,                 # override cfg.ss_prob (for schedule)
     ) -> torch.Tensor:
         cfg = self.cfg
         seq, key_pad = self._context_seq(ctx_thoughts, ctx_roles, ctx_turns, slot_budgets)
@@ -139,6 +140,12 @@ class Thinker(nn.Module):
         # prefix mode: [ctx][response slots], causal over the response region
         if target_thoughts is None:
             return self._prefix_generate(seq, key_pad, resp_roles)
+        # Scheduled sampling: with probability ss_prob, feed the model's own
+        # prediction as the previous-slot input instead of the true target.
+        # ss_prob > 0 enables the iterative path (one transformer pass per slot).
+        _ss = ss_prob if ss_prob is not None else getattr(cfg, "ss_prob", 0.0)
+        if self.training and _ss > 0:
+            return self._prefix_scheduled(seq, key_pad, resp_roles, target_thoughts, _ss)
         slots = self.slot_pos(self.out_seed.expand(bsz, -1, -1).clone())
         slots = slots + self.resp_role_emb(resp_roles)[:, None, :]
         # teacher forcing: slot j also receives the true thought j-1
@@ -155,6 +162,38 @@ class Thinker(nn.Module):
         )
         out = self.trunk(full, mask=mask, src_key_padding_mask=pad)
         return self.out_proj(out[:, -cfg.k_out :])
+
+    def _prefix_scheduled(
+        self, seq, key_pad, resp_roles, target_thoughts, ss_prob
+    ) -> torch.Tensor:
+        """Prefix mode with scheduled sampling: iterative slot-by-slot with
+        probability ss_prob of using own prediction as previous-slot input."""
+        cfg = self.cfg
+        bsz = seq.size(0)
+        ctx_len = seq.size(1)
+        outputs = []
+        prev = torch.zeros(bsz, 1, self.d_model, device=seq.device)
+        for j in range(cfg.k_out):
+            slot = self.slot_pos(self.out_seed[:, j : j + 1].expand(bsz, -1, -1).clone())
+            slot = slot + self.resp_role_emb(resp_roles)[:, None, :] + prev
+            full = torch.cat([seq] + [o for o in outputs] + [slot], dim=1)
+            total = full.size(1)
+            mask = torch.zeros(total, total, dtype=torch.bool, device=seq.device)
+            mask[:ctx_len, ctx_len:] = True
+            if j > 0:
+                resp_causal = torch.triu(
+                    torch.ones(j + 1, j + 1, dtype=torch.bool, device=seq.device), diagonal=1
+                )
+                mask[- (j + 1) :, - (j + 1) :] = resp_causal
+            new_pad = torch.cat(
+                [key_pad, torch.zeros(bsz, j + 1, dtype=torch.bool, device=seq.device)], dim=1
+            )
+            out = self.trunk(full, mask=mask, src_key_padding_mask=new_pad)
+            pred = self.out_proj(out[:, -1:])
+            outputs.append(pred)
+            if j + 1 < cfg.k_out:
+                prev = pred.detach() if torch.rand(()).item() < ss_prob else target_thoughts[:, j : j + 1]
+        return torch.cat(outputs, dim=1)
 
     @staticmethod
     def _prefix_mask(ctx_len: int, k_out: int, device) -> torch.Tensor:

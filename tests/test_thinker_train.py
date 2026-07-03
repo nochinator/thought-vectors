@@ -106,10 +106,18 @@ def make_trainer(setup, **thinker_overrides):
         {"ctx_tau": 0.5},                                # TAU: predictor-adaptive budgets
         {"k_ctx_schedule": [4, 3, 2]},                   # SCHED: recency-decayed budgets
         {"n_hypotheses": 3, "w_decoder": 0.5},           # WTA multi-hypothesis
+        {"n_hypotheses": 3, "w_decoder": 0.5, "slot_weight_decay": 0.3},  # WTA + slot weighting
         {"mode": "prefix", "tf_noise_std": 0.2, "w_decoder": 0.5},  # PN exposure fix
+        {"n_hypotheses": 3, "w_decoder": 0.5, "contrast_weight": 0.2},  # R4: NTXent anti-collapse (WTA path)
+        {"n_hypotheses": 3, "w_decoder": 0.5, "diversity_weight": 0.1},  # R4: batch-variance anti-collapse
+        {"n_hypotheses": 3, "w_decoder": 0.5, "role_flip": True},  # R4: user<->bot flip
+        {"k_out": 4, "k_out_random_prefix": True, "k_out_min": 2, "w_decoder": 0.5},  # R4: KRP + small k_out
+        {"n_hypotheses": 3, "w_decoder": 0.5, "role_flip": True, "unfreeze": "decoder",
+         "compress_frac": 0.4, "codec_lr_scale": 0.05},  # R4 COMBO: role_flip × unfreeze stack (the 12h candidate)
     ],
     ids=["thought", "decoder", "mixed_rev", "cycle", "prefix", "unfreeze_compress",
-         "ctx_tau", "sched", "wta", "prefix_noise"],
+         "ctx_tau", "sched", "wta", "wta_slotw", "prefix_noise",
+         "r4_contrast", "r4_diversity", "r4_roleflip", "r4_krp_kout", "r4_combo"],
 )
 def test_trainer_modes(setup, ov):
     from thoughtvec.thinker_train import make_dialogue_loader
@@ -126,7 +134,9 @@ def test_trainer_modes(setup, ov):
     import math
 
     val = trainer.validate(val_loader)
-    assert math.isfinite(val["val_cos"]) and math.isfinite(val["val_dec_ce"])
+    assert math.isfinite(val["val_cos"])
+    if trainer.cfg.thinker.w_decoder > 0:
+        assert math.isfinite(val["val_dec_ce"])
     assert trainer.nan_streak == 0  # padded context turns must not NaN the loss
     # resume path
     trainer2 = make_trainer(setup, **ov)
@@ -146,7 +156,9 @@ def test_trainer_flat_context(setup):
     val = trainer.validate(loader)
     import math
 
-    assert math.isfinite(val["val_cos"]) and math.isfinite(val["val_dec_ce"])
+    assert math.isfinite(val["val_cos"])
+    if trainer.cfg.thinker.w_decoder > 0:
+        assert math.isfinite(val["val_dec_ce"])
 
     # chat path builds the flat context itself
     from thoughtvec.chat import ChatSession
@@ -190,3 +202,58 @@ def test_chat_session(setup):
     assert len(session.history) == 4
     session.reset()
     assert not session.history
+
+
+def test_wta_slot_weights_reduce_to_unweighted():
+    """Uniform slot weights must reproduce the unweighted WTA loss exactly,
+    and a decay vector must change the per-hypothesis ranking it computes."""
+    from thoughtvec.thinker_train import _slot_weights, wta_losses
+
+    torch.manual_seed(0)
+    pred = torch.randn(5, 3, 8, 16)   # [B, M, k_out, d]
+    target = torch.randn(5, 8, 16)    # [B, k_out, d]
+
+    base = wta_losses(pred, target)
+    uniform = wta_losses(pred, target, torch.ones(8))
+    assert torch.allclose(base, uniform, atol=1e-6)
+
+    decay = _slot_weights(8, 0.3, pred.device)
+    assert decay[0] == 1.0 and decay[-1] == pytest.approx(0.3)
+    weighted = wta_losses(pred, target, decay)
+    assert weighted.shape == base.shape
+    assert not torch.allclose(weighted, base)  # weighting actually bites
+
+
+def test_out_budget_mask_adaptive(setup):
+    """out_budget_mask returns per-sample budgets in [2, k_out] and a mask that
+    hides exactly the slots past each budget."""
+    import math
+
+    from thoughtvec.thinker_train import out_budget_mask
+
+    _, _, codec_path, _, _ = setup
+    from thoughtvec.config import from_dict
+    from thoughtvec.model import ThoughtAutoencoder
+
+    ck = torch.load(codec_path, map_location="cpu", weights_only=False)
+    codec = ThoughtAutoencoder(from_dict(ck["config"]).model)
+    codec.load_state_dict(ck["model"])
+    codec.eval()
+
+    k_out = 8
+    pred = torch.randn(5, k_out, 32)  # tiny test codec d_model = 32
+    budgets, mask = out_budget_mask(codec, pred, out_tau=0.5)
+    assert budgets.shape == (5,)
+    assert int(budgets.min()) >= 2 and int(budgets.max()) <= k_out
+    assert mask.shape == (5, k_out)
+    # mask is True exactly where slot index >= budget
+    for b in range(5):
+        cut = int(budgets[b])
+        assert not mask[b, :cut].any()
+        assert mask[b, cut:].all()
+    # out_tau huge → any prefix clears the bar → use the FEWEST vectors (budget 2)
+    lo_b, _ = out_budget_mask(codec, pred, out_tau=float("inf"))
+    assert int(lo_b.max()) == 2
+    # out_tau=0 → no prefix qualifies → keep ALL slots, mask nothing
+    hi_b, hi_m = out_budget_mask(codec, pred, out_tau=0.0)
+    assert int(hi_b.min()) == k_out and not hi_m.any()

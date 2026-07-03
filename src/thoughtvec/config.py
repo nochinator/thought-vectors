@@ -126,6 +126,10 @@ class ThinkerCfg:
                               # previous-thought inputs (exposure-bias fix —
                               # P0 hit cos 0.94 teacher-forced but collapsed
                               # to 0.42 free-running)
+    ss_prob: float = 0.0      # prefix mode scheduled-sampling probability:
+                              # feed own prediction as prev-slot input (iterative)
+    ss_prob_end: float = 0.0  # if > ss_prob, linear ramp from ss_prob → ss_prob_end
+                              # over training (0 = constant ss_prob)
     k_ctx: int = 32           # thought prefix kept per context turn
     k_out: int = 32           # response thoughts predicted
     max_turns: int = 8        # max context turns
@@ -141,6 +145,13 @@ class ThinkerCfg:
     flat_context: bool = False  # encode the WHOLE history as one BOS..EOS
                               # token stream (C=1): cross-turn compression,
                               # but turn structure only via inline markers
+    out_tau: float = 0.0      # >0 (INFERENCE only): adaptive RESPONSE length.
+                              # Decode each reply from the smallest prefix of the
+                              # importance-ordered predicted thoughts whose codec
+                              # loss-predictor CE <= out_tau (predictor output
+                              # space — log1p CE for m5). A ~20-tok reply should
+                              # use ~4-8 vectors, not all k_out. Needs importance-
+                              # ordered output: train with k_out_random_prefix.
     # losses
     w_thought: float = 1.0    # MSE + (1-cos) in thought space vs frozen-encoder target
     w_decoder: float = 0.0    # teacher-forced CE through the frozen decoder
@@ -148,6 +159,21 @@ class ThinkerCfg:
     reverse_anneal_frac: float = 0.3  # reverse weight linearly hits 0 here
     cycle_frac: float = 0.0   # frac of steps with re-encode consistency loss
     w_cycle: float = 0.0
+    # round-4 loss additions
+    contrast_weight: float = 0.0   # batch contrastive thought loss: pred[i] close
+                                   # to tgt[i], far from tgt[j] for j≠i (NTXent)
+    pos_weight_decay: float = 0.0  # >0: position-weighted decoder CE, decays from
+                                   # 1.0 to this value across the token sequence
+    turn_dropout: float = 0.0      # p of dropping an intermediate context turn
+    role_flip: bool = False        # randomly flip user↔bot roles (doubles data)
+    slot_weight_decay: float = 0.0 # >0: per-slot thought MSE weight, decays from
+                                   # 1.0 to this value across k_out positions
+    diversity_weight: float = 0.0  # anti-collapse: penalize low batch variance of
+                                   # predicted mean-pooled reply thoughts
+    k_out_random_prefix: bool = False  # train decoder CE on random prefixes of
+                                   # predicted thoughts (orders output by importance)
+    k_out_min: int = 4             # minimum random prefix length
+    k_out_full_frac: float = 0.10  # fraction of steps using full k_out
     # phase 2 (end-to-end)
     unfreeze: str = "none"    # "none" | "decoder" | "codec"
     codec_lr_scale: float = 0.1  # lr multiplier for unfrozen codec params
@@ -155,6 +181,7 @@ class ThinkerCfg:
                                  # (anchors the thought space against drift)
     compress_shard: str = "data/mix_uni"
     codec_ckpt: str = "checkpoints/m5_frontier/best.pt"
+    thinker_init_from: str = ""      # warm-start thinker weights from this ckpt
 
 
 @dataclass
