@@ -1,0 +1,322 @@
+% thoughtvec paper — structural draft.
+% Build: make  (or: pdflatex main && bibtex main && pdflatex main && pdflatex main)
+%
+% Sections marked  %% TODO(nochi)  are yours to write in your own voice.
+% Numbers marked  \todonum{...}  await FINAL2_12H results.
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\usepackage[numbers]{natbib}
+
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\todonum}[1]{\textcolor{red}{\texttt{#1}}}
+\newcommand{\thoughtvec}{\textsc{thoughtvec}}
+
+% TODO(nochi): pick a title. Candidate directions, pick/edit one:
+%   "Conversation in Thought-Vector Space: a 48M-Parameter Latent Dialogue
+%    Agent Trained on One Consumer GPU"
+%   "Ordered Thought Vectors: Prefix-Decodable Sentence Latents and a Thinker
+%    That Converses in Them"
+%   "Talking Without Tokens: Small-Scale Latent-Space Dialogue, Its Failure
+%    Modes, and How Metrics Lied to Us"
+\title{\todo{Title} \\
+  \large Conversation in thought-vector space on a single consumer GPU}
+
+% TODO(nochi): your name / preferred publication name, affiliation ("Independent
+% Researcher" is normal and fine), and a contact email you're happy making public.
+\author{\todo{Author} \\ Independent Researcher \\ \texttt{\todo{email}}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study whether a small conversational agent can operate entirely in a
+learned sentence-latent space. A 32.9M-parameter \emph{codec} encodes text
+into a sequence of latent ``thought vectors'' ordered by importance, such
+that any length-$k$ prefix decodes back to text --- making compression ratio a
+decode-time choice (byte-perfect at 4:1, readable at 8:1) --- and a small
+predictor estimates per-prefix reconstruction quality, enabling adaptive
+compression. A 15.1M-parameter \emph{thinker} transformer then converses
+directly in this space: dialogue history is encoded turn-by-turn into thought
+prefixes, the thinker predicts the response's thought vectors under a
+multi-hypothesis winner-take-all objective with cycle-consistency
+regularization, and the codec decoder renders the reply. No token-level
+language modeling occurs in the thinker. Trained from scratch on a single
+consumer GPU (AMD RX~6700~XT), the system produces coherent, grounded,
+context-sensitive small talk. We report the full experimental path, including
+its failures: a persistent \emph{sentiment-register} disease (cheerful replies
+to bad news) that resisted every training-lever intervention, was traced via
+latent-space diagnostics to a precise data absence --- no training conversation
+ever reverses mood mid-dialogue --- and was attacked with synthesized
+register-reversal data (\todonum{FINAL2 result}); and three separate incidents
+of models satisfying lexical metrics without the behavior they proxy, caught
+only by mandatory transcript audits. We argue small-scale latent-dialogue
+systems are a cheap, sharp instrument for studying representation
+bottlenecks, data-distribution gaps, and metric gaming.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+% Draft framing — edit freely.
+Large language models converse by autoregressing over tokens. An alternative
+line of work asks whether the \emph{semantic} content of an utterance can be
+manipulated as a small set of continuous vectors, with token generation
+delegated to a decoder \citep{lcm2024,hao2024coconut,duquenne2023sonar}. We
+push this question to an extreme small scale: a $\sim$48M-parameter system,
+trained entirely on one consumer GPU, in which dialogue happens in latent
+space end-to-end.
+
+Our contributions:
+\begin{enumerate}
+  \item \textbf{Prefix-decodable ordered latents.} A text autoencoder whose
+    latent sequence is ordered by importance so that every prefix is a valid,
+    gracefully degrading representation, plus a predictor that turns this
+    into an adaptive-compression dial (\S\ref{sec:codec}).
+  \item \textbf{A latent-space conversationalist.} A thinker transformer that
+    maps context thoughts to response thoughts under a winner-take-all
+    multi-hypothesis loss with random-prefix targets and cycle consistency,
+    with the codec decoder anchored against drift (\S\ref{sec:thinker}).
+  \item \textbf{An honest experimental record.} Eight transcript-audited
+    ablation rounds, including negative rounds; a case study tracing a
+    behavioral disease to a data-distribution absence via latent-space
+    diagnostics; and three documented incidents of metric gaming
+    (\S\ref{sec:results}--\S\ref{sec:lessons}).
+\end{enumerate}
+
+%% ============================================================
+%% TODO(nochi): Origin of the idea.
+%% This section is intentionally left for you. Suggested content: where the
+%% thought-vector idea came from, the original design sketch, what you
+%% expected vs. what happened, why you decided to build it for real.
+%% (1-3 paragraphs is typical; it can also be folded into the intro.)
+\subsection*{Origin of this project}
+\todo{nochi: write in your own words}
+%% ============================================================
+
+\section{Related work}
+\label{sec:related}
+
+% Structural draft — each paragraph names the connection to check/expand.
+\paragraph{Sentence-level latents.} Fixed-size sentence embeddings for
+generation and translation \citep{duquenne2023sonar}; Meta's Large Concept
+Models generate at the concept (sentence) level over SONAR embeddings
+\citep{lcm2024}. \thoughtvec{} differs in using a \emph{variable-length,
+importance-ordered} latent sequence with prefix decodability, and in
+targeting dialogue at 1000$\times$ smaller scale.
+
+\paragraph{Latent-space reasoning.} Chain-of-continuous-thought approaches
+feed hidden states back as inputs \citep{hao2024coconut}. Our thinker
+operates in an \emph{external, frozen} codec space rather than the LM's own
+hidden space.
+
+\paragraph{Multiple-hypothesis learning.} Winner-take-all / multiple choice
+learning for one-to-many prediction \citep{guzman2012mcl,lee2016smcl}; we
+apply it to response-thought prediction and analyze its failure mode
+(hypothesis diversity is style-level, not register-level).
+
+\paragraph{Cycle consistency.} \citep{zhu2017cyclegan}; we use
+decode--re-encode consistency as a regularizer on predicted thoughts.
+
+\paragraph{Dialogue corpora and empathy.} SODA \citep{kim2023soda},
+PersonaChat \citep{zhang2018personachat}, OASST1 \citep{kopf2023oasst},
+EmpatheticDialogues \citep{rashkin2019empathetic}.
+
+\todo{expand related work; verify all citations against the actual papers}
+
+\section{The codec: ordered, prefix-decodable thought vectors}
+\label{sec:codec}
+
+% Structural draft. Source of truth: RESEARCH_LOG.md M1-M5 + src/thoughtvec/model.py.
+\todo{architecture figure: encoder / ordered slots / prefix decode / predictor}
+
+The codec is a text autoencoder: a transformer encoder attends a set of $N$
+learned query slots to the token sequence, producing thought vectors
+$z_{1..N}$ ($d{=}384$); a transformer decoder generates tokens conditioned on
+a \emph{prefix} $z_{1..k}$. Training samples $k$ randomly per example
+(with a compression-weighted schedule), which forces the slots into an
+importance ordering: early slots carry the gist, later slots refinements. A
+small predictor head estimates reconstruction CE for each prefix length,
+enabling decode-time adaptive compression ($\tau$ dial). Total 32.9M
+parameters (19.0M encoder, 20.1M decoder, 6.2M shared token embeddings).
+
+Headline behavior (M5 frontier run): byte-perfect round-trips at 4:1 token
+compression, readable reconstructions at 8:1, graded degradation in between.
+\todo{codec results table from RESEARCH_LOG M5 section}
+
+\section{The thinker: conversing in thought space}
+\label{sec:thinker}
+
+% Structural draft. Source of truth: src/thoughtvec/thinker.py + thinker_train.py.
+Dialogue history turns are each encoded to $k_{ctx}{=}8$ thoughts. The
+thinker (15.1M params) is a pre-norm transformer over the flattened context
+thought sequence with role, turn-distance, and slot-position embeddings. A
+GRU-scaffolded query head cross-attends the trunk to emit $k_{out}{=}8$
+response thoughts in parallel, in $H{=}4$ winner-take-all hypotheses: only
+the hypothesis closest to the encoded gold response receives gradient
+\citep{guzman2012mcl}. Random-prefix targets ($k$ sampled per batch,
+$k_{\min}{=}4$) align training with the codec's prefix decodability.
+
+Two additions proved decisive in ablation:
+\textbf{(i) cycle consistency} --- decode the predicted thoughts, re-encode
+the text, and penalize distance to the prediction (applied to 25\% of
+batches, $w{=}0.5$); \textbf{(ii) decoder co-training} --- unfreeze the codec
+decoder at $0.05\times$ LR with a compression-anchor loss on 40\% of batches
+so it adapts to imperfect predicted thoughts without forgetting the codec
+geometry. At inference the reply is decoded from the selected hypothesis
+(most-decodable by default; \S\ref{sec:register} introduces a last-turn
+affinity rule).
+
+\section{Experimental setup}
+\label{sec:setup}
+
+\paragraph{Hardware.} One AMD RX 6700~XT (12\,GB, gfx1031/ROCm), consumer
+desktop. All chat and CPU evals on the host CPU. \todo{CPU model, RAM}
+
+\paragraph{Data.} Dialogue mix: SODA (61K conversations), OASST1 best-ranked
+English paths (8.5K), PersonaChat (0.9K); later rounds add
+EmpatheticDialogues (23K) and 40K synthesized \emph{register-reversal}
+splices (\S\ref{sec:register}). Turn-aware shards; role by turn parity; every
+non-first turn is a training target.
+
+\paragraph{Metrics.} Latent cosine to the gold response (val\_cos), decoded
+CE, reference F1, distinct-$n$; behavioral probes: \emph{self-repetition}
+(pairwise unigram-F1 among a model's own replies), \emph{context
+sensitivity} (F1 between with-history and without-history replies),
+and a \emph{sentiment-register} probe suite (bad news, good news, and
+contextual bad-news-after-good-news; positive-affect lexicon match).
+All lexical metrics are treated as \emph{defeasible}: no metric win is
+accepted without a transcript audit and a live chat probe
+(\S\ref{sec:lessons}).
+
+\paragraph{Ablation protocol.} Rounds of 45-minute arms at fixed wall time,
+warm-started from the current flagship for fine-tuning rounds or trained
+from scratch for recipe rounds; pre-registered decision rules per round.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Flagship runs}
+\todo{final table: FINAL\_12H vs FINAL2\_12H (running) across all metrics}
+
+FINAL\_12H (12h from scratch, cycle + decoder co-training on the original
+mix) achieved the best values of every metric across $\sim$30 arms: val\_cos
+0.428, dec\_CE 2.69, ref\_F1 0.297, self\_rep 0.188, ctx\_sens 0.146,
+round-trip guard PASS. Qualitatively: grounded openings, follow-up questions,
+multi-turn reference. FINAL2\_12H (identical recipe, data mix +
+EmpatheticDialogues + reversal splices) \todonum{results pending}.
+
+\subsection{Case study: the sentiment-register disease}
+\label{sec:register}
+
+% The narrative arc of rounds 6-8; source: RESEARCH_LOG 2026-07-03 entries.
+The flagship reliably produced \emph{cheerful replies to bad news},
+concentrated in context: after an upbeat turn, bad news drew ``That's
+great!'' Register errors: 0.17 single-turn vs.\ 0.50 contextual.
+
+\textbf{Round 6 (training levers): negative.} Every arm --- including a
+do-nothing control --- \emph{worsened} contextual register (0.50 $\to$
+0.67--0.83). Continued exposure to relentlessly upbeat small talk is itself
+the disease; no loss or architecture lever fixed a data problem.
+
+\textbf{Round 7 (empathetic data): style without routing.} Mixing
+EmpatheticDialogues transferred the commiseration \emph{style} (``Oh no! I'm
+so sorry.''; positive replies to good news rose 0.17 $\to$ 0.83) but register
+\emph{routing} worsened. Three diagnostics located the failure: (i) the
+frozen encoder separates sentiment (83\% nearest-centroid accuracy), but
+positive thoughts form a tight cluster while negative thoughts are diffuse
+--- positivity is a compact attractor; (ii) selecting the hypothesis whose
+pooled thought best matches the \emph{last user turn} (a zero-training
+inference change) halves single-turn errors; (iii) decoding \emph{all}
+hypotheses after an upbeat turn shows every hypothesis is positive ---
+winner-take-all diversity is style-level, not register-level, so no
+selection rule can fix contextual register.
+
+\textbf{Root cause.} Every training conversation --- in all corpora used ---
+holds a single mood throughout. Mid-conversation register reversal has zero
+support in the training distribution; the trunk learned conversation-level
+mood conditioning, which is exactly the observed disease.
+
+\textbf{Round 8 (reversal splices).} We synthesize reversal dialogues by
+splicing EmpatheticDialogues conversations by emotion label (positive opening
+exchange + negative continuation; 25\% flipped direction). Fine-tuning
+produced the first contextual commiserations observed in any arm, but
+degraded single-turn routing --- fine-tuning transfers style, not
+conditioning. FINAL2\_12H therefore trains from scratch with reversals
+in-distribution: \todonum{FINAL2 register results}.
+
+\subsection{Zero-training win: affinity hypothesis selection}
+Selecting the WTA hypothesis by pooled-thought cosine to the last user turn
+(instead of decodability) cut the flagship's single-turn register errors from
+0.17 to 0.08 with no retraining, at no cost elsewhere.
+\todo{small table decodable vs affinity selection}
+
+\section{Lessons: metrics lie, transcripts don't}
+\label{sec:lessons}
+
+% This section is a deliberate contribution; keep it prominent.
+Across the project, models satisfied a metric without the behavior it
+proxies \textbf{three times}: (1) an arm minimized context-sensitivity by
+adding \emph{noise} rather than using context; (2) an arm ``won'' the
+contextual register probe by phrasing cheer in words missing from the
+positive-affect lexicon (``terrific'', ``beautiful''); (3) a later arm
+repeated the trick with ``so sweet''. Each was caught by a standing rule:
+\emph{no metric win is believed without reading the transcripts and holding
+a live conversation}. We widened the lexicon twice and re-scored all
+checkpoints each time. Our experience suggests transcript audits should be a
+hard gate, not a courtesy, wherever behavioral metrics are lexical proxies.
+
+Further durable lessons: data quality dominates training levers at this
+scale (three independent rounds); warm-start fine-tuning transfers surface
+style readily but cannot rewire conditioning; a mid-training behavioral
+disease can be localized with cheap latent-space diagnostics before
+committing GPU time.
+
+\section{Limitations}
+\label{sec:limitations}
+
+Scale: 48M parameters, small-talk domain; no knowledge tasks. Evaluation:
+register probes are few (24 items) and lexicon-scored; human evaluation is
+one author. The codec is frozen during thinker training (by design), capping
+how much the thought geometry can adapt. Single-GPU wall-time budgets bound
+every ablation to 45 minutes, which \S\ref{sec:register} shows is enough for
+style but not conditioning --- fine-tune conclusions are qualified
+accordingly. \todo{expand}
+
+\section{Conclusion}
+\label{sec:conclusion}
+\todo{write after FINAL2 lands: 2 paragraphs, what was shown + what's next
+(scaling the thinker, unfreezing the codec with contrastive sentiment
+objectives, diffusion-style iterative refinement heads over thoughts)}
+
+%% ============================================================
+%% TODO(nochi): Acknowledgments — anyone/anything you want to thank.
+\section*{Acknowledgments}
+\todo{nochi}
+%% ============================================================
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+
+\section{Reproducibility}
+All code, configs, eval scripts, and the complete experimental log are at
+\todo{GitHub URL}. Training used fixed seeds per run; every table row maps to
+a named checkpoint and log file in the repository.
+
+\section{Selected transcripts}
+\todo{paste: FINAL\_12H multiturn conv 1; register probe examples incl.\
+failures; the R7 all-hypotheses dump that localized the disease}
+
+\section{Full ablation tables}
+\todo{rounds 3--8 tables from RESEARCH\_LOG.md}
+
+\end{document}
