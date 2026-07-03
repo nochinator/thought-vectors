@@ -1,0 +1,32 @@
+# R3-S: scale-check — 15M thought-only, variable-length context input.
+# The canary: if 15M thought-only can't hit cos > 0.45 in 1h at equal wall-clock,
+# the architecture needs the decoder gradient and we pivot.
+model:
+  d_model: 128                 # unused; loaded from codec checkpoint
+  max_seq_len: 128
+data:
+  shard_dir: data/dialogue
+train:
+  batch_size: 32
+  lr: 3.0e-4
+  warmup_steps: 1000
+  max_steps: 500000             # never reached; max_seconds stops the run
+  max_seconds: 3600             # 1h hard cap
+  log_every: 50
+  sample_every: 500
+  val_every: 1000
+  ckpt_every: 5000
+  keep_ckpts: 3
+run:
+  name: r3_S_15M_thought
+thinker:
+  layers: 6
+  nhead: 6
+  ffn_dim: 2048
+  mode: query
+  k_ctx: 16                    # variable-length via ctx_tau; this is the ceiling
+  k_out: 32                    # response slots
+  ctx_tau: 0.5                 # per-turn adaptive budgets from codec predictor
+  w_thought: 1.0
+  w_decoder: 0.0               # thought-only — no decoder in the training loop
+  codec_ckpt: checkpoints/m5_frontier/best.pt

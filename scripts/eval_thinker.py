@@ -29,7 +29,7 @@ from thoughtvec.generate import sample_decode
 from thoughtvec.losses import reconstruction_ce
 from thoughtvec.model import ThoughtAutoencoder, make_padding_mask
 from thoughtvec.thinker import Thinker
-from thoughtvec.thinker_train import encode_turns, make_dialogue_loader
+from thoughtvec.thinker_train import encode_turns, make_dialogue_loader, out_budget_mask
 from thoughtvec.tokenizer import Tokenizer
 
 
@@ -51,6 +51,8 @@ def main() -> None:
     ap.add_argument("--batch-size", type=int, default=32)
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--dump", default=None, help="write decoded samples here")
+    ap.add_argument("--out-tau", type=float, default=None,
+                    help="override thinker.out_tau at eval (adaptive response length; inference-only)")
     args = ap.parse_args()
     dev = torch.device(args.device)
     torch.manual_seed(0)  # reproducible hypothesis sampling for WTA ckpts
@@ -58,6 +60,8 @@ def main() -> None:
     ckpt = torch.load(args.ckpt, map_location="cpu", weights_only=False)
     cfg = from_dict(ckpt["config"])
     tk = cfg.thinker
+    if args.out_tau is not None:  # sweep the adaptive-length dial without retraining
+        tk.out_tau = args.out_tau
     codec_state = torch.load(ckpt["codec_ckpt"], map_location="cpu", weights_only=False)
     codec_cfg = from_dict(codec_state["config"])
     codec = ThoughtAutoencoder(codec_cfg.model)
@@ -74,6 +78,7 @@ def main() -> None:
                                   max_flat_tokens=codec_cfg.model.max_seq_len)
     cos_sum, ce_sum, f1_sum, n_rows, n_batches = 0.0, 0.0, 0.0, 0, 0
     pred_len_sum, ref_len_sum = 0, 0
+    budget_sum = 0  # mean response vectors actually decoded (adaptive out_tau)
     grams1: Counter = Counter()
     grams2: Counter = Counter()
     tot1 = tot2 = 0
@@ -94,14 +99,24 @@ def main() -> None:
                 rows = torch.arange(pred.size(0), device=dev)
                 pred = pred[rows, torch.randint(pred.size(1), (pred.size(0),), device=dev)]
             cos_sum += F.cosine_similarity(pred, tgt_th, dim=-1).mean().item()
+            # adaptive response length: decode each reply from the smallest
+            # importance-ordered prefix the predictor deems good enough
+            mem_mask = None
+            if tk.out_tau > 0:
+                budgets, mem_mask = out_budget_mask(codec, pred, tk.out_tau)
+                budget_sum += int(budgets.sum().item())
+            else:
+                budget_sum += pred.size(0) * pred.size(1)
             resp_pad = make_padding_mask(resp_ids)
-            logits = codec.decode(pred, resp_ids[:, :-1], resp_pad[:, :-1])
+            logits = codec.decode(pred, resp_ids[:, :-1], resp_pad[:, :-1],
+                                  memory_padding_mask=mem_mask)
             ce, _ = reconstruction_ce(logits, resp_ids[:, 1:])
             ce_sum += ce.item()
             n_batches += 1
 
             ids = sample_decode(codec, pred, codec_cfg.model.max_seq_len,
-                                temperature=0.0, no_repeat_ngram=3)
+                                temperature=0.0, no_repeat_ngram=3,
+                                memory_padding_mask=mem_mask)
             for row in range(ids.size(0)):
                 hyp = [x for x in ids[row].tolist() if x > 2]
                 ref = [x for x in resp_ids[row].tolist() if x > 2]
@@ -131,6 +146,7 @@ def main() -> None:
         "distinct1": round(len(grams1) / max(tot1, 1), 4),
         "distinct2": round(len(grams2) / max(tot2, 1), 4),
         "len_ratio": round(pred_len_sum / max(ref_len_sum, 1), 3),
+        "out_vectors": round(budget_sum / max(n_rows, 1), 2),  # mean response vectors decoded (k_out if out_tau=0)
         "rows": n_rows,
     }
     print(json.dumps(out))

@@ -1,0 +1,9 @@
+# R4-tau: + variable-length context input (ctx_tau=0.5) with mixed loss
+run: {name: r4_tau, out_dir: checkpoints, log_dir: logs}
+data: {shard_dir: data/dialogue}
+train: {batch_size: 32, lr: 3.0e-4, warmup_steps: 1000, max_steps: 500000, max_seconds: 3600,
+        log_every: 50, sample_every: 500, val_every: 1000, ckpt_every: 5000, keep_ckpts: 3}
+thinker: {layers: 8, nhead: 8, ffn_dim: 4096, mode: query, k_ctx: 16, k_out: 48,
+          w_thought: 1.0, w_decoder: 0.5, ctx_tau: 0.5,
+          codec_ckpt: checkpoints/m5_frontier/best.pt}
+model: {d_model: 128, max_seq_len: 128}

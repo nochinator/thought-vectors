@@ -1,0 +1,31 @@
+# R3-M: codec-scale — ~32M thought-only, matches codec capacity.
+# 8 layers, 8 heads, FFN 4096. The center of the bracket.
+model:
+  d_model: 128
+  max_seq_len: 128
+data:
+  shard_dir: data/dialogue
+train:
+  batch_size: 32
+  lr: 3.0e-4
+  warmup_steps: 1000
+  max_steps: 500000
+  max_seconds: 3600
+  log_every: 50
+  sample_every: 500
+  val_every: 1000
+  ckpt_every: 5000
+  keep_ckpts: 3
+run:
+  name: r3_M_32M_thought
+thinker:
+  layers: 8
+  nhead: 8
+  ffn_dim: 4096
+  mode: query
+  k_ctx: 16
+  k_out: 48
+  ctx_tau: 0.5
+  w_thought: 1.0
+  w_decoder: 0.0
+  codec_ckpt: checkpoints/m5_frontier/best.pt
