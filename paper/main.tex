@@ -13,7 +13,7 @@
 
 \newcommand{\thoughtvec}{\textsc{thoughtvectors}}
 
-\title{Codecs: Separating Intelligence from Language in a Conversational Model\\
+\title{Codecs: Separating Intelligence from Language\\
   \large Coherent dialogue in thought-vector space from 48M parameters on one consumer GPU}
 
 
@@ -177,26 +177,28 @@ parameters (19.0M encoder, 20.1M decoder, 6.2M shared token embeddings).
 \node[box, right=of tok] (enc) {transformer\\encoder};
 \node[box, below=0.9cm of enc, minimum width=5em] (gru) {GRU over\\learned seed};
 \node[box, right=of enc] (xattn) {cross-\\attention};
-% ordered slots
+% ordered slots (shading = importance: dark slots carry the gist)
 \coordinate (s0) at ($(xattn.east)+(0.7,0)$);
 \foreach \i/\shade in {1/60, 2/45, 3/32, 4/22, 5/14, 6/8}
   \node[slot, fill=blue!\shade] (z\i) at ($(s0)+({(\i-1)*0.42},0)$) {};
 \node[lab, above=0.15cm of z3, xshift=0.4cm] {$z_1 \cdots z_N$ (ordered)};
-% prefix bracket
+% prefix bracket: the first k slots are what the decoder sees
 \draw[decorate, decoration={brace, mirror, amplitude=3pt}, thick]
-  ($(z1.south west)+(0,-0.08)$) -- ($(z3.south east)+(0,-0.08)$)
-  node[midway, below=3pt, lab] (prefix) {prefix $z_{1..k}$};
-\node[box, right=1.0cm of z6] (dec) {transformer\\decoder};
+  ($(z1.south west)+(0,-0.10)$) -- ($(z3.south east)+(0,-0.10)$)
+  node[midway, below=4pt, lab] (prefix) {first $k$ only};
+\node[box, right=2.1cm of z6] (dec) {transformer\\decoder};
 \node[lab, right=of dec] (out) {tokens $\hat{x}_{1..T}$};
-\node[box, below=0.9cm of dec, minimum width=5em] (pred) {CE predictor\\$\widehat{\mathrm{CE}}(k)$};
-\node[lab, right=0.55cm of pred] (tau) {$\tau$ dial:\\pick smallest $k$};
+\node[box, below=1.15cm of z4, minimum width=5em] (pred) {CE predictor\\$\widehat{\mathrm{CE}}(k)$};
+\node[lab, right=0.55cm of pred] (tau) {$\tau$ dial: pick smallest $k$\\with predicted CE $\leq \tau$};
 \draw[arr] (tok) -- (enc);
 \draw[arr] (enc) -- (xattn);
 \draw[arr] (gru) -| (xattn.south);
 \draw[arr] (xattn) -- (z1);
-\draw[arr] ($(z3.south east)+(0,-0.55)$) -| ($(dec.south)+(-0.3,0)$);
+\draw[arr] ($(z6.east)+(0.08,0)$) -- (dec.west)
+  node[midway, above=1pt, lab] {prefix $z_{1..k}$};
 \draw[arr] (dec) -- (out);
-\draw[arr] (z6.east) ++(0.1,0) |- (pred.west);
+\draw[arr] ($(z5.south)+(0,-0.05)$) -- (pred.north)
+  node[midway, right=1pt, lab] {all $N$};
 \draw[arr] (pred) -- (tau);
 \node[lab, anchor=west] at ($(tok.west)+(-0.2,1.0)$) {\textbf{(a) Codec} (32.9M, trained once, then frozen)};
 % ---- panel (b): thinker ----
