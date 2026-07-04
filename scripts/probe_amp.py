@@ -107,7 +107,6 @@ def main() -> None:
 
     # Also verify: does gradient flow through autocast work?
     print("\n— gradient-through-autocast check (encode + decode, cat. CE → thinker-like grad) —")
-    codec_amp = _load_codec(device)
     ids, mask = _collate_batch(ds, 8)
 
     # Set up a tiny thinker-like param to receive the gradient

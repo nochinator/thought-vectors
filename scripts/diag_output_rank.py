@@ -28,7 +28,6 @@ from thoughtvec.config import from_dict
 from thoughtvec.model import ThoughtAutoencoder
 from thoughtvec.thinker import Thinker
 from thoughtvec.thinker_train import encode_turns, make_dialogue_loader, out_budget_mask
-from thoughtvec.tokenizer import Tokenizer
 
 
 def main() -> None:

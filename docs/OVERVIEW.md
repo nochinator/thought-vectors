@@ -32,7 +32,7 @@ sequence models (which operate token-by-token), thought vectors give you:
 ```
 ┌──────────────────────────────────────────────────────────────────┐
 │                      SHARED EMBEDDING                            │
-│               nn.Embedding(V=50K, d=384)                         │
+│              nn.Embedding(V=16,384, d=384)                       │
 │          Used by: encoder input, decoder input, LM head          │
 │          (weight-tied: one matrix, three roles)                  │
 └──────────────────────────────────────────────────────────────────┘
@@ -77,8 +77,8 @@ embedding predictor (Linear(d, d)) → logits via embedding transpose.
 
 Unlike standard autoregressive language models, the decoder outputs
 **token embeddings** not logits directly, and projects through the shared
-embedding matrix (weight tying). This saves ~25M parameters vs. a separate
-LM head.
+embedding matrix (weight tying). This saves ~6M parameters (16,384 × 384)
+vs. a separate LM head.
 
 ### Thinker (latent-space reasoning)
 
@@ -137,6 +137,7 @@ garbage regime.
 | `scripts/` | Shell entrypoints: `train.sh`, ablation brackets, eval scripts. |
 | `logs/` | Training logs and eval transcripts (tracked; cited by the paper). |
 | `paper/` | The arXiv paper (LaTeX + PDF). |
+| `docs/REPRODUCE.md` | Verified step-by-step reproduction guide. |
 | `legacy/phase1/` | Phase 1: "BitThought" proof-of-concept (original implementation). |
 | `legacy/phase0/` | Phase 0: earliest thought-vectors experiment scaffold. |
 | `legacy/phase0/RESEARCH.md` | Phase 0/1 research log (original, kept for reference). |
@@ -150,8 +151,8 @@ garbage regime.
 
 1. Train codec (m5_frontier) with blended k-sampling from step 0 +
    joint loss predictor. 12h on RX 6700 XT 12GB.
-2. Freeze codec weights. Train thinker (m4_frontier) on dialogue data with
-   WTA multi-hypothesis loss. 12h.
+2. Freeze codec weights. Train thinker (m4_thinker config, FINAL_12H recipe)
+   on dialogue data with WTA multi-hypothesis loss. 12h.
 
 ### Loss terms
 
@@ -181,22 +182,24 @@ than the sequential fine-tune approach.
 
 ```bash
 # Setup
-scripts/setup_env.sh                    # venv + ROCm torch
+scripts/setup_env.sh                    # venv + ROCm torch (--cpu for CPU-only)
 
-# Train codec
-scripts/train.sh --config configs/m5_frontier.yaml
+# Train codec (60-min warm base, then the 12h frontier loop)
+scripts/train.sh --config configs/m5_frontier.yaml run.name=warm_base train.max_seconds=3600
+scripts/run_frontier.sh
 
-# Train thinker
-scripts/train.sh --config configs/m4_thinker.yaml \
-  --init-from checkpoints/m5_frontier/best.pt
+# Train thinker (frozen codec from checkpoints/m5_frontier/best.pt)
+scripts/final_12h.sh
 
 # Eval
-.venv/bin/tv-eval --ckpt checkpoints/m5_frontier/best.pt --shard data/c4_500k_val
+.venv/bin/tv-eval --ckpt checkpoints/m5_frontier/best.pt --shard data/mix_uni_val
 
-# Chat
-.venv/bin/tv-chat --codec checkpoints/m5_frontier/best.pt \
-  --thinker checkpoints/m4_frontier/best.pt
+# Chat (the thinker checkpoint carries its codec)
+.venv/bin/tv-chat --ckpt checkpoints/FINAL_12H/best.pt --device cpu
 ```
+
+Step-by-step reproduction, including data preparation:
+[REPRODUCE.md](REPRODUCE.md).
 
 ---
 
@@ -212,6 +215,8 @@ scripts/train.sh --config configs/m4_thinker.yaml \
 - **Data quality trumps architecture** at this scale — SODA's formulaic
   dialogue patterns are the current quality ceiling for the thinker, not the
   model architecture itself.
-- **d_model is the dominant bottleneck** for long-text quality — the 384-dim
-  vectors represent a hard capacity ceiling; further scaling requires
-  architectural changes (deeper, wider, or hierarchical).
+- **d_model is the axis that matters for long text** — the Phase 0 prototype's
+  d=256 vectors hit a hard ceiling (50–62% word overlap past ~80 tokens no
+  matter how many vectors were supplied); d=384 with per-sample-k training
+  removed that ceiling at paragraph scale (byte-perfect at 4:1 through 257
+  tokens). Longer documents will need more width or a hierarchical scheme.

@@ -4,13 +4,13 @@
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,fit,arrows.meta,calc,decorations.pathreplacing}
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
 \usepackage[numbers]{natbib}
 
-\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
-\newcommand{\todonum}[1]{\textcolor{red}{\texttt{#1}}}
 \newcommand{\thoughtvec}{\textsc{thoughtvectors}}
 
 \title{Codecs: Separating Intelligence from Language in a Conversational Model\\
@@ -98,48 +98,137 @@ Contributions:
 \section{Related work}
 \label{sec:related}
 
-% Structural draft — each paragraph names the connection to check/expand.
-\paragraph{Sentence-level latents.} Fixed-size sentence embeddings for
-generation and translation \citep{duquenne2023sonar}; Meta's Large Concept
+\paragraph{Sentence-level latents.} Decoding text from a single continuous
+sentence vector goes back to sentence VAEs \citep{bowman2016sentences}.
+SONAR learns fixed-size multilingual/multimodal sentence embeddings that
+support generation \citep{duquenne2023sonar}, and Meta's Large Concept
 Models generate at the concept (sentence) level over SONAR embeddings
-\citep{lcm2024}. \thoughtvec{} differs in using a \emph{variable-length,
-importance-ordered} latent sequence with prefix decodability, and in
-targeting dialogue at 1000$\times$ smaller scale due to hardware constraints.
+\citep{lcm2024} --- the closest existing system to ours in spirit.
+\thoughtvec{} differs in using a \emph{variable-length, importance-ordered}
+latent sequence with prefix decodability rather than one fixed-size vector
+per sentence, and in targeting dialogue at roughly 1000$\times$ smaller
+scale due to hardware constraints.
+
+\paragraph{Ordered, truncatable representations.} Nested dropout trains
+autoencoders whose latent dimensions form an importance hierarchy, so
+truncation degrades gracefully \citep{rippel2014nested}; Matryoshka
+representation learning does the same for modern embedding vectors
+\citep{kusupati2022matryoshka}. Both order the \emph{dimensions of one
+vector}; \thoughtvec{} orders a \emph{sequence of vectors} (any prefix
+$z_{1..k}$ decodes to text), pairs the ordering with a per-prefix quality
+predictor so the truncation point can be chosen adaptively at decode time,
+and induces the ordering with per-sample random-$k$ training rather than a
+dropout schedule. The encoder's learned-query cross-attention resembles
+Perceiver-style latent bottlenecks \citep{jaegle2021perceiver}, with a GRU
+scaffold over the queries supplying the sequential inductive bias that makes
+the ordering emerge.
 
 \paragraph{Latent-space reasoning.} Chain-of-continuous-thought approaches
-feed hidden states back as inputs \citep{hao2024coconut}. Our thinker
-operates in an \emph{external, frozen} codec space rather than the LM's own
-hidden space.
+feed hidden states back as inputs, keeping reasoning inside the language
+model's own representation stream \citep{hao2024coconut}. Our thinker
+instead operates in an \emph{external, frozen} codec space: the reasoning
+model and the text interface are separate artifacts, which is what makes the
+codec swappable (\S\ref{sec:outlook}).
 
 \paragraph{Multiple-hypothesis learning.} Winner-take-all / multiple choice
-learning for one-to-many prediction \citep{guzman2012mcl,lee2016smcl}; we
-apply it to response-thought prediction and analyze its failure mode
-(hypothesis diversity is style-level, not register-level).
+learning trains several heads and backpropagates only through the best one,
+capturing one-to-many mappings \citep{guzman2012mcl,lee2016smcl}. We apply
+it to response-thought prediction and analyze its failure mode at this
+scale: hypothesis diversity turns out to be style-level, not register-level
+(\S\ref{sec:register}).
 
-\paragraph{Cycle consistency.} \citep{zhu2017cyclegan}; we use
-decode--re-encode consistency as a regularizer on predicted thoughts.
+\paragraph{Cycle consistency.} Popularized for unpaired image translation
+\citep{zhu2017cyclegan}; we use decode--re-encode consistency as a
+regularizer that keeps predicted thoughts on the codec's decodable manifold.
 
 \paragraph{Dialogue corpora and empathy.} SODA \citep{kim2023soda},
 PersonaChat \citep{zhang2018personachat}, OASST1 \citep{kopf2023oasst},
 EmpatheticDialogues \citep{rashkin2019empathetic}.
 
-\todo{expand related work; verify all citations against the actual papers}
-
 \section{The codec: ordered, prefix-decodable thought vectors}
 \label{sec:codec}
 
-% Structural draft. Source of truth: RESEARCH_LOG.md M1-M5 + src/thoughtvec/model.py.
-\todo{architecture figure: encoder / ordered slots / prefix decode / predictor}
-
-The codec is a text autoencoder: a transformer encoder attends a set of $N$
-learned query slots to the token sequence, producing thought vectors
+% Source of truth: RESEARCH_LOG.md M1-M5 + src/thoughtvec/model.py.
+The codec is a text autoencoder: a transformer encoder processes the token
+sequence; a GRU unrolled over a learned seed produces $N$ \emph{ordered}
+query slots that cross-attend the encoded tokens, yielding thought vectors
 $z_{1..N}$ ($d{=}384$); a transformer decoder generates tokens conditioned on
-a \emph{prefix} $z_{1..k}$. Training samples $k$ randomly per example
+a \emph{prefix} $z_{1..k}$ (Figure~\ref{fig:arch}). Training samples $k$ randomly per example
 (with a compression-weighted schedule), which forces the slots into an
 importance ordering: early slots carry the gist, later slots refinements. A
 small predictor head estimates reconstruction CE for each prefix length,
 enabling decode-time adaptive compression ($\tau$ dial). Total 32.9M
 parameters (19.0M encoder, 20.1M decoder, 6.2M shared token embeddings).
+
+\begin{figure}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw, rounded corners=2pt, minimum height=2.2em, minimum width=6.5em, align=center, fill=blue!6},
+  frozen/.style={box, fill=gray!12},
+  slot/.style={draw, minimum size=1.15em, inner sep=0pt, anchor=west},
+  lab/.style={font=\footnotesize, align=center},
+  arr/.style={-{Stealth[length=2mm]}, thick},
+  node distance=0.55cm and 0.8cm
+]
+% ---- panel (a): codec ----
+\node[lab] (tok) {tokens $x_{1..T}$};
+\node[box, right=of tok] (enc) {transformer\\encoder};
+\node[box, below=0.9cm of enc, minimum width=5em] (gru) {GRU over\\learned seed};
+\node[box, right=of enc] (xattn) {cross-\\attention};
+% ordered slots
+\coordinate (s0) at ($(xattn.east)+(0.7,0)$);
+\foreach \i/\shade in {1/60, 2/45, 3/32, 4/22, 5/14, 6/8}
+  \node[slot, fill=blue!\shade] (z\i) at ($(s0)+({(\i-1)*0.42},0)$) {};
+\node[lab, above=0.15cm of z3, xshift=0.4cm] {$z_1 \cdots z_N$ (ordered)};
+% prefix bracket
+\draw[decorate, decoration={brace, mirror, amplitude=3pt}, thick]
+  ($(z1.south west)+(0,-0.08)$) -- ($(z3.south east)+(0,-0.08)$)
+  node[midway, below=3pt, lab] (prefix) {prefix $z_{1..k}$};
+\node[box, right=1.0cm of z6] (dec) {transformer\\decoder};
+\node[lab, right=of dec] (out) {tokens $\hat{x}_{1..T}$};
+\node[box, below=0.9cm of dec, minimum width=5em] (pred) {CE predictor\\$\widehat{\mathrm{CE}}(k)$};
+\node[lab, right=0.55cm of pred] (tau) {$\tau$ dial:\\pick smallest $k$};
+\draw[arr] (tok) -- (enc);
+\draw[arr] (enc) -- (xattn);
+\draw[arr] (gru) -| (xattn.south);
+\draw[arr] (xattn) -- (z1);
+\draw[arr] ($(z3.south east)+(0,-0.55)$) -| ($(dec.south)+(-0.3,0)$);
+\draw[arr] (dec) -- (out);
+\draw[arr] (z6.east) ++(0.1,0) |- (pred.west);
+\draw[arr] (pred) -- (tau);
+\node[lab, anchor=west] at ($(tok.west)+(-0.2,1.0)$) {\textbf{(a) Codec} (32.9M, trained once, then frozen)};
+% ---- panel (b): thinker ----
+\begin{scope}[yshift=-4.6cm]
+\node[lab] (hist) {history turns\\$t_1, \dots, t_m$};
+\node[frozen, right=of hist] (enc2) {encoder\\(frozen)};
+\node[lab, right=0.6cm of enc2, text width=7em] (ctx) {$k_{ctx}{=}8$ thoughts per turn, flattened};
+\node[box, right=0.5cm of ctx, fill=orange!15] (think) {\textbf{thinker}\\(15.1M)};
+\node[lab, right=0.6cm of think, text width=8.2em] (hyp) {$H{=}4$ hypotheses $\times$ $k_{out}{=}8$ thoughts; winner-take-all};
+\node[frozen, right=0.5cm of hyp] (dec2) {decoder\\(frozen)};
+\node[lab, right=of dec2] (reply) {reply};
+\draw[arr] (hist) -- (enc2);
+\draw[arr] (enc2) -- (ctx);
+\draw[arr] (ctx) -- (think);
+\draw[arr] (think) -- (hyp);
+\draw[arr] (hyp) -- (dec2);
+\draw[arr] (dec2) -- (reply);
+\node[lab, anchor=west] at ($(hist.west)+(-0.2,1.1)$) {\textbf{(b) Thinker}: dialogue entirely in thought space --- no token-level LM in the loop};
+\end{scope}
+\end{tikzpicture}%
+}
+\caption{System architecture. \textbf{(a)} The codec encodes text into $N$
+importance-ordered thought vectors: a GRU unrolled over a learned seed
+produces ordered query slots that cross-attend the transformer-encoded
+tokens. Any prefix $z_{1..k}$ decodes back to text; a predictor head
+estimates reconstruction CE per prefix length, so compression ratio is a
+decode-time dial ($\tau$). \textbf{(b)} The thinker converses in that latent
+space: each history turn becomes $k_{ctx}$ thoughts, the thinker predicts
+$k_{out}$ response thoughts in $H$ winner-take-all hypotheses, and the frozen
+decoder renders the selected hypothesis as text.}
+\label{fig:arch}
+\end{figure}
 
 Headline behavior (M5 frontier run, 55{,}140 steps / 12h; eval on a 2K-text
 held-out mix, batched greedy decode):

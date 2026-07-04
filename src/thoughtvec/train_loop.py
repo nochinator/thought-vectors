@@ -110,7 +110,6 @@ class Trainer:
 
     def train_step(self, input_ids: torch.Tensor) -> dict | None:
         cfg = self.cfg
-        model = self.model
         input_ids = input_ids.to(self.device, non_blocking=True)
         padding_mask = make_padding_mask(input_ids)
         lengths = (~padding_mask).sum(dim=1).float()

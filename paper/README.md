@@ -1,23 +1,23 @@
 # Paper
 
-Structural draft for the arXiv submission. `main.tex` + `references.bib`.
+The arXiv submission: `main.tex` + `references.bib` → `main.pdf` (12 pages).
+No open TODOs — all citations verified against the actual papers 2026-07-04.
 
 ## Build
 
 ```bash
-make            # needs a TeX distribution (sudo apt install texlive-full, or texlive-latex-extra + texlive-bibtex-extra)
+make            # needs a TeX distribution (sudo apt install texlive-full, or texlive-latex-extra + texlive-bibtex-extra + pdflatex/bibtex)
 ```
 
-Produces `main.pdf`.
+Produces `main.pdf`. The architecture figure is TikZ, compiled in-document —
+no external assets.
 
-## What's yours to fill in (search for `TODO(nochi)` / `\todo{`)
+## Pre-submission checklist
 
-- **Title** — three candidate titles are commented above `\title`.
-- **Author block** — name, "Independent Researcher" affiliation, public email.
-- **"Origin of this project"** — your story, your voice.
-- **Acknowledgments.**
-- Everything red in the PDF (`\todo{...}`) is either yours or awaiting
-  FINAL2_12H numbers.
+- [ ] Final read-through of the whole PDF by the author.
+- [ ] GitHub Release with the flagship checkpoint(s) exists and the repo URL
+      in the paper resolves.
+- [ ] Abstract pasted into the arXiv form as plain text.
 
 ## arXiv submission checklist (first paper)
 

@@ -43,6 +43,8 @@ The full experimental narrative (every round, table, failure, and audit) is in
 ## Chat with it
 
 ```bash
+scripts/setup_env.sh --cpu    # CPU-only setup is enough for chat/eval
+# download FINAL_12H from the GitHub Release into checkpoints/FINAL_12H/
 .venv/bin/tv-chat --ckpt checkpoints/FINAL_12H/best.pt --device cpu   # REPL
 .venv/bin/python scripts/chat_web.py                                   # web UI on :7860 (LAN)
 ```
@@ -53,36 +55,42 @@ side. Chat inference runs on CPU (HIP inference is broken on gfx1031).
 ## Setup
 
 ```bash
-scripts/setup_env.sh          # venv + torch ROCm + GPU check
-.venv/bin/pytest              # sanity: all CPU tests
+scripts/setup_env.sh          # venv + torch ROCm + GPU check (--cpu for CPU-only)
+.venv/bin/pytest              # sanity: 44 CPU tests
 ```
 
 ## Reproduce the pipeline
 
-```bash
-# 1. tokenizer + codec pretraining data
-.venv/bin/tv-tokenizer train --corpus <c4.csv>:4 --corpus <minipile.csv>:40
-.venv/bin/tv-pretokenize --csv <c4.csv> --out data/c4_500k --max-rows 500000
+Full verified walkthrough (data sources, exact commands, expected numbers at
+each stage, ROCm gotchas): **[docs/REPRODUCE.md](docs/REPRODUCE.md)**. The
+short version — ~25 GPU-hours on one RX 6700 XT:
 
-# 2. codec: baseline AE -> compression -> frontier
-scripts/train.sh --config configs/m1_autoencoder.yaml
-scripts/train.sh --config configs/m2_compression.yaml --init-from checkpoints/m1_autoencoder/best.pt
+```bash
+# 1. tokenizer (ships in artifacts/) + codec data: length-jittered C4+minipile mix
+.venv/bin/tv-pretokenize --csv <c4.csv> --csv <minipile.csv> \
+  --out data/mix_uni --max-tokens 254 --chunk-jitter
+
+# 2. codec: 60-min warm base, then the crash-resilient 12h frontier run
+scripts/train.sh --config configs/m5_frontier.yaml run.name=warm_base train.max_seconds=3600
 scripts/run_frontier.sh
 
-# 3. dialogue data (SODA + PersonaChat + OASST1 + EmpatheticDialogues + reversal splices)
+# 3. dialogue data (SODA + PersonaChat + OASST1)
 .venv/bin/python scripts/extract_conversations.py
-.venv/bin/python scripts/extract_empathetic.py --dir <ed_csvs>
-.venv/bin/python scripts/build_reversal_splices.py --dir <ed_csvs> --n 40000
-.venv/bin/tv-pretokenize-dialogue --jsonl data/conversations_rev40.jsonl --out data/dialogue_rev40
+.venv/bin/python scripts/filter_dialogue.py
+.venv/bin/python scripts/extract_oasst.py
+.venv/bin/python scripts/build_dialogue_combined.py
+.venv/bin/tv-pretokenize-dialogue --jsonl data/conversations_combined.jsonl --out data/dialogue_combined
 
-# 4. thinker flagship (12h) + evals
-scripts/final2_12h.sh
+# 4. thinker flagship (12h) + eval suite
+scripts/final_12h.sh
 ```
 
-Ablation brackets: `scripts/ablate_thinker_r{3..7}.sh`. Evals:
-`eval_thinker.py` (val metrics), `eval_multiturn.py` (self-repetition /
-context sensitivity), `eval_register.py` (sentiment register probes),
-`check_roundtrip.py` (codec integrity guard).
+`scripts/final2_12h.sh` reproduces the FINAL2 register case study (needs the
+EmpatheticDialogues + reversal-splice data; see REPRODUCE.md §5). Ablation
+brackets: `scripts/ablate_thinker_r{3..7}.sh`. Evals: `eval_thinker.py` (val
+metrics), `eval_multiturn.py` (self-repetition / context sensitivity),
+`eval_register.py` (sentiment register probes), `check_roundtrip.py` (codec
+integrity guard).
 
 ROCm gfx1031 notes: all training scripts set `HSA_OVERRIDE_GFX_VERSION=10.3.0`
 and `HSA_ENABLE_SDMA=0`; thinker dropout must be 0.0 (NaNs); MIOpen refuses

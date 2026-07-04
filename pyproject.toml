@@ -4,14 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "thoughtvec"
-version = "0.1.0"
-description = "Thought vectors: ordered latent compression of text with prefix-decodable representations"
+version = "1.0.0"
+description = "Thought vectors: ordered latent compression of text with prefix-decodable representations, and a thinker that converses in that latent space"
+readme = "README.md"
 requires-python = ">=3.12"
+# torch is intentionally not listed: the wheel is backend-specific
+# (ROCm vs CPU vs CUDA) — scripts/setup_env.sh installs the right one.
 dependencies = [
     "numpy",
     "pyyaml",
     "sentencepiece",
 ]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
 
 [project.scripts]
 tv-train = "thoughtvec.cli:train_main"

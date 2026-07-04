@@ -3,7 +3,6 @@ r4_perslot and r4_C_control, compare replies side by side."""
 import sys
 sys.path.insert(0, "src")
 
-import torch
 
 from thoughtvec.chat import ChatSession
 

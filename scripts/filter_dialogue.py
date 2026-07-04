@@ -1,7 +1,5 @@
 """Filter conversations.jsonl for quality: multi-turn, substantive replies, no filler starts."""
 import json
-import sys
-from pathlib import Path
 
 SRC = "data/conversations.jsonl"
 DST = "data/conversations_clean.jsonl"

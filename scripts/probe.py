@@ -65,7 +65,6 @@ def probe(cfg: ModelCfg, batch: int, steps: int, anchor: bool, bf16: bool) -> tu
     dt = time.time() - t0
     assert last is not None and last.isfinite(), "non-finite loss during probe"
     vram = torch.cuda.max_memory_allocated() / 2**30
-    del model, opt
     return steps / dt, vram
 
 
@@ -75,7 +74,7 @@ def main() -> None:
     parser.add_argument("--steps", type=int, default=25)
     args = parser.parse_args()
 
-    print(f"| shape | params | BS | anchor | it/s | tok/s | VRAM GB |")
+    print("| shape | params | BS | anchor | it/s | tok/s | VRAM GB |")
     print("|---|---|---|---|---|---|---|")
     for name, d, h, e, dec, n, seq, batches in SHAPES:
         cfg = ModelCfg(

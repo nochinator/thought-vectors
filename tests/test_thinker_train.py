@@ -227,7 +227,6 @@ def test_wta_slot_weights_reduce_to_unweighted():
 def test_out_budget_mask_adaptive(setup):
     """out_budget_mask returns per-sample budgets in [2, k_out] and a mask that
     hides exactly the slots past each budget."""
-    import math
 
     from thoughtvec.thinker_train import out_budget_mask
 
