@@ -139,23 +139,8 @@ garbage regime.
 | `paper/` | The arXiv paper (LaTeX + PDF). |
 | `legacy/phase1/` | Phase 1: "BitThought" proof-of-concept (original implementation). |
 | `legacy/phase0/` | Phase 0: earliest thought-vectors experiment scaffold. |
-| `CONSOLIDATED_RESEARCH.md` | Research lessons merged across phases. |
-| `legacy/RESEARCH.md` | Phase 0/1 design sketch (original, kept for reference). |
-| `RESEARCH_LOG.md` | Phase 2 research log (detailed per-experiment). |
-
----|---|
-| `thoughtvec/` | Phase 2: clean-room recreation. Current codebase. |
-| `thoughtvec/src/thoughtvec/` | Python package: encoder, decoder, thinker, data, cli. |
-| `thoughtvec/configs/` | YAML configs for m0 (smoke) through m5 (frontier codec). |
-| `thoughtvec/checkpoints/` | Trained models: warm_base, m4_frontier, m5_frontier. |
-| `thoughtvec/data/` | Tokenized training data (C4, dialogue, mixed). |
-| `thoughtvec/scripts/` | Shell entrypoints: `train.sh`, `ablate_thinker.sh`. |
-| `AI_construction/` | Phase 1: original proof-of-concept (legacy). |
-| `AI_construction/bitthought/` | Python package from Phase 1 (original implementation). |
-| `AI_construction/legacy/` | Earlier thought-vectors experiment scaffold. |
-| `CONSOLIDATED_RESEARCH.md` | Full research log merging both phases. |
-| `RESEARCH.md` | Phase 1 research log (original, kept for reference). |
-| `thoughtvec/RESEARCH_LOG.md` | Phase 2 research log (detailed per-experiment). |
+| `legacy/phase0/RESEARCH.md` | Phase 0/1 research log (original, kept for reference). |
+| `RESEARCH_LOG.md` | Full research log (Phase 2 per-experiment + absorbed cross-phase summary). |
 
 ---
 

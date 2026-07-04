@@ -1,0 +1,24 @@
+Logging to /home/nochi/vault/projects/AI_construction/logs/curriculum_20260516_162713.log
+Device: cuda
+
+============================================================
+Stage 1: STSB (15 epochs, contrastive)
+============================================================
+Model: 111,546,816 params
+[cache] loaded 5749 sequences from /home/nochi/vault/projects/AI_construction/checkpoints/model_sts_768/cache_stsb.flat.pt
+Groups: 5749, Pairs: 5749
+[paired] 5749 pairs, weight=0.5
+[BitThought] encoder=63,168,960 decoder=72,953,856 total=136,122,816 k_predictor=147,648
+  epoch 1 done: avg_loss=18.2979 ratio=
+  epoch 2 done: avg_loss=8.2724 ratio=
+  epoch 3 done: avg_loss=6.5290 ratio=
+Traceback (most recent call last):
+  File "/home/nochi/vault/projects/AI_construction/run_curriculum.py", line 253, in <module>
+    h = train_model(model, config, groups=groups,
+                    tokenizer_encode=tok.encode, pad_token_id=tok.pad_token_id,
+    ...<6 lines>...
+                    tokenizer_decode=tok.decode, save_every=3000,
+                    save_path=ckpt_dir / "stsb.pt")
+  File "/home/nochi/vault/projects/AI_construction/bitthought/train.py", line 527, in train_model
+    raise RuntimeError(f"NaN at batch {batch_idx}")
+RuntimeError: NaN at batch 177

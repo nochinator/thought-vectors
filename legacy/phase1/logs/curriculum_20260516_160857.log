@@ -1,0 +1,12 @@
+Logging to /home/nochi/vault/projects/AI_construction/logs/curriculum_20260516_160857.log
+Device: cuda
+
+============================================================
+Stage 1: STSB (15 epochs, contrastive)
+============================================================
+Model: 111,546,816 params
+[cache] loaded 5749 sequences from /home/nochi/vault/projects/AI_construction/checkpoints/model_sts_768/cache_stsb.flat.pt
+Groups: 5749, Pairs: 5749
+[paired] 5749 pairs, weight=0.5
+[BitThought] encoder=63,168,960 decoder=72,953,856 total=136,122,816 k_predictor=147,648
+  epoch 1 done: avg_loss=18.3479 ratio=

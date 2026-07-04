@@ -91,19 +91,19 @@ RNN backward in eval mode (handled in `thinker_train.py`).
 ## Repo history note
 
 This is a clean-room recreation and extension of an earlier AI-generated
-design sketch ([legacy/RESEARCH.md](legacy/RESEARCH.md)); every claim here is
-backed by code and runs in this repo. The two earlier generations of the
-project are preserved under [legacy/](legacy/):
+design sketch ([legacy/phase0/RESEARCH.md](legacy/phase0/RESEARCH.md)); every
+claim here is backed by code and runs in this repo. The two earlier
+generations of the project are preserved under [legacy/](legacy/):
 
-- `legacy/phase0/` — the first thought-vectors prototype (codec collapsed
-  past ~100 tokens; see the paper's history section).
+- `legacy/phase0/` — the first thought-vectors prototype and its full
+  research log (codec collapsed past ~100 tokens; see the paper's history
+  section).
 - `legacy/phase1/` — the "BitThought" rebuild (curriculum training, BitLinear
   experiments); its original git history is in
   `legacy/phase1-git-history.bundle`.
 - `docs/OVERVIEW.md` — an architecture overview spanning all phases.
-- `CONSOLIDATED_RESEARCH.md` — durable lessons merged across phases;
-  the per-experiment record for the current phase is
-  [RESEARCH_LOG.md](RESEARCH_LOG.md).
 
-Heavy legacy data (datasets, artifacts) exists only on the original machine
-and is gitignored; everything needed to read the history is tracked.
+The single source of truth for the experimental record is
+[RESEARCH_LOG.md](RESEARCH_LOG.md) (current phase, plus an absorbed
+cross-phase summary); heavy legacy data (datasets, artifacts) exists only on
+the original machine and is gitignored.
