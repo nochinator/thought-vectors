@@ -1,0 +1,201 @@
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+REF : You did a great job, Mahnoor. This building is really impressive.
+PRED: You did a great job! I'm really proud of you.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+REF : Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+PRED: Thank you, I'm really happy that I can do it.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+user: Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+REF : I can imagine. How long did it take you to build it?
+PRED: I can imagine. It's always nice to have a lot of fun. How are you feeling about it?
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+user: Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+bot: I can imagine. How long did it take you to build it?
+REF : Oh, about a month. I worked on it every day after school and on weekends.
+PRED: It took me a lot of work. I've been working on it and it was really rewarding.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+user: Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+bot: I can imagine. How long did it take you to build it?
+user: Oh, about a month. I worked on it every day after school and on weekends.
+REF : That's a really long time. I don't think I could've been that patient.
+PRED: That's great! I'm sure you'll be a great player.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+user: Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+bot: I can imagine. How long did it take you to build it?
+user: Oh, about a month. I worked on it every day after school and on weekends.
+bot: That's a really long time. I don't think I could've been that patient.
+REF : Yeah, it was tough at times. But like I said, it was worth it in the end.
+PRED: Yeah, it was a lot of work.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+REF : I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+PRED: I know, right? It's been a long time coming. But it's nice to have a break from the store.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+REF : Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+PRED: Absolutely! I would love to have a great time. Let's go over the house.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+REF : No problem, I was happy to help.
+PRED: Of course! I'm happy to help out however I can. It's always nice to have a good time.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+bot: No problem, I was happy to help.
+REF : Well, I should probably get started on cleaning up the garage.
+PRED: So, what do you think of the house? What do you like to do for fun?
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+bot: No problem, I was happy to help.
+user: Well, I should probably get started on cleaning up the garage.
+REF : Yeah, you probably should. I'll help you with that in a bit.
+PRED: That's a great idea! I'm sure you'll be able to get some rest and then we can get some work together.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+bot: No problem, I was happy to help.
+user: Well, I should probably get started on cleaning up the garage.
+bot: Yeah, you probably should. I'll help you with that in a bit.
+REF : Alright, sounds good. Thanks again for all your help.
+PRED: Thanks, I really appreciate it. I'm really looking forward to it.
+
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+bot: No problem, I was happy to help.
+user: Well, I should probably get started on cleaning up the garage.
+bot: Yeah, you probably should. I'll help you with that in a bit.
+user: Alright, sounds good. Thanks again for all your help.
+REF : No problem, like I said, I was happy to do it.
+PRED: Of course! I'm always here for you, no matter what. You're going to do great.
+
+user: So, why are we protesting today?
+REF : We're protesting to raise awareness for the homeless population in our town.
+PRED: I don't know, they're not going to be a part of the team.
+
+user: So, why are we protesting today?
+bot: We're protesting to raise awareness for the homeless population in our town.
+REF : I see. And why is this issue important to you?
+PRED: That's amazing! I'm so happy for you. I think it's important to be able to help out the job.
+
+user: So, why are we protesting today?
+bot: We're protesting to raise awareness for the homeless population in our town.
+user: I see. And why is this issue important to you?
+REF : Because no one should have to live on the streets. Everyone deserves a place to call home. And I want to help make that happen for people in my community.
+PRED: We believe that the government is a very important part of our country.
+
+user: So, why are we protesting today?
+bot: We're protesting to raise awareness for the homeless population in our town.
+user: I see. And why is this issue important to you?
+bot: Because no one should have to live on the streets. Everyone deserves a place to call home. And I want to help make that happen for people in my community.
+REF : That's really admirable, Hector. I'm glad I can support you in this cause.
+PRED: That makes sense. I'm really excited about it.
+
+user: Hey, Max. What are you studying?
+REF : Just my history book. Trying to get ahead for the test next week.
+PRED: I'm just trying to get a new one. I've been thinking about you for a while now.
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+REF : What chapter are you on? I can help you if you want.
+PRED: Yeah, I know. I've been working hard and I'm really excited to get started. I think it's going to be a great fit for the job.
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+user: What chapter are you on? I can help you if you want.
+REF : Ridge, I appreciate your offer, but I really need to focus.
+PRED: I'm sure you'll be able to get the job done well. I'll have to check the test and get the test.
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+user: What chapter are you on? I can help you if you want.
+bot: Ridge, I appreciate your offer, but I really need to focus.
+REF : Okay, sorry. I'll just study with you then.
+PRED: Okay, sorry. Let's go get some rest.
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+user: What chapter are you on? I can help you if you want.
+bot: Ridge, I appreciate your offer, but I really need to focus.
+user: Okay, sorry. I'll just study with you then.
+REF : Ridge, please. I can't concentrate with you here.
+PRED: Ridge, I don't want to go. I'm going to have to go back to school.
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+user: What chapter are you on? I can help you if you want.
+bot: Ridge, I appreciate your offer, but I really need to focus.
+user: Okay, sorry. I'll just study with you then.
+bot: Ridge, please. I can't concentrate with you here.
+REF : Fine, I'll leave you alone. But let me know if you need any help.
+PRED: Yeah, I guess you're right. But I'm sorry. I'll do better next time.
+
+user: Mallory, you're so cool. I wish I could be like you.
+REF : What do you mean? I'm just being myself.
+PRED: I'm so sorry, Kayla. I know it's not a big deal. I'll be back soon.
+
+user: Mallory, you're so cool. I wish I could be like you.
+bot: What do you mean? I'm just being myself.
+REF : I know, but you always seem to know what to say and how to act around people. I'm not as confident as you are, and it's something I really admire about you.
+PRED: You're not a child, but you're just trying to get out of control. You've been through a lot lately and you've never been able to get you out of trouble.
+
+user: Mallory, you're so cool. I wish I could be like you.
+bot: What do you mean? I'm just being myself.
+user: I know, but you always seem to know what to say and how to act around people. I'm not as confident as you are, and it's something I really admire about you.
+REF : Well, thank you. I think confidence is something that can be learned though. Maybe we can work on that together?
+PRED: I understand that, but I can't help but feel like I'm not good enough. I just feel like you're not good at me. I've been feeling a bit overwhelmed and I'll never be able to do anything like that.
+
+user: Hey, what's up?
+REF : Hey! Not much, what's up with you?
+PRED: Not much. Just hanging out. What about you?
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+REF : I'm good. I just bought myself some new clothes.
+PRED: Not much, just hanging out with my friends and family. I'm really excited about it. I think I've been working hard and I'll be able to do it.
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+user: I'm good. I just bought myself some new clothes.
+REF : That's cool. Where'd you get them?
+PRED: That's great! You're always so kind of passion. What made you decide to start?
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+user: I'm good. I just bought myself some new clothes.
+bot: That's cool. Where'd you get them?
+REF : I got the jeans at the mall and the shirt online.
+PRED: Oh, I got them. I've been looking for a few years now and I'm getting a new car.
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+user: I'm good. I just bought myself some new clothes.
+bot: That's cool. Where'd you get them?
+user: I got the jeans at the mall and the shirt online.
+REF : Nice! How much did they cost?
+PRED: That's great! I'm sure you'll be able to get a new car. You're always so busy with the new car and it's really nice.
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+user: I'm good. I just bought myself some new clothes.
+bot: That's cool. Where'd you get them?
+user: I got the jeans at the mall and the shirt online.
+bot: Nice! How much did they cost?
+REF : The jeans were $40 and the shirt was $20.
+PRED: They were really good. I don't know how to do it. I'm just really excited.

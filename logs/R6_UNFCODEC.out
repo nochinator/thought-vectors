@@ -1,0 +1,59 @@
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+thinker weights warm-started from checkpoints/FINAL_12H/best.pt (loaded: 94, skipped: 0)
+codec warm-started from the same checkpoint (adapted decoder restored)
+thinker params: 15.10M (codec d=384, frozen=False)
+step    1000 | VAL cos 0.5392 | VAL dec CE 2.5161
+step    3000 | VAL cos 0.5397 | VAL dec CE 2.5259
+step    4000 | VAL cos 0.5398 | VAL dec CE 2.5210
+wall-clock cap reached at step 4091
+
+Run 'R6_UNFCODEC' done: 4091 steps | final val cos 0.5398 | dec CE 2.5177
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{"ckpt": "checkpoints/R6_UNFCODEC/best.pt", "val_cos": 0.4262, "val_dec_ce": 2.6812, "ref_f1": 0.2943, "distinct1": 0.0298, "distinct2": 0.1204, "len_ratio": 1.132, "out_vectors": 8.0, "rows": 1024}
+--- multiturn eval R6_UNFCODEC ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+multiturn: self_rep 0.1920 ctx_sens 0.3103 (n=6 convs, temp=0.0)
+transcripts -> logs/R6_UNFCODEC.multiturn.txt
+--- register eval R6_UNFCODEC ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+register: reg_err 0.1667 reg_err_ctx 0.5000 pos_ok 0.3333 (bad=12 ctx=6 good=6, temp=0.0)
+transcripts -> logs/R6_UNFCODEC.register.txt
+--- round-trip guard R6_UNFCODEC ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{
+  "ckpt": "checkpoints/R6_UNFCODEC/best.pt",
+  "verdict": "PASS",
+  "worst_delta": 0.0,
+  "tol": 0.05,
+  "per_prefix": [
+    {
+      "k": 2,
+      "frozen_ce": 4.9181,
+      "modified_ce": 4.8101,
+      "delta": -0.108
+    },
+    {
+      "k": 8,
+      "frozen_ce": 2.6382,
+      "modified_ce": 2.5068,
+      "delta": -0.1315
+    },
+    {
+      "k": 128,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": 0.0
+    },
+    {
+      "k": 256,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": 0.0
+    }
+  ]
+}

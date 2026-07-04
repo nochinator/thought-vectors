@@ -1,0 +1,201 @@
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+REF : You did a great job, Mahnoor. This building is really impressive.
+PRED: You're doing! How to you have been done.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+REF : Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+PRED: Thank you, I'm really happy.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+user: Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+REF : I can imagine. How long did it take you to build it?
+PRED: I'm sorry. I've been a good thing. I don't have a good way.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+user: Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+bot: I can imagine. How long did it take you to build it?
+REF : Oh, about a month. I worked on it every day after school and on weekends.
+PRED: It's a lot of it. It'll be a lot. I'm just a lot for it. I don't have been done.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+user: Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+bot: I can imagine. How long did it take you to build it?
+user: Oh, about a month. I worked on it every day after school and on weekends.
+REF : That's a really long time. I don't think I could've been that patient.
+PRED: That's a great thing. I'm going to do.
+
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+bot: You did a great job, Mahnoor. This building is really impressive.
+user: Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+bot: I can imagine. How long did it take you to build it?
+user: Oh, about a month. I worked on it every day after school and on weekends.
+bot: That's a really long time. I don't think I could've been that patient.
+REF : Yeah, it was tough at times. But like I said, it was worth it in the end.
+PRED: I know, but I'm sorry, but it's a lot of the time. I've been a lot.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+REF : I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+PRED: I know, I'm glad to make it. I've got to be a good thing.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+REF : Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+PRED: I am doing it. I'm like it.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+REF : No problem, I was happy to help.
+PRED: Of course, I'm sorry, I don't have a good thing. I've been a good idea. I don’t have to be a good time. I can't know what you're going to be the time.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+bot: No problem, I was happy to help.
+REF : Well, I should probably get started on cleaning up the garage.
+PRED: I know, I'm like you.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+bot: No problem, I was happy to help.
+user: Well, I should probably get started on cleaning up the garage.
+REF : Yeah, you probably should. I'll help you with that in a bit.
+PRED: That sounds like a great time. I'm going to be a good thing. I don't know what we'll be a lot of it.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+bot: No problem, I was happy to help.
+user: Well, I should probably get started on cleaning up the garage.
+bot: Yeah, you probably should. I'll help you with that in a bit.
+REF : Alright, sounds good. Thanks again for all your help.
+PRED: I hope.
+
+bot: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+user: Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+bot: No problem, I was happy to help.
+user: Well, I should probably get started on cleaning up the garage.
+bot: Yeah, you probably should. I'll help you with that in a bit.
+user: Alright, sounds good. Thanks again for all your help.
+REF : No problem, like I said, I was happy to do it.
+PRED: You're welcome, I'm sorry, I don't know what I'll be a good thing. I've got to be a lot of you. I can't help you.
+
+user: So, why are we protesting today?
+REF : We're protesting to raise awareness for the homeless population in our town.
+PRED: I'm not a good idea. I've been a good thing. I don't have to be a lot of the world.
+
+user: So, why are we protesting today?
+bot: We're protesting to raise awareness for the homeless population in our town.
+REF : I see. And why is this issue important to you?
+PRED: I think that we're doing the world. I'm going to be a lot of people. I don't have a good thing. I think it's a lot.
+
+user: So, why are we protesting today?
+bot: We're protesting to raise awareness for the homeless population in our town.
+user: I see. And why is this issue important to you?
+REF : Because no one should have to live on the streets. Everyone deserves a place to call home. And I want to help make that happen for people in my community.
+PRED: We're not a good idea. We've been a good thing. I'm not a lot of the world.
+
+user: So, why are we protesting today?
+bot: We're protesting to raise awareness for the homeless population in our town.
+user: I see. And why is this issue important to you?
+bot: Because no one should have to live on the streets. Everyone deserves a place to call home. And I want to help make that happen for people in my community.
+REF : That's really admirable, Hector. I'm glad I can support you in this cause.
+PRED: I think. I'm sorry that I've got to be a good thing. I don't want to be better.
+
+user: Hey, Max. What are you studying?
+REF : Just my history book. Trying to get ahead for the test next week.
+PRED: I'm sorry, I've got a good thing. I're going to be a lot of
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+REF : What chapter are you on? I can help you if you want.
+PRED: Yeah, I'm sorry. I've got a good thing. I can't be a good time. I don't have a good idea. I have to be a lot of
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+user: What chapter are you on? I can help you if you want.
+REF : Ridge, I appreciate your offer, but I really need to focus.
+PRED: I'm just a good thing. I'll have a good time.
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+user: What chapter are you on? I can help you if you want.
+bot: Ridge, I appreciate your offer, but I really need to focus.
+REF : Okay, sorry. I'll just study with you then.
+PRED: I'm sorry, I'll have to be a good thing. I've got to be doing. I don't know what you're going to
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+user: What chapter are you on? I can help you if you want.
+bot: Ridge, I appreciate your offer, but I really need to focus.
+user: Okay, sorry. I'll just study with you then.
+REF : Ridge, please. I can't concentrate with you here.
+PRED: So, I'll know what you're going to do.
+
+user: Hey, Max. What are you studying?
+bot: Just my history book. Trying to get ahead for the test next week.
+user: What chapter are you on? I can help you if you want.
+bot: Ridge, I appreciate your offer, but I really need to focus.
+user: Okay, sorry. I'll just study with you then.
+bot: Ridge, please. I can't concentrate with you here.
+REF : Fine, I'll leave you alone. But let me know if you need any help.
+PRED: I'm sorry, I'll have to make it. I've done.
+
+user: Mallory, you're so cool. I wish I could be like you.
+REF : What do you mean? I'm just being myself.
+PRED: I'm sorry, I don't know. I'll have to be a good thing.
+
+user: Mallory, you're so cool. I wish I could be like you.
+bot: What do you mean? I'm just being myself.
+REF : I know, but you always seem to know what to say and how to act around people. I'm not as confident as you are, and it's something I really admire about you.
+PRED: I'm not a good thing. I're not a lot of you're doing. I don't know what you've got to me. I can't be a good way. I think you'll be a lot. I know that you'm going to be a bad thing.
+
+user: Mallory, you're so cool. I wish I could be like you.
+bot: What do you mean? I'm just being myself.
+user: I know, but you always seem to know what to say and how to act around people. I'm not as confident as you are, and it's something I really admire about you.
+REF : Well, thank you. I think confidence is something that can be learned though. Maybe we can work on that together?
+PRED: What is you mean to me. I don't want to me?
+
+user: Hey, what's up?
+REF : Hey! Not much, what's up with you?
+PRED: Not much, just getting a lot of you.
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+REF : I'm good. I just bought myself some new clothes.
+PRED: I'm just going to get a lot of the time. I've got a lot. I just got to get the game. I don't know what I'll have to be doing. I can't be a good thing. I have to get out of the game, I're going to be a lot for you.
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+user: I'm good. I just bought myself some new clothes.
+REF : That's cool. Where'd you get them?
+PRED: That's great! I'm going to make you. I've got a good thing.
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+user: I'm good. I just bought myself some new clothes.
+bot: That's cool. Where'd you get them?
+REF : I got the jeans at the mall and the shirt online.
+PRED: Yeah, I'm just a lot of it. I'll have a good thing.
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+user: I'm good. I just bought myself some new clothes.
+bot: That's cool. Where'd you get them?
+user: I got the jeans at the mall and the shirt online.
+REF : Nice! How much did they cost?
+PRED: That's a good thing. I'm going to be a good time. I don't know what you're going to make it.
+
+user: Hey, what's up?
+bot: Hey! Not much, what's up with you?
+user: I'm good. I just bought myself some new clothes.
+bot: That's cool. Where'd you get them?
+user: I got the jeans at the mall and the shirt online.
+bot: Nice! How much did they cost?
+REF : The jeans were $40 and the shirt was $20.
+PRED: I don't know. I'm just just just a lot of the guys.

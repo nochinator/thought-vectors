@@ -1,0 +1,200 @@
+[23 tok] IN : The final chapter in this very full life came to an end with his sudden death on 23 May 1931.
+        k=8  : The final chapter in this very full life came to an end with his sudden on 23 May 1931.
+        k=16 : The final chapter in this very full life came to an end with his sudden death on 23 May 1931.
+        k=128: The final chapter in this very full life came to an end with his sudden death on 23 May 1931.
+
+[28 tok] IN : wet rated outdoor ceiling fans home depot patio ceiling fans patio fans home depot patio ceiling fans bronze kitchenaid accessories kit.
+        k=8  : wet rated outdoor ceiling fans depot home patio ceiling fans dep patio home fans dep patio fans bronze ceiling kitchenaid kit accessories.
+        k=16 : wet rated outdoor ceiling fans home depot patio ceiling fans patio dep fans home patioot ceiling fans bronze kitchenaid kit accessories.
+        k=128: wet rated outdoor ceiling fans home depot patio ceiling fans patio fans home depot patio ceiling fans bronze kitchenaid accessories kit.
+
+[39 tok] IN : We take pride in our attention to detail in the market place while we sustain personal attention to each client, making sure that every person we come across finds exactly what they are looking for.
+        k=8  : We take pride in our attention to detail in the market we provide sustain personal while we believe, making each client sure that we come across every person exactly what they are looking for.
+        k=16 : We take pride in our attention to detail in the place while we hope personal attention to each client, making sure that every person come across we exactly what they are looking for.
+        k=128: We take pride in our attention to detail in the market place while we sustain personal attention to each client, making sure that every person we come across finds exactly what they are looking for.
+
+[21 tok] IN : Each element can be edited via the following editing tabs: General, Image and Tags.
+        k=8  : Each element can be edited via the following editing tabs: General, and Tags.
+        k=16 : Each element can be edited via the following editing tabs: General, Image and Tags.
+        k=128: Each element can be edited via the following editing tabs: General, Image and Tags.
+
+[12 tok] IN : Other inspirations in the Inspiration Wall.
+        k=8  : Other inspirations in the Inspiration Wall.
+        k=16 : Other inspirations in the Inspiration Wall.
+        k=128: Other inspirations in the Inspiration Wall.
+
+[33 tok] IN : We haven’t spared most of our time across the island so we will be back one of these days to see you again Siquijor.
+        k=8  : We haven’t spared most of our time across the island so we will be one of these days back to see you again Siquor.
+        k=16 : We haven’t spared most of our time across the island so we will be back one of these days to see you again Siquor.
+        k=128: We haven’t spared most of our time across the island so we will be back one of these days to see you again Siquijor.
+
+[17 tok] IN : DZ Bank Polska earned 18 million zlotys ($6.
+        k=8  : DZ Bank Pols earnedka 18 million zlotys ($6.
+        k=16 : DZ Bank Polska earned 18 million zlotys ($6.
+        k=128: DZ Bank Polska earned 18 million zlotys ($6.
+
+[11 tok] IN : And nobody has to call the Bobfather.
+        k=8  : And nobody has to call the Bobfather.
+        k=16 : And nobody has to call the Bobfather.
+        k=128: And nobody has to call the Bobfather.
+
+[26 tok] IN : Anjelica Pickles was Francis Ford Coppola’s original choice to play Vito Corleone.
+        k=8  : Anjelica Pickles was Francis Ford Copp’s originalola’ V play to Vito Corleone.
+        k=16 : Anjelica Pickles was Francis Co Fordppola’s original choice to play Vito Corleone.
+        k=128: Anjelica Pickles was Francis Ford Coppola’s original choice to play Vito Corleone.
+
+[41 tok] IN : A Naturopathic Doctor views the individual as an integral whole, made up of physiological, structural, psychological, social, and spiritual aspects, and influenced by environmental and lifestyle factors.
+        k=8  : A Natuathicrop Doctor views the individualic whole, made integral as an whole, physiological, structural, and social, spiritual, and influenced by environmental and influenced factors lifestyle.
+        k=16 : A Natuathicrop Doctor views the individual as an integral whole, made up of physiological, structural, psychological, social, and spiritual, and influenced by environmental and lifestyle factors.
+        k=128: A Naturopathic Doctor views the individual as an integral whole, made up of physiological, structural, psychological, social, and spiritual aspects, and influenced by environmental and lifestyle factors.
+
+[25 tok] IN : She will be bringing her beautiful hand-dyed skeins with her for one day only - Tuesday, April 9.
+        k=8  : She will be bringing her beautiful hand-dyed skeins with her one for day only - Tuesday, April 9.
+        k=16 : She will be bringing her beautiful hand-dyed skeins with her one day only - Tuesday, April 9.
+        k=128: She will be bringing her beautiful hand-dyed skeins with her for one day only - Tuesday, April 9.
+
+[42 tok] IN : Campers will enjoy demonstrations from multiple local public safety departments, have fun participating in hands-on activities and come away with better understanding of public safety career opportunities as well as safety tips and skills.
+        k=8  : Campers will enjoy demonstrations from multiple local public safety, fun have participating in departments activities and comeon- activities with better understanding of public career safety opportunities as well as career and skills.
+        k=16 : Campers will enjoy demonstrations from multiple local public safety departments, fun have participating in hands-on activities and come away with better understanding of public career opportunities as well as safety tips and skills.
+        k=128: Campers will enjoy demonstrations from multiple local public safety departments, have fun participating in hands-on activities and come away with better understanding of public safety career opportunities as well as safety tips and skills.
+
+[13 tok] IN : Can be best Czech republic tour guide.
+        k=8  : Can be best Czech republic tour guide.
+        k=16 : Can be best Czech republic tour guide.
+        k=128: Can be best Czech republic tour guide.
+
+[22 tok] IN : It’s up to you whether you turn your movie into a breathtaking adventure or not.
+        k=8  : It’s up to you whether you turn your movie into a breathtaking adventure or not.
+        k=16 : It’s up to you whether you turn your movie into a breathtaking adventure or not.
+        k=128: It’s up to you whether you turn your movie into a breathtaking adventure or not.
+
+[30 tok] IN : I received my master degree in Computer Science engineering from Universitée catholique de Louvain in 2007 and my Ph.
+        k=8  : I received my master degree in Computer Science engineering from Universe céathol de Louvique de in my 2007 and in my Ph.
+        k=16 : I received my master degree in Computer Science engineering from Universitée catholique de Louvain in 2007 and my Ph.
+        k=128: I received my master degree in Computer Science engineering from Universitée catholique de Louvain in 2007 and my Ph.
+
+[41 tok] IN : She notes in part of it that at some point, there was a switchover in her mind and looking at her son, she could see how he could be Minnie instead of Mickey.
+        k=8  : She notes in part of it that at some point, there was a switchover in her mind and looking at her son could see how she could be Minnie instead of Mickey.
+        k=16 : She notes in part of it that at some point, there was a switchover in her mind and looking at her son, she could see he could be Minnie instead of Mickey.
+        k=128: She notes in part of it that at some point, there was a switchover in her mind and looking at her son, she could see how he could be Minnie instead of Mickey.
+
+[9 tok] IN : Life is so unfair sometimes.
+        k=8  : Life is so unfair sometimes.
+        k=16 : Life is so unfair sometimes.
+        k=128: Life is so unfair sometimes.
+
+[13 tok] IN : 2_06\jre\bin\java.
+        k=8  : 2_06\jre\bin\enda.
+        k=16 : 2_06\jre\bin\enda.
+        k=128: 2_06\jre\bin\enda.
+
+[21 tok] IN : The topic ‘Is this plugin likely to be updated?’ is closed to new replies.
+        k=8  : The topic ‘Is this plugin likely to be updated? is closed’ to new replies.
+        k=16 : The topic ‘Is this plugin likely to be updated?’ is closed to new replies.
+        k=128: The topic ‘Is this plugin likely to be updated?’ is closed to new replies.
+
+[22 tok] IN : As a compromise, perhaps you should suggest to your readers to have a wedding cake made of chicken.
+        k=8  : As a compromise, perhaps you should suggest to your readers have a wedding to cake made of chicken.
+        k=16 : As a compromise, perhaps you should suggest to your readers to have a wedding cake made of chicken.
+        k=128: As a compromise, perhaps you should suggest to your readers to have a wedding cake made of chicken.
+
+[26 tok] IN : We didn’t want to sell any products that were ingested or put on your skin (like a lotion).
+        k=8  : We didn’t want to sell any products that were ingested or put your skin (like a lotion).
+        k=16 : We didn’t want to sell any products that were ingested or put on your skin (like a lotion).
+        k=128: We didn’t want to sell any products that were ingested or put on your skin (like a lotion).
+
+[38 tok] IN : As I mentioned earlier, one effective way to come up with product ideas is simply to look around your house or walk through a retail store and see what might be a good fit.
+        k=8  : As I mentioned earlier one, effective way to come up product is simply ideas with product or walk around your house or walk through a store and see what might be a good fit.
+        k=16 : As I mentioned earlier one, effective way to come up with product ideas is simply to look around your house or walk through a retail store and see what might be a good fit.
+        k=128: As I mentioned earlier, one effective way to come up with product ideas is simply to look around your house or walk through a retail store and see what might be a good fit.
+
+[18 tok] IN : In this case the ASIN is B00MM80ZLW.
+        k=8  : In this case the ASIN is BM0080ZMWL.
+        k=16 : In this case the ASIN is BM0080ZLW.
+        k=128: In this case the ASIN is B00M80ZLW.
+
+[20 tok] IN : He would place them on a white background and they would be ready for use on Amazon.
+        k=8  : He would place them on a white background and they would be ready for use on Amazon.
+        k=16 : He would place them on a white background and they would be ready for use on Amazon.
+        k=128: He would place them on a white background and they would be ready for use on Amazon.
+
+[24 tok] IN : You can be safe and secure knowing that the catering of your event will be handled by seasoned professionals.
+        k=8  : You can be safe and secure knowing that the catering of your event will be handled by seasoned professionals.
+        k=16 : You can be safe and secure knowing that the catering of your event will be handled by seasoned professionals.
+        k=128: You can be safe and secure knowing that the catering of your event will be handled by seasoned professionals.
+
+[41 tok] IN : From the other side we can get an outsider’s opinion, someone’s opinion who is not familiar with our code base and is not blinded with the technical limitations of our infrastructure.
+        k=8  : From the other side we can get an outsider’s opinion, someone’s opinion is not familiar with our code and is not blinded with the technical limitations of our infrastructure.
+        k=16 : From the other side we can get an outsider’s opinion, someone’s opinion who is not familiar with our code and is not blinded with the technical limitations of our infrastructure.
+        k=128: From the other side we can get an outsider’s opinion, someone’s opinion who is not familiar with our code base and is not blinded with the technical limitations of our infrastructure.
+
+[30 tok] IN : But others were longtime Duke employees and Durham residents who were hoping to go beyond the basic history of the community that they knew.
+        k=8  : But others were longtime Duke employees and Durham who were hoping to beyond the basic history of the beyond community that they knew.
+        k=16 : But others were longtime Duke employees and Durham residents who were hoping to go beyond the basic history of the community that they knew.
+        k=128: But others were longtime Duke employees and Durham residents who were hoping to go beyond the basic history of the community that they knew.
+
+[20 tok] IN : Harmony Within now also offers acupuncture in Bergen County NJ.
+        k=8  : Harmony Within now also offers acupunct in Bergure County NJ.
+        k=16 : Harmony Within now also offers acupuncture in Bergen County NJ.
+        k=128: Harmony Within now also offers acupuncture in Bergen County NJ.
+
+[11 tok] IN : Synthetic free skin is happy skin.
+        k=8  : Synthetic free skin is happy skin.
+        k=16 : Synthetic free skin is happy skin.
+        k=128: Synthetic free skin is happy skin.
+
+[14 tok] IN : This year in June, Almeda met with Sec.
+        k=8  : This year in June, Almeda met with Sec.
+        k=16 : This year in June, Almeda met with Sec.
+        k=128: This year in June, Almeda met with Sec.
+
+[44 tok] IN : The majority of migraine patients are between 20 and 40 years of age - at the height of their professional and personal lives - and these patients often live in fear of the next strong migraine attack.
+        k=8  : The majority of migraine patients are between 20 years of age - at 40 years of the professional and personal height their lives and often these patients - live in fear of the next mig attackraine.
+        k=16 : The majority of migraine patients are between 20 40 years and age of - at the height of their professional and personal lives - and often these live in fear of the next strong migraine attack.
+        k=128: The majority of migraine patients are between 20 and 40 years of age - at the height of their professional and personal lives - and these patients often live in fear of the next strong migraine attack.
+
+[41 tok] IN : Holiday Inn London Kingston South is a AA 4 star hotel, situated just 30 minutes from the heart of the Capital and within easy reach of some of the world’s greatest attractions.
+        k=8  : Holiday Inn London Kingston South is a AA 4 hotel, star situated just from the heart minutes of the easy and reach within some of the world’s some of greatest attractions.
+        k=16 : Holiday Inn London Kingston South is a AA 4 star hotel, just situated 30 minutes from the heart of Capital and within easy reach of some of the world’s greatest attractions.
+        k=128: Holiday Inn London Kingston South is a AA 4 star hotel, situated just 30 minutes from the heart of the Capital and within easy reach of some of the world’s greatest attractions.
+
+[33 tok] IN : The design is Bird & Flower, a complimentary design from Chessie & Me currently in the May 2009 Stitchville USA newsletter.
+        k=8  : The design is Bird & Flower, a complimentary from Ches design & currently in Meie & the 2009 Stitch USAville newsletter.
+        k=16 : The design is Bird & Flower, a complimentary design from Chessie & Me currently in the May 2009 Stitchville USA newsletter.
+        k=128: The design is Bird & Flower, a complimentary design from Chessie & Me currently in the May 2009 Stitchville USA newsletter.
+
+[34 tok] IN : Some estimates suggest that electronic payments added $296 billion to GDP in the 70 countries studied between 2011 and 2015, which is equivalent to the creation of ~2.
+        k=8  : Some estimates suggest that electronic payments added $296 billion to the GDP in 70 between 2011 studied and between the equivalent which is to equivalent of ~2.
+        k=16 : Some estimates suggest that electronic payments added $296 billion to GDP in the 70 countries studied between 2011 and 2015, which is equivalent to the creation of ~2.
+        k=128: Some estimates suggest that electronic payments added $296 billion to GDP in the 70 countries studied between 2011 and 2015, which is equivalent to the creation of ~2.
+
+[24 tok] IN : Chango's Father - Powerful Energy - In a light-protecting amber glass bottle.
+        k=8  : ango Ch's Father - Powerful Energy - a light-proting amber am glass bottle.
+        k=16 : Chango's Father - Powerful Energy - In a light-protecting amber glass bottle.
+        k=128: Chango's Father - Powerful Energy - In a light-protecting amber glass bottle.
+
+[12 tok] IN : U14 and U18 Youth National Teams.
+        k=8  : U14 and U18 Youth National Teams.
+        k=16 : U14 and U18 Youth National Teams.
+        k=128: U14 and U18 Youth National Teams.
+
+[23 tok] IN : popular Apps Popular Mac Apps VirtualDJ 2018 5KPlayer VLC Media Player.
+        k=8  : App populars Popular Mac Apps VirtualDJK 5 2018P VLC Media Player.
+        k=16 : popular Apps Popular Mac Apps VirtualDJ 2018 5KPlayer VLC Media Player.
+        k=128: popular Apps Popular Mac Apps VirtualDJ 2018 5KPlayer VLC Media Player.
+
+[32 tok] IN : INGREDIENTS: Rice (80%), tapioca starch (as stabilizer), rice starch (as stabilizer).
+        k=8  : INGREDIENTS: Rice (80ioca tap%), starchizer), stabilas (arch starch (izer stabil).
+        k=16 : INGREDIENTS: Rice (80%), tapioca starch (as stabilizer), rice starch (asizer stabil).
+        k=128: INGREDIENTS: Rice (80%), tapioca starch (as stabilizer), rice starch (as stabilizer).
+
+[39 tok] IN : A striking family house, with an annexe, set within an elevated position, overlooking woodland, in this secluded position on the edge of Witheridge Hill.
+        k=8  : A striking family, house with annexe, an position within elevated, set an positioning wood,land in the secluded position on the edge of Witherid Hillge.
+        k=16 : A striking family, house with annexe, set within an elevated position, overlooking wood,land in this secluded position on the edge of Witheridge Hill.
+        k=128: A striking family house, with annexe, set within an elevated position, overlooking woodland, in this secluded position on the edge of Witheridge Hill.
+
+[14 tok] IN : Sometimes wiring diagram may also refer to the architectural wiring program.
+        k=8  : Sometimes wiring diagram may also refer to the architectural wiring program.
+        k=16 : Sometimes wiring diagram may also refer to the architectural wiring program.
+        k=128: Sometimes wiring diagram may also refer to the architectural wiring program.
+

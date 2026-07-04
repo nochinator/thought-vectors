@@ -1,0 +1,350 @@
+--- step 500 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you. I was just trying to help.
+  PRED1: I'm sorry, Kayn. I didn't mean to hurt you. I was just trying to help.
+  PRED2: I'm sorry, I didn't mean to hurt you. I was just trying to help you, I swear. I'll try to do better in the future.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's a good idea. I'm sure you'll be a good
+  PRED1: That's a good idea. I'm sure you'll be a good friend.
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job with you.
+  PRED3: That's a good idea. I'm sure you'll be able to get a good job.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. This is a big deal.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I'm still not going to let you go.
+  PRED3: Tanika, I don't know if I can trust you anymore. I'm sorry for what happened.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, I didn't mean to hurt your feelings.
+  PRED1: I'm sorry, honey. I know you're going to be a great player.
+  PRED2: I'm sorry, honey. I know you're upset, but you've been through a lot lately. You're going to be great at it.
+  PRED3: I'm so sorry, Kayla. I know you're going to be a great player.
+
+--- step 1000 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you. I was just trying to help.
+  PRED1: I'm sorry, Jahan. I didn't mean to hurt you. I was just trying to help you. But I didn’t mean for it. I'll never do anything to hurt your feelings. I promise.
+  PRED2: I'm sorry, Jalyn. I didn't mean to hurt you. I was just trying to help you. It was a mistake and I didn’t want to be done.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out and I didn’t mean anything.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's good. I'm sure you'll be a good
+  PRED1: That's a good idea. I'm sure you'll be a good person.
+  PRED2: That's good. I'm sure you'll be able to get a good job with your friends and see if they're not good enough.
+  PRED3: That's good. I'm sure you'll be able to get a good job.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you anymore.
+  PRED1: Tanika, I don't know what you're talking about. I'm sorry if I did, but that doesn't mean I don’t mean to hurt you. We all have our friendship and I'll never do anything wrong.
+  PRED2: Tanika, I don't know what you're talking about. I'm sorry if I did, but I'll try to do better. I promise. Thank you for being here for me.
+  PRED3: Tanika, I don't know if I can trust you anymore. But I'm not going to let you go.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, honey. I didn't mean to hurt you.
+  PRED1: I'm sorry, honey. I know you didn't mean to.
+  PRED2: I'm sorry, honey. I know you're upset, but you'll be fine. You're a strong person and you've been working hard.
+  PRED3: I'm so sorry, Kayla. I know you're going to be a great player.
+
+--- step 1500 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you.
+  PRED1: I'm sorry, Jahra. I didn't mean to hurt you. I was just trying to help you.
+  PRED2: I'm sorry, Jalyn. I didn't mean to hurt you. I was just trying to help you.
+  PRED3: I'm sorry, Jazen. I didn't mean to hurt you. I was just trying to help you.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's a good idea.
+  PRED1: That's a good idea. I'm sure you'll be a great
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job with you.
+  PRED3: That's a good idea. I'm sure you'll be able to get a good job.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. This is a big deal.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I'm still not going to let you go.
+  PRED3: Tanika, I don't know if I can trust you anymore. But I'm still not going to let you down.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, honey. What happened?
+  PRED1: I'm sorry to hear that, honey. What happened?
+  PRED2: I'm sorry, honey. I know you're upset, but you'll be fine. Just be more careful next time, okay?
+  PRED3: I'm so sorry, Kayla. I know you're going to be a great player.
+
+--- step 2000 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you. I was just trying to help.
+  PRED1: I'm sorry, Kylan. I didn't mean to hurt you. I was just trying to help you. It was a mistake and I didn’t mean it was just a mistake. I'll never do anything wrong.
+  PRED2: I'm sorry, Kylan. I didn't mean to hurt you. I was just trying to help you. It was a mistake and I didn’t mean it was just a mistake.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out and I didn’t mean anything.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's good to know.
+  PRED1: That's a good idea. I'm sure you'll be a good person.
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job with you.
+  PRED3: That's a good idea. I'm sure you'll be able to get it done.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. But I promise you, it's not the end of the world.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did, but I'll never do anything to hurt you again.
+  PRED3: Tanika, I don't know what you're talking about. I'm sorry if I did hurt you.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, I didn't mean to hurt your feelings.
+  PRED1: I'm sorry, honey. I know you're going to be a great player.
+  PRED2: I'm sorry, honey. I know you're upset, but you'll be fine. You're a strong person and you've been working hard.
+  PRED3: I'm so sorry, Kayla. I know you're going to be a great player.
+
+--- step 2500 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you. I was just trying to help.
+  PRED1: I'm sorry, Jalyn. I didn't mean to hurt you. I was just trying to help you. But I didn’t mean for it. I'll never do anything to hurt your feelings. I promise.
+  PRED2: I'm sorry, I didn't mean to hurt you. I was just trying to help you, I swear. I didn’t mean it. I'll try to do better in the future.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out. I didn’t mean anything.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's a good idea.
+  PRED1: That's a good idea. I'm sure you'll be a good friend.
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job and get a new job.
+  PRED3: That's a good idea. I'm sure you'll be able to get a good job.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did, but I'll never be here for you. Please, just give me another chance.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did, but I'll try to do better in the future.
+  PRED3: Tanika, I don't know if I can ever trust you again. I'm sorry if I did hurt you.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, I didn't mean to hurt you.
+  PRED1: I'm sorry, honey. I know you're going to be a great player.
+  PRED2: I'm sorry, honey. I know you're upset, but you've been through a lot lately. You're a strong person and you'll be fine.
+  PRED3: I'm sorry, but you're going to have to let it go. You're a great player.
+
+--- step 3000 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you. I was just trying to help.
+  PRED1: I'm sorry, I didn't mean to hurt you. I was just trying to help you.
+  PRED2: I'm sorry, I didn't mean to hurt you. I was just trying to help you out and I didn’t mean anything.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's a good idea.
+  PRED1: That's a good idea. I'm sure you'll be a good friend.
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job and see if you can find a job that you're not going to be able.
+  PRED3: That's a good idea. I'm sure you'll be able to get it done.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. This is a big deal.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did hurt you.
+  PRED3: Tanika, I don't know if I can trust you anymore. I'm sorry for what happened.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, I didn't mean to hurt you.
+  PRED1: I'm sorry, honey. I know you're going to be a great player.
+  PRED2: I'm sorry, honey. I know you're upset, but you'll be fine. You're a strong person and you've been working hard.
+  PRED3: I'm so sorry, Kayla. I know you're going to be a great player.
+
+--- step 3500 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you. I was just trying to help.
+  PRED1: I'm sorry, Jalyn. I didn't mean to hurt you. I was just trying to help you. But I didn’t mean that I was going to help him. I just didn'd be happy with my friends and family.
+  PRED2: I'm sorry, Jalyn. I didn't mean to hurt you. I was just trying to help you. It was a mistake and I didn’t want to hurt your feelings.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out and I didn’t mean anything.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's a good idea.
+  PRED1: That's a good idea. I'm sure you'll be a great
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job with you.
+  PRED3: That's a good idea. I'm sure you'll be able to get it done.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. This is a big deal.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I still think you're going to have to trust me and I don’t want to be treated like that.
+  PRED3: Tanika, I don't know if I can trust you anymore. But I'm still not going to let you down.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, I didn't mean to hurt you.
+  PRED1: I'm sorry, honey. I know you're going to be a great player.
+  PRED2: I'm sorry, honey. I know you're upset, but you'll be fine. You're a strong person and you've been working hard.
+  PRED3: I'm sorry, but you're going to have to let it go. You're a great player.
+
+--- step 4000 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you. I was just trying to help.
+  PRED1: I'm sorry, Jahan. I didn't mean to hurt you. I was just trying to help you. It was a mistake and I didn’t mean anything to you.
+  PRED2: I'm sorry, Jalyn. I didn't mean to hurt you. I was just trying to help you out. I'll try to do better in the future.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's a good idea.
+  PRED1: That's a good idea. I'm sure you'll be a great
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job with you.
+  PRED3: That's a good idea. I'm sure you'll be able to get it done.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did, but I'll try to do better. And even if I don’t want to talk about it, I promise.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did, but I'll try to do better in the future. Please forgive me.
+  PRED3: Tanika, I don't know if I can trust you anymore. But I'm still not going to let you go.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, I didn't mean to hurt your feelings.
+  PRED1: I'm sorry, honey. I know you're going to be a great player.
+  PRED2: I'm sorry, honey. I know you're upset, but you'll be fine. You're a strong person and you've been working hard.
+  PRED3: I'm sorry, but you're going to have to let it go. You're a great player.
+
+--- step 4500 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: What are you talking about? I didn't do anything to you.
+  PRED1: I'm sorry, I didn't mean to hurt you. I was just trying to help you.
+  PRED2: I'm sorry, I didn't mean to hurt you. I was just trying to help you out and I didn’t want to hurt your feelings.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's a good idea.
+  PRED1: That's a good idea. I'm sure you'll be a great
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job with you.
+  PRED3: That's a good idea. I'm sure you'll be able to get it done.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. But I promise you, it's not the end of the world.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did, but I'll never do anything to hurt you again.
+  PRED3: Tanika, I don't know if I can trust you anymore. But I'm still not going to let you down.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, I didn't mean to hurt you.
+  PRED1: I'm sorry, honey. I know you're going to be a great player.
+  PRED2: I'm sorry, honey. I know you're upset, but you'll be fine. You're a strong person and you've been working hard.
+  PRED3: I'm sorry, but you're going to have to let it go. You're a great player.
+
+--- step 5000 ---
+  user: I can't believe you would do this to me. I trusted you and you just went behind my back and cheated on me.
+  REF : I'm sorry, Briauna. I know how much this hurts you.
+  PRED0: I'm sorry, I didn't mean to hurt you. I was just trying to help.
+  PRED1: I'm sorry, Jalyn. I didn't mean to hurt you. I was just trying to help you. But I didn’t mean for it. I know how much you wanted to hurt me. I'll never do anything to hurt your feelings.
+  PRED2: I'm sorry, Jalyn. I didn't mean to hurt you. I was just trying to help you. It was a mistake and I didn’t want to hurt your feelings.
+  PRED3: I'm sorry, I didn't mean to hurt you. I was just trying to help you out and I didn’t mean anything.
+
+  user: My husband wont be back for a month due to work and Im here at the house by myself.
+  bot: Im sure that is tough. You must really miss him.
+  user: Yeah i have no pets or children so im just here in an empty house.
+  bot: Do you get nervous being on your own?
+  user: Nah just bored. Im new to this city so I dont know anybody either.
+  REF : Oh that sounds even tougher. It is a long time but I hope it flies by for you and your hubby is back home again.
+  PRED0: That's a good idea.
+  PRED1: That's a good idea. I'm sure you'll be a great
+  PRED2: That's a good idea. I'm sure you'll be able to get a good job with you.
+  PRED3: That's a good idea. I'm sure you'll be able to get it done.
+
+  user: Sarah, I'm so sorry. I know that I've been lying to you and I know that I've been dishonest with you. I promise that from now on, I'll be completely honest with you.
+  bot: Tanika, I appreciate your honesty, but after everything that's happened, I don't think I can trust you anymore.
+  user: Sarah, please give me another chance. I promise that I will never lie to you again.
+  REF : Tanika, I don't know if I can believe you.
+  PRED0: Tanika, I don't know if I can trust you again.
+  PRED1: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did, but that doesn't mean I don’t mean that I can't trust you. You're my everything and I'll never do anything to hurt you.
+  PRED2: Tanika, I don't know if I can trust you anymore. But I'm sorry if I did, but I'll try to do better in the future.
+  PRED3: Tanika, I don't know if I can trust you anymore. But I'm still not going to let you go.
+
+  user: I can't believe I lost my job. I loved that job.
+  REF : I'm so sorry, An. What are you going to do?
+  PRED0: I'm sorry, I didn't mean to hurt you.
+  PRED1: I'm sorry, honey. I know you're going to be a great player.
+  PRED2: I'm sorry, honey. I know you're upset, but you'll be fine. You're a strong person and you've been working hard.
+  PRED3: I'm so sorry, Kayla. I know you're going to be a great player.
+

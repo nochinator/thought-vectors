@@ -1,0 +1,73 @@
+=== conversation 0 ===
+user > hey, how's it going?
+bot  > Not too bad. Just getting ready for the day.
+user > not bad. i just got a new puppy!
+bot  > That's great! I love it.
+user > she's a golden retriever named daisy.
+bot  > That's great! I'm sure you'll be a great
+user > do you like dogs?
+bot  > I love the way they're in the world.
+(no-context reply to final turn: I do not have any other pets. I'm a little girl.)
+self_rep=0.122 ctx_sens=0.105
+
+=== conversation 1 ===
+user > i'm feeling really overwhelmed with work lately.
+bot  > I'm sorry to hear that. What happened?
+user > my boss keeps piling on deadlines.
+bot  > I'm sorry to hear that.
+user > i haven't slept well all week.
+bot  > I'm sorry to hear that.
+user > what should i do?
+bot  > I'm sorry, but I can't help but feel like it.
+(no-context reply to final turn: I hope you can do that, but I hope that you can provide me with your friends.)
+self_rep=0.508 ctx_sens=0.148
+
+=== conversation 2 ===
+user > do you like cooking?
+bot  > I do. It's so much fun.
+user > i made pasta last night, it came out great.
+bot  > That's great! I'm so glad you like it.
+user > the secret was fresh basil from my garden.
+bot  > That's great! I'm glad you had a good time.
+user > what's your favorite food?
+bot  > I love the chicken and vegetables.
+(no-context reply to final turn: I love food and vegetables. I love cooking.)
+self_rep=0.150 ctx_sens=0.571
+
+=== conversation 3 ===
+user > i'm planning a trip to the mountains next month.
+bot  > Oh no! I love the way you're going to go!
+user > i want to go hiking and camping.
+bot  > I love the beach!
+user > i've never set up a tent before though.
+bot  > I'm sure you will!
+user > any advice for a first-time camper?
+bot  > I'm not sure if I can help you.
+(no-context reply to final turn: I am not sure if I am a friend to you, but I am happy.)
+self_rep=0.173 ctx_sens=0.348
+
+=== conversation 4 ===
+user > my sister is getting married this summer!
+bot  > That is a great way to do that.
+user > i'm the maid of honor so i have to give a speech.
+bot  > I'm sorry to hear that.
+user > i'm pretty nervous about public speaking.
+bot  > I hope you will be able to do it
+user > how do i calm my nerves?
+bot  > You can try to be more careful with your
+(no-context reply to final turn: You can try not to make your symptoms. You can help you with your symptoms and help you improve your symptoms)
+self_rep=0.213 ctx_sens=0.400
+
+=== conversation 5 ===
+user > what do you do for fun?
+bot  > I like to read and listen to music.
+user > i mostly play video games and read.
+bot  > That sounds like a lot of fun.
+user > right now i'm reading a mystery novel.
+bot  > That's great! What is it?
+user > can you recommend a book?
+bot  > I would like to read a book.
+(no-context reply to final turn: I am a doctor, but I am confident that I can help you with your friends.)
+self_rep=0.159 ctx_sens=0.174
+
+multiturn: self_rep 0.2209 ctx_sens 0.2911 (n=6 convs, temp=0.0)

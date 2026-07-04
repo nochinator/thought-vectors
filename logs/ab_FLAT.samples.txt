@@ -1,0 +1,199 @@
+user: Wow, I can't believe I built this all by myself! It looks amazing.
+REF : You did a great job, Mahnoor. This building is really impressive.
+PRED: Yeah, I'm! I'b! I needs. you make
+
+bot: Wow, I can't believe I built this all by myself! It looks amazing. You did a great job, Mahnoor. This building is really impressive.
+REF : Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+PRED: I Yeah, I am that it quite me. I move that me fall. I sure
+
+user: Wow, I can't believe I built this all by myself! It looks amazing. You did a great job, Mahnoor. This building is really impressive. Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it.
+REF : I can imagine. How long did it take you to build it?
+PRED: That's we! I'm it!X
+
+bot: Wow, I can't believe I built this all by myself! It looks amazing. You did a great job, Mahnoor. This building is really impressive. Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it. I can imagine. How long did it take you to build it?
+REF : Oh, about a month. I worked on it every day after school and on weekends.
+PRED: I'm, it takes and I sure. I take it. I considered that it'm comfortable. I got to
+
+user: Wow, I can't believe I built this all by myself! It looks amazing. You did a great job, Mahnoor. This building is really impressive. Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it. I can imagine. How long did it take you to build it? Oh, about a month. I worked on it every day after school and on weekends.
+REF : That's a really long time. I don't think I could've been that patient.
+PRED: That sounds, not:\ to I make us. I bring us? I switch.
+
+bot: Wow, I can't believe I built this all by myself! It looks amazing. You did a great job, Mahnoor. This building is really impressive. Thanks, Sarah. I'm pretty proud of it. It took a lot of hard work, but it was worth it. I can imagine. How long did it take you to build it? Oh, about a month. I worked on it every day after school and on weekends. That's a really long time. I don't think I could've been that patient.
+REF : Yeah, it was tough at times. But like I said, it was worth it in the end.
+PRED: Yeah, I'm that I'h get that I bother. } get that myself.
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference.
+REF : I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+PRED: I Yeah, it gotten. I make it. I bring us. I see
+
+bot: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference. I know, right? It's amazing what a little bit of paint can do. We should have done this sooner.
+REF : Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+PRED: I Yeah, I go that better' I go! I know and it become to I know
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference. I know, right? It's amazing what a little bit of paint can do. We should have done this sooner. Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it.
+REF : No problem, I was happy to help.
+PRED: That problem, me! I'm you! I know
+
+bot: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference. I know, right? It's amazing what a little bit of paint can do. We should have done this sooner. Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it. No problem, I was happy to help.
+REF : Well, I should probably get started on cleaning up the garage.
+PRED: That problem, I hear. I sure to have it. Please know
+
+user: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference. I know, right? It's amazing what a little bit of paint can do. We should have done this sooner. Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it. No problem, I was happy to help. Well, I should probably get started on cleaning up the garage.
+REF : Yeah, you probably should. I'll help you with that in a bit.
+PRED: That list, you! I'm help you:"m help. you'
+
+bot: Wow, the kitchen looks fantastic! I'm so glad we decided to go ahead and paint it before our party. It really makes a difference. I know, right? It's amazing what a little bit of paint can do. We should have done this sooner. Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it. No problem, I was happy to help. Well, I should probably get started on cleaning up the garage. Yeah, you probably should. I'll help you with that in a bit.
+REF : Alright, sounds good. Thanks again for all your help.
+PRED: That.., I!
+
+user: I know, right? It's amazing what a little bit of paint can do. We should have done this sooner. Definitely. I'm just glad we were able to get it done in time. Thanks for helping me out with it. No problem, I was happy to help. Well, I should probably get started on cleaning up the garage. Yeah, you probably should. I'll help you with that in a bit. Alright, sounds good. Thanks again for all your help.
+REF : No problem, like I said, I was happy to do it.
+PRED: No problem, Thank you.
+
+user: So, why are we protesting today?
+REF : We're protesting to raise awareness for the homeless population in our town.
+PRED: I'm gives you'm forgot. I're sure to I'
+
+bot: So, why are we protesting today? We're protesting to raise awareness for the homeless population in our town.
+REF : I see. And why is this issue important to you?
+PRED: That does you live. It really to } crazy of it become to I know
+
+user: So, why are we protesting today? We're protesting to raise awareness for the homeless population in our town. I see. And why is this issue important to you?
+REF : Because no one should have to live on the streets. Everyone deserves a place to call home. And I want to help make that happen for people in my community.
+PRED: Well, I offer."h encourages that better's when I need to be science. I offer as you know.
+
+bot: So, why are we protesting today? We're protesting to raise awareness for the homeless population in our town. I see. And why is this issue important to you? Because no one should have to live on the streets. Everyone deserves a place to call home. And I want to help make that happen for people in my community.
+REF : That's really admirable, Hector. I'm glad I can support you in this cause.
+PRED: That really, I hear that better' I hear to it quite to you make. I go on anyone make. you work about
+
+user: Hey, Max. What are you studying?
+REF : Just my history book. Trying to get ahead for the test next week.
+PRED: I'm playing. I considered that I'
+
+bot: Hey, Max. What are you studying? Just my history book. Trying to get ahead for the test next week.
+REF : What chapter are you on? I can help you if you want.
+PRED: That, I want. I doing that dook a do? Iook,
+
+user: Hey, Max. What are you studying? Just my history book. Trying to get ahead for the test next week. What chapter are you on? I can help you if you want.
+REF : Ridge, I appreciate your offer, but I really need to focus.
+PRED: Well, I offer. I doing that your try. I choose
+
+bot: Hey, Max. What are you studying? Just my history book. Trying to get ahead for the test next week. What chapter are you on? I can help you if you want. Ridge, I appreciate your offer, but I really need to focus.
+REF : Okay, sorry. I'll just study with you then.
+PRED: That, I want how. I make us. I bring us? I switch. I like us.
+
+user: Hey, Max. What are you studying? Just my history book. Trying to get ahead for the test next week. What chapter are you on? I can help you if you want. Ridge, I appreciate your offer, but I really need to focus. Okay, sorry. I'll just study with you then.
+REF : Ridge, please. I can't concentrate with you here.
+PRED: Well, I offer. you doing that dinclude you.
+
+bot: Hey, Max. What are you studying? Just my history book. Trying to get ahead for the test next week. What chapter are you on? I can help you if you want. Ridge, I appreciate your offer, but I really need to focus. Okay, sorry. I'll just study with you then. Ridge, please. I can't concentrate with you here.
+REF : Fine, I'll leave you alone. But let me know if you need any help.
+PRED: Well, I handle. you am to it playing.
+
+user: Mallory, you're so cool. I wish I could be like you.
+REF : What do you mean? I'm just being myself.
+PRED: I'm you?" I works. you spend that I go.
+
+bot: Mallory, you're so cool. I wish I could be like you. What do you mean? I'm just being myself.
+REF : I know, but you always seem to know what to say and how to act around people. I'm not as confident as you are, and it's something I really admire about you.
+PRED: That't you! I know that not grab. I know as you'
+
+user: Mallory, you're so cool. I wish I could be like you. What do you mean? I'm just being myself. I know, but you always seem to know what to say and how to act around people. I'm not as confident as you are, and it's something I really admire about you.
+REF : Well, thank you. I think confidence is something that can be learned though. Maybe we can work on that together?
+PRED: I'm you?" I'd know. I go that anyone have to you doing. I try that you'
+
+user: Hey, what's up?
+REF : Hey! Not much, what's up with you?
+PRED: Not much, just's up? you
+
+bot: Hey, what's up? Hey! Not much, what's up with you?
+REF : I'm good. I just bought myself some new clothes.
+PRED: I Not much to feeling talking to I yourself. I get
+
+user: Hey, what's up? Hey! Not much, what's up with you? I'm good. I just bought myself some new clothes.
+REF : That's cool. Where'd you get them?
+PRED: That's nice! I yourself? We's true?
+
+bot: Hey, what's up? Hey! Not much, what's up with you? I'm good. I just bought myself some new clothes. That's cool. Where'd you get them?
+REF : I got the jeans at the mall and the shirt online.
+PRED: I'm, I'
+
+user: Hey, what's up? Hey! Not much, what's up with you? I'm good. I just bought myself some new clothes. That's cool. Where'd you get them? I got the jeans at the mall and the shirt online.
+REF : Nice! How much did they cost?
+PRED: That's nice! I yourself. I choose
+
+bot: Hey, what's up? Hey! Not much, what's up with you? I'm good. I just bought myself some new clothes. That's cool. Where'd you get them? I got the jeans at the mall and the shirt online. Nice! How much did they cost?
+REF : The jeans were $40 and the shirt was $20.
+PRED: I'm echo. I'
+
+user: Hey! Not much, what's up with you? I'm good. I just bought myself some new clothes. That's cool. Where'd you get them? I got the jeans at the mall and the shirt online. Nice! How much did they cost? The jeans were $40 and the shirt was $20.
+REF : That's not too bad. I'm guessing you had to save up for a while to afford them.
+PRED: That't good." you live.d John
+
+bot: I'm good. I just bought myself some new clothes. That's cool. Where'd you get them? I got the jeans at the mall and the shirt online. Nice! How much did they cost? The jeans were $40 and the shirt was $20. That's not too bad. I'm guessing you had to save up for a while to afford them.
+REF : Yeah, I did. I'm glad I was able to finally buy them, though.
+PRED: Well, I'm. I wanting
+
+user: That's cool. Where'd you get them? I got the jeans at the mall and the shirt online. Nice! How much did they cost? The jeans were $40 and the shirt was $20. That's not too bad. I'm guessing you had to save up for a while to afford them. Yeah, I did. I'm glad I was able to finally buy them, though.
+REF : Yeah, new clothes are always nice.
+PRED: That't good." I offer. you describe that me continue.
+
+user: I love volunteering at the food bank. It feels really good to help people who are struggling.
+REF : Yeah, I can imagine. It must be really fulfilling.
+PRED: Well, I wanting. I make us. I see us. you make on it welcome.
+
+bot: I love volunteering at the food bank. It feels really good to help people who are struggling. Yeah, I can imagine. It must be really fulfilling.
+REF : It is. I feel like I'm actually making a difference in my community. And that's important to me.
+PRED: I Yeah, I'm like I't useful I're cow to be doing. I try that
+
+user: I love volunteering at the food bank. It feels really good to help people who are struggling. Yeah, I can imagine. It must be really fulfilling. It is. I feel like I'm actually making a difference in my community. And that's important to me.
+REF : Why do you think it's so important to make a difference in your community?
+PRED: That's we, my here to trim it to doing you can 'group to your here.
+
+bot: I love volunteering at the food bank. It feels really good to help people who are struggling. Yeah, I can imagine. It must be really fulfilling. It is. I feel like I'm actually making a difference in my community. And that's important to me. Why do you think it's so important to make a difference in your community?
+REF : Well, I think it's important to give back and help others, especially if they're going through tough times. No one should have to go hungry, you know?
+PRED: I, Well doesn't reading. I see thatmost been to Well it is to anyone so. I need to be ear, I want to everyone
+
+user: I love volunteering at the food bank. It feels really good to help people who are struggling. Yeah, I can imagine. It must be really fulfilling. It is. I feel like I'm actually making a difference in my community. And that's important to me. Why do you think it's so important to make a difference in your community? Well, I think it's important to give back and help others, especially if they're going through tough times. No one should have to go hungry, you know?
+REF : Absolutely. So, what made you decide to volunteer at the food bank specifically?
+PRED: Well, I knows to you feeling. they really!
+
+bot: I love volunteering at the food bank. It feels really good to help people who are struggling. Yeah, I can imagine. It must be really fulfilling. It is. I feel like I'm actually making a difference in my community. And that's important to me. Why do you think it's so important to make a difference in your community? Well, I think it's important to give back and help others, especially if they're going through tough times. No one should have to go hungry, you know? Absolutely. So, what made you decide to volunteer at the food bank specifically?
+REF : I just felt like it was a place where I could really make a difference. There are a lot of people who rely on the food bank and I wanted to help out however I could.
+PRED: Well, I wonder about this works. I like us. I love as no get. I interact as no people. I look that
+
+user: Yeah, I can imagine. It must be really fulfilling. It is. I feel like I'm actually making a difference in my community. And that's important to me. Why do you think it's so important to make a difference in your community? Well, I think it's important to give back and help others, especially if they're going through tough times. No one should have to go hungry, you know? Absolutely. So, what made you decide to volunteer at the food bank specifically? I just felt like it was a place where I could really make a difference. There are a lot of people who rely on the food bank and I wanted to help out however I could.
+REF : That's amazing. I'm really proud of you, Miraya.
+PRED: That really, you describe that more, you consider that anyone go. you include how much. you define it to why you've forgot in what you're cow to
+
+user: Hi Candy! I'm so sorry to hear that you're not feeling well. Can I get you anything?
+REF : No, thank you. I'm just happy to have a visitor.
+PRED: Yeah, I'm. I'
+
+bot: Hi Candy! I'm so sorry to hear that you're not feeling well. Can I get you anything? No, thank you. I'm just happy to have a visitor.
+REF : Of course! How are you feeling?
+PRED: That't you! I'm you! Maybe I're you to pretty do. you missed
+
+user: Hi Candy! I'm so sorry to hear that you're not feeling well. Can I get you anything? No, thank you. I'm just happy to have a visitor. Of course! How are you feeling?
+REF : A little better, but I'm still pretty weak. The doctors say I need to stay here for a few more days.
+PRED: I'm playing tocom. I'
+
+bot: Hi Candy! I'm so sorry to hear that you're not feeling well. Can I get you anything? No, thank you. I'm just happy to have a visitor. Of course! How are you feeling? A little better, but I'm still pretty weak. The doctors say I need to stay here for a few more days.
+REF : That's understandable. You were really sick when they brought you in here. But you're on the mend now and that's what matters.
+PRED: That's better! I'm you! I know that go better. you take myself.
+
+user: Hi Candy! I'm so sorry to hear that you're not feeling well. Can I get you anything? No, thank you. I'm just happy to have a visitor. Of course! How are you feeling? A little better, but I'm still pretty weak. The doctors say I need to stay here for a few more days. That's understandable. You were really sick when they brought you in here. But you're on the mend now and that's what matters.
+REF : Yeah, I guess so. It's just hard being stuck in this room all the time with nothing to do.
+PRED: Well, I knows to you'm like we'm playing to I take. Trump know
+
+bot: Hi Candy! I'm so sorry to hear that you're not feeling well. Can I get you anything? No, thank you. I'm just happy to have a visitor. Of course! How are you feeling? A little better, but I'm still pretty weak. The doctors say I need to stay here for a few more days. That's understandable. You were really sick when they brought you in here. But you're on the mend now and that's what matters. Yeah, I guess so. It's just hard being stuck in this room all the time with nothing to do.
+REF : Well, we can certainly try to change that. Do you want me to bring you some books or magazines from home? Or maybe we can play some cards or something?
+PRED: That, you think. } get that there' be you that feeling it to doing you? And some to you doing that
+
+user: No, thank you. I'm just happy to have a visitor. Of course! How are you feeling? A little better, but I'm still pretty weak. The doctors say I need to stay here for a few more days. That's understandable. You were really sick when they brought you in here. But you're on the mend now and that's what matters. Yeah, I guess so. It's just hard being stuck in this room all the time with nothing to do. Well, we can certainly try to change that. Do you want me to bring you some books or magazines from home? Or maybe we can play some cards or something?
+REF : That would be great, thank you! Anything would be better than just lying here staring at the ceiling all day long.
+PRED: Well!" I, choose! I hear
+
+bot: Of course! How are you feeling? A little better, but I'm still pretty weak. The doctors say I need to stay here for a few more days. That's understandable. You were really sick when they brought you in here. But you're on the mend now and that's what matters. Yeah, I guess so. It's just hard being stuck in this room all the time with nothing to do. Well, we can certainly try to change that. Do you want me to bring you some books or magazines from home? Or maybe we can play some cards or something? That would be great, thank you! Anything would be better than just lying here staring at the ceiling all day long.
+REF : I'll bring you some things tomorrow then. In the meantime, just rest and get better, okay?
+PRED: That, you am! I'm like it'm playing to I take? she,

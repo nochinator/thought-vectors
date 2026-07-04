@@ -1,0 +1,693 @@
+--- step 500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: I'm going to be a lot of you're going to do. I'll know what I've got to
+  PRED1: I'm going to be.
+  PRED2: I'm going to be a lot of you're going to do. I'll know what I're gonna be.
+  PRED3: I'm not going to be a lot of the time. I'll know what I've got to be the time, but I're
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: I'm just a good thing. I'll know what I've got a lot of
+  PRED1: I'm going to do.
+  PRED2: I'm just a good thing. I'll have a good time. I don't know what I've got a lot of the
+  PRED3: I'm going to do. I'll know what I've got a lot of
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: I'm going to be a lot of me. I'll know what I've got to be the same. I don't know what
+  PRED1: I'm going to do. I've got a lot of the time. I don't know what I'll have a lot.
+  PRED2: I'm going to be a lot of me. I'll be a good thing. I don't want to be. I think I've got a lot.
+  PRED3: I'm not just to be a lot of the time. I'll be a good thing. I don't know what I've got a lot. I can't be a
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: I think you're doing a lot of you'll be a lot. I'm doing what you've done. I think that you't know what you can't be a good thing. I can're gonna be a great thing.
+  PRED1: That's a lot of you're doing a lot. I'm doing what you'll be a lot for you. I think that you've done to be a great thing. I can't be a good thing.
+  PRED2: That's a lot of you're doing a lot. I'm doing a good thing that you'll be a lot for you. I think that you can't be a great thing. I can're not a lot to be a good way.
+  PRED3: I think that you can be a lot of you can't be a good thing. I'm sure that you're doing a lot. I think you'll be a great thing that you are you to be a better. I don't know what you've done. I can're gonna be a bit of
+
+--- step 1000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: You're doing. I'm sorry.
+  PRED1: You're doing, but I'm sorry. I'll have to be a good.
+  PRED2: I'm sorry, I'll know what I've got to be a good thing. I're going to do. I don't have a good.
+  PRED3: I'm sorry, I'll know what I've got to be a good thing. I're going to do.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: I'm sorry. I've got a good thing.
+  PRED1: I'm sorry. I've got a good thing. I have to be a good.
+  PRED2: I'm sorry, I've got a good thing. I'll have a good idea. I don't have a lot of things. I have a little good thing that I're doing. I can't be a good. I didn't know.
+  PRED3: I'm sorry, I've got a good thing. I'll have a lot of it. I was going to be a good.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: I'm sorry. I've got a good thing.
+  PRED1: I'm sorry. I've got a good thing. I can't have to be.
+  PRED2: I'm sorry, I've got a lot of the time. I'll have a lot for you. I don't have been done.
+  PRED3: I'm sorry, I've got a good thing. I'll have a lot of you. I don't have to be better.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That's a good thing. What you can't be better?
+  PRED1: That's a good thing. I'm doing you. I can't be better.
+  PRED2: That's a good thing. I'm doing you, I'll have a good idea that you're doing. I think you've been a good way to do you.
+  PRED3: That's a good thing. I'm doing you. I don't know what you're doing about you.
+
+--- step 1500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: That's a good thing. I'm not going to do.
+  PRED1: That's a good thing. I'm not going to do.
+  PRED2: That's a good thing, and you're going to be a good way. I'm not going to make it. I don't have a good time.
+  PRED3: That's a good thing. I'm not going to be a good way. I don't have to be the time.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That's a good thing.
+  PRED1: That's a good thing. I'm just a good way to be a good
+  PRED2: I'm sorry that I've been a good thing. I'll have a good way to be a lot of the time. I don't have a
+  PRED3: That's a good thing. I'm just a good way. I don't have a good time.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: That's a lot of you.
+  PRED1: That's a good thing. I'm not going to be a good way.
+  PRED2: That's a lot of the world. It's not a lot. I'm not just to be a lot that you're going to be
+  PRED3: That's a good thing. I'm not going to be a good way. I don't have to be better.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That's a good thing. What is your kind of you?
+  PRED1: That's a good thing. I'm doing about what you can't have to be better.
+  PRED2: That's a good thing, I'm not a good way to be a good idea. I've been a lot of the world. What is a lot that you're doing. What's not a lot about you.
+  PRED3: That's a good thing. I'm doing a good way to be a lot of you're doing.
+
+--- step 2000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: I'm doing, but I'll know about you.
+  PRED1: I'm sorry, and I'll know what you're going to do.
+  PRED2: I'm not going to know what you're going to be a good thing. I've got to be the same. I don't know that you'll be going to take your time.
+  PRED3: I'm sorry, and I'll know what you're going to be a good thing. I've got to the time.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: I know. I'm sorry.
+  PRED1: I know, I'm sorry. I've been a good thing. I don't have to be better.
+  PRED2: Yeah, I'm just a good thing. I've been a good way. I don't know what you're doing. I think it's a good time.
+  PRED3: Yeah, I'm just a good thing. I've been a good way. I don't have to be a good time.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: What you're doing. I'm like you.
+  PRED1: I'm sorry, I've got a good thing. I'll have to be a good.
+  PRED2: I'm sorry, I've got a good thing. I'll have a good way to be a lot of you're doing. I don't have a lot.
+  PRED3: I'm sorry, I've got a good thing. I'll have a good way to do you.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you have to do you? What?
+  PRED1: That's a great thing. I'm doing a good thing that you're doing?
+  PRED2: That's a great way to be a lot of people. I'm doing a lot, and you're doing a good thing that you've been a lot. I can't know that you can're going to be in the world. I don't think that you are doing to be the same thing that I've got to be better.
+  PRED3: That's a great way to be a good thing. I'm not a lot of people who have to be able to do. What is a lot that you can're doing.
+
+--- step 2500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: You're not a good thing.
+  PRED1: You're not a good thing. I'm not going to do.
+  PRED2: You're not sure, and you're going to be a good thing. I'm not going to do. You'll have to be able to make it.
+  PRED3: You're not sure, and you're going to be a good thing. You'll have to be the way.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: Yeah, I'm like it.
+  PRED1: Yeah, I'm sorry. I've got a good thing. I have to be a lot of
+  PRED2: Yeah, I'm just a lot of the world. I've got a lot. I don't know what I'll have been a lot, and I're going to do.
+  PRED3: Yeah, I'm just a good thing. I've got a lot of the day. I don't know that I'll have been done.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: But I don't know what you can't have to be better.
+  PRED1: I know, but I'm just a good thing. I'll have to be a lot of
+  PRED2: I know, but I'm just a lot of the way. I've got to be a lot. But I'll have been able to do it.
+  PRED3: I know, but I'm just a good thing. I'll have a lot of them. I don't have been done.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are doing. What is a great way?
+  PRED1: That sounds like you feel to do you? What's a lot of you can be a lot.
+  PRED2: That sounds like a great way. I think you're doing a lot of the world. It's a lot for you can't have a lot in the world and you can be able to do you have to be a good thing. I'm not a lot. I don't know what you've got to be in the same time.
+  PRED3: That sounds like you can't feel like you're doing a lot of your life. What is a lot about you.
+
+--- step 3000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: I'm sorry, and you're going to be.
+  PRED1: I'm sorry, and you're going to be a good way.
+  PRED2: I'm not going to see the same thing. I'll have a good thing, and you're going to be a good way. You're not a good time.
+  PRED3: I'm sorry, but I'll know. I've been a good thing. I don't know.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: I know. It's a good thing.
+  PRED1: I know, I'm sorry. I've got a good thing.
+  PRED2: I know, I'm sorry, I don't know what I'll have a good thing. I've got to the time. I don’t have a lot of
+  PRED3: I know, I'm sorry. I've been a good thing. I don't have a good way.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: I know. I'm sorry.
+  PRED1: I know, but I'm sorry, but it's a lot of it.
+  PRED2: I know, but I'm just a good thing. I'll know that I've been a lot of it. I don't know what we're going to make it.
+  PRED3: I know, but I'm just like it. I've got to be a lot of it.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you have to do you?
+  PRED1: That's great, you're doing. I'm doing about you?
+  PRED2: That's great, you're doing. I'm doing about what you've been a good thing. I can't have a lot of you'll have a good way.
+  PRED3: That's great, you're doing. I'm doing about you. I have a good thing to be better.
+
+--- step 3500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: You're not to know what you're going to do.
+  PRED1: You're not sure, and I'm not going to be a good thing.
+  PRED2: I'm sorry, and I'll know what you're going to be a good thing. I've been a good way. And we're not a good time.
+  PRED3: I'm sorry, but I'll know. I've been a good thing. I don't know what you've done.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That's really good. I'm going to do it.
+  PRED1: That's really good. I'm sorry. I don't have to be a lot of
+  PRED2: I know, I'm sorry. I've been a good thing. I can't be a good way to be a lot of it. I don't have a good time.
+  PRED3: I'm sorry. I've been a good thing. I don't know what I'll have to be a good time.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: But you can't be a good thing?
+  PRED1: But you can't know what you can’t be a good thing.
+  PRED2: Well, I'm not just to know what I've got to be a good thing. I're not just a lot of the time. I don't have to be doing.
+  PRED3: Well, I'm sorry that I've got to be a good thing. I'll have to be doing.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That's really great? What is you?
+  PRED1: That's really great. I'm doing about what you're going to do?
+  PRED2: That's a great thing. I'm doing a lot of people. I think you're doing about what you can't be a lot for you. I can're going to be a good thing.
+  PRED3: That's a great idea of you're doing a lot of your life. I'm doing a good thing. I can't have a lot about you.
+
+--- step 4000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: You're not going to do.
+  PRED1: You're not sure, but I'm not going to be a good thing.
+  PRED2: It's not a good thing. I'm not going to be a good way. I don't know what you're going to do it.
+  PRED3: You're not going to do. You'll have a good thing. I'm going to make it.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: What sounds like you can't be done?
+  PRED1: It sounds like a great picture. I'm like a good thing.
+  PRED2: Yeah, I'm just a good thing. I've got a good time. I don't have to be a good way. I can't be a lot of the time.
+  PRED3: Yeah, I'm just a good thing. I've got a good time. I don't have to be a good.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: What is the first thing?
+  PRED1: But I don't know what I don’t have to be done.
+  PRED2: Well, I'm just like to do. I've been a good thing. I don't have to be a lot of the things that are not going to be in the time.
+  PRED3: It's a lot of it. I'm just just a lot. I don't have to be a lot and
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you have to do you?
+  PRED1: That's great! I'm doing about what you're going to do?
+  PRED2: That's great! I'm doing about what you're doing. It's a lot of things that's not a lot about you've been a lot.
+  PRED3: That's great! I'm doing about what you're doing about you. I've been a lot of you've done.
+
+--- step 4500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: I'm going to do.
+  PRED1: I'm not going to see. I'll have a good thing. They're going to be the
+  PRED2: I'm not going to do you. I'll know what you're going to be a good thing. They're not going on the time. You're gonna be in the time and you've been a good.
+  PRED3: I'm not going to make it. I'll know what you're going to be a good thing. They're doing.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: Yeah, I'm like it.
+  PRED1: Yeah, I'm just a good thing. I've got a good time.
+  PRED2: Yeah, I'm just a good thing. I've got a good time. I was just a lot of the time. It's a lot. I can't have to be a good.
+  PRED3: Yeah, I'm sorry. I've got a good thing. I don't have a good way.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: Why do you know.
+  PRED1: I know, but I'm just like it. I've got to be a lot of
+  PRED2: Well, I'm just a good thing. I've got a good idea. I don't know what I'll have to be a lot of you. I can't have to make it.
+  PRED3: I know, but I'm just like it. I've got a lot of the man. I don't have been done.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That's great! What you can't have been better?
+  PRED1: That's great! I'm doing about what you're going to do you?
+  PRED2: That's great, you're doing. I'm doing about what you've been a good thing to be a lot of you'll have a lot. I can't know.
+  PRED3: That's great! I'm sorry, I've been a good thing. I're doing about you.
+
+--- step 5000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: It's not going to know what you're going to do.
+  PRED1: I'm sorry, you're going to be a good thing. They're doing.
+  PRED2: I'm sorry, you're going to be a good thing. You're not going to make it. You can't know what you've going to see that you'll be going to take a lot of the time.
+  PRED3: I'm sorry, you're going to be a good thing. I've got to be. But you've done.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: Yeah, I'm sorry.
+  PRED1: Yeah, I'm sorry. I've got a good thing. I have to be a lot of
+  PRED2: Yeah, I'm sorry. I've got a good thing. I don't know what I'll be a good time. I can't be a lot of you.
+  PRED3: Yeah, I'm sorry. I've been a good thing. I don't have been a lot of the time.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: What do you know?
+  PRED1: But I'm sorry about you. I've got a good thing.
+  PRED2: I know what you're going to be a good thing. I'm going to do. I don't know what I've got to be in the time. I can't be a lot of
+  PRED3: I know what you can't know what I'm going to be a good thing. I've got to be better.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you have to do you?
+  PRED1: That sounds like you've been a great thing? I'm going to do?
+  PRED2: That sounds, I'm sorry! I're doing a lot of people. I've been a good thing that you're going to make a lot.
+  PRED3: That sounds like you're great! I'm like you. I're doing about you. What's a lot of you can't know about
+
+--- step 5500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: You're not going to do. You'll have to be better.
+  PRED1: It's not a lot of you're not going to be a good thing.
+  PRED2: It's not a lot of you're going to be a good thing. It'll be a lot, and you'll have to be able to make it.
+  PRED3: I'm not going to do. I'll have a good thing. I don't have to be a lot of you.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: What sounds like you can't have a good thing?
+  PRED1: That's a good thing. I'm sorry. I don't have a good way.
+  PRED2: Yeah, I'm sorry that I'll be a good thing. I've got a good time. I was a good way to get a lot of you. I can't be a lot.
+  PRED3: Yeah, I'm sorry. I've got a good thing. I don't have a good way to be a lot of you.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: Why do you want to do?
+  PRED1: Well, I don't know what you can't be a good thing.
+  PRED2: Well, I'm not going to do. I've got a good thing. I don't have to be a good time. I can't be a lot of you.
+  PRED3: Well, I don't know what you're going to be a good thing. I'm not going to do.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: What sounds like you are doing about what you are
+  PRED1: That sounds like you are doing about you. What is a great thing to be a lot of
+  PRED2: That's a great thing. I'm doing a great way to be a good thing. It's very important thing that you're doing a lot of you can be a great problem.
+  PRED3: That's a great thing. I'm doing a great great thing that you're doing a lot of you?
+
+--- step 6000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: It's not going to do.
+  PRED1: It's not a good way. You're not going to do.
+  PRED2: It's not a good thing. You're not a lot of the time. You can't have to be a good way. You don't know what you can're going to be the way.
+  PRED3: It's not a lot of you're going to be a good thing. I'm not going to do.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That sounds like you can't be done.
+  PRED1: That sounds, I'm sorry. I've been a good thing.
+  PRED2: Yeah, I'm like that I'll be a good thing. I've got a good way to get the time. I can't have a good time.
+  PRED3: Yeah, I'm like that I'll be a good thing. I've been a good way. I can't be a lot of
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: What do you know?
+  PRED1: But I'm sorry that I'll be a good thing. I've got to me.
+  PRED2: I know, I'm not a good thing. I've got to be a good way. I don't have a good time. I can't be a lot of you.
+  PRED3: I know, I'm sorry. I've been a good thing. I don't have to be a lot of
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are great to do?
+  PRED1: That sounds like you are great. I'm doing about what you're doing?
+  PRED2: That's great! I'm doing about what you're doing. I've been a good thing that you've got to be a lot of you. I can't know that you can're going to be in the world.
+  PRED3: That's great! I'm doing about what you're doing about you. I've been a lot of you've done.
+
+--- step 6500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: We're not going to know. And we're going to do.
+  PRED1: We're not a good thing. I'm not going to do.
+  PRED2: I'm sorry, you're going to be a good thing. I've got to be the best, and you'll be a lot of you've been a good way.
+  PRED3: I'm sorry, you're going to be a good thing. I've been a good way. They're doing.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: Yeah, I'm like you.
+  PRED1: Yeah, I'm sorry. I've got a good thing. I have to be a lot of
+  PRED2: Yeah, I'm sorry that I'll be a good thing. I've been a good way to get a lot of the time. I can't be a lot.
+  PRED3: Yeah, I'm sorry. I've been a good thing. I can't have a good way.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: Why do you know.
+  PRED1: Well, I'm sorry. I've got to be a lot of you.
+  PRED2: Well, I'm sorry. I've got to be a good thing. I don't know what I'll be a lot of you. I can't be a better.
+  PRED3: Yeah, I'm sorry. I've got to be a lot of the time. I don't have to be better.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are great to do?
+  PRED1: That's great! I'm really great! What's a lot of you?
+  PRED2: That's great, you're doing. I'm sorry, I've been a good thing to be a good idea. I think you've done to be the most important way to be in the same time.
+  PRED3: That's great, you're doing about what you've been a good thing that you'll be a lot of you.
+
+--- step 7000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: We're going to do. You're not going to be.
+  PRED1: We're not going to do. You're going to be a good thing.
+  PRED2: It's not a good thing, but you're going to be a good way. You're not going to make it. You can't have to be the way to do.
+  PRED3: We're not going to do. I'm not going on the time. I don't have to be better.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: Yeah, I'm like you.
+  PRED1: Yeah, I'm sorry. I'll have a good thing. I have to be a lot of
+  PRED2: Yeah, I'm sorry that I'll be a good thing. I've got a lot of the time. I don't have a lot. I can't be a lot for you.
+  PRED3: Yeah, I'm sorry. I'll have a good thing. I have a lot of you. I can't have a bit of
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: But you can't be done.
+  PRED1: But you can't be a good thing. I'm going to do.
+  PRED2: Well, I'm not just to be a good thing. I'll be a lot of things. I don't have a good way to make it.
+  PRED3: Well, I'm not just like to do. I've got to be a lot of you. I don't have to be doing.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are great to do you?
+  PRED1: That sounds like you are great to do you? What's a lot of you?
+  PRED2: That's a great thing. I'm doing a great way to be a good thing. It's really great to be the best thing that you can be a lot of you.
+  PRED3: That's great! I'm sorry about you. I'll be a good thing to do you? What's a lot of you?
+
+--- step 7500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: I'm sorry, and you're going to be a good.
+  PRED1: I'm sorry, and I'll know. I've done.
+  PRED2: I'm sorry, you're going to be a good thing. They're not going to make it. And we're doing, and we'll be a lot of you.
+  PRED3: I'm sorry, and you're going to be a good thing. I'll have to be the right.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That sounds like you can't do?
+  PRED1: That's a good thing. I'm going to be a good time.
+  PRED2: I didn't be a good thing. I'm going to be a few minutes. I was going to get the time. I don't have a good time.
+  PRED3: That's a good thing. I'm going to be a good time. I was going to make it.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: But I don't know what you can't be going to do?
+  PRED1: But I don't know what I'm not going to be a good thing.
+  PRED2: Well, I'm not just to be a good thing. I'll be a lot of things. I don't have to be able to do it. I have to make it.
+  PRED3: But I'm not going to do. I've got a lot of the time. I don't know that you're going to be
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are doing about what you are going to do?
+  PRED1: That sounds like you are doing. I think you're doing about you?
+  PRED2: That's great! I think you're doing a lot of you'll be a good thing. I'm going to be a lot for you. It's a good way to be doing.
+  PRED3: That's great! I think you're doing a good thing. I'm sure you can't be able to do you?
+
+--- step 8000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: We're not going to know. And we can't know.
+  PRED1: I'm not going to know what you're not going. You're going to do.
+  PRED2: It's not a lot of the world. It'll be a good thing. They're going to make it. You're not going to see it.
+  PRED3: I'm not going to know. I'll have a good thing. I don't know what you're going to get the time.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That sounds like you can do.
+  PRED1: That sounds like a good thing. I'm like you. I had to do you?
+  PRED2: Yeah, I'm sorry that I'll be a good thing. I've got a lot of the time and I're going to be a lot. I can't know that it's
+  PRED3: That's a good thing. I'm sorry. I don't have a good way to do you.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: What do you want to be in the time?
+  PRED1: But I don't know what I don’t have to be a lot of you.
+  PRED2: Well, I'm not just to be a lot of the way. I've got to be the same thing. I don't have to be in the time. I can't know that you're going to be.
+  PRED3: Well, I'm not just to do. I've got to be a lot of you. I don't have to be better.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are great to do you?
+  PRED1: That's great! I'm really great! What's a lot of you?
+  PRED2: That's great, I'm sorry, I don't have a good thing. I've been a lot of you can't be a lot for you.
+  PRED3: That's great! I'm sorry, I've been a good thing that you're doing about you?
+
+--- step 8500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: We're not going to know. And we can't be better.
+  PRED1: We're not going to see. You're going to be a good thing.
+  PRED2: I'm sorry, you're going to be a good thing. You're not going to make it. You can't have to make you.
+  PRED3: We're not going to see. I'm not going on the time. I don't have to be better.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That sounds like you can't feel like you?
+  PRED1: That sounds, I'm sorry. I've been a good thing.
+  PRED2: Yeah, I'm like that I've been a good thing. I'll be a good way to get the time. I don't have been a lot of you.
+  PRED3: Yeah, I'm sorry that I'll have been a good thing. I've been a lot of you.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: But I'm not going to do?
+  PRED1: But I'm sorry. I've got to be a good thing.
+  PRED2: I know, but I'm just a good thing. I've got to be a lot of the time. I don't have to be doing. I can't know what we're going to be the right.
+  PRED3: I know, but I'm just like to be a good thing. I've got to be the right.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are great to do you?
+  PRED1: That sounds like you are great to do you think. I'm sure about you?
+  PRED2: That's great! I'm sorry about you're doing. I've been a good thing to be a lot of you can't have a lot for you.
+  PRED3: That sounds. I'm sorry! I're doing a lot of you're going to be a good thing?
+
+--- step 9000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: We're not going to do. You're going to be better.
+  PRED1: We're not going to do. I'm not going on the time.
+  PRED2: It's not a good thing, but it's a good way. It'll be a good idea that we're going to be a lot of the time. It is
+  PRED3: We're not going to do. I'm not going on the time. I don't have to be a lot of the time and make it.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That sounds like you can't feel like you?
+  PRED1: That sounds, I'm sorry. I're going to be a lot of you.
+  PRED2: Yeah, I'm sorry that I'll be a good thing. I've got a lot of the time. I don't have been able to be a lot.
+  PRED3: Yeah, I'm sorry. I've been a good thing. I have a lot of you. I can't have been done.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: But you can't be done?
+  PRED1: But I'm not going to do. I've got a lot of you.
+  PRED2: Well, I'm not just a good thing. I've got to be a lot of them. I don't know what you're going to be in the time.
+  PRED3: Well, I'm not just like you. I've got to be a lot of you.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are to do you?
+  PRED1: That sounds like you are to make a few years. I have a lot of you?
+  PRED2: That's great! I'm sorry, I've been a good thing. I're doing about what you're going to be a lot of you've done to be doing.
+  PRED3: That sounds. It's really happy to do you have a lot of you are doing. What is a lot about you.
+
+--- step 9500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: We're not going to do. You can't have to be.
+  PRED1: We're not going to see. But we're going to do.
+  PRED2: We're not going to do. And we're going to be a good thing. You're doing, but we'll have to make it.
+  PRED3: We're not going to see. But we're going to be a good thing. I'm not going on.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That sounds like you can do.
+  PRED1: That sounds like. I'm sorry. I don't have been done.
+  PRED2: Yeah, I'm sorry that I've been a good thing. I'll be a good way to get the time. I don't have a lot of the time and you're going to be a
+  PRED3: That's a good thing. I'm like that I've got a lot of you. I don't have to be a good way.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: What do you want to be better?
+  PRED1: But I'm not going to do. I've got to be a good thing.
+  PRED2: Well, I'm not going to do. I've got to be a good thing. I don't know what I'll have to be in the time. I can't be a lot of
+  PRED3: But I'm not going to do. I've got a good thing. I don't have to be better.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are great to do you?
+  PRED1: That sounds like you are great to make you?
+  PRED2: That sounds. I'm sorry! I're doing a lot of you're going to be a good thing that you've done. And you'll be a great way to be doing.
+  PRED3: That sounds. I'm sorry! I're doing a lot of you're going to be a good thing?
+
+--- step 10000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: We're not going to do. You can't have to be.
+  PRED1: We're not going to see. I'm not going on the time.
+  PRED2: We're not going to do. I'm not going on the time. It's not a good thing. They're going to make it.
+  PRED3: We're not going to see. I'm not going on the time. I don't have to be a lot of the time and make it.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That sounds like you can't do?
+  PRED1: That sounds like a good thing. I'm like you. I had to do you.
+  PRED2: Yeah, I'm sorry that I'll be a good thing. I've got a good way to get the time. I don't have a good time.
+  PRED3: Yeah, I'm sorry. I've got a good thing. I can't have a good way.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: But you can't be better?
+  PRED1: But I'm not going to do. I've got a good thing.
+  PRED2: Well, I'm not going to do. I've got to be a good thing. I don't know what I'll have to be so much. I can't have to know.
+  PRED3: But I'm not going to do. I've got a good thing. I don't have to be a lot of
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are doing about you?
+  PRED1: That sounds like you are to do you. I'm doing about you?
+  PRED2: That sounds. I'm sorry! I're doing a lot of you can't be a good thing to be a lot. I think you're going to be to be doing.
+  PRED3: That sounds. I'm sorry! I're doing a lot of you're going to be a good thing?
+
+--- step 10500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED0: We're not going to do. You can't have to be.
+  PRED1: We're not a good idea. You're doing, but we're going to be better.
+  PRED2: We're not a good thing, but we're going to be a good. You're doing it. You can't have to make it.
+  PRED3: We're not a good thing, and we're going to be a good. You're doing it.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED0: That sounds like you can do.
+  PRED1: That sounds, I'm sorry. I've been a good thing.
+  PRED2: Yeah, I'm sorry that I've been a good thing. I'll be a good way to get the time. I don't have a good time.
+  PRED3: Yeah, I'm sorry. I've been a good thing. I have a lot of you. I can't have been done.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED0: What?
+  PRED1: But I'm not going to do. I've got a good thing.
+  PRED2: I know, but I'm sorry, but it's a lot of the time. I've been a lot. I don't have to be a good thing. I can't know that you're going to be.
+  PRED3: I'm not just to do. I've got to me. I don't have to be a lot of
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED0: That sounds like you are to do you?
+  PRED1: That sounds like you are to make a lot of you are not a lot about you?
+  PRED2: That sounds. It's really happy to do you have a lot of people. It is a good thing that you can be a good way to be a lot.
+  PRED3: That sounds. I'm sorry! I're doing a lot of you're going to be a lot about you?
+

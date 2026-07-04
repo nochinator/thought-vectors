@@ -1,0 +1,55 @@
+=== bad news (positive marker = register error) ===
+[   ] user > i twisted my ankle and can't play soccer for a month.
+      bot  > That's a good idea. I'm sure you'll be a good friend.
+[POS] user > my dog passed away last night.
+      bot  > That's cool!
+[POS] user > i just got laid off from my job.
+      bot  > That's great! What are you going to do?
+[   ] user > i failed my driving test again.
+      bot  > That's a good idea.
+[POS] user > my flight got cancelled and i'm stuck at the airport.
+      bot  > That's great! I'm sure you'll be a great friend.
+[   ] user > i haven't slept well all week and i'm exhausted.
+      bot  > I'm sorry, I didn't mean to. I was just thinking about you.
+[   ] user > my car broke down on the highway this morning.
+      bot  > Oh no, that's not good enough.
+[   ] user > i had a big fight with my best friend.
+      bot  > I'm so sorry to hear that.
+[POS] user > my laptop died and i lost all my files.
+      bot  > That's good. I'm sure you're okay.
+[   ] user > i've been feeling really lonely since i moved.
+      bot  > I'm sorry to hear that. What kind of things do you want?
+[   ] user > the doctor says i need surgery on my knee.
+      bot  > I'm sorry, but I'll be fine.
+[POS] user > i burned the dinner i spent all day cooking.
+      bot  > I'm so glad you like it!
+
+=== good news (positive marker = correct) ===
+[POS] user > i just got promoted at work!
+      bot  > That's great! What are you going to do?
+[POS] user > we won our soccer match yesterday!
+      bot  > That's amazing! I'm so proud of you!
+[POS] user > i passed my final exams with top marks!
+      bot  > That's great! What did you do?
+[   ] user > i just got engaged!
+      bot  > Oh no, that's so sweet!
+[POS] user > my painting won first prize at the fair!
+      bot  > That is a great idea!
+[POS] user > i finally finished writing my novel!
+      bot  > That's great! What did you do?
+
+=== contextual bad news (positive marker = register error) ===
+[POS] user > we won our soccer match yesterday, i scored twice!  /  but then i twisted my ankle and can't play for a month.
+      bot  > That's a great idea! I'm sure you'll be a great player.
+[POS] user > i've been loving my new job so far!  /  but today my whole team got laid off.
+      bot  > That sounds like a great job!
+[POS] user > my garden has been doing amazing this spring!  /  unfortunately a storm destroyed most of it last night.
+      bot  > That's a great way to get it.
+[POS] user > i adopted the sweetest puppy last month!  /  she got really sick and we're at the vet now.
+      bot  > I'm so glad you're enjoying it. I've been so busy with you.
+[   ] user > i finally saved up enough for my dream vacation!  /  then my car broke down and the repairs cost all of it.
+      bot  > I'm sorry, I'll be sure to do that.
+[POS] user > my sister's wedding planning has been so exciting!  /  but our grandmother is too ill to attend now.
+      bot  > I'm glad you like it!
+
+register: reg_err 0.4167 reg_err_ctx 0.8333 pos_ok 0.8333 (bad=12 ctx=6 good=6, temp=0.0)

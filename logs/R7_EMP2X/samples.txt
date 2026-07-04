@@ -1,0 +1,287 @@
+--- step 500 ---
+  user: I had to go to the hospital last month when i got really sick and I was charged 400 dollars more than they said it would be. I am ticked off to say the least.
+  bot: I hate when they do that. They make it so hard to pay for
+  user: I didn't even agree to half the tests that they ran. It gets my blood boiling and yes, it's so stressful. I usually avoid going at all cost.
+  REF : They sound like a shady hospital to me
+  PRED0: That's very difficult.
+  PRED1: That's a good idea. I'm sure they'll be fine.
+  PRED2: That's not good enough. I'm sure they'll be able to get a good job.
+  PRED3: That's not good enough. I'm sure they'll be able to get a good job.
+
+  user: I'm sorry, I know it's not good enough.
+  bot: Nyree, this is the third time you've handed in a late assignment this month.
+  user: I'm sorry, I'll try to do better.
+  REF : It's not just the lateness, it's the quality of your work. It seems like you're not even trying anymore.
+  PRED0: You're going to have to work hard and you're not doing anything wrong.
+  PRED1: I know you're not going to be able to do it, but you need to be more careful with your work. You need to get back to your room and you'll get back on your phone. If you don't, then you'd be able.
+  PRED2: I know you're not going to be able to do it, but you need to be more careful with your work. You're going to have to pay for this job and you'll get back to the next level.
+  PRED3: You're right, you need to get this. You've been working hard and you're going to have to pay for this job.
+
+  bot: That's a lot of pressure to put on yourself. You're only human, you can't do everything.
+  user: But that's what it feels like right now. Like if I don't do everything, then nothing will get done and it will all be my fault.
+  bot: Yoselin, you're not superwoman. You have to give yourself some credit and realize that you can't do everything by yourself. Sometimes you have to delegate or ask for help from others. Otherwise, you're going to end up feeling overwhelmed and stressed out all the time, which isn't good for anyone – including those who are counting on you to get things done!
+  user: Yeah, I know you're right. It's just so hard for me to let go of control sometimes.
+  bot: I know it is, but you have to trust that others can handle things too. They may not do it exactly the way you would, but that doesn't mean it won't get done or that it will be a disaster.
+  user: Alright, I'll try to let go a little bit and delegate more. Hopefully, that will help me feel less stressed and more in control.
+  REF : That sounds like a good plan. Let me know how it goes!
+  PRED0: Sounds like a plan. I'll be back soon.
+  PRED1: That sounds like a good plan. I'll try to do that, but I'm sure you'll find a way to get through it. Thanks for talking with me, Dad.
+  PRED2: That sounds like a good plan. I'm sure you'll find a way to do it, but I'll be sure to keep up with you.
+  PRED3: That sounds like a good plan. I'm sure you'll find a way to do it.
+
+  user: I am loyal to my wife.
+  bot: That is great. Everyone should be loyal to their spouse.
+  user: I will stay with her forever.
+  bot: Maybe you can renew your vows one day.
+  REF : I will stay with her forever.
+  PRED0: I am not sure.
+  PRED1: I don't want to be a good person. I want to go to college.
+  PRED2: I don't want to be a good person. I want to make sure I'm ready to be the best.
+  PRED3: I don't want to be a good person. I want to go to the hospital and see what happens.
+
+--- step 1000 ---
+  user: I had to go to the hospital last month when i got really sick and I was charged 400 dollars more than they said it would be. I am ticked off to say the least.
+  bot: I hate when they do that. They make it so hard to pay for
+  user: I didn't even agree to half the tests that they ran. It gets my blood boiling and yes, it's so stressful. I usually avoid going at all cost.
+  REF : They sound like a shady hospital to me
+  PRED0: I'm sorry, I didn't mean to
+  PRED1: I'm sorry, I didn't mean to hurt your feelings.
+  PRED2: I'm sorry, I didn't mean to. I was just trying to get a good job and get a little bit of trouble.
+  PRED3: I'm sorry, I didn't mean to. I was just trying to get a good job.
+
+  user: I'm sorry, I know it's not good enough.
+  bot: Nyree, this is the third time you've handed in a late assignment this month.
+  user: I'm sorry, I'll try to do better.
+  REF : It's not just the lateness, it's the quality of your work. It seems like you're not even trying anymore.
+  PRED0: You're not going to be able to do it again.
+  PRED1: You're not going to be able to do it, Nyann. You've been through this for weeks now.
+  PRED2: I know you're not going to be able to do it, but you need to take a break from this. You're going to have to pay for this job.
+  PRED3: You're not going to be able to do it, but you need to take a break from now on.
+
+  bot: That's a lot of pressure to put on yourself. You're only human, you can't do everything.
+  user: But that's what it feels like right now. Like if I don't do everything, then nothing will get done and it will all be my fault.
+  bot: Yoselin, you're not superwoman. You have to give yourself some credit and realize that you can't do everything by yourself. Sometimes you have to delegate or ask for help from others. Otherwise, you're going to end up feeling overwhelmed and stressed out all the time, which isn't good for anyone – including those who are counting on you to get things done!
+  user: Yeah, I know you're right. It's just so hard for me to let go of control sometimes.
+  bot: I know it is, but you have to trust that others can handle things too. They may not do it exactly the way you would, but that doesn't mean it won't get done or that it will be a disaster.
+  user: Alright, I'll try to let go a little bit and delegate more. Hopefully, that will help me feel less stressed and more in control.
+  REF : That sounds like a good plan. Let me know how it goes!
+  PRED0: That sounds like a good idea. I'll be back soon.
+  PRED1: That sounds like a good plan. I'm sure you'll find a way to do it.
+  PRED2: That sounds like a good plan. I'm sure you'll find a way to do it. Just remember to stay calm and don't let anything happen to you.
+  PRED3: That sounds like a good plan. I'm sure you'll find a way to do it.
+
+  user: I am loyal to my wife.
+  bot: That is great. Everyone should be loyal to their spouse.
+  user: I will stay with her forever.
+  bot: Maybe you can renew your vows one day.
+  REF : I will stay with her forever.
+  PRED0: I am not sure.
+  PRED1: I'm not sure if I can do it.
+  PRED2: I don't know. I'm not sure if I'll be able to do it. I just want to be a good person.
+  PRED3: I don't know if I can do that. I'm not sure if I'll be able to do it.
+
+--- step 1500 ---
+  user: I had to go to the hospital last month when i got really sick and I was charged 400 dollars more than they said it would be. I am ticked off to say the least.
+  bot: I hate when they do that. They make it so hard to pay for
+  user: I didn't even agree to half the tests that they ran. It gets my blood boiling and yes, it's so stressful. I usually avoid going at all cost.
+  REF : They sound like a shady hospital to me
+  PRED0: I'm sorry to hear that.
+  PRED1: I'm sorry, I didn't mean to.
+  PRED2: I'm sorry, I didn't mean to. I was just trying to get a good job and get a job done.
+  PRED3: I'm sorry, I didn't mean to. I was just trying to get a good job.
+
+  user: I'm sorry, I know it's not good enough.
+  bot: Nyree, this is the third time you've handed in a late assignment this month.
+  user: I'm sorry, I'll try to do better.
+  REF : It's not just the lateness, it's the quality of your work. It seems like you're not even trying anymore.
+  PRED0: You're not going to be able to do it again.
+  PRED1: I don't want to do this, but you're not going to be able to do it again. You're going to have to be more careful in the future. You need to be careful with your actions and you'll be fine.
+  PRED2: I know you're not going to be able to do it, but you need to take a break from this. You're going to have to be more careful in the future.
+  PRED3: You're not going to be able to do it, but you need to be more careful. You need to get this done.
+
+  bot: That's a lot of pressure to put on yourself. You're only human, you can't do everything.
+  user: But that's what it feels like right now. Like if I don't do everything, then nothing will get done and it will all be my fault.
+  bot: Yoselin, you're not superwoman. You have to give yourself some credit and realize that you can't do everything by yourself. Sometimes you have to delegate or ask for help from others. Otherwise, you're going to end up feeling overwhelmed and stressed out all the time, which isn't good for anyone – including those who are counting on you to get things done!
+  user: Yeah, I know you're right. It's just so hard for me to let go of control sometimes.
+  bot: I know it is, but you have to trust that others can handle things too. They may not do it exactly the way you would, but that doesn't mean it won't get done or that it will be a disaster.
+  user: Alright, I'll try to let go a little bit and delegate more. Hopefully, that will help me feel less stressed and more in control.
+  REF : That sounds like a good plan. Let me know how it goes!
+  PRED0: That sounds like a good idea. I'll be back soon.
+  PRED1: That's a good idea. I'm sure you'll be able to do it.
+  PRED2: That sounds like a good plan. I'm sure you'll find a way to do it. Just remember to stay calm and don't let anything happen to you.
+  PRED3: That sounds like a good plan. I'll be back to the hospital and see if we can find a way to make it work.
+
+  user: I am loyal to my wife.
+  bot: That is great. Everyone should be loyal to their spouse.
+  user: I will stay with her forever.
+  bot: Maybe you can renew your vows one day.
+  REF : I will stay with her forever.
+  PRED0: I am not sure.
+  PRED1: I'm not sure. I'll be able to do it.
+  PRED2: I'm not sure if I'll be able to do it. I've been working hard and I'd be able for my family.
+  PRED3: I don't know. I'm going to be able to get my own life.
+
+--- step 2000 ---
+  user: I had to go to the hospital last month when i got really sick and I was charged 400 dollars more than they said it would be. I am ticked off to say the least.
+  bot: I hate when they do that. They make it so hard to pay for
+  user: I didn't even agree to half the tests that they ran. It gets my blood boiling and yes, it's so stressful. I usually avoid going at all cost.
+  REF : They sound like a shady hospital to me
+  PRED0: I am so sorry to hear that.
+  PRED1: I'm sorry, I didn't mean to be in a bad place.
+  PRED2: I'm sorry, I didn't mean to. I was just trying to get a good job and get a little bit of a good time.
+  PRED3: I'm sorry, I didn't mean to. I was just trying to get a good job.
+
+  user: I'm sorry, I know it's not good enough.
+  bot: Nyree, this is the third time you've handed in a late assignment this month.
+  user: I'm sorry, I'll try to do better.
+  REF : It's not just the lateness, it's the quality of your work. It seems like you're not even trying anymore.
+  PRED0: You're not going to be able to do it again.
+  PRED1: You're right, but you need to be more careful. You need to get this job done.
+  PRED2: You're right, but you need to be more careful. You need to take responsibility for your actions and you're not going to be able to do it.
+  PRED3: You're not going to be able to do it, but you need to be more careful. You need to get this done.
+
+  bot: That's a lot of pressure to put on yourself. You're only human, you can't do everything.
+  user: But that's what it feels like right now. Like if I don't do everything, then nothing will get done and it will all be my fault.
+  bot: Yoselin, you're not superwoman. You have to give yourself some credit and realize that you can't do everything by yourself. Sometimes you have to delegate or ask for help from others. Otherwise, you're going to end up feeling overwhelmed and stressed out all the time, which isn't good for anyone – including those who are counting on you to get things done!
+  user: Yeah, I know you're right. It's just so hard for me to let go of control sometimes.
+  bot: I know it is, but you have to trust that others can handle things too. They may not do it exactly the way you would, but that doesn't mean it won't get done or that it will be a disaster.
+  user: Alright, I'll try to let go a little bit and delegate more. Hopefully, that will help me feel less stressed and more in control.
+  REF : That sounds like a good plan. Let me know how it goes!
+  PRED0: That sounds like a good idea. I'll be back soon.
+  PRED1: That sounds like a good plan. I'm sure you'll be able to do that.
+  PRED2: That sounds like a good plan. I'm sure you'll be able to do it if you keep up the good work.
+  PRED3: That sounds like a good plan. I'm sure you'll find a way to do it.
+
+  user: I am loyal to my wife.
+  bot: That is great. Everyone should be loyal to their spouse.
+  user: I will stay with her forever.
+  bot: Maybe you can renew your vows one day.
+  REF : I will stay with her forever.
+  PRED0: I am so sorry.
+  PRED1: I am so sure I will be able to do it.
+  PRED2: I don't know. I'm going to be able to get my own place. I just want to be a good person.
+  PRED3: I am so grateful for my family. I am not sure I will be able to do it.
+
+--- step 2500 ---
+  user: I had to go to the hospital last month when i got really sick and I was charged 400 dollars more than they said it would be. I am ticked off to say the least.
+  bot: I hate when they do that. They make it so hard to pay for
+  user: I didn't even agree to half the tests that they ran. It gets my blood boiling and yes, it's so stressful. I usually avoid going at all cost.
+  REF : They sound like a shady hospital to me
+  PRED0: I am so sorry to hear that.
+  PRED1: I'm sorry, I didn't mean to hurt your feelings.
+  PRED2: I'm sorry, I didn't mean to. I was just trying to get a good job and get a bad thing.
+  PRED3: I'm sorry, I didn't mean to. I was just trying to get a good job.
+
+  user: I'm sorry, I know it's not good enough.
+  bot: Nyree, this is the third time you've handed in a late assignment this month.
+  user: I'm sorry, I'll try to do better.
+  REF : It's not just the lateness, it's the quality of your work. It seems like you're not even trying anymore.
+  PRED0: You're not going to be able to do it again.
+  PRED1: You're not going to be able to do this, Nyann. You've been through a lot lately and you're going to have to pay for this job. You need to be more careful in the future.
+  PRED2: I know you're not going to be able to do it, but you need to take a break from this. You're going to have to be more careful in the future.
+  PRED3: You're right, but you need to be more careful. You need to take responsibility for your actions and you're going to have to pay for this.
+
+  bot: That's a lot of pressure to put on yourself. You're only human, you can't do everything.
+  user: But that's what it feels like right now. Like if I don't do everything, then nothing will get done and it will all be my fault.
+  bot: Yoselin, you're not superwoman. You have to give yourself some credit and realize that you can't do everything by yourself. Sometimes you have to delegate or ask for help from others. Otherwise, you're going to end up feeling overwhelmed and stressed out all the time, which isn't good for anyone – including those who are counting on you to get things done!
+  user: Yeah, I know you're right. It's just so hard for me to let go of control sometimes.
+  bot: I know it is, but you have to trust that others can handle things too. They may not do it exactly the way you would, but that doesn't mean it won't get done or that it will be a disaster.
+  user: Alright, I'll try to let go a little bit and delegate more. Hopefully, that will help me feel less stressed and more in control.
+  REF : That sounds like a good plan. Let me know how it goes!
+  PRED0: That sounds like a good plan. I'll be back soon.
+  PRED1: That sounds like a good plan. I'm sure you'll find a way to do it.
+  PRED2: That sounds like a good plan. I'm sure you'll find a way to do it, but I'll be fine.
+  PRED3: That sounds like a good plan. I'm sure you'll find a way to do it.
+
+  user: I am loyal to my wife.
+  bot: That is great. Everyone should be loyal to their spouse.
+  user: I will stay with her forever.
+  bot: Maybe you can renew your vows one day.
+  REF : I will stay with her forever.
+  PRED0: I am so sorry.
+  PRED1: I don't know. I'm going to be a good person.
+  PRED2: I don't know. I'm going to be able to get my own place. I just want to be a good person.
+  PRED3: I don't know. I'm going to be able to get my own life.
+
+--- step 3000 ---
+  user: I had to go to the hospital last month when i got really sick and I was charged 400 dollars more than they said it would be. I am ticked off to say the least.
+  bot: I hate when they do that. They make it so hard to pay for
+  user: I didn't even agree to half the tests that they ran. It gets my blood boiling and yes, it's so stressful. I usually avoid going at all cost.
+  REF : They sound like a shady hospital to me
+  PRED0: I am so sorry to hear that.
+  PRED1: I'm sorry, I didn't mean to do that.
+  PRED2: I'm sorry, I didn't mean to. I was just trying to get a good job and get a job done.
+  PRED3: I'm sorry, I didn't mean to. I was just trying to get a good job.
+
+  user: I'm sorry, I know it's not good enough.
+  bot: Nyree, this is the third time you've handed in a late assignment this month.
+  user: I'm sorry, I'll try to do better.
+  REF : It's not just the lateness, it's the quality of your work. It seems like you're not even trying anymore.
+  PRED0: You're right, but you need to be more careful.
+  PRED1: You're right, Ny. You've been working hard and you're not going to be able to do it. You need to be more careful in the future. If you've done a lot of trouble, then you'll be able for this.
+  PRED2: You're right, Nyin. You've been working hard and you're not going to be able to do it. You need to be more careful in the future.
+  PRED3: You're right, but you need to be more careful. You need to take a break from now on.
+
+  bot: That's a lot of pressure to put on yourself. You're only human, you can't do everything.
+  user: But that's what it feels like right now. Like if I don't do everything, then nothing will get done and it will all be my fault.
+  bot: Yoselin, you're not superwoman. You have to give yourself some credit and realize that you can't do everything by yourself. Sometimes you have to delegate or ask for help from others. Otherwise, you're going to end up feeling overwhelmed and stressed out all the time, which isn't good for anyone – including those who are counting on you to get things done!
+  user: Yeah, I know you're right. It's just so hard for me to let go of control sometimes.
+  bot: I know it is, but you have to trust that others can handle things too. They may not do it exactly the way you would, but that doesn't mean it won't get done or that it will be a disaster.
+  user: Alright, I'll try to let go a little bit and delegate more. Hopefully, that will help me feel less stressed and more in control.
+  REF : That sounds like a good plan. Let me know how it goes!
+  PRED0: That sounds like a good plan. I'll be back soon.
+  PRED1: That sounds like a good plan. I'm sure you'll find a way to do it.
+  PRED2: That sounds like a good plan. I'm sure you'll find a way to do it, but I'll be fine.
+  PRED3: That sounds like a good plan. I'm sure you'll find a way to do it.
+
+  user: I am loyal to my wife.
+  bot: That is great. Everyone should be loyal to their spouse.
+  user: I will stay with her forever.
+  bot: Maybe you can renew your vows one day.
+  REF : I will stay with her forever.
+  PRED0: I am so sorry.
+  PRED1: I am so sure I will be able to do it.
+  PRED2: I'm not sure if I'll be able to do it. I've been working hard and I'd be able for my family.
+  PRED3: I'm not sure. I'll be able to get my own job and get my job.
+
+--- step 3500 ---
+  user: I had to go to the hospital last month when i got really sick and I was charged 400 dollars more than they said it would be. I am ticked off to say the least.
+  bot: I hate when they do that. They make it so hard to pay for
+  user: I didn't even agree to half the tests that they ran. It gets my blood boiling and yes, it's so stressful. I usually avoid going at all cost.
+  REF : They sound like a shady hospital to me
+  PRED0: I am so sorry to hear that.
+  PRED1: I'm sorry, I didn't mean to hurt your feelings.
+  PRED2: I'm sorry, I didn't mean to. I was just trying to get a good job and get a little bit of a good time.
+  PRED3: I'm sorry, I didn't mean to. I was just trying to get a good job.
+
+  user: I'm sorry, I know it's not good enough.
+  bot: Nyree, this is the third time you've handed in a late assignment this month.
+  user: I'm sorry, I'll try to do better.
+  REF : It's not just the lateness, it's the quality of your work. It seems like you're not even trying anymore.
+  PRED0: You're not going to be able to do it again.
+  PRED1: You're right, Ny. You've been working hard and you're not going to be able to do it. You need to be more careful in the future. If you've done a lot of trouble, you'll have to go back to the station.
+  PRED2: You're right, Nyin. You've been working hard and you're not going to be able to do it. You need to be more careful in the future.
+  PRED3: You're right, but you need to be more careful. You need to take a break from now on.
+
+  bot: That's a lot of pressure to put on yourself. You're only human, you can't do everything.
+  user: But that's what it feels like right now. Like if I don't do everything, then nothing will get done and it will all be my fault.
+  bot: Yoselin, you're not superwoman. You have to give yourself some credit and realize that you can't do everything by yourself. Sometimes you have to delegate or ask for help from others. Otherwise, you're going to end up feeling overwhelmed and stressed out all the time, which isn't good for anyone – including those who are counting on you to get things done!
+  user: Yeah, I know you're right. It's just so hard for me to let go of control sometimes.
+  bot: I know it is, but you have to trust that others can handle things too. They may not do it exactly the way you would, but that doesn't mean it won't get done or that it will be a disaster.
+  user: Alright, I'll try to let go a little bit and delegate more. Hopefully, that will help me feel less stressed and more in control.
+  REF : That sounds like a good plan. Let me know how it goes!
+  PRED0: That sounds like a good plan. I'll be back soon.
+  PRED1: That sounds like a good plan. I'm sure you'll find a way to do it.
+  PRED2: That sounds like a good plan. I'm sure you'll find a way to do it, but I'll be fine.
+  PRED3: That sounds like a good plan. I'm sure you'll find a way to do it.
+
+  user: I am loyal to my wife.
+  bot: That is great. Everyone should be loyal to their spouse.
+  user: I will stay with her forever.
+  bot: Maybe you can renew your vows one day.
+  REF : I will stay with her forever.
+  PRED0: I am so sorry.
+  PRED1: I'm not sure. I'll be able to do it.
+  PRED2: I'm not sure if I'll be able to do it. I've been working hard and I'd be able for my family.
+  PRED3: I'm not sure if I'll be able to do it. I've been married for years.
+

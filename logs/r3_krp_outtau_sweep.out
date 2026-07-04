@@ -1,0 +1,17 @@
+--- out_tau=0.0 ---
+{"ckpt": "checkpoints/R3_KRP/best.pt", "val_cos": 0.437, "val_dec_ce": 4.1258, "ref_f1": 0.2629, "distinct1": 0.0106, "distinct2": 0.0401, "len_ratio": 0.843, "out_vectors": 32.0, "rows": 1024}
+--- out_tau=0.1 ---
+{"ckpt": "checkpoints/R3_KRP/best.pt", "val_cos": 0.437, "val_dec_ce": 4.0443, "ref_f1": 0.2242, "distinct1": 0.0087, "distinct2": 0.0346, "len_ratio": 0.911, "out_vectors": 3.51, "rows": 1024}
+--- out_tau=0.15 ---
+{"ckpt": "checkpoints/R3_KRP/best.pt", "val_cos": 0.437, "val_dec_ce": 4.0521, "ref_f1": 0.2202, "distinct1": 0.0087, "distinct2": 0.0354, "len_ratio": 0.838, "out_vectors": 3.12, "rows": 1024}
+--- out_tau=0.2 ---
+{"ckpt": "checkpoints/R3_KRP/best.pt", "val_cos": 0.437, "val_dec_ce": 4.0594, "ref_f1": 0.2167, "distinct1": 0.009, "distinct2": 0.0368, "len_ratio": 0.793, "out_vectors": 2.92, "rows": 1024}
+--- out_tau=0.25 ---
+{"ckpt": "checkpoints/R3_KRP/best.pt", "val_cos": 0.437, "val_dec_ce": 4.0679, "ref_f1": 0.2148, "distinct1": 0.0089, "distinct2": 0.0373, "len_ratio": 0.766, "out_vectors": 2.78, "rows": 1024}
+--- out_tau=0.3 ---
+{"ckpt": "checkpoints/R3_KRP/best.pt", "val_cos": 0.437, "val_dec_ce": 4.0724, "ref_f1": 0.2137, "distinct1": 0.0088, "distinct2": 0.0374, "len_ratio": 0.754, "out_vectors": 2.72, "rows": 1024}
+--- out_tau=0.4 ---
+{"ckpt": "checkpoints/R3_KRP/best.pt", "val_cos": 0.437, "val_dec_ce": 4.0789, "ref_f1": 0.2083, "distinct1": 0.0092, "distinct2": 0.0387, "len_ratio": 0.715, "out_vectors": 2.54, "rows": 1024}
+--- out_tau=0.5 ---
+{"ckpt": "checkpoints/R3_KRP/best.pt", "val_cos": 0.437, "val_dec_ce": 4.0858, "ref_f1": 0.2016, "distinct1": 0.0098, "distinct2": 0.0409, "len_ratio": 0.662, "out_vectors": 2.31, "rows": 1024}
+=== OUT_TAU SWEEP DONE ===

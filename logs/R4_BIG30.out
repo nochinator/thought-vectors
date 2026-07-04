@@ -1,0 +1,548 @@
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+thinker params: 32.03M (codec d=384, frozen=False)
+step      50 | cos 0.0360 | compress_ce 0.0 | 3.0 it/s
+step     100 | cos 0.1102 | compress_ce 0.0 | 3.3 it/s
+step     150 | cos 0.1927 | thought 2.0523 dec_ce 2.247 | 3.3 it/s
+step     200 | cos 0.2470 | thought 2.0274 dec_ce 2.3903 | 3.2 it/s
+step     250 | cos 0.2814 | compress_ce 0.0 | 3.3 it/s
+step     300 | cos 0.2963 | compress_ce 0.0 | 3.3 it/s
+step     350 | cos 0.3140 | thought 1.7914 dec_ce 1.9924 | 3.3 it/s
+step     400 | cos 0.3170 | thought 1.8327 dec_ce 2.2921 | 3.3 it/s
+step     450 | cos 0.3240 | compress_ce 0.0 | 3.2 it/s
+step     500 | cos 0.3353 | thought 1.7392 dec_ce 2.0362 | 3.3 it/s
+step     500 | VAL cos 0.3523 | VAL dec CE 3.9649
+step     550 | cos 0.3438 | compress_ce 0.1288 | 2.7 it/s
+step     600 | cos 0.3564 | compress_ce 0.0 | 3.1 it/s
+step     650 | cos 0.3749 | thought 1.5526 dec_ce 2.0737 | 3.3 it/s
+step     700 | cos 0.4052 | thought 1.5588 dec_ce 2.1494 | 3.4 it/s
+step     750 | cos 0.4179 | thought 1.4638 dec_ce 2.231 | 3.3 it/s
+step     800 | cos 0.4260 | thought 1.427 dec_ce 1.937 | 3.3 it/s
+step     850 | cos 0.4365 | thought 1.4051 dec_ce 2.1038 | 3.2 it/s
+step     900 | cos 0.4464 | thought 1.4515 dec_ce 2.2263 | 3.2 it/s
+step     950 | cos 0.4497 | thought 1.4627 dec_ce 2.1644 | 3.3 it/s
+step    1000 | cos 0.4561 | thought 1.3485 dec_ce 1.983 | 3.3 it/s
+step    1000 | VAL cos 0.4777 | VAL dec CE 3.7308
+step    1050 | cos 0.4606 | thought 1.337 dec_ce 1.9965 | 2.7 it/s
+step    1100 | cos 0.4710 | thought 1.3881 dec_ce 2.1172 | 3.2 it/s
+step    1150 | cos 0.4740 | compress_ce 0.0 | 3.2 it/s
+step    1200 | cos 0.4824 | thought 1.2374 dec_ce 2.0031 | 3.3 it/s
+step    1250 | cos 0.4825 | compress_ce 0.0 | 3.2 it/s
+step    1300 | cos 0.4919 | thought 1.2316 dec_ce 2.0595 | 3.3 it/s
+step    1350 | cos 0.4930 | thought 1.2629 dec_ce 1.948 | 3.2 it/s
+step    1400 | cos 0.4945 | compress_ce 0.0 | 3.3 it/s
+step    1450 | cos 0.4943 | thought 1.2009 dec_ce 1.9377 | 3.3 it/s
+step    1500 | cos 0.4994 | compress_ce 0.0 | 3.2 it/s
+step    1500 | VAL cos 0.5151 | VAL dec CE 3.5776
+step    1550 | cos 0.4993 | thought 1.1128 dec_ce 1.7681 | 2.7 it/s
+step    1600 | cos 0.5045 | thought 1.1307 dec_ce 1.8379 | 3.3 it/s
+step    1650 | cos 0.5046 | thought 1.0988 dec_ce 1.7908 | 3.1 it/s
+step    1700 | cos 0.5039 | thought 1.1208 dec_ce 1.8289 | 3.3 it/s
+step    1750 | cos 0.5053 | thought 1.1172 dec_ce 1.8587 | 3.4 it/s
+step    1800 | cos 0.5054 | compress_ce 0.0 | 3.3 it/s
+step    1850 | cos 0.5050 | compress_ce 0.0 | 3.3 it/s
+step    1900 | cos 0.5025 | compress_ce 0.0001 | 3.2 it/s
+step    1950 | cos 0.5044 | thought 1.1045 dec_ce 1.9703 | 3.3 it/s
+step    2000 | cos 0.5051 | compress_ce 0.087 | 3.3 it/s
+step    2000 | VAL cos 0.5210 | VAL dec CE 3.4695
+step    2050 | cos 0.5067 | thought 1.0593 dec_ce 1.7737 | 2.6 it/s
+step    2100 | cos 0.5089 | compress_ce 0.0 | 3.2 it/s
+step    2150 | cos 0.5058 | thought 1.1585 dec_ce 2.086 | 3.4 it/s
+step    2200 | cos 0.5066 | thought 1.0983 dec_ce 1.8574 | 3.3 it/s
+step    2250 | cos 0.5108 | compress_ce 0.0 | 3.3 it/s
+step    2300 | cos 0.5082 | compress_ce 0.0002 | 3.2 it/s
+step    2350 | cos 0.5090 | compress_ce 2.0193 | 3.2 it/s
+step    2400 | cos 0.5099 | compress_ce 0.0 | 3.4 it/s
+step    2450 | cos 0.5101 | thought 1.0781 dec_ce 2.0085 | 3.2 it/s
+step    2500 | cos 0.5128 | compress_ce 0.0 | 3.3 it/s
+step    2500 | VAL cos 0.5254 | VAL dec CE 3.3942
+step    2550 | cos 0.5043 | thought 1.0227 dec_ce 1.8325 | 2.6 it/s
+step    2600 | cos 0.5103 | thought 1.0042 dec_ce 1.6817 | 3.2 it/s
+step    2650 | cos 0.5099 | thought 1.0809 dec_ce 1.9714 | 3.3 it/s
+step    2700 | cos 0.5087 | thought 1.0711 dec_ce 1.9967 | 3.2 it/s
+step    2750 | cos 0.5113 | compress_ce 0.0 | 3.2 it/s
+step    2800 | cos 0.5124 | thought 0.9907 dec_ce 1.7965 | 3.3 it/s
+step    2850 | cos 0.5134 | thought 1.0144 dec_ce 1.9927 | 3.2 it/s
+step    2900 | cos 0.5193 | thought 1.0142 dec_ce 1.7279 | 3.2 it/s
+step    2950 | cos 0.5111 | thought 0.9743 dec_ce 1.6674 | 3.3 it/s
+step    3000 | cos 0.5085 | compress_ce 0.0 | 3.2 it/s
+step    3000 | VAL cos 0.5281 | VAL dec CE 3.3382
+step    3050 | cos 0.5125 | compress_ce 0.1137 | 2.7 it/s
+step    3100 | cos 0.5171 | compress_ce 0.0 | 3.3 it/s
+step    3150 | cos 0.5158 | thought 1.0396 dec_ce 2.1287 | 3.2 it/s
+step    3200 | cos 0.5136 | thought 0.9773 dec_ce 1.7172 | 3.2 it/s
+step    3250 | cos 0.5150 | thought 1.0131 dec_ce 1.7945 | 3.2 it/s
+step    3300 | cos 0.5131 | compress_ce 0.0001 | 3.2 it/s
+step    3350 | cos 0.5178 | thought 1.0436 dec_ce 1.7872 | 3.3 it/s
+step    3400 | cos 0.5159 | compress_ce 0.0 | 3.2 it/s
+step    3450 | cos 0.5132 | thought 0.9885 dec_ce 1.7513 | 3.2 it/s
+step    3500 | cos 0.5152 | compress_ce 0.0 | 3.2 it/s
+step    3500 | VAL cos 0.5290 | VAL dec CE 3.2973
+step    3550 | cos 0.5127 | thought 0.9689 dec_ce 1.8671 | 2.6 it/s
+step    3600 | cos 0.5174 | compress_ce 0.0 | 3.3 it/s
+step    3650 | cos 0.5152 | thought 0.9724 dec_ce 1.7754 | 3.2 it/s
+step    3700 | cos 0.5150 | thought 0.9811 dec_ce 1.6876 | 3.2 it/s
+step    3750 | cos 0.5165 | thought 1.0016 dec_ce 1.853 | 3.3 it/s
+step    3800 | cos 0.5172 | thought 0.9622 dec_ce 1.7384 | 3.3 it/s
+step    3850 | cos 0.5130 | thought 1.0066 dec_ce 2.0351 | 3.2 it/s
+step    3900 | cos 0.5176 | thought 1.011 dec_ce 1.9219 | 3.3 it/s
+step    3950 | cos 0.5157 | compress_ce 0.0007 | 3.2 it/s
+step    4000 | cos 0.5171 | thought 1.0468 dec_ce 1.853 | 3.2 it/s
+step    4000 | VAL cos 0.5320 | VAL dec CE 3.2611
+step    4050 | cos 0.5166 | compress_ce 0.1818 | 2.5 it/s
+step    4100 | cos 0.5191 | compress_ce 0.0 | 3.3 it/s
+step    4150 | cos 0.5175 | compress_ce 0.0 | 3.2 it/s
+step    4200 | cos 0.5172 | thought 0.9717 dec_ce 1.8333 | 3.3 it/s
+step    4250 | cos 0.5217 | thought 0.9973 dec_ce 1.9658 | 3.4 it/s
+step    4300 | cos 0.5197 | compress_ce 0.0 | 3.4 it/s
+step    4350 | cos 0.5179 | compress_ce 0.0 | 3.2 it/s
+step    4400 | cos 0.5199 | compress_ce 0.0 | 3.3 it/s
+step    4450 | cos 0.5179 | compress_ce 0.0 | 3.2 it/s
+step    4500 | cos 0.5213 | thought 1.0049 dec_ce 1.8692 | 3.3 it/s
+step    4500 | VAL cos 0.5335 | VAL dec CE 3.2245
+step    4550 | cos 0.5180 | compress_ce 0.0 | 2.7 it/s
+step    4600 | cos 0.5233 | thought 0.9526 dec_ce 1.7924 | 3.3 it/s
+step    4650 | cos 0.5208 | thought 0.9174 dec_ce 1.6643 | 3.2 it/s
+step    4700 | cos 0.5214 | thought 0.9774 dec_ce 1.8475 | 3.3 it/s
+step    4750 | cos 0.5255 | thought 0.9559 dec_ce 1.5326 | 3.4 it/s
+step    4800 | cos 0.5254 | compress_ce 0.0 | 3.3 it/s
+step    4850 | cos 0.5209 | thought 0.9735 dec_ce 1.7543 | 3.2 it/s
+step    4900 | cos 0.5244 | compress_ce 0.0 | 3.2 it/s
+step    4950 | cos 0.5204 | compress_ce 0.909 | 3.3 it/s
+step    5000 | cos 0.5239 | thought 0.981 dec_ce 1.7955 | 3.3 it/s
+step    5000 | VAL cos 0.5338 | VAL dec CE 3.1912
+step    5050 | cos 0.5235 | thought 0.9768 dec_ce 1.9229 | 2.6 it/s
+step    5100 | cos 0.5193 | thought 0.9982 dec_ce 1.8411 | 3.3 it/s
+step    5150 | cos 0.5184 | thought 0.9991 dec_ce 1.8229 | 3.2 it/s
+step    5200 | cos 0.5236 | thought 0.9482 dec_ce 1.7662 | 3.2 it/s
+step    5250 | cos 0.5228 | thought 0.9422 dec_ce 1.711 | 3.3 it/s
+step    5300 | cos 0.5237 | thought 0.9601 dec_ce 1.8726 | 3.3 it/s
+step    5350 | cos 0.5232 | thought 1.0046 dec_ce 1.7948 | 3.3 it/s
+step    5400 | cos 0.5183 | thought 0.9603 dec_ce 1.8182 | 3.3 it/s
+step    5450 | cos 0.5245 | thought 0.9995 dec_ce 1.6836 | 3.4 it/s
+step    5500 | cos 0.5215 | thought 0.9633 dec_ce 1.7983 | 3.4 it/s
+step    5500 | VAL cos 0.5351 | VAL dec CE 3.1641
+step    5550 | cos 0.5209 | compress_ce 0.0 | 2.7 it/s
+step    5600 | cos 0.5202 | compress_ce 0.0 | 3.4 it/s
+step    5650 | cos 0.5229 | thought 0.9519 dec_ce 1.7289 | 3.3 it/s
+step    5700 | cos 0.5196 | compress_ce 0.0009 | 3.3 it/s
+step    5750 | cos 0.5193 | thought 1.0252 dec_ce 1.9657 | 3.3 it/s
+step    5800 | cos 0.5188 | compress_ce 0.0 | 3.2 it/s
+step    5850 | cos 0.5226 | thought 0.9958 dec_ce 1.7755 | 3.3 it/s
+step    5900 | cos 0.5228 | thought 0.9434 dec_ce 1.7773 | 3.3 it/s
+step    5950 | cos 0.5244 | thought 1.0025 dec_ce 1.9271 | 3.2 it/s
+step    6000 | cos 0.5236 | thought 0.9294 dec_ce 1.5761 | 3.3 it/s
+step    6000 | VAL cos 0.5356 | VAL dec CE 3.1458
+step    6050 | cos 0.5198 | compress_ce 0.0 | 2.6 it/s
+step    6100 | cos 0.5223 | thought 0.8935 dec_ce 1.5661 | 3.3 it/s
+step    6150 | cos 0.5266 | thought 0.9697 dec_ce 1.7437 | 3.3 it/s
+step    6200 | cos 0.5226 | thought 0.9782 dec_ce 1.8144 | 3.3 it/s
+step    6250 | cos 0.5251 | compress_ce 0.6637 | 3.3 it/s
+step    6300 | cos 0.5213 | thought 0.9277 dec_ce 1.7406 | 3.2 it/s
+step    6350 | cos 0.5243 | thought 0.9588 dec_ce 1.7393 | 3.3 it/s
+step    6400 | cos 0.5275 | thought 0.9081 dec_ce 1.5903 | 3.3 it/s
+step    6450 | cos 0.5265 | thought 1.0399 dec_ce 1.9387 | 3.3 it/s
+step    6500 | cos 0.5250 | thought 0.9158 dec_ce 1.7331 | 3.3 it/s
+step    6500 | VAL cos 0.5365 | VAL dec CE 3.1199
+step    6550 | cos 0.5206 | thought 0.9634 dec_ce 1.7645 | 2.6 it/s
+step    6600 | cos 0.5231 | thought 0.9614 dec_ce 1.753 | 3.4 it/s
+step    6650 | cos 0.5225 | thought 0.9406 dec_ce 1.5541 | 3.2 it/s
+step    6700 | cos 0.5248 | compress_ce 0.0532 | 3.2 it/s
+step    6750 | cos 0.5234 | thought 0.9289 dec_ce 1.6481 | 3.2 it/s
+step    6800 | cos 0.5246 | compress_ce 0.0 | 3.3 it/s
+step    6850 | cos 0.5186 | thought 0.9612 dec_ce 1.6314 | 3.2 it/s
+step    6900 | cos 0.5280 | compress_ce 1.3769 | 3.3 it/s
+step    6950 | cos 0.5251 | thought 0.9793 dec_ce 1.6096 | 3.3 it/s
+step    7000 | cos 0.5247 | thought 0.9858 dec_ce 2.1101 | 3.3 it/s
+step    7000 | VAL cos 0.5364 | VAL dec CE 3.1019
+step    7050 | cos 0.5191 | thought 0.9242 dec_ce 1.4529 | 2.7 it/s
+step    7100 | cos 0.5321 | thought 0.9055 dec_ce 1.6779 | 3.2 it/s
+step    7150 | cos 0.5299 | thought 0.9812 dec_ce 1.6254 | 3.3 it/s
+step    7200 | cos 0.5276 | compress_ce 0.0004 | 3.3 it/s
+step    7250 | cos 0.5270 | compress_ce 0.003 | 3.3 it/s
+step    7300 | cos 0.5281 | thought 0.9284 dec_ce 1.7123 | 3.3 it/s
+step    7350 | cos 0.5247 | thought 0.9176 dec_ce 1.4636 | 3.4 it/s
+step    7400 | cos 0.5280 | compress_ce 0.0 | 3.3 it/s
+step    7450 | cos 0.5238 | thought 0.9171 dec_ce 1.621 | 3.2 it/s
+step    7500 | cos 0.5274 | thought 0.9308 dec_ce 1.6827 | 3.2 it/s
+step    7500 | VAL cos 0.5371 | VAL dec CE 3.0775
+step    7550 | cos 0.5258 | compress_ce 0.0 | 2.7 it/s
+step    7600 | cos 0.5255 | compress_ce 0.0 | 3.2 it/s
+step    7650 | cos 0.5285 | thought 0.9629 dec_ce 1.7548 | 3.2 it/s
+step    7700 | cos 0.5229 | compress_ce 1.8746 | 3.3 it/s
+step    7750 | cos 0.5193 | thought 0.9442 dec_ce 1.5307 | 3.3 it/s
+step    7800 | cos 0.5250 | thought 0.9779 dec_ce 1.7842 | 3.3 it/s
+step    7850 | cos 0.5245 | thought 0.9695 dec_ce 1.7319 | 3.3 it/s
+step    7900 | cos 0.5256 | thought 1.0119 dec_ce 1.9812 | 3.3 it/s
+step    7950 | cos 0.5290 | thought 0.9413 dec_ce 1.6805 | 3.3 it/s
+step    8000 | cos 0.5263 | thought 0.9214 dec_ce 1.576 | 3.4 it/s
+step    8000 | VAL cos 0.5376 | VAL dec CE 3.0621
+step    8050 | cos 0.5294 | thought 0.9231 dec_ce 1.6262 | 2.6 it/s
+step    8100 | cos 0.5293 | compress_ce 0.0 | 3.3 it/s
+step    8150 | cos 0.5246 | compress_ce 0.0013 | 3.3 it/s
+step    8200 | cos 0.5254 | thought 0.9004 dec_ce 1.5945 | 3.3 it/s
+step    8250 | cos 0.5286 | thought 0.9188 dec_ce 1.5087 | 3.3 it/s
+step    8300 | cos 0.5238 | compress_ce 0.0 | 3.1 it/s
+step    8350 | cos 0.5263 | compress_ce 0.0 | 3.2 it/s
+step    8400 | cos 0.5231 | compress_ce 0.001 | 3.3 it/s
+step    8450 | cos 0.5284 | compress_ce 0.1146 | 3.3 it/s
+step    8500 | cos 0.5292 | thought 0.9458 dec_ce 1.6508 | 3.2 it/s
+step    8500 | VAL cos 0.5384 | VAL dec CE 3.0411
+step    8550 | cos 0.5211 | compress_ce 0.0006 | 2.6 it/s
+step    8600 | cos 0.5227 | compress_ce 0.0 | 3.2 it/s
+step    8650 | cos 0.5283 | thought 0.9988 dec_ce 1.8243 | 3.4 it/s
+step    8700 | cos 0.5217 | compress_ce 0.0001 | 3.3 it/s
+step    8750 | cos 0.5270 | thought 0.9084 dec_ce 1.7897 | 3.4 it/s
+step    8800 | cos 0.5262 | compress_ce 0.5004 | 3.3 it/s
+step    8850 | cos 0.5262 | thought 0.967 dec_ce 1.8652 | 3.4 it/s
+step    8900 | cos 0.5244 | thought 0.9504 dec_ce 1.8232 | 3.3 it/s
+step    8950 | cos 0.5239 | compress_ce 0.0 | 3.2 it/s
+step    9000 | cos 0.5288 | compress_ce 0.0 | 3.3 it/s
+step    9000 | VAL cos 0.5388 | VAL dec CE 3.0262
+step    9050 | cos 0.5290 | thought 0.9531 dec_ce 1.744 | 2.7 it/s
+step    9100 | cos 0.5267 | thought 0.9286 dec_ce 1.6228 | 3.4 it/s
+step    9150 | cos 0.5294 | thought 0.9649 dec_ce 1.8072 | 3.3 it/s
+step    9200 | cos 0.5313 | compress_ce 0.0 | 3.4 it/s
+step    9250 | cos 0.5238 | thought 1.0054 dec_ce 1.9131 | 3.3 it/s
+step    9300 | cos 0.5273 | thought 0.9795 dec_ce 1.731 | 3.3 it/s
+step    9350 | cos 0.5278 | compress_ce 0.0 | 3.3 it/s
+step    9400 | cos 0.5267 | compress_ce 0.0 | 3.3 it/s
+step    9450 | cos 0.5215 | compress_ce 0.4643 | 3.3 it/s
+step    9500 | cos 0.5288 | compress_ce 0.0005 | 3.3 it/s
+step    9500 | VAL cos 0.5397 | VAL dec CE 3.0159
+step    9550 | cos 0.5312 | compress_ce 0.0 | 2.7 it/s
+step    9600 | cos 0.5263 | thought 0.9859 dec_ce 1.6753 | 3.2 it/s
+step    9650 | cos 0.5266 | thought 0.9706 dec_ce 1.8064 | 3.2 it/s
+step    9700 | cos 0.5280 | thought 1.0033 dec_ce 1.7661 | 3.2 it/s
+step    9750 | cos 0.5309 | compress_ce 0.0 | 3.3 it/s
+step    9800 | cos 0.5200 | thought 0.9235 dec_ce 1.4432 | 3.3 it/s
+step    9850 | cos 0.5292 | thought 0.9741 dec_ce 1.7429 | 3.2 it/s
+step    9900 | cos 0.5252 | thought 0.9897 dec_ce 1.8921 | 3.3 it/s
+step    9950 | cos 0.5282 | compress_ce 0.0 | 3.2 it/s
+step   10000 | cos 0.5242 | compress_ce 0.0 | 3.2 it/s
+step   10000 | VAL cos 0.5399 | VAL dec CE 2.9982
+step   10050 | cos 0.5309 | compress_ce 0.0 | 2.6 it/s
+step   10100 | cos 0.5274 | compress_ce 0.0 | 3.3 it/s
+step   10150 | cos 0.5265 | thought 0.8978 dec_ce 1.6584 | 3.2 it/s
+step   10200 | cos 0.5268 | thought 0.961 dec_ce 1.6517 | 3.3 it/s
+step   10250 | cos 0.5255 | thought 0.8961 dec_ce 1.6376 | 3.4 it/s
+step   10300 | cos 0.5232 | thought 0.9738 dec_ce 1.7793 | 3.3 it/s
+step   10350 | cos 0.5293 | thought 0.9739 dec_ce 1.6173 | 3.3 it/s
+step   10400 | cos 0.5274 | thought 0.9194 dec_ce 1.6414 | 3.2 it/s
+step   10450 | cos 0.5246 | thought 0.9895 dec_ce 1.6138 | 3.3 it/s
+step   10500 | cos 0.5264 | compress_ce 0.0 | 3.3 it/s
+step   10500 | VAL cos 0.5400 | VAL dec CE 2.9876
+step   10550 | cos 0.5256 | thought 1.0074 dec_ce 1.682 | 2.6 it/s
+step   10600 | cos 0.5301 | compress_ce 0.0 | 3.2 it/s
+step   10650 | cos 0.5269 | compress_ce 0.0 | 3.2 it/s
+step   10700 | cos 0.5289 | compress_ce 0.0 | 3.3 it/s
+step   10750 | cos 0.5316 | thought 0.9299 dec_ce 1.5042 | 3.3 it/s
+step   10800 | cos 0.5264 | thought 0.9907 dec_ce 1.7744 | 3.3 it/s
+step   10850 | cos 0.5313 | compress_ce 0.0001 | 3.2 it/s
+step   10900 | cos 0.5284 | thought 0.8948 dec_ce 1.4793 | 3.3 it/s
+step   10950 | cos 0.5271 | thought 0.9783 dec_ce 1.6911 | 3.3 it/s
+step   11000 | cos 0.5293 | thought 0.9786 dec_ce 1.9352 | 3.3 it/s
+step   11000 | VAL cos 0.5404 | VAL dec CE 2.9765
+step   11050 | cos 0.5330 | thought 0.9221 dec_ce 1.5352 | 2.6 it/s
+step   11100 | cos 0.5261 | compress_ce 0.0006 | 3.3 it/s
+step   11150 | cos 0.5286 | compress_ce 0.0008 | 3.1 it/s
+step   11200 | cos 0.5354 | thought 0.9066 dec_ce 1.4436 | 3.3 it/s
+step   11250 | cos 0.5276 | compress_ce 0.0001 | 3.3 it/s
+step   11300 | cos 0.5282 | thought 0.9799 dec_ce 1.651 | 3.2 it/s
+step   11350 | cos 0.5328 | thought 0.9129 dec_ce 1.4315 | 3.3 it/s
+step   11400 | cos 0.5305 | compress_ce 0.1924 | 3.3 it/s
+step   11450 | cos 0.5260 | thought 0.9807 dec_ce 1.686 | 3.1 it/s
+step   11500 | cos 0.5284 | thought 0.9236 dec_ce 1.5253 | 2.9 it/s
+step   11500 | VAL cos 0.5407 | VAL dec CE 2.9620
+step   11550 | cos 0.5318 | compress_ce 0.0 | 2.7 it/s
+step   11600 | cos 0.5287 | compress_ce 0.1823 | 3.3 it/s
+step   11650 | cos 0.5315 | thought 0.9581 dec_ce 1.6307 | 3.2 it/s
+step   11700 | cos 0.5308 | thought 0.9001 dec_ce 1.3868 | 3.4 it/s
+step   11750 | cos 0.5282 | thought 0.9209 dec_ce 1.7887 | 3.2 it/s
+step   11800 | cos 0.5287 | thought 0.9253 dec_ce 1.5166 | 3.2 it/s
+step   11850 | cos 0.5268 | compress_ce 0.0003 | 3.2 it/s
+step   11900 | cos 0.5273 | thought 0.9216 dec_ce 1.3967 | 3.2 it/s
+step   11950 | cos 0.5268 | thought 0.9399 dec_ce 1.5083 | 3.3 it/s
+step   12000 | cos 0.5340 | compress_ce 0.0 | 3.2 it/s
+step   12000 | VAL cos 0.5413 | VAL dec CE 2.9611
+step   12050 | cos 0.5312 | thought 0.9715 dec_ce 1.7579 | 2.7 it/s
+step   12100 | cos 0.5292 | thought 0.9494 dec_ce 1.6346 | 3.1 it/s
+step   12150 | cos 0.5322 | thought 0.911 dec_ce 1.4418 | 3.3 it/s
+step   12200 | cos 0.5334 | thought 0.9418 dec_ce 1.7607 | 3.3 it/s
+step   12250 | cos 0.5339 | compress_ce 0.0 | 3.3 it/s
+step   12300 | cos 0.5377 | thought 0.9425 dec_ce 1.6359 | 3.3 it/s
+step   12350 | cos 0.5294 | thought 0.9299 dec_ce 1.549 | 3.3 it/s
+step   12400 | cos 0.5273 | thought 0.9132 dec_ce 1.5165 | 3.2 it/s
+step   12450 | cos 0.5284 | thought 0.9437 dec_ce 1.5857 | 3.3 it/s
+step   12500 | cos 0.5336 | thought 1.0106 dec_ce 1.6056 | 3.3 it/s
+step   12500 | VAL cos 0.5418 | VAL dec CE 2.9461
+step   12550 | cos 0.5355 | compress_ce 0.0 | 2.7 it/s
+step   12600 | cos 0.5311 | compress_ce 2.1945 | 3.3 it/s
+step   12650 | cos 0.5332 | thought 0.9544 dec_ce 1.6862 | 3.2 it/s
+step   12700 | cos 0.5359 | thought 0.9334 dec_ce 1.648 | 3.3 it/s
+step   12750 | cos 0.5351 | compress_ce 1.5759 | 3.3 it/s
+step   12800 | cos 0.5338 | thought 0.9605 dec_ce 1.7426 | 3.3 it/s
+step   12850 | cos 0.5313 | compress_ce 0.0019 | 3.3 it/s
+step   12900 | cos 0.5355 | thought 0.9397 dec_ce 1.7719 | 3.4 it/s
+step   12950 | cos 0.5333 | thought 0.9484 dec_ce 1.5948 | 3.3 it/s
+step   13000 | cos 0.5328 | compress_ce 0.0 | 3.2 it/s
+step   13000 | VAL cos 0.5425 | VAL dec CE 2.9375
+step   13050 | cos 0.5344 | compress_ce 0.0 | 2.8 it/s
+step   13100 | cos 0.5352 | thought 0.9101 dec_ce 1.4881 | 3.3 it/s
+step   13150 | cos 0.5337 | compress_ce 0.0 | 3.2 it/s
+step   13200 | cos 0.5325 | compress_ce 0.0 | 3.3 it/s
+step   13250 | cos 0.5279 | thought 0.9289 dec_ce 1.5411 | 3.3 it/s
+step   13300 | cos 0.5365 | compress_ce 0.049 | 3.3 it/s
+step   13350 | cos 0.5302 | thought 0.9392 dec_ce 1.6911 | 3.4 it/s
+step   13400 | cos 0.5326 | thought 0.9324 dec_ce 1.6047 | 3.3 it/s
+step   13450 | cos 0.5356 | thought 0.9389 dec_ce 1.7458 | 3.3 it/s
+step   13500 | cos 0.5317 | thought 0.9451 dec_ce 1.5919 | 3.3 it/s
+step   13500 | VAL cos 0.5427 | VAL dec CE 2.9315
+step   13550 | cos 0.5321 | thought 0.9478 dec_ce 1.5063 | 2.7 it/s
+step   13600 | cos 0.5323 | compress_ce 0.0 | 3.2 it/s
+step   13650 | cos 0.5343 | thought 0.9288 dec_ce 1.8096 | 3.3 it/s
+step   13700 | cos 0.5363 | thought 0.9203 dec_ce 1.4057 | 3.2 it/s
+step   13750 | cos 0.5311 | thought 0.9447 dec_ce 1.5061 | 3.3 it/s
+step   13800 | cos 0.5324 | thought 0.9246 dec_ce 1.6093 | 3.2 it/s
+step   13850 | cos 0.5315 | thought 0.9519 dec_ce 1.6848 | 3.3 it/s
+step   13900 | cos 0.5282 | thought 0.9728 dec_ce 1.6174 | 3.2 it/s
+step   13950 | cos 0.5322 | compress_ce 0.0001 | 3.2 it/s
+step   14000 | cos 0.5331 | thought 0.9629 dec_ce 1.9034 | 3.2 it/s
+step   14000 | VAL cos 0.5436 | VAL dec CE 2.9172
+step   14050 | cos 0.5304 | thought 0.9227 dec_ce 1.6519 | 2.6 it/s
+step   14100 | cos 0.5294 | compress_ce 0.0001 | 3.3 it/s
+step   14150 | cos 0.5328 | thought 0.9043 dec_ce 1.6737 | 3.2 it/s
+step   14200 | cos 0.5314 | compress_ce 0.0 | 3.3 it/s
+step   14250 | cos 0.5284 | compress_ce 0.0 | 3.2 it/s
+step   14300 | cos 0.5306 | thought 0.9078 dec_ce 1.5282 | 3.2 it/s
+step   14350 | cos 0.5331 | compress_ce 0.0 | 3.3 it/s
+step   14400 | cos 0.5343 | thought 0.9278 dec_ce 1.6036 | 3.3 it/s
+step   14450 | cos 0.5336 | compress_ce 0.0013 | 3.2 it/s
+step   14500 | cos 0.5319 | compress_ce 0.0011 | 3.2 it/s
+step   14500 | VAL cos 0.5437 | VAL dec CE 2.9093
+step   14550 | cos 0.5343 | compress_ce 0.0 | 2.6 it/s
+step   14600 | cos 0.5349 | thought 0.9517 dec_ce 1.6547 | 3.3 it/s
+step   14650 | cos 0.5376 | compress_ce 0.0 | 3.2 it/s
+step   14700 | cos 0.5378 | thought 0.9351 dec_ce 1.5402 | 3.3 it/s
+step   14750 | cos 0.5295 | compress_ce 0.0003 | 3.2 it/s
+step   14800 | cos 0.5360 | thought 0.9246 dec_ce 1.6458 | 3.2 it/s
+step   14850 | cos 0.5313 | thought 0.958 dec_ce 1.5625 | 3.3 it/s
+step   14900 | cos 0.5356 | compress_ce 0.0 | 3.4 it/s
+step   14950 | cos 0.5392 | thought 0.915 dec_ce 1.4958 | 3.4 it/s
+step   15000 | cos 0.5321 | thought 0.9526 dec_ce 1.6607 | 3.3 it/s
+step   15000 | VAL cos 0.5440 | VAL dec CE 2.9036
+step   15050 | cos 0.5331 | thought 0.9281 dec_ce 1.6274 | 2.6 it/s
+step   15100 | cos 0.5330 | thought 0.9561 dec_ce 1.6514 | 3.3 it/s
+step   15150 | cos 0.5302 | compress_ce 0.0 | 3.2 it/s
+step   15200 | cos 0.5336 | thought 0.9304 dec_ce 1.4583 | 3.3 it/s
+step   15250 | cos 0.5347 | compress_ce 0.0 | 3.3 it/s
+step   15300 | cos 0.5363 | thought 0.919 dec_ce 1.3714 | 3.3 it/s
+step   15350 | cos 0.5332 | compress_ce 0.0014 | 3.2 it/s
+step   15400 | cos 0.5294 | thought 0.9634 dec_ce 1.6887 | 3.3 it/s
+step   15450 | cos 0.5337 | thought 0.9024 dec_ce 1.4195 | 3.3 it/s
+step   15500 | cos 0.5395 | compress_ce 1.7597 | 3.3 it/s
+step   15500 | VAL cos 0.5445 | VAL dec CE 2.9011
+step   15550 | cos 0.5348 | thought 0.9315 dec_ce 1.4342 | 2.6 it/s
+step   15600 | cos 0.5344 | compress_ce 0.0005 | 3.3 it/s
+step   15650 | cos 0.5331 | thought 0.9423 dec_ce 1.6385 | 3.3 it/s
+step   15700 | cos 0.5301 | compress_ce 0.0 | 3.2 it/s
+step   15750 | cos 0.5318 | compress_ce 0.0 | 3.2 it/s
+step   15800 | cos 0.5323 | compress_ce 4.1778 | 3.3 it/s
+step   15850 | cos 0.5321 | thought 0.9088 dec_ce 1.6281 | 3.3 it/s
+step   15900 | cos 0.5341 | compress_ce 0.0013 | 3.3 it/s
+step   15950 | cos 0.5363 | thought 0.9405 dec_ce 1.592 | 3.3 it/s
+step   16000 | cos 0.5374 | thought 0.8731 dec_ce 1.4948 | 3.3 it/s
+step   16000 | VAL cos 0.5440 | VAL dec CE 2.8971
+step   16050 | cos 0.5361 | thought 0.9089 dec_ce 1.4204 | 2.6 it/s
+step   16100 | cos 0.5301 | thought 0.9726 dec_ce 1.9003 | 3.2 it/s
+step   16150 | cos 0.5315 | thought 0.9238 dec_ce 1.4723 | 3.3 it/s
+step   16200 | cos 0.5308 | thought 0.9972 dec_ce 1.5899 | 3.2 it/s
+step   16250 | cos 0.5327 | thought 0.9401 dec_ce 1.4312 | 3.3 it/s
+step   16300 | cos 0.5349 | compress_ce 3.3945 | 3.3 it/s
+step   16350 | cos 0.5363 | thought 0.8991 dec_ce 1.5332 | 3.3 it/s
+step   16400 | cos 0.5358 | thought 0.9639 dec_ce 1.9447 | 3.3 it/s
+step   16450 | cos 0.5354 | thought 0.9408 dec_ce 1.6683 | 3.2 it/s
+step   16500 | cos 0.5339 | thought 0.9447 dec_ce 1.6121 | 3.3 it/s
+step   16500 | VAL cos 0.5447 | VAL dec CE 2.8882
+step   16550 | cos 0.5348 | thought 0.9587 dec_ce 1.8547 | 2.6 it/s
+step   16600 | cos 0.5314 | thought 0.9096 dec_ce 1.5641 | 3.2 it/s
+step   16650 | cos 0.5317 | compress_ce 0.0 | 3.2 it/s
+step   16700 | cos 0.5341 | thought 0.9403 dec_ce 1.4931 | 3.3 it/s
+step   16750 | cos 0.5366 | thought 0.9391 dec_ce 1.6186 | 3.3 it/s
+step   16800 | cos 0.5303 | compress_ce 0.0176 | 3.2 it/s
+step   16850 | cos 0.5364 | compress_ce 0.0187 | 3.2 it/s
+step   16900 | cos 0.5315 | thought 0.9218 dec_ce 1.4994 | 3.2 it/s
+step   16950 | cos 0.5349 | thought 0.9371 dec_ce 1.5358 | 3.4 it/s
+step   17000 | cos 0.5305 | compress_ce 0.0 | 3.1 it/s
+step   17000 | VAL cos 0.5454 | VAL dec CE 2.8853
+step   17050 | cos 0.5320 | thought 0.9444 dec_ce 1.5771 | 2.7 it/s
+step   17100 | cos 0.5388 | thought 0.9261 dec_ce 1.6553 | 3.3 it/s
+step   17150 | cos 0.5356 | thought 0.9207 dec_ce 1.6025 | 3.1 it/s
+step   17200 | cos 0.5367 | compress_ce 1.0076 | 3.3 it/s
+step   17250 | cos 0.5377 | thought 0.9457 dec_ce 1.6016 | 3.3 it/s
+step   17300 | cos 0.5380 | compress_ce 0.0 | 3.3 it/s
+step   17350 | cos 0.5310 | thought 0.9862 dec_ce 1.8054 | 3.2 it/s
+step   17400 | cos 0.5320 | thought 0.9491 dec_ce 1.5489 | 3.2 it/s
+step   17450 | cos 0.5333 | compress_ce 0.0 | 3.2 it/s
+step   17500 | cos 0.5347 | compress_ce 0.0 | 3.2 it/s
+step   17500 | VAL cos 0.5456 | VAL dec CE 2.8790
+step   17550 | cos 0.5370 | compress_ce 0.0 | 2.8 it/s
+step   17600 | cos 0.5373 | compress_ce 0.0001 | 3.2 it/s
+step   17650 | cos 0.5309 | compress_ce 0.0 | 3.3 it/s
+step   17700 | cos 0.5308 | compress_ce 0.0003 | 3.4 it/s
+step   17750 | cos 0.5353 | compress_ce 2.2328 | 3.3 it/s
+step   17800 | cos 0.5350 | compress_ce 0.0 | 3.3 it/s
+step   17850 | cos 0.5329 | thought 0.9283 dec_ce 1.5453 | 3.3 it/s
+step   17900 | cos 0.5400 | compress_ce 0.0 | 3.3 it/s
+step   17950 | cos 0.5342 | compress_ce 1.9732 | 3.3 it/s
+step   18000 | cos 0.5331 | compress_ce 0.0 | 3.2 it/s
+step   18000 | VAL cos 0.5459 | VAL dec CE 2.8757
+step   18050 | cos 0.5369 | thought 0.9041 dec_ce 1.5303 | 2.5 it/s
+step   18100 | cos 0.5419 | thought 0.8928 dec_ce 1.7034 | 3.3 it/s
+step   18150 | cos 0.5409 | compress_ce 0.0003 | 3.2 it/s
+step   18200 | cos 0.5305 | compress_ce 0.0 | 3.3 it/s
+step   18250 | cos 0.5373 | thought 0.899 dec_ce 1.308 | 3.2 it/s
+step   18300 | cos 0.5374 | compress_ce 0.0 | 3.2 it/s
+step   18350 | cos 0.5311 | compress_ce 0.0 | 3.2 it/s
+step   18400 | cos 0.5350 | compress_ce 0.0 | 3.2 it/s
+step   18450 | cos 0.5376 | thought 0.9507 dec_ce 1.5292 | 3.4 it/s
+step   18500 | cos 0.5334 | thought 0.9734 dec_ce 1.6949 | 3.3 it/s
+step   18500 | VAL cos 0.5461 | VAL dec CE 2.8714
+step   18550 | cos 0.5347 | compress_ce 3.4291 | 2.7 it/s
+step   18600 | cos 0.5339 | thought 0.9731 dec_ce 1.6657 | 3.2 it/s
+step   18650 | cos 0.5413 | thought 0.9294 dec_ce 1.6794 | 3.3 it/s
+step   18700 | cos 0.5353 | thought 0.9402 dec_ce 1.5522 | 3.3 it/s
+step   18750 | cos 0.5325 | thought 0.9465 dec_ce 1.6559 | 3.2 it/s
+step   18800 | cos 0.5392 | compress_ce 4.07 | 3.3 it/s
+step   18850 | cos 0.5363 | thought 0.9231 dec_ce 1.6057 | 3.5 it/s
+step   18900 | cos 0.5385 | compress_ce 0.0003 | 3.2 it/s
+step   18950 | cos 0.5344 | compress_ce 0.0 | 3.2 it/s
+step   19000 | cos 0.5334 | thought 0.9465 dec_ce 1.5519 | 3.3 it/s
+step   19000 | VAL cos 0.5462 | VAL dec CE 2.8645
+step   19050 | cos 0.5331 | compress_ce 0.0 | 2.6 it/s
+step   19100 | cos 0.5385 | thought 0.9556 dec_ce 1.5029 | 3.3 it/s
+step   19150 | cos 0.5381 | thought 0.9296 dec_ce 1.5606 | 3.3 it/s
+step   19200 | cos 0.5357 | compress_ce 0.0 | 3.3 it/s
+step   19250 | cos 0.5367 | compress_ce 0.0 | 3.3 it/s
+step   19300 | cos 0.5344 | thought 0.9853 dec_ce 1.7201 | 3.3 it/s
+step   19350 | cos 0.5342 | compress_ce 0.0 | 3.3 it/s
+step   19400 | cos 0.5385 | compress_ce 0.0081 | 3.3 it/s
+step   19450 | cos 0.5295 | thought 0.9646 dec_ce 1.5537 | 3.3 it/s
+step   19500 | cos 0.5357 | compress_ce 0.0 | 3.2 it/s
+step   19500 | VAL cos 0.5464 | VAL dec CE 2.8627
+step   19550 | cos 0.5314 | thought 0.9709 dec_ce 1.5554 | 2.6 it/s
+step   19600 | cos 0.5370 | thought 0.8965 dec_ce 1.4948 | 3.3 it/s
+step   19650 | cos 0.5331 | compress_ce 0.0 | 3.2 it/s
+step   19700 | cos 0.5358 | compress_ce 1.4564 | 3.2 it/s
+step   19750 | cos 0.5407 | thought 0.9337 dec_ce 1.6151 | 3.3 it/s
+step   19800 | cos 0.5356 | thought 0.9071 dec_ce 1.4613 | 3.3 it/s
+step   19850 | cos 0.5348 | thought 0.9756 dec_ce 1.8844 | 3.2 it/s
+step   19900 | cos 0.5393 | thought 0.9228 dec_ce 1.6976 | 3.2 it/s
+step   19950 | cos 0.5360 | compress_ce 0.0 | 3.3 it/s
+step   20000 | cos 0.5300 | thought 0.9089 dec_ce 1.7286 | 3.1 it/s
+step   20000 | VAL cos 0.5464 | VAL dec CE 2.8627
+step   20050 | cos 0.5392 | thought 0.9103 dec_ce 1.4621 | 2.7 it/s
+step   20100 | cos 0.5365 | thought 0.9238 dec_ce 1.4669 | 3.2 it/s
+step   20150 | cos 0.5393 | thought 0.9492 dec_ce 1.6656 | 3.2 it/s
+step   20200 | cos 0.5349 | compress_ce 0.0 | 3.3 it/s
+step   20250 | cos 0.5322 | thought 0.9279 dec_ce 1.3623 | 3.3 it/s
+step   20300 | cos 0.5414 | compress_ce 0.0 | 3.3 it/s
+step   20350 | cos 0.5315 | thought 0.9604 dec_ce 1.4954 | 3.2 it/s
+step   20400 | cos 0.5353 | compress_ce 0.0 | 3.3 it/s
+step   20450 | cos 0.5383 | thought 0.9302 dec_ce 1.6803 | 3.3 it/s
+step   20500 | cos 0.5361 | thought 0.9145 dec_ce 1.8135 | 3.2 it/s
+step   20500 | VAL cos 0.5469 | VAL dec CE 2.8572
+step   20550 | cos 0.5334 | thought 0.8789 dec_ce 1.484 | 2.6 it/s
+step   20600 | cos 0.5346 | thought 0.9149 dec_ce 1.6297 | 3.3 it/s
+step   20650 | cos 0.5396 | thought 0.9464 dec_ce 1.6163 | 3.3 it/s
+step   20700 | cos 0.5353 | compress_ce 0.0889 | 3.3 it/s
+step   20750 | cos 0.5321 | thought 0.9043 dec_ce 1.4086 | 3.3 it/s
+step   20800 | cos 0.5342 | thought 0.9777 dec_ce 1.6911 | 3.2 it/s
+step   20850 | cos 0.5361 | compress_ce 3.1428 | 3.3 it/s
+step   20900 | cos 0.5364 | thought 0.9357 dec_ce 1.6533 | 3.3 it/s
+step   20950 | cos 0.5337 | compress_ce 0.0 | 3.3 it/s
+step   21000 | cos 0.5385 | thought 0.9106 dec_ce 1.544 | 3.3 it/s
+step   21000 | VAL cos 0.5471 | VAL dec CE 2.8560
+step   21050 | cos 0.5339 | thought 0.9682 dec_ce 1.5751 | 2.7 it/s
+step   21100 | cos 0.5372 | compress_ce 0.0 | 3.2 it/s
+step   21150 | cos 0.5358 | compress_ce 0.0001 | 3.2 it/s
+step   21200 | cos 0.5296 | thought 0.9027 dec_ce 1.5178 | 3.2 it/s
+step   21250 | cos 0.5354 | compress_ce 0.0 | 3.2 it/s
+step   21300 | cos 0.5365 | thought 0.9586 dec_ce 1.5505 | 3.2 it/s
+step   21350 | cos 0.5360 | compress_ce 0.0006 | 3.2 it/s
+step   21400 | cos 0.5343 | thought 0.9112 dec_ce 1.6262 | 3.3 it/s
+step   21450 | cos 0.5360 | thought 0.9748 dec_ce 1.6428 | 3.2 it/s
+step   21500 | cos 0.5358 | thought 0.9973 dec_ce 1.6667 | 3.3 it/s
+step   21500 | VAL cos 0.5472 | VAL dec CE 2.8528
+step   21550 | cos 0.5334 | thought 0.9683 dec_ce 1.6766 | 2.6 it/s
+step   21600 | cos 0.5375 | compress_ce 0.0 | 3.2 it/s
+step   21650 | cos 0.5395 | thought 0.9637 dec_ce 1.7476 | 3.2 it/s
+step   21700 | cos 0.5372 | thought 0.9409 dec_ce 1.6666 | 3.3 it/s
+step   21750 | cos 0.5374 | thought 0.949 dec_ce 1.7101 | 3.3 it/s
+step   21800 | cos 0.5358 | thought 0.939 dec_ce 1.5611 | 3.3 it/s
+step   21850 | cos 0.5369 | thought 0.9535 dec_ce 1.7347 | 3.3 it/s
+step   21900 | cos 0.5402 | thought 0.9092 dec_ce 1.51 | 3.2 it/s
+step   21950 | cos 0.5349 | thought 0.9772 dec_ce 1.8757 | 3.3 it/s
+step   22000 | cos 0.5386 | thought 0.9517 dec_ce 1.7475 | 3.3 it/s
+step   22000 | VAL cos 0.5474 | VAL dec CE 2.8515
+step   22050 | cos 0.5355 | compress_ce 0.0003 | 2.6 it/s
+step   22100 | cos 0.5385 | thought 0.9246 dec_ce 1.6238 | 3.3 it/s
+step   22150 | cos 0.5361 | thought 0.9331 dec_ce 1.6004 | 3.3 it/s
+step   22200 | cos 0.5380 | thought 0.9585 dec_ce 1.7179 | 3.4 it/s
+step   22250 | cos 0.5339 | thought 0.9355 dec_ce 1.6257 | 3.3 it/s
+step   22300 | cos 0.5347 | thought 0.8981 dec_ce 1.3193 | 3.2 it/s
+step   22350 | cos 0.5422 | compress_ce 0.0 | 3.2 it/s
+step   22400 | cos 0.5365 | compress_ce 0.0 | 3.2 it/s
+step   22450 | cos 0.5348 | compress_ce 0.0 | 3.2 it/s
+step   22500 | cos 0.5359 | thought 0.9366 dec_ce 1.5614 | 3.3 it/s
+step   22500 | VAL cos 0.5474 | VAL dec CE 2.8501
+step   22550 | cos 0.5359 | compress_ce 2.6012 | 2.7 it/s
+step   22600 | cos 0.5375 | thought 0.9344 dec_ce 1.4878 | 3.3 it/s
+step   22650 | cos 0.5340 | compress_ce 0.0 | 3.3 it/s
+step   22700 | cos 0.5367 | thought 0.9462 dec_ce 1.6104 | 3.2 it/s
+step   22750 | cos 0.5380 | thought 0.9576 dec_ce 1.5079 | 3.2 it/s
+step   22800 | cos 0.5367 | thought 0.9739 dec_ce 1.7558 | 3.2 it/s
+step   22850 | cos 0.5352 | thought 0.8832 dec_ce 1.4953 | 3.3 it/s
+step   22900 | cos 0.5347 | compress_ce 0.0 | 3.2 it/s
+step   22950 | cos 0.5312 | compress_ce 0.0005 | 3.2 it/s
+wall-clock cap reached at step 22983
+
+Run 'R4_BIG30' done: 22983 steps | final val cos 0.5474 | dec CE 2.8486
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{"ckpt": "checkpoints/R4_BIG30/best.pt", "val_cos": 0.4005, "val_dec_ce": 3.1763, "ref_f1": 0.264, "distinct1": 0.0151, "distinct2": 0.0576, "len_ratio": 1.136, "out_vectors": 8.0, "rows": 1024}
+--- round-trip guard R4_BIG30 ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{
+  "ckpt": "checkpoints/R4_BIG30/best.pt",
+  "verdict": "PASS",
+  "worst_delta": 0.0,
+  "tol": 0.05,
+  "per_prefix": [
+    {
+      "k": 2,
+      "frozen_ce": 4.9181,
+      "modified_ce": 4.9086,
+      "delta": -0.0095
+    },
+    {
+      "k": 8,
+      "frozen_ce": 2.6382,
+      "modified_ce": 2.6053,
+      "delta": -0.0329
+    },
+    {
+      "k": 128,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": 0.0
+    },
+    {
+      "k": 256,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": 0.0
+    }
+  ]
+}

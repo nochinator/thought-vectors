@@ -1,0 +1,7 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+soda: 394523 conversations
+Generating train split:   0%|          | 0/17878 [00:00<?, ? examples/s]Generating train split:  56%|█████▌    | 10000/17878 [00:00<00:00, 16598.12 examples/s]Generating train split: 100%|██████████| 17878/17878 [00:00<00:00, 28277.21 examples/s]
+Generating validation split:   0%|          | 0/1000 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 1000/1000 [00:00<00:00, 34026.45 examples/s]
+personachat: 16954 conversations
+oasst1: 859 conversations
+{"soda": 394523, "personachat": 16954, "oasst1": 859}

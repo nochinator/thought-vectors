@@ -1,0 +1,697 @@
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+thinker params: 15.10M (codec d=384, frozen=True)
+step      50 | cos 0.0404 | thought 2.4854 dec_ce 2.581 diversity 0.0357 | 3.1 it/s
+step     100 | cos 0.1152 | thought 2.2375 dec_ce 2.419 diversity 0.0209 | 3.3 it/s
+step     150 | cos 0.2052 | thought 2.0338 dec_ce 2.2776 diversity 0.0095 | 2.8 it/s
+step     200 | cos 0.2461 | thought 2.0345 dec_ce 2.4497 diversity 0.0053 | 3.1 it/s
+step     250 | cos 0.2602 | thought 1.9777 dec_ce 2.3342 diversity 0.0038 | 3.0 it/s
+step     300 | cos 0.2685 | thought 1.9168 dec_ce 2.2399 diversity 0.0034 | 3.1 it/s
+step     350 | cos 0.2883 | thought 1.8223 dec_ce 2.084 diversity 0.0024 | 2.7 it/s
+step     400 | cos 0.3072 | thought 1.82 dec_ce 2.3558 diversity 0.0049 | 3.5 it/s
+step     450 | cos 0.3308 | thought 1.6776 dec_ce 2.2307 diversity 0.0025 | 4.3 it/s
+step     500 | cos 0.3656 | thought 1.6178 dec_ce 2.1127 diversity 0.0044 | 4.7 it/s
+step     500 | VAL cos 0.3960 | VAL dec CE 4.1323
+step     550 | cos 0.3972 | thought 1.4861 dec_ce 2.1333 diversity 0.003 | 3.8 it/s
+step     600 | cos 0.4152 | thought 1.4541 dec_ce 2.0187 diversity 0.0036 | 4.4 it/s
+step     650 | cos 0.4207 | thought 1.4339 dec_ce 2.1468 diversity 0.007 | 4.5 it/s
+step     700 | cos 0.4326 | thought 1.476 dec_ce 2.2318 diversity 0.0052 | 4.6 it/s
+step     750 | cos 0.4379 | thought 1.3854 dec_ce 2.3453 diversity 0.0083 | 4.5 it/s
+step     800 | cos 0.4412 | thought 1.3757 dec_ce 2.0469 diversity 0.0074 | 4.5 it/s
+step     850 | cos 0.4509 | thought 1.3473 dec_ce 2.2229 diversity 0.0107 | 4.5 it/s
+step     900 | cos 0.4568 | thought 1.4008 dec_ce 2.3283 diversity 0.0092 | 4.4 it/s
+step     950 | cos 0.4590 | thought 1.3962 dec_ce 2.2794 diversity 0.0075 | 4.6 it/s
+step    1000 | cos 0.4572 | thought 1.3033 dec_ce 2.1118 diversity 0.0065 | 4.4 it/s
+step    1000 | VAL cos 0.4777 | VAL dec CE 4.0758
+step    1050 | cos 0.4625 | thought 1.2924 dec_ce 2.1442 diversity 0.0066 | 3.7 it/s
+step    1100 | cos 0.4665 | thought 1.3301 dec_ce 2.2601 diversity 0.0083 | 4.4 it/s
+step    1150 | cos 0.4660 | thought 1.2427 dec_ce 2.0858 diversity 0.0064 | 4.4 it/s
+step    1200 | cos 0.4701 | thought 1.2145 dec_ce 2.1716 diversity 0.0081 | 4.4 it/s
+step    1250 | cos 0.4685 | thought 1.2161 dec_ce 2.1686 diversity 0.0102 | 4.4 it/s
+step    1300 | cos 0.4739 | thought 1.1999 dec_ce 2.2091 diversity 0.0089 | 4.5 it/s
+step    1350 | cos 0.4735 | thought 1.2346 dec_ce 2.1274 diversity 0.0085 | 4.5 it/s
+step    1400 | cos 0.4774 | thought 1.1995 dec_ce 2.1021 diversity 0.0066 | 4.4 it/s
+step    1450 | cos 0.4733 | thought 1.1586 dec_ce 2.133 diversity 0.0112 | 4.3 it/s
+step    1500 | cos 0.4760 | thought 1.1677 dec_ce 2.1738 diversity 0.0089 | 4.4 it/s
+step    1500 | VAL cos 0.4928 | VAL dec CE 4.0150
+step    1550 | cos 0.4770 | thought 1.0866 dec_ce 1.997 diversity 0.0082 | 3.7 it/s
+step    1600 | cos 0.4821 | thought 1.1001 dec_ce 2.0246 diversity 0.01 | 4.5 it/s
+step    1650 | cos 0.4810 | thought 1.0733 dec_ce 1.9933 diversity 0.0082 | 4.4 it/s
+step    1700 | cos 0.4829 | thought 1.098 dec_ce 2.0495 diversity 0.0091 | 4.5 it/s
+step    1750 | cos 0.4849 | thought 1.0842 dec_ce 2.0571 diversity 0.0078 | 4.5 it/s
+step    1800 | cos 0.4828 | thought 1.0883 dec_ce 2.3177 diversity 0.0095 | 4.4 it/s
+step    1850 | cos 0.4826 | thought 1.1213 dec_ce 2.1605 diversity 0.0082 | 4.6 it/s
+step    1900 | cos 0.4840 | thought 1.04 dec_ce 2.1047 diversity 0.0109 | 4.5 it/s
+step    1950 | cos 0.4879 | thought 1.0773 dec_ce 2.2069 diversity 0.0091 | 4.4 it/s
+step    2000 | cos 0.4860 | thought 1.0311 dec_ce 2.1063 diversity 0.0103 | 4.5 it/s
+step    2000 | VAL cos 0.5026 | VAL dec CE 3.9834
+step    2050 | cos 0.4865 | thought 1.0307 dec_ce 2.0182 diversity 0.0087 | 3.6 it/s
+step    2100 | cos 0.4900 | thought 1.0798 dec_ce 2.1199 diversity 0.01 | 4.4 it/s
+step    2150 | cos 0.4882 | thought 1.1043 dec_ce 2.243 diversity 0.0113 | 4.5 it/s
+step    2200 | cos 0.4894 | thought 1.0562 dec_ce 2.1165 diversity 0.0084 | 4.5 it/s
+step    2250 | cos 0.4916 | thought 1.0201 dec_ce 2.147 diversity 0.0085 | 4.5 it/s
+step    2300 | cos 0.4911 | thought 1.0228 dec_ce 2.1539 diversity 0.0088 | 4.5 it/s
+step    2350 | cos 0.4924 | thought 1.0438 dec_ce 2.2119 diversity 0.0116 | 4.5 it/s
+step    2400 | cos 0.4935 | thought 1.0862 dec_ce 2.1819 diversity 0.0119 | 4.5 it/s
+step    2450 | cos 0.4945 | thought 1.0419 dec_ce 2.2149 diversity 0.0119 | 4.6 it/s
+step    2500 | cos 0.4963 | thought 0.9956 dec_ce 2.0212 diversity 0.0092 | 4.6 it/s
+step    2500 | VAL cos 0.5088 | VAL dec CE 3.9680
+step    2550 | cos 0.4921 | thought 0.999 dec_ce 2.0901 diversity 0.0132 | 3.6 it/s
+step    2600 | cos 0.4980 | thought 0.9865 dec_ce 1.992 diversity 0.0091 | 4.5 it/s
+step    2650 | cos 0.4963 | thought 1.0555 dec_ce 2.1998 diversity 0.0115 | 4.5 it/s
+step    2700 | cos 0.4955 | thought 1.0517 dec_ce 2.2191 diversity 0.0104 | 4.4 it/s
+step    2750 | cos 0.4973 | thought 1.0216 dec_ce 2.0256 diversity 0.0075 | 4.5 it/s
+step    2800 | cos 0.4960 | thought 0.9834 dec_ce 2.0856 diversity 0.0089 | 4.5 it/s
+step    2850 | cos 0.4983 | thought 1.0072 dec_ce 2.2526 diversity 0.0113 | 4.5 it/s
+step    2900 | cos 0.5009 | thought 1.0194 dec_ce 2.0731 diversity 0.0139 | 4.5 it/s
+step    2950 | cos 0.4973 | thought 0.9789 dec_ce 1.9919 diversity 0.0094 | 4.4 it/s
+step    3000 | cos 0.4962 | thought 1.023 dec_ce 2.0907 diversity 0.0123 | 4.4 it/s
+step    3000 | VAL cos 0.5124 | VAL dec CE 3.9672
+step    3050 | cos 0.4985 | thought 0.9549 dec_ce 1.8859 diversity 0.0079 | 3.6 it/s
+step    3100 | cos 0.5006 | thought 0.9919 dec_ce 2.1472 diversity 0.0123 | 4.6 it/s
+step    3150 | cos 0.5019 | thought 1.0474 dec_ce 2.3594 diversity 0.0111 | 4.5 it/s
+step    3200 | cos 0.5004 | thought 0.9833 dec_ce 2.068 diversity 0.0095 | 4.4 it/s
+step    3250 | cos 0.4990 | thought 1.0289 dec_ce 2.1039 diversity 0.009 | 4.4 it/s
+step    3300 | cos 0.5018 | thought 1.0232 dec_ce 2.1983 diversity 0.0118 | 4.5 it/s
+step    3350 | cos 0.4992 | thought 1.0546 dec_ce 2.0622 diversity 0.0093 | 4.5 it/s
+step    3400 | cos 0.5003 | thought 0.9986 dec_ce 2.0357 diversity 0.012 | 4.5 it/s
+step    3450 | cos 0.5002 | thought 1.0006 dec_ce 2.0856 diversity 0.0112 | 4.4 it/s
+step    3500 | cos 0.4985 | thought 1.0342 dec_ce 2.0353 diversity 0.0122 | 4.4 it/s
+step    3500 | VAL cos 0.5141 | VAL dec CE 3.9589
+step    3550 | cos 0.4963 | thought 0.9832 dec_ce 2.1427 diversity 0.0124 | 3.5 it/s
+step    3600 | cos 0.5015 | thought 1.0092 dec_ce 2.242 diversity 0.0122 | 4.5 it/s
+step    3650 | cos 0.4981 | thought 0.9939 dec_ce 2.0477 diversity 0.0119 | 4.4 it/s
+step    3700 | cos 0.5033 | thought 1.006 dec_ce 2.0599 diversity 0.0093 | 4.5 it/s
+step    3750 | cos 0.5011 | thought 1.0233 dec_ce 2.129 diversity 0.0094 | 4.5 it/s
+step    3800 | cos 0.5030 | thought 0.9868 dec_ce 2.0356 diversity 0.0102 | 4.5 it/s
+step    3850 | cos 0.4987 | thought 1.0329 dec_ce 2.2912 diversity 0.0126 | 4.5 it/s
+step    3900 | cos 0.5036 | thought 1.0339 dec_ce 2.1895 diversity 0.014 | 4.6 it/s
+step    3950 | cos 0.5014 | thought 0.9636 dec_ce 2.1331 diversity 0.0107 | 4.4 it/s
+step    4000 | cos 0.5022 | thought 1.0737 dec_ce 2.138 diversity 0.0113 | 4.5 it/s
+step    4000 | VAL cos 0.5155 | VAL dec CE 3.9449
+step    4050 | cos 0.5028 | thought 1.0584 dec_ce 2.3338 diversity 0.0153 | 3.6 it/s
+step    4100 | cos 0.5030 | thought 0.9917 dec_ce 2.076 diversity 0.0113 | 4.5 it/s
+step    4150 | cos 0.5016 | thought 0.9353 dec_ce 1.9687 diversity 0.012 | 4.4 it/s
+step    4200 | cos 0.5015 | thought 0.9988 dec_ce 2.1042 diversity 0.0094 | 4.5 it/s
+step    4250 | cos 0.5038 | thought 1.0269 dec_ce 2.2432 diversity 0.0118 | 4.5 it/s
+step    4300 | cos 0.5025 | thought 0.989 dec_ce 2.2251 diversity 0.0126 | 4.5 it/s
+step    4350 | cos 0.5015 | thought 0.9963 dec_ce 2.002 diversity 0.0096 | 4.5 it/s
+step    4400 | cos 0.5055 | thought 0.9677 dec_ce 2.0534 diversity 0.0137 | 4.5 it/s
+step    4450 | cos 0.5034 | thought 1.0431 dec_ce 2.2527 diversity 0.0123 | 4.5 it/s
+step    4500 | cos 0.5055 | thought 1.0363 dec_ce 2.1386 diversity 0.0096 | 4.5 it/s
+step    4500 | VAL cos 0.5172 | VAL dec CE 3.9545
+step    4550 | cos 0.5030 | thought 0.9909 dec_ce 1.9862 diversity 0.0097 | 3.7 it/s
+step    4600 | cos 0.5047 | thought 0.9893 dec_ce 2.1424 diversity 0.0121 | 4.5 it/s
+step    4650 | cos 0.5068 | thought 0.9459 dec_ce 2.0429 diversity 0.01 | 4.4 it/s
+step    4700 | cos 0.5043 | thought 1.0129 dec_ce 2.1513 diversity 0.0119 | 4.5 it/s
+step    4750 | cos 0.5092 | thought 0.9957 dec_ce 1.9351 diversity 0.0097 | 4.5 it/s
+step    4800 | cos 0.5070 | thought 0.9985 dec_ce 2.1766 diversity 0.0103 | 4.6 it/s
+step    4850 | cos 0.5060 | thought 1.0126 dec_ce 2.0563 diversity 0.0114 | 4.4 it/s
+step    4900 | cos 0.5069 | thought 0.9727 dec_ce 1.9934 diversity 0.0095 | 4.4 it/s
+step    4950 | cos 0.5028 | thought 1.047 dec_ce 2.3019 diversity 0.0132 | 4.5 it/s
+step    5000 | cos 0.5084 | thought 1.0171 dec_ce 2.1102 diversity 0.0115 | 4.6 it/s
+step    5000 | VAL cos 0.5172 | VAL dec CE 3.9339
+step    5050 | cos 0.5064 | thought 1.0098 dec_ce 2.252 diversity 0.0093 | 3.5 it/s
+step    5100 | cos 0.5039 | thought 1.0358 dec_ce 2.1876 diversity 0.0126 | 4.5 it/s
+step    5150 | cos 0.5047 | thought 1.0304 dec_ce 2.166 diversity 0.0114 | 4.4 it/s
+step    5200 | cos 0.5066 | thought 0.9888 dec_ce 2.0898 diversity 0.0115 | 4.4 it/s
+step    5250 | cos 0.5057 | thought 0.9723 dec_ce 2.046 diversity 0.0099 | 4.6 it/s
+step    5300 | cos 0.5035 | thought 0.9934 dec_ce 2.1946 diversity 0.0151 | 4.4 it/s
+step    5350 | cos 0.5074 | thought 1.0382 dec_ce 2.1752 diversity 0.0122 | 4.6 it/s
+step    5400 | cos 0.5039 | thought 0.9983 dec_ce 2.1604 diversity 0.0115 | 4.4 it/s
+step    5450 | cos 0.5048 | thought 1.0315 dec_ce 2.0265 diversity 0.0119 | 4.5 it/s
+step    5500 | cos 0.5045 | thought 0.9972 dec_ce 2.131 diversity 0.0128 | 4.5 it/s
+step    5500 | VAL cos 0.5183 | VAL dec CE 3.9463
+step    5550 | cos 0.5057 | thought 1.0242 dec_ce 2.0933 diversity 0.0095 | 3.5 it/s
+step    5600 | cos 0.5050 | thought 1.0156 dec_ce 2.2446 diversity 0.0131 | 4.4 it/s
+step    5650 | cos 0.5070 | thought 0.996 dec_ce 2.0787 diversity 0.0111 | 4.4 it/s
+step    5700 | cos 0.5037 | thought 0.9626 dec_ce 1.9944 diversity 0.0097 | 4.5 it/s
+step    5750 | cos 0.5043 | thought 1.0619 dec_ce 2.261 diversity 0.0123 | 4.5 it/s
+step    5800 | cos 0.5025 | thought 1.0065 dec_ce 2.233 diversity 0.0139 | 4.5 it/s
+step    5850 | cos 0.5061 | thought 1.0336 dec_ce 2.1161 diversity 0.0097 | 4.4 it/s
+step    5900 | cos 0.5072 | thought 0.9848 dec_ce 2.116 diversity 0.011 | 4.6 it/s
+step    5950 | cos 0.5071 | thought 1.0377 dec_ce 2.2316 diversity 0.0127 | 4.5 it/s
+step    6000 | cos 0.5061 | thought 0.9719 dec_ce 1.9609 diversity 0.0087 | 4.5 it/s
+step    6000 | VAL cos 0.5169 | VAL dec CE 3.9274
+step    6050 | cos 0.5056 | thought 0.9925 dec_ce 2.2217 diversity 0.0141 | 3.5 it/s
+step    6100 | cos 0.5074 | thought 0.9284 dec_ce 1.9723 diversity 0.0113 | 4.4 it/s
+step    6150 | cos 0.5089 | thought 1.0061 dec_ce 2.1091 diversity 0.0105 | 4.6 it/s
+step    6200 | cos 0.5053 | thought 1.0066 dec_ce 2.1086 diversity 0.014 | 4.5 it/s
+step    6250 | cos 0.5098 | thought 1.007 dec_ce 2.0174 diversity 0.0097 | 4.5 it/s
+step    6300 | cos 0.5049 | thought 0.9727 dec_ce 2.1119 diversity 0.0126 | 4.5 it/s
+step    6350 | cos 0.5090 | thought 0.999 dec_ce 2.1011 diversity 0.0124 | 4.4 it/s
+step    6400 | cos 0.5101 | thought 0.9351 dec_ce 1.9735 diversity 0.0107 | 4.5 it/s
+step    6450 | cos 0.5096 | thought 1.074 dec_ce 2.25 diversity 0.0112 | 4.4 it/s
+step    6500 | cos 0.5071 | thought 0.9592 dec_ce 2.0948 diversity 0.0082 | 4.4 it/s
+step    6500 | VAL cos 0.5198 | VAL dec CE 3.9223
+step    6550 | cos 0.5041 | thought 0.9976 dec_ce 2.1105 diversity 0.0115 | 3.5 it/s
+step    6600 | cos 0.5064 | thought 0.9961 dec_ce 2.137 diversity 0.0126 | 4.5 it/s
+step    6650 | cos 0.5066 | thought 0.9764 dec_ce 1.9572 diversity 0.0108 | 4.3 it/s
+step    6700 | cos 0.5099 | thought 0.9596 dec_ce 2.1031 diversity 0.0109 | 4.5 it/s
+step    6750 | cos 0.5073 | thought 0.9664 dec_ce 2.0643 diversity 0.012 | 4.5 it/s
+step    6800 | cos 0.5068 | thought 1.0273 dec_ce 2.2015 diversity 0.0123 | 4.5 it/s
+step    6850 | cos 0.5063 | thought 0.9972 dec_ce 1.9998 diversity 0.0114 | 4.4 it/s
+step    6900 | cos 0.5120 | thought 1.0027 dec_ce 2.1044 diversity 0.0116 | 4.5 it/s
+step    6950 | cos 0.5067 | thought 1.0185 dec_ce 2.0259 diversity 0.0111 | 4.5 it/s
+step    7000 | cos 0.5090 | thought 1.0193 dec_ce 2.3955 diversity 0.0125 | 4.4 it/s
+step    7000 | VAL cos 0.5204 | VAL dec CE 3.9181
+step    7050 | cos 0.5011 | thought 0.9603 dec_ce 1.8779 diversity 0.0104 | 3.6 it/s
+step    7100 | cos 0.5114 | thought 0.9304 dec_ce 2.0776 diversity 0.0115 | 4.5 it/s
+step    7150 | cos 0.5098 | thought 1.0202 dec_ce 2.0197 diversity 0.0097 | 4.5 it/s
+step    7200 | cos 0.5086 | thought 1.0229 dec_ce 2.1168 diversity 0.0112 | 4.5 it/s
+step    7250 | cos 0.5085 | thought 1.0811 dec_ce 2.3753 diversity 0.0124 | 4.4 it/s
+step    7300 | cos 0.5109 | thought 0.9603 dec_ce 2.0756 diversity 0.0118 | 4.4 it/s
+step    7350 | cos 0.5122 | thought 0.9494 dec_ce 1.9022 diversity 0.0116 | 4.6 it/s
+step    7400 | cos 0.5105 | thought 0.9452 dec_ce 1.9131 diversity 0.0095 | 4.6 it/s
+step    7450 | cos 0.5067 | thought 0.9569 dec_ce 2.1076 diversity 0.0123 | 4.4 it/s
+step    7500 | cos 0.5121 | thought 0.98 dec_ce 2.1242 diversity 0.0119 | 4.4 it/s
+step    7500 | VAL cos 0.5211 | VAL dec CE 3.9166
+step    7550 | cos 0.5107 | thought 0.9856 dec_ce 2.0795 diversity 0.0093 | 3.6 it/s
+step    7600 | cos 0.5089 | thought 1.0036 dec_ce 2.2051 diversity 0.0108 | 4.5 it/s
+step    7650 | cos 0.5082 | thought 0.9996 dec_ce 2.1895 diversity 0.0118 | 4.4 it/s
+step    7700 | cos 0.5061 | thought 1.0017 dec_ce 2.0756 diversity 0.0104 | 4.5 it/s
+step    7750 | cos 0.5059 | thought 0.981 dec_ce 1.9937 diversity 0.0127 | 4.6 it/s
+step    7800 | cos 0.5059 | thought 1.0282 dec_ce 2.1262 diversity 0.0119 | 4.5 it/s
+step    7850 | cos 0.5071 | thought 1.0082 dec_ce 2.0914 diversity 0.0145 | 4.4 it/s
+step    7900 | cos 0.5073 | thought 1.0535 dec_ce 2.3153 diversity 0.0137 | 4.5 it/s
+step    7950 | cos 0.5101 | thought 0.9845 dec_ce 2.1013 diversity 0.0117 | 4.4 it/s
+step    8000 | cos 0.5086 | thought 0.975 dec_ce 2.0041 diversity 0.0122 | 4.5 it/s
+step    8000 | VAL cos 0.5184 | VAL dec CE 3.9172
+step    8050 | cos 0.5103 | thought 0.9624 dec_ce 2.0042 diversity 0.0111 | 3.7 it/s
+step    8100 | cos 0.5118 | thought 0.9667 dec_ce 2.0146 diversity 0.013 | 4.6 it/s
+step    8150 | cos 0.5082 | thought 0.9609 dec_ce 1.9043 diversity 0.0094 | 4.5 it/s
+step    8200 | cos 0.5096 | thought 0.9377 dec_ce 2.0155 diversity 0.0111 | 4.4 it/s
+step    8250 | cos 0.5126 | thought 0.9538 dec_ce 1.9358 diversity 0.0088 | 4.4 it/s
+step    8300 | cos 0.5086 | thought 0.988 dec_ce 2.1541 diversity 0.0136 | 4.4 it/s
+step    8350 | cos 0.5095 | thought 0.9799 dec_ce 1.9639 diversity 0.0091 | 4.5 it/s
+step    8400 | cos 0.5084 | thought 1.0168 dec_ce 2.1829 diversity 0.0126 | 4.4 it/s
+step    8450 | cos 0.5095 | thought 0.9839 dec_ce 1.9914 diversity 0.0095 | 4.5 it/s
+step    8500 | cos 0.5106 | thought 0.9889 dec_ce 2.0761 diversity 0.0136 | 4.5 it/s
+step    8500 | VAL cos 0.5213 | VAL dec CE 3.9092
+step    8550 | cos 0.5069 | thought 1.011 dec_ce 2.1326 diversity 0.0131 | 3.6 it/s
+step    8600 | cos 0.5097 | thought 0.9301 dec_ce 1.9177 diversity 0.0118 | 4.4 it/s
+step    8650 | cos 0.5097 | thought 1.0452 dec_ce 2.2095 diversity 0.0145 | 4.6 it/s
+step    8700 | cos 0.5080 | thought 1.004 dec_ce 2.0708 diversity 0.0108 | 4.4 it/s
+step    8750 | cos 0.5106 | thought 0.946 dec_ce 2.1065 diversity 0.015 | 4.5 it/s
+step    8800 | cos 0.5091 | thought 0.9691 dec_ce 2.1226 diversity 0.0101 | 4.4 it/s
+step    8850 | cos 0.5089 | thought 1.0002 dec_ce 2.2371 diversity 0.0146 | 4.4 it/s
+step    8900 | cos 0.5097 | thought 0.9978 dec_ce 2.227 diversity 0.0126 | 4.5 it/s
+step    8950 | cos 0.5070 | thought 1.0234 dec_ce 1.9884 diversity 0.0116 | 4.4 it/s
+step    9000 | cos 0.5123 | thought 1.0202 dec_ce 2.0355 diversity 0.0094 | 4.5 it/s
+step    9000 | VAL cos 0.5208 | VAL dec CE 3.9108
+step    9050 | cos 0.5106 | thought 0.9868 dec_ce 2.0933 diversity 0.0102 | 3.7 it/s
+step    9100 | cos 0.5101 | thought 0.9715 dec_ce 1.9998 diversity 0.0099 | 4.4 it/s
+step    9150 | cos 0.5131 | thought 1.0047 dec_ce 2.1828 diversity 0.0135 | 4.4 it/s
+step    9200 | cos 0.5132 | thought 0.9836 dec_ce 2.0501 diversity 0.0112 | 4.6 it/s
+step    9250 | cos 0.5099 | thought 1.0444 dec_ce 2.2539 diversity 0.012 | 4.5 it/s
+step    9300 | cos 0.5117 | thought 1.023 dec_ce 2.1368 diversity 0.0131 | 4.5 it/s
+step    9350 | cos 0.5112 | thought 0.9639 dec_ce 2.0427 diversity 0.0123 | 4.5 it/s
+step    9400 | cos 0.5082 | thought 1.0121 dec_ce 2.0916 diversity 0.0107 | 4.4 it/s
+step    9450 | cos 0.5073 | thought 1.0231 dec_ce 2.2283 diversity 0.0116 | 4.5 it/s
+step    9500 | cos 0.5094 | thought 0.9591 dec_ce 2.1005 diversity 0.0108 | 4.4 it/s
+step    9500 | VAL cos 0.5223 | VAL dec CE 3.9031
+step    9550 | cos 0.5106 | thought 0.9919 dec_ce 1.9888 diversity 0.0138 | 3.6 it/s
+step    9600 | cos 0.5107 | thought 1.0248 dec_ce 2.0528 diversity 0.0124 | 4.4 it/s
+step    9650 | cos 0.5119 | thought 1.0134 dec_ce 2.1912 diversity 0.0113 | 4.4 it/s
+step    9700 | cos 0.5112 | thought 1.0335 dec_ce 2.1175 diversity 0.0148 | 4.4 it/s
+step    9750 | cos 0.5140 | thought 0.9347 dec_ce 1.8123 diversity 0.0109 | 4.5 it/s
+step    9800 | cos 0.5066 | thought 0.9646 dec_ce 1.9448 diversity 0.0095 | 4.5 it/s
+step    9850 | cos 0.5114 | thought 1.0185 dec_ce 2.1025 diversity 0.0141 | 4.5 it/s
+step    9900 | cos 0.5099 | thought 1.0348 dec_ce 2.2284 diversity 0.0114 | 4.4 it/s
+step    9950 | cos 0.5121 | thought 0.9517 dec_ce 2.0212 diversity 0.0114 | 4.5 it/s
+step   10000 | cos 0.5076 | thought 0.9405 dec_ce 1.9196 diversity 0.0086 | 4.5 it/s
+step   10000 | VAL cos 0.5231 | VAL dec CE 3.8950
+step   10050 | cos 0.5134 | thought 0.9389 dec_ce 1.8951 diversity 0.014 | 3.5 it/s
+step   10100 | cos 0.5120 | thought 0.9581 dec_ce 1.9789 diversity 0.0119 | 4.5 it/s
+step   10150 | cos 0.5099 | thought 0.9278 dec_ce 2.0511 diversity 0.0135 | 4.4 it/s
+step   10200 | cos 0.5118 | thought 1.0005 dec_ce 2.0419 diversity 0.0117 | 4.4 it/s
+step   10250 | cos 0.5073 | thought 0.929 dec_ce 2.0363 diversity 0.0133 | 4.4 it/s
+step   10300 | cos 0.5056 | thought 1.021 dec_ce 2.1622 diversity 0.0152 | 4.4 it/s
+step   10350 | cos 0.5131 | thought 1.0124 dec_ce 2.0898 diversity 0.0104 | 4.4 it/s
+step   10400 | cos 0.5067 | thought 0.9526 dec_ce 2.0299 diversity 0.0128 | 4.3 it/s
+step   10450 | cos 0.5066 | thought 1.0237 dec_ce 2.0524 diversity 0.0112 | 4.5 it/s
+step   10500 | cos 0.5094 | thought 1.0407 dec_ce 2.2741 diversity 0.0141 | 4.4 it/s
+step   10500 | VAL cos 0.5244 | VAL dec CE 3.9050
+step   10550 | cos 0.5076 | thought 1.0513 dec_ce 2.0817 diversity 0.0126 | 3.6 it/s
+step   10600 | cos 0.5101 | thought 0.9661 dec_ce 2.1217 diversity 0.0112 | 4.4 it/s
+step   10650 | cos 0.5118 | thought 1.0122 dec_ce 2.2615 diversity 0.0152 | 4.5 it/s
+step   10700 | cos 0.5105 | thought 1.013 dec_ce 2.1925 diversity 0.0125 | 4.4 it/s
+step   10750 | cos 0.5158 | thought 0.9707 dec_ce 1.9701 diversity 0.0135 | 4.4 it/s
+step   10800 | cos 0.5112 | thought 1.0216 dec_ce 2.1688 diversity 0.0118 | 4.5 it/s
+step   10850 | cos 0.5106 | thought 1.0188 dec_ce 2.289 diversity 0.0145 | 4.3 it/s
+step   10900 | cos 0.5120 | thought 0.9349 dec_ce 1.9517 diversity 0.0132 | 4.3 it/s
+step   10950 | cos 0.5110 | thought 1.0218 dec_ce 2.1687 diversity 0.0133 | 4.4 it/s
+step   11000 | cos 0.5109 | thought 1.0163 dec_ce 2.2707 diversity 0.0121 | 4.4 it/s
+step   11000 | VAL cos 0.5240 | VAL dec CE 3.8876
+step   11050 | cos 0.5132 | thought 0.9653 dec_ce 2.0333 diversity 0.013 | 3.6 it/s
+step   11100 | cos 0.5096 | thought 1.0315 dec_ce 2.2271 diversity 0.0153 | 4.4 it/s
+step   11150 | cos 0.5115 | thought 0.9708 dec_ce 2.0333 diversity 0.0101 | 4.4 it/s
+step   11200 | cos 0.5136 | thought 0.9467 dec_ce 1.923 diversity 0.0107 | 4.4 it/s
+step   11250 | cos 0.5125 | thought 0.975 dec_ce 1.9966 diversity 0.0112 | 4.6 it/s
+step   11300 | cos 0.5131 | thought 1.0224 dec_ce 2.0962 diversity 0.0097 | 4.6 it/s
+step   11350 | cos 0.5138 | thought 0.9461 dec_ce 1.9256 diversity 0.0116 | 4.5 it/s
+step   11400 | cos 0.5127 | thought 0.9666 dec_ce 1.9417 diversity 0.0092 | 4.4 it/s
+step   11450 | cos 0.5092 | thought 1.0218 dec_ce 2.0929 diversity 0.0102 | 4.4 it/s
+step   11500 | cos 0.5119 | thought 0.9662 dec_ce 1.9884 diversity 0.0098 | 4.4 it/s
+step   11500 | VAL cos 0.5238 | VAL dec CE 3.8851
+step   11550 | cos 0.5154 | thought 0.9993 dec_ce 2.1173 diversity 0.0125 | 3.7 it/s
+step   11600 | cos 0.5098 | thought 1.0281 dec_ce 2.1985 diversity 0.0121 | 4.5 it/s
+step   11650 | cos 0.5121 | thought 0.9914 dec_ce 2.0637 diversity 0.0139 | 4.3 it/s
+step   11700 | cos 0.5127 | thought 0.9381 dec_ce 1.8618 diversity 0.0097 | 4.6 it/s
+step   11750 | cos 0.5116 | thought 0.9589 dec_ce 2.1537 diversity 0.0126 | 4.4 it/s
+step   11800 | cos 0.5108 | thought 0.9625 dec_ce 1.9468 diversity 0.0096 | 4.5 it/s
+step   11850 | cos 0.5087 | thought 1.0415 dec_ce 2.088 diversity 0.0114 | 4.4 it/s
+step   11900 | cos 0.5085 | thought 0.9646 dec_ce 1.8942 diversity 0.0091 | 4.4 it/s
+step   11950 | cos 0.5125 | thought 0.9841 dec_ce 1.9491 diversity 0.0097 | 4.4 it/s
+step   12000 | cos 0.5188 | thought 0.9983 dec_ce 2.1458 diversity 0.0134 | 4.5 it/s
+step   12000 | VAL cos 0.5258 | VAL dec CE 3.8814
+step   12050 | cos 0.5127 | thought 1.0111 dec_ce 2.1753 diversity 0.0162 | 3.6 it/s
+step   12100 | cos 0.5144 | thought 0.9941 dec_ce 2.0609 diversity 0.0113 | 4.3 it/s
+step   12150 | cos 0.5166 | thought 0.9493 dec_ce 1.9059 diversity 0.0107 | 4.4 it/s
+step   12200 | cos 0.5147 | thought 0.9809 dec_ce 2.0839 diversity 0.0117 | 4.4 it/s
+step   12250 | cos 0.5168 | thought 0.9638 dec_ce 1.9548 diversity 0.013 | 4.5 it/s
+step   12300 | cos 0.5144 | thought 0.9825 dec_ce 2.0761 diversity 0.012 | 4.6 it/s
+step   12350 | cos 0.5131 | thought 0.9804 dec_ce 2.0092 diversity 0.0123 | 4.5 it/s
+step   12400 | cos 0.5123 | thought 0.9515 dec_ce 1.9617 diversity 0.0096 | 4.5 it/s
+step   12450 | cos 0.5120 | thought 0.9885 dec_ce 2.0085 diversity 0.0152 | 4.5 it/s
+step   12500 | cos 0.5143 | thought 1.0512 dec_ce 2.0884 diversity 0.0117 | 4.5 it/s
+step   12500 | VAL cos 0.5242 | VAL dec CE 3.8773
+step   12550 | cos 0.5172 | thought 0.9833 dec_ce 2.0986 diversity 0.0123 | 3.7 it/s
+step   12600 | cos 0.5168 | thought 0.9755 dec_ce 2.1898 diversity 0.0153 | 4.5 it/s
+step   12650 | cos 0.5145 | thought 0.9944 dec_ce 2.1128 diversity 0.013 | 4.5 it/s
+step   12700 | cos 0.5159 | thought 0.969 dec_ce 2.0866 diversity 0.0145 | 4.6 it/s
+step   12750 | cos 0.5173 | thought 1.0239 dec_ce 2.1774 diversity 0.0129 | 4.3 it/s
+step   12800 | cos 0.5147 | thought 1.0054 dec_ce 2.1325 diversity 0.0131 | 4.4 it/s
+step   12850 | cos 0.5121 | thought 0.9831 dec_ce 2.1313 diversity 0.0148 | 4.4 it/s
+step   12900 | cos 0.5199 | thought 0.9789 dec_ce 2.177 diversity 0.0149 | 4.6 it/s
+step   12950 | cos 0.5171 | thought 0.9914 dec_ce 2.0349 diversity 0.0109 | 4.6 it/s
+step   13000 | cos 0.5151 | thought 0.9497 dec_ce 1.9874 diversity 0.0117 | 4.5 it/s
+step   13000 | VAL cos 0.5268 | VAL dec CE 3.8847
+step   13050 | cos 0.5162 | thought 1.0366 dec_ce 2.2547 diversity 0.0127 | 3.7 it/s
+step   13100 | cos 0.5162 | thought 0.9547 dec_ce 1.9758 diversity 0.0132 | 4.6 it/s
+step   13150 | cos 0.5144 | thought 1.0182 dec_ce 2.1177 diversity 0.0098 | 4.5 it/s
+step   13200 | cos 0.5190 | thought 0.9913 dec_ce 2.1052 diversity 0.0115 | 4.4 it/s
+step   13250 | cos 0.5119 | thought 0.9669 dec_ce 1.9452 diversity 0.0121 | 4.5 it/s
+step   13300 | cos 0.5174 | thought 1.0008 dec_ce 2.0376 diversity 0.0131 | 4.4 it/s
+step   13350 | cos 0.5126 | thought 0.9804 dec_ce 2.1389 diversity 0.0124 | 4.5 it/s
+step   13400 | cos 0.5153 | thought 0.9566 dec_ce 2.0669 diversity 0.0138 | 4.4 it/s
+step   13450 | cos 0.5166 | thought 0.9775 dec_ce 2.1792 diversity 0.0124 | 4.4 it/s
+step   13500 | cos 0.5160 | thought 0.9773 dec_ce 2.0132 diversity 0.0113 | 4.4 it/s
+step   13500 | VAL cos 0.5258 | VAL dec CE 3.8815
+step   13550 | cos 0.5150 | thought 0.9811 dec_ce 1.9629 diversity 0.0132 | 3.7 it/s
+step   13600 | cos 0.5136 | thought 1.0192 dec_ce 2.1954 diversity 0.0161 | 4.4 it/s
+step   13650 | cos 0.5151 | thought 0.9678 dec_ce 2.1853 diversity 0.0137 | 4.4 it/s
+step   13700 | cos 0.5175 | thought 0.9529 dec_ce 1.9019 diversity 0.0115 | 4.5 it/s
+step   13750 | cos 0.5142 | thought 0.9809 dec_ce 1.9117 diversity 0.0103 | 4.3 it/s
+step   13800 | cos 0.5121 | thought 0.9646 dec_ce 1.989 diversity 0.0138 | 4.4 it/s
+step   13850 | cos 0.5144 | thought 0.9998 dec_ce 2.0899 diversity 0.0124 | 4.5 it/s
+step   13900 | cos 0.5138 | thought 1.0033 dec_ce 2.0785 diversity 0.0121 | 4.4 it/s
+step   13950 | cos 0.5132 | thought 0.997 dec_ce 2.3252 diversity 0.0141 | 4.3 it/s
+step   14000 | cos 0.5157 | thought 1.0088 dec_ce 2.246 diversity 0.0118 | 4.4 it/s
+step   14000 | VAL cos 0.5275 | VAL dec CE 3.8664
+step   14050 | cos 0.5151 | thought 0.9625 dec_ce 2.0933 diversity 0.0127 | 3.6 it/s
+step   14100 | cos 0.5117 | thought 1.0035 dec_ce 2.0723 diversity 0.0136 | 4.5 it/s
+step   14150 | cos 0.5163 | thought 0.9364 dec_ce 2.0763 diversity 0.0117 | 4.4 it/s
+step   14200 | cos 0.5145 | thought 0.9439 dec_ce 2.0279 diversity 0.0132 | 4.5 it/s
+step   14250 | cos 0.5096 | thought 0.9633 dec_ce 2.0085 diversity 0.0119 | 4.3 it/s
+step   14300 | cos 0.5144 | thought 0.9457 dec_ce 1.9745 diversity 0.014 | 4.4 it/s
+step   14350 | cos 0.5140 | thought 0.9857 dec_ce 2.0399 diversity 0.0103 | 4.5 it/s
+step   14400 | cos 0.5179 | thought 0.96 dec_ce 2.0164 diversity 0.014 | 4.5 it/s
+step   14450 | cos 0.5133 | thought 0.9907 dec_ce 2.102 diversity 0.0111 | 4.3 it/s
+step   14500 | cos 0.5163 | thought 0.9519 dec_ce 2.1626 diversity 0.0162 | 4.4 it/s
+step   14500 | VAL cos 0.5262 | VAL dec CE 3.8733
+step   14550 | cos 0.5182 | thought 1.0004 dec_ce 2.2958 diversity 0.0157 | 3.6 it/s
+step   14600 | cos 0.5163 | thought 0.9828 dec_ce 2.0639 diversity 0.0127 | 4.5 it/s
+step   14650 | cos 0.5189 | thought 0.9872 dec_ce 2.0942 diversity 0.0121 | 4.4 it/s
+step   14700 | cos 0.5149 | thought 0.9892 dec_ce 1.9875 diversity 0.0133 | 4.5 it/s
+step   14750 | cos 0.5138 | thought 0.9918 dec_ce 1.9985 diversity 0.0105 | 4.3 it/s
+step   14800 | cos 0.5144 | thought 0.963 dec_ce 2.076 diversity 0.0119 | 4.4 it/s
+step   14850 | cos 0.5154 | thought 1.0049 dec_ce 2.0247 diversity 0.0122 | 4.5 it/s
+step   14900 | cos 0.5186 | thought 0.9618 dec_ce 2.135 diversity 0.0132 | 4.5 it/s
+step   14950 | cos 0.5176 | thought 0.9529 dec_ce 1.9504 diversity 0.0132 | 4.5 it/s
+step   15000 | cos 0.5138 | thought 0.99 dec_ce 2.1111 diversity 0.0095 | 4.4 it/s
+step   15000 | VAL cos 0.5273 | VAL dec CE 3.8674
+step   15050 | cos 0.5153 | thought 0.9626 dec_ce 2.0535 diversity 0.0117 | 3.7 it/s
+step   15100 | cos 0.5153 | thought 0.9926 dec_ce 2.0858 diversity 0.012 | 4.4 it/s
+step   15150 | cos 0.5174 | thought 0.9257 dec_ce 1.9137 diversity 0.0123 | 4.5 it/s
+step   15200 | cos 0.5169 | thought 0.9651 dec_ce 1.9377 diversity 0.0129 | 4.6 it/s
+step   15250 | cos 0.5184 | thought 0.9484 dec_ce 2.0713 diversity 0.0143 | 4.5 it/s
+step   15300 | cos 0.5200 | thought 0.951 dec_ce 1.9209 diversity 0.0108 | 4.6 it/s
+step   15350 | cos 0.5154 | thought 1.0041 dec_ce 2.0348 diversity 0.0143 | 4.4 it/s
+step   15400 | cos 0.5129 | thought 1.0079 dec_ce 2.1444 diversity 0.0146 | 4.4 it/s
+step   15450 | cos 0.5161 | thought 0.9405 dec_ce 1.8681 diversity 0.012 | 4.5 it/s
+step   15500 | cos 0.5191 | thought 0.9973 dec_ce 2.1222 diversity 0.0134 | 4.4 it/s
+step   15500 | VAL cos 0.5276 | VAL dec CE 3.8578
+step   15550 | cos 0.5146 | thought 0.9739 dec_ce 1.9198 diversity 0.0091 | 3.6 it/s
+step   15600 | cos 0.5154 | thought 1.0108 dec_ce 2.3138 diversity 0.0139 | 4.5 it/s
+step   15650 | cos 0.5170 | thought 0.9801 dec_ce 2.045 diversity 0.0147 | 4.5 it/s
+step   15700 | cos 0.5114 | thought 0.9778 dec_ce 1.9512 diversity 0.0112 | 4.3 it/s
+step   15750 | cos 0.5171 | thought 0.9231 dec_ce 1.8404 diversity 0.0133 | 4.5 it/s
+step   15800 | cos 0.5157 | thought 0.9439 dec_ce 1.938 diversity 0.0137 | 4.5 it/s
+step   15850 | cos 0.5145 | thought 0.951 dec_ce 2.0511 diversity 0.014 | 4.5 it/s
+step   15900 | cos 0.5140 | thought 0.9747 dec_ce 2.1199 diversity 0.0124 | 4.5 it/s
+step   15950 | cos 0.5155 | thought 0.9768 dec_ce 2.0314 diversity 0.012 | 4.5 it/s
+step   16000 | cos 0.5185 | thought 0.9231 dec_ce 1.9293 diversity 0.0134 | 4.6 it/s
+step   16000 | VAL cos 0.5282 | VAL dec CE 3.8587
+step   16050 | cos 0.5176 | thought 0.9522 dec_ce 1.9405 diversity 0.0111 | 3.7 it/s
+step   16100 | cos 0.5150 | thought 1.0066 dec_ce 2.251 diversity 0.0149 | 4.4 it/s
+step   16150 | cos 0.5169 | thought 0.963 dec_ce 1.8839 diversity 0.0129 | 4.4 it/s
+step   16200 | cos 0.5134 | thought 1.0362 dec_ce 2.0457 diversity 0.0122 | 4.3 it/s
+step   16250 | cos 0.5169 | thought 0.9861 dec_ce 1.9626 diversity 0.0104 | 4.5 it/s
+step   16300 | cos 0.5181 | thought 0.9704 dec_ce 2.079 diversity 0.0145 | 4.6 it/s
+step   16350 | cos 0.5157 | thought 0.9397 dec_ce 1.9388 diversity 0.0135 | 4.3 it/s
+step   16400 | cos 0.5163 | thought 1.0156 dec_ce 2.2935 diversity 0.0136 | 4.5 it/s
+step   16450 | cos 0.5162 | thought 0.9834 dec_ce 2.0542 diversity 0.0125 | 4.4 it/s
+step   16500 | cos 0.5176 | thought 0.9814 dec_ce 2.1065 diversity 0.0125 | 4.4 it/s
+step   16500 | VAL cos 0.5283 | VAL dec CE 3.8634
+step   16550 | cos 0.5166 | thought 1.0104 dec_ce 2.2532 diversity 0.0161 | 3.7 it/s
+step   16600 | cos 0.5170 | thought 0.9455 dec_ce 2.035 diversity 0.0156 | 4.4 it/s
+step   16650 | cos 0.5173 | thought 0.9335 dec_ce 1.8643 diversity 0.0123 | 4.4 it/s
+step   16700 | cos 0.5180 | thought 0.98 dec_ce 1.9359 diversity 0.0119 | 4.6 it/s
+step   16750 | cos 0.5165 | thought 0.9776 dec_ce 2.0091 diversity 0.0138 | 4.4 it/s
+step   16800 | cos 0.5166 | thought 0.9906 dec_ce 2.1962 diversity 0.0141 | 4.4 it/s
+step   16850 | cos 0.5148 | thought 0.9929 dec_ce 1.8882 diversity 0.0102 | 4.4 it/s
+step   16900 | cos 0.5155 | thought 0.9569 dec_ce 1.9815 diversity 0.0134 | 4.4 it/s
+step   16950 | cos 0.5195 | thought 0.9781 dec_ce 1.9447 diversity 0.0105 | 4.5 it/s
+step   17000 | cos 0.5152 | thought 0.9342 dec_ce 1.9607 diversity 0.0134 | 4.3 it/s
+step   17000 | VAL cos 0.5286 | VAL dec CE 3.8663
+step   17050 | cos 0.5132 | thought 0.9893 dec_ce 2.0393 diversity 0.0123 | 3.7 it/s
+step   17100 | cos 0.5196 | thought 0.9637 dec_ce 2.087 diversity 0.0124 | 4.4 it/s
+step   17150 | cos 0.5168 | thought 0.9651 dec_ce 1.9959 diversity 0.0126 | 4.4 it/s
+step   17200 | cos 0.5202 | thought 0.925 dec_ce 1.8548 diversity 0.0128 | 4.4 it/s
+step   17250 | cos 0.5202 | thought 0.9886 dec_ce 2.0734 diversity 0.0129 | 4.6 it/s
+step   17300 | cos 0.5176 | thought 0.9376 dec_ce 1.8608 diversity 0.0144 | 4.5 it/s
+step   17350 | cos 0.5123 | thought 1.0337 dec_ce 2.2377 diversity 0.0146 | 4.4 it/s
+step   17400 | cos 0.5173 | thought 0.9749 dec_ce 1.9821 diversity 0.0141 | 4.4 it/s
+step   17450 | cos 0.5183 | thought 0.9765 dec_ce 2.0864 diversity 0.0115 | 4.4 it/s
+step   17500 | cos 0.5170 | thought 1.0056 dec_ce 2.0729 diversity 0.0119 | 4.4 it/s
+step   17500 | VAL cos 0.5283 | VAL dec CE 3.8556
+step   17550 | cos 0.5196 | thought 0.9784 dec_ce 1.953 diversity 0.0105 | 3.6 it/s
+step   17600 | cos 0.5192 | thought 0.9734 dec_ce 2.0175 diversity 0.013 | 4.5 it/s
+step   17650 | cos 0.5156 | thought 0.9701 dec_ce 2.0755 diversity 0.0124 | 4.4 it/s
+step   17700 | cos 0.5136 | thought 0.9475 dec_ce 2.0242 diversity 0.0132 | 4.6 it/s
+step   17750 | cos 0.5171 | thought 1.0131 dec_ce 2.2169 diversity 0.017 | 4.4 it/s
+step   17800 | cos 0.5182 | thought 0.9625 dec_ce 2.0099 diversity 0.0117 | 4.4 it/s
+step   17850 | cos 0.5155 | thought 0.9593 dec_ce 1.9694 diversity 0.014 | 4.4 it/s
+step   17900 | cos 0.5195 | thought 0.9678 dec_ce 2.007 diversity 0.0144 | 4.4 it/s
+step   17950 | cos 0.5150 | thought 0.9065 dec_ce 1.9801 diversity 0.0121 | 4.4 it/s
+step   18000 | cos 0.5151 | thought 1.0333 dec_ce 2.065 diversity 0.0147 | 4.4 it/s
+step   18000 | VAL cos 0.5289 | VAL dec CE 3.8630
+step   18050 | cos 0.5185 | thought 0.9538 dec_ce 2.0785 diversity 0.0143 | 3.6 it/s
+step   18100 | cos 0.5206 | thought 0.9349 dec_ce 2.0945 diversity 0.014 | 4.4 it/s
+step   18150 | cos 0.5181 | thought 1.0013 dec_ce 2.0779 diversity 0.014 | 4.4 it/s
+step   18200 | cos 0.5152 | thought 1.0115 dec_ce 2.1162 diversity 0.0165 | 4.5 it/s
+step   18250 | cos 0.5196 | thought 0.9377 dec_ce 1.8567 diversity 0.0118 | 4.4 it/s
+step   18300 | cos 0.5206 | thought 0.9857 dec_ce 2.0727 diversity 0.0123 | 4.4 it/s
+step   18350 | cos 0.5192 | thought 0.979 dec_ce 2.1309 diversity 0.0133 | 4.4 it/s
+step   18400 | cos 0.5160 | thought 1.0106 dec_ce 2.1808 diversity 0.0138 | 4.4 it/s
+step   18450 | cos 0.5189 | thought 0.9855 dec_ce 2.0166 diversity 0.0117 | 4.4 it/s
+step   18500 | cos 0.5135 | thought 1.0185 dec_ce 2.1204 diversity 0.0112 | 4.5 it/s
+step   18500 | VAL cos 0.5297 | VAL dec CE 3.8548
+step   18550 | cos 0.5189 | thought 0.9655 dec_ce 2.162 diversity 0.0148 | 3.6 it/s
+step   18600 | cos 0.5142 | thought 1.0126 dec_ce 2.0833 diversity 0.0149 | 4.4 it/s
+step   18650 | cos 0.5225 | thought 0.9691 dec_ce 2.1214 diversity 0.0152 | 4.5 it/s
+step   18700 | cos 0.5173 | thought 0.987 dec_ce 2.0186 diversity 0.0129 | 4.3 it/s
+step   18750 | cos 0.5178 | thought 0.9863 dec_ce 2.0581 diversity 0.013 | 4.4 it/s
+step   18800 | cos 0.5224 | thought 0.9956 dec_ce 2.165 diversity 0.0133 | 4.5 it/s
+step   18850 | cos 0.5180 | thought 0.9683 dec_ce 2.0831 diversity 0.0119 | 4.5 it/s
+step   18900 | cos 0.5196 | thought 1.0151 dec_ce 2.0272 diversity 0.0122 | 4.5 it/s
+step   18950 | cos 0.5173 | thought 0.9957 dec_ce 2.0739 diversity 0.0131 | 4.3 it/s
+step   19000 | cos 0.5175 | thought 0.9918 dec_ce 2.0079 diversity 0.0118 | 4.5 it/s
+step   19000 | VAL cos 0.5298 | VAL dec CE 3.8454
+step   19050 | cos 0.5162 | thought 0.979 dec_ce 1.9792 diversity 0.0139 | 3.6 it/s
+step   19100 | cos 0.5203 | thought 0.9906 dec_ce 1.9512 diversity 0.0136 | 4.5 it/s
+step   19150 | cos 0.5194 | thought 0.9584 dec_ce 1.9969 diversity 0.0139 | 4.4 it/s
+step   19200 | cos 0.5180 | thought 0.9554 dec_ce 2.0619 diversity 0.0138 | 4.4 it/s
+step   19250 | cos 0.5193 | thought 0.9866 dec_ce 2.0294 diversity 0.0126 | 4.4 it/s
+step   19300 | cos 0.5178 | thought 1.0285 dec_ce 2.1338 diversity 0.013 | 4.4 it/s
+step   19350 | cos 0.5158 | thought 1.0249 dec_ce 2.1328 diversity 0.0129 | 4.4 it/s
+step   19400 | cos 0.5207 | thought 0.9815 dec_ce 2.0342 diversity 0.0126 | 4.5 it/s
+step   19450 | cos 0.5132 | thought 1.0065 dec_ce 2.0847 diversity 0.013 | 4.5 it/s
+step   19500 | cos 0.5190 | thought 0.9675 dec_ce 2.0337 diversity 0.0126 | 4.4 it/s
+step   19500 | VAL cos 0.5302 | VAL dec CE 3.8530
+step   19550 | cos 0.5172 | thought 1.0184 dec_ce 1.9979 diversity 0.0118 | 3.7 it/s
+step   19600 | cos 0.5190 | thought 0.9388 dec_ce 2.0124 diversity 0.0139 | 4.4 it/s
+step   19650 | cos 0.5167 | thought 0.9871 dec_ce 1.9464 diversity 0.0119 | 4.3 it/s
+step   19700 | cos 0.5187 | thought 0.9653 dec_ce 1.9741 diversity 0.0134 | 4.4 it/s
+step   19750 | cos 0.5216 | thought 0.9731 dec_ce 2.0742 diversity 0.0161 | 4.3 it/s
+step   19800 | cos 0.5163 | thought 0.9449 dec_ce 1.9406 diversity 0.0116 | 4.4 it/s
+step   19850 | cos 0.5186 | thought 1.0189 dec_ce 2.29 diversity 0.0176 | 4.4 it/s
+step   19900 | cos 0.5193 | thought 0.9723 dec_ce 2.148 diversity 0.0141 | 4.5 it/s
+step   19950 | cos 0.5210 | thought 0.9297 dec_ce 1.9005 diversity 0.0134 | 4.4 it/s
+step   20000 | cos 0.5148 | thought 0.948 dec_ce 2.0567 diversity 0.0175 | 4.4 it/s
+step   20000 | VAL cos 0.5302 | VAL dec CE 3.8456
+step   20050 | cos 0.5221 | thought 0.938 dec_ce 1.914 diversity 0.011 | 3.7 it/s
+step   20100 | cos 0.5193 | thought 0.9543 dec_ce 1.8965 diversity 0.0118 | 4.3 it/s
+step   20150 | cos 0.5202 | thought 0.9931 dec_ce 2.0962 diversity 0.0123 | 4.4 it/s
+step   20200 | cos 0.5159 | thought 0.9805 dec_ce 2.1228 diversity 0.0148 | 4.5 it/s
+step   20250 | cos 0.5147 | thought 0.9643 dec_ce 1.8898 diversity 0.0133 | 4.3 it/s
+step   20300 | cos 0.5189 | thought 1.0254 dec_ce 2.1537 diversity 0.0172 | 4.5 it/s
+step   20350 | cos 0.5173 | thought 0.9957 dec_ce 1.984 diversity 0.0158 | 4.4 it/s
+step   20400 | cos 0.5187 | thought 1.0146 dec_ce 2.2384 diversity 0.0141 | 4.6 it/s
+step   20450 | cos 0.5221 | thought 0.978 dec_ce 2.1331 diversity 0.0121 | 4.5 it/s
+step   20500 | cos 0.5200 | thought 0.9553 dec_ce 2.1649 diversity 0.0171 | 4.4 it/s
+step   20500 | VAL cos 0.5306 | VAL dec CE 3.8419
+step   20550 | cos 0.5163 | thought 0.924 dec_ce 1.9648 diversity 0.0122 | 3.6 it/s
+step   20600 | cos 0.5184 | thought 0.9456 dec_ce 2.0412 diversity 0.0129 | 4.4 it/s
+step   20650 | cos 0.5218 | thought 0.9903 dec_ce 2.0373 diversity 0.0148 | 4.5 it/s
+step   20700 | cos 0.5189 | thought 0.9294 dec_ce 1.9069 diversity 0.0137 | 4.5 it/s
+step   20750 | cos 0.5167 | thought 0.9365 dec_ce 1.9756 diversity 0.0139 | 4.3 it/s
+step   20800 | cos 0.5186 | thought 1.0088 dec_ce 2.1482 diversity 0.0124 | 4.5 it/s
+step   20850 | cos 0.5181 | thought 0.8959 dec_ce 1.8029 diversity 0.0108 | 4.5 it/s
+step   20900 | cos 0.5191 | thought 0.9738 dec_ce 2.0798 diversity 0.0137 | 4.5 it/s
+step   20950 | cos 0.5157 | thought 0.9474 dec_ce 1.9484 diversity 0.0137 | 4.4 it/s
+step   21000 | cos 0.5190 | thought 0.9441 dec_ce 1.9469 diversity 0.0139 | 4.5 it/s
+step   21000 | VAL cos 0.5308 | VAL dec CE 3.8376
+step   21050 | cos 0.5179 | thought 0.9998 dec_ce 2.0819 diversity 0.015 | 3.6 it/s
+step   21100 | cos 0.5193 | thought 1.0062 dec_ce 2.1943 diversity 0.0114 | 4.3 it/s
+step   21150 | cos 0.5195 | thought 0.9932 dec_ce 2.2197 diversity 0.0152 | 4.4 it/s
+step   21200 | cos 0.5165 | thought 0.946 dec_ce 2.0271 diversity 0.0143 | 4.4 it/s
+step   21250 | cos 0.5197 | thought 1.0346 dec_ce 2.3553 diversity 0.015 | 4.3 it/s
+step   21300 | cos 0.5196 | thought 0.9997 dec_ce 2.0685 diversity 0.014 | 4.6 it/s
+step   21350 | cos 0.5170 | thought 0.9834 dec_ce 1.9436 diversity 0.0146 | 4.5 it/s
+step   21400 | cos 0.5190 | thought 0.9557 dec_ce 2.0695 diversity 0.012 | 4.6 it/s
+step   21450 | cos 0.5206 | thought 1.0074 dec_ce 2.0626 diversity 0.0144 | 4.6 it/s
+step   21500 | cos 0.5189 | thought 1.0458 dec_ce 2.0993 diversity 0.0131 | 4.5 it/s
+step   21500 | VAL cos 0.5313 | VAL dec CE 3.8338
+step   21550 | cos 0.5187 | thought 1.0036 dec_ce 2.0875 diversity 0.0153 | 3.7 it/s
+step   21600 | cos 0.5178 | thought 0.9997 dec_ce 1.9939 diversity 0.0131 | 4.6 it/s
+step   21650 | cos 0.5217 | thought 1.0107 dec_ce 2.1358 diversity 0.0152 | 4.5 it/s
+step   21700 | cos 0.5201 | thought 0.9727 dec_ce 2.0825 diversity 0.0147 | 4.6 it/s
+step   21750 | cos 0.5189 | thought 0.9823 dec_ce 2.1776 diversity 0.0126 | 4.6 it/s
+step   21800 | cos 0.5182 | thought 0.9756 dec_ce 1.9656 diversity 0.0153 | 4.6 it/s
+step   21850 | cos 0.5214 | thought 0.9918 dec_ce 2.1181 diversity 0.0148 | 4.6 it/s
+step   21900 | cos 0.5215 | thought 0.9523 dec_ce 1.9562 diversity 0.0136 | 4.6 it/s
+step   21950 | cos 0.5172 | thought 1.0197 dec_ce 2.2795 diversity 0.0165 | 4.6 it/s
+step   22000 | cos 0.5204 | thought 0.9867 dec_ce 2.1504 diversity 0.0134 | 4.6 it/s
+step   22000 | VAL cos 0.5305 | VAL dec CE 3.8380
+step   22050 | cos 0.5161 | thought 1.0031 dec_ce 2.0435 diversity 0.0118 | 3.7 it/s
+step   22100 | cos 0.5204 | thought 0.9637 dec_ce 2.0502 diversity 0.0113 | 4.7 it/s
+step   22150 | cos 0.5216 | thought 0.9736 dec_ce 2.0839 diversity 0.013 | 4.5 it/s
+step   22200 | cos 0.5219 | thought 0.9961 dec_ce 2.1206 diversity 0.0124 | 4.7 it/s
+step   22250 | cos 0.5162 | thought 0.9777 dec_ce 2.0876 diversity 0.0128 | 4.5 it/s
+step   22300 | cos 0.5202 | thought 0.9394 dec_ce 1.8541 diversity 0.0138 | 4.6 it/s
+step   22350 | cos 0.5216 | thought 0.9866 dec_ce 2.0251 diversity 0.0121 | 4.6 it/s
+step   22400 | cos 0.5186 | thought 0.9884 dec_ce 2.1734 diversity 0.0151 | 4.6 it/s
+step   22450 | cos 0.5181 | thought 0.9661 dec_ce 1.9915 diversity 0.0148 | 4.5 it/s
+step   22500 | cos 0.5190 | thought 0.9815 dec_ce 2.0517 diversity 0.014 | 4.6 it/s
+step   22500 | VAL cos 0.5318 | VAL dec CE 3.8422
+step   22550 | cos 0.5172 | thought 1.01 dec_ce 2.1658 diversity 0.014 | 3.8 it/s
+step   22600 | cos 0.5208 | thought 0.9761 dec_ce 1.9958 diversity 0.0104 | 4.5 it/s
+step   22650 | cos 0.5190 | thought 0.9425 dec_ce 2.1824 diversity 0.0135 | 4.5 it/s
+step   22700 | cos 0.5195 | thought 0.9854 dec_ce 2.0487 diversity 0.0152 | 4.5 it/s
+step   22750 | cos 0.5208 | thought 1.0041 dec_ce 2.0692 diversity 0.0124 | 4.3 it/s
+step   22800 | cos 0.5191 | thought 1.02 dec_ce 2.1819 diversity 0.013 | 4.4 it/s
+step   22850 | cos 0.5180 | thought 0.9192 dec_ce 1.9357 diversity 0.0129 | 4.4 it/s
+step   22900 | cos 0.5197 | thought 0.9753 dec_ce 2.071 diversity 0.0142 | 4.5 it/s
+step   22950 | cos 0.5178 | thought 1.0148 dec_ce 1.9757 diversity 0.0136 | 4.4 it/s
+step   23000 | cos 0.5212 | thought 0.9722 dec_ce 2.2387 diversity 0.0158 | 4.3 it/s
+step   23000 | VAL cos 0.5319 | VAL dec CE 3.8391
+step   23050 | cos 0.5223 | thought 0.9322 dec_ce 1.9087 diversity 0.0142 | 3.7 it/s
+step   23100 | cos 0.5183 | thought 0.9829 dec_ce 1.9929 diversity 0.011 | 4.4 it/s
+step   23150 | cos 0.5194 | thought 1.0092 dec_ce 2.0624 diversity 0.0136 | 4.5 it/s
+step   23200 | cos 0.5218 | thought 0.97 dec_ce 2.2299 diversity 0.0152 | 4.3 it/s
+step   23250 | cos 0.5260 | thought 0.9739 dec_ce 1.9854 diversity 0.0157 | 4.6 it/s
+step   23300 | cos 0.5216 | thought 0.9344 dec_ce 1.8884 diversity 0.0125 | 4.3 it/s
+step   23350 | cos 0.5180 | thought 1.0067 dec_ce 2.1075 diversity 0.0141 | 4.4 it/s
+step   23400 | cos 0.5250 | thought 1.0311 dec_ce 2.1506 diversity 0.0139 | 4.5 it/s
+step   23450 | cos 0.5279 | thought 0.9927 dec_ce 1.9793 diversity 0.0133 | 4.6 it/s
+step   23500 | cos 0.5204 | thought 0.9866 dec_ce 2.0507 diversity 0.015 | 4.4 it/s
+step   23500 | VAL cos 0.5318 | VAL dec CE 3.8393
+step   23550 | cos 0.5243 | thought 0.9299 dec_ce 1.8739 diversity 0.012 | 3.6 it/s
+step   23600 | cos 0.5226 | thought 0.9476 dec_ce 1.8914 diversity 0.0147 | 4.4 it/s
+step   23650 | cos 0.5207 | thought 1.0101 dec_ce 2.0524 diversity 0.0152 | 4.3 it/s
+step   23700 | cos 0.5210 | thought 0.9861 dec_ce 2.1498 diversity 0.0151 | 4.3 it/s
+step   23750 | cos 0.5239 | thought 0.958 dec_ce 1.9678 diversity 0.0148 | 4.4 it/s
+step   23800 | cos 0.5250 | thought 0.9232 dec_ce 1.9117 diversity 0.0133 | 4.5 it/s
+step   23850 | cos 0.5256 | thought 0.9598 dec_ce 1.9433 diversity 0.0128 | 4.5 it/s
+step   23900 | cos 0.5211 | thought 0.9855 dec_ce 2.1868 diversity 0.0147 | 4.4 it/s
+step   23950 | cos 0.5219 | thought 1.0247 dec_ce 2.0741 diversity 0.0136 | 4.3 it/s
+step   24000 | cos 0.5252 | thought 0.9231 dec_ce 1.8122 diversity 0.0118 | 4.4 it/s
+step   24000 | VAL cos 0.5315 | VAL dec CE 3.8342
+step   24050 | cos 0.5246 | thought 0.9354 dec_ce 1.9611 diversity 0.0142 | 3.7 it/s
+step   24100 | cos 0.5207 | thought 0.9787 dec_ce 1.987 diversity 0.0115 | 4.4 it/s
+step   24150 | cos 0.5240 | thought 0.9408 dec_ce 2.0345 diversity 0.0145 | 4.4 it/s
+step   24200 | cos 0.5219 | thought 0.9549 dec_ce 1.9992 diversity 0.0154 | 4.4 it/s
+step   24250 | cos 0.5227 | thought 0.9751 dec_ce 2.0065 diversity 0.0124 | 4.4 it/s
+step   24300 | cos 0.5232 | thought 0.9323 dec_ce 1.8495 diversity 0.0134 | 4.4 it/s
+step   24350 | cos 0.5238 | thought 0.9724 dec_ce 1.9127 diversity 0.0131 | 4.4 it/s
+step   24400 | cos 0.5279 | thought 0.9723 dec_ce 2.1062 diversity 0.0163 | 4.4 it/s
+step   24450 | cos 0.5197 | thought 1.0028 dec_ce 1.9866 diversity 0.0145 | 4.3 it/s
+step   24500 | cos 0.5184 | thought 0.9557 dec_ce 1.9699 diversity 0.0104 | 4.4 it/s
+step   24500 | VAL cos 0.5319 | VAL dec CE 3.8360
+step   24550 | cos 0.5206 | thought 0.9233 dec_ce 1.9477 diversity 0.0136 | 3.8 it/s
+step   24600 | cos 0.5211 | thought 0.948 dec_ce 1.9139 diversity 0.0134 | 4.5 it/s
+step   24650 | cos 0.5257 | thought 1.0225 dec_ce 2.18 diversity 0.0128 | 4.6 it/s
+step   24700 | cos 0.5231 | thought 0.9542 dec_ce 1.9353 diversity 0.0132 | 4.5 it/s
+step   24750 | cos 0.5242 | thought 0.9709 dec_ce 2.0439 diversity 0.0135 | 4.4 it/s
+step   24800 | cos 0.5224 | thought 0.9803 dec_ce 2.021 diversity 0.0129 | 4.5 it/s
+step   24850 | cos 0.5236 | thought 0.9773 dec_ce 1.9986 diversity 0.0127 | 4.6 it/s
+step   24900 | cos 0.5231 | thought 0.9531 dec_ce 1.8844 diversity 0.0128 | 4.6 it/s
+step   24950 | cos 0.5233 | thought 0.9823 dec_ce 1.9943 diversity 0.014 | 4.5 it/s
+step   25000 | cos 0.5229 | thought 0.9622 dec_ce 2.1447 diversity 0.0153 | 4.4 it/s
+step   25000 | VAL cos 0.5326 | VAL dec CE 3.8303
+step   25050 | cos 0.5222 | thought 1.0081 dec_ce 2.2018 diversity 0.0168 | 3.7 it/s
+step   25100 | cos 0.5187 | thought 0.9681 dec_ce 1.9262 diversity 0.0107 | 4.4 it/s
+step   25150 | cos 0.5208 | thought 0.9752 dec_ce 2.1861 diversity 0.0146 | 4.4 it/s
+step   25200 | cos 0.5254 | thought 0.9733 dec_ce 2.0338 diversity 0.0119 | 4.4 it/s
+step   25250 | cos 0.5246 | thought 0.9475 dec_ce 2.0388 diversity 0.0158 | 4.4 it/s
+step   25300 | cos 0.5212 | thought 0.9692 dec_ce 1.9822 diversity 0.0132 | 4.4 it/s
+step   25350 | cos 0.5250 | thought 0.9103 dec_ce 1.8924 diversity 0.0133 | 4.5 it/s
+step   25400 | cos 0.5282 | thought 1.0254 dec_ce 2.1785 diversity 0.0141 | 4.4 it/s
+step   25450 | cos 0.5215 | thought 0.9901 dec_ce 2.0459 diversity 0.0131 | 4.3 it/s
+step   25500 | cos 0.5232 | thought 0.9932 dec_ce 1.9837 diversity 0.0116 | 4.3 it/s
+step   25500 | VAL cos 0.5326 | VAL dec CE 3.8197
+step   25550 | cos 0.5260 | thought 0.944 dec_ce 2.0188 diversity 0.0147 | 3.7 it/s
+step   25600 | cos 0.5211 | thought 0.9277 dec_ce 1.8425 diversity 0.013 | 4.4 it/s
+step   25650 | cos 0.5246 | thought 0.9602 dec_ce 2.0204 diversity 0.0138 | 4.5 it/s
+step   25700 | cos 0.5247 | thought 0.9689 dec_ce 1.9773 diversity 0.0137 | 4.5 it/s
+step   25750 | cos 0.5215 | thought 0.9982 dec_ce 2.1514 diversity 0.0148 | 4.5 it/s
+step   25800 | cos 0.5196 | thought 1.0082 dec_ce 2.3377 diversity 0.0145 | 4.4 it/s
+step   25850 | cos 0.5238 | thought 0.951 dec_ce 1.9819 diversity 0.0145 | 4.4 it/s
+step   25900 | cos 0.5213 | thought 0.9864 dec_ce 2.0949 diversity 0.0163 | 4.5 it/s
+step   25950 | cos 0.5198 | thought 0.9872 dec_ce 2.0393 diversity 0.0137 | 4.4 it/s
+step   26000 | cos 0.5255 | thought 0.9356 dec_ce 1.8947 diversity 0.0142 | 4.5 it/s
+step   26000 | VAL cos 0.5328 | VAL dec CE 3.8221
+step   26050 | cos 0.5206 | thought 1.0221 dec_ce 2.0882 diversity 0.0154 | 3.5 it/s
+step   26100 | cos 0.5225 | thought 0.9145 dec_ce 1.8506 diversity 0.016 | 4.4 it/s
+step   26150 | cos 0.5222 | thought 0.9784 dec_ce 2.0377 diversity 0.0138 | 4.4 it/s
+step   26200 | cos 0.5294 | thought 0.9421 dec_ce 1.9881 diversity 0.015 | 4.4 it/s
+step   26250 | cos 0.5204 | thought 0.9533 dec_ce 1.9509 diversity 0.0129 | 4.3 it/s
+step   26300 | cos 0.5278 | thought 0.9198 dec_ce 1.8469 diversity 0.0126 | 4.4 it/s
+step   26350 | cos 0.5200 | thought 0.9911 dec_ce 1.9811 diversity 0.0138 | 4.3 it/s
+step   26400 | cos 0.5182 | thought 0.9213 dec_ce 1.9162 diversity 0.0139 | 4.5 it/s
+step   26450 | cos 0.5234 | thought 0.9721 dec_ce 2.0537 diversity 0.0158 | 4.4 it/s
+step   26500 | cos 0.5238 | thought 0.9471 dec_ce 2.0039 diversity 0.012 | 4.5 it/s
+step   26500 | VAL cos 0.5329 | VAL dec CE 3.8246
+step   26550 | cos 0.5234 | thought 0.9402 dec_ce 2.0629 diversity 0.0181 | 3.7 it/s
+step   26600 | cos 0.5277 | thought 0.9956 dec_ce 2.132 diversity 0.0176 | 4.5 it/s
+step   26650 | cos 0.5247 | thought 0.9752 dec_ce 1.9362 diversity 0.0128 | 4.4 it/s
+step   26700 | cos 0.5245 | thought 0.9876 dec_ce 2.0227 diversity 0.015 | 4.4 it/s
+step   26750 | cos 0.5247 | thought 0.9095 dec_ce 1.7403 diversity 0.0138 | 4.5 it/s
+step   26800 | cos 0.5209 | thought 0.9303 dec_ce 2.0762 diversity 0.0168 | 4.4 it/s
+step   26850 | cos 0.5222 | thought 0.9879 dec_ce 2.061 diversity 0.017 | 4.5 it/s
+step   26900 | cos 0.5253 | thought 0.9598 dec_ce 2.0523 diversity 0.0156 | 4.4 it/s
+step   26950 | cos 0.5201 | thought 0.9261 dec_ce 1.9915 diversity 0.0159 | 4.5 it/s
+step   27000 | cos 0.5258 | thought 0.9756 dec_ce 1.9002 diversity 0.0134 | 4.5 it/s
+step   27000 | VAL cos 0.5330 | VAL dec CE 3.8147
+step   27050 | cos 0.5237 | thought 0.9888 dec_ce 2.2094 diversity 0.0182 | 3.6 it/s
+step   27100 | cos 0.5269 | thought 0.9436 dec_ce 2.0371 diversity 0.0144 | 4.5 it/s
+step   27150 | cos 0.5216 | thought 1.0193 dec_ce 2.0922 diversity 0.0142 | 4.5 it/s
+step   27200 | cos 0.5239 | thought 0.9673 dec_ce 1.976 diversity 0.0131 | 4.4 it/s
+step   27250 | cos 0.5219 | thought 0.9941 dec_ce 2.1298 diversity 0.017 | 4.4 it/s
+step   27300 | cos 0.5255 | thought 0.9759 dec_ce 2.1817 diversity 0.0183 | 4.5 it/s
+step   27350 | cos 0.5228 | thought 0.9689 dec_ce 1.9509 diversity 0.0138 | 4.4 it/s
+step   27400 | cos 0.5262 | thought 0.91 dec_ce 1.8787 diversity 0.0154 | 4.6 it/s
+step   27450 | cos 0.5197 | thought 0.9458 dec_ce 1.8792 diversity 0.0138 | 4.6 it/s
+step   27500 | cos 0.5258 | thought 0.9517 dec_ce 2.0197 diversity 0.0152 | 4.6 it/s
+step   27500 | VAL cos 0.5334 | VAL dec CE 3.8239
+step   27550 | cos 0.5214 | thought 0.9886 dec_ce 2.1307 diversity 0.0161 | 3.7 it/s
+step   27600 | cos 0.5222 | thought 0.974 dec_ce 1.954 diversity 0.0132 | 4.6 it/s
+step   27650 | cos 0.5245 | thought 0.9712 dec_ce 1.9934 diversity 0.0145 | 4.5 it/s
+step   27700 | cos 0.5246 | thought 0.9676 dec_ce 1.8459 diversity 0.0114 | 4.6 it/s
+step   27750 | cos 0.5242 | thought 0.99 dec_ce 2.1583 diversity 0.0139 | 4.6 it/s
+step   27800 | cos 0.5277 | thought 0.9632 dec_ce 1.9738 diversity 0.0141 | 4.6 it/s
+step   27850 | cos 0.5223 | thought 1.0243 dec_ce 2.2004 diversity 0.0176 | 4.5 it/s
+step   27900 | cos 0.5244 | thought 0.9394 dec_ce 2.0648 diversity 0.0154 | 4.6 it/s
+step   27950 | cos 0.5239 | thought 0.9135 dec_ce 1.8728 diversity 0.0148 | 4.6 it/s
+step   28000 | cos 0.5263 | thought 0.9464 dec_ce 2.0106 diversity 0.0174 | 4.5 it/s
+step   28000 | VAL cos 0.5338 | VAL dec CE 3.8208
+step   28050 | cos 0.5224 | thought 0.9677 dec_ce 2.1246 diversity 0.0134 | 3.7 it/s
+step   28100 | cos 0.5211 | thought 0.9667 dec_ce 2.0583 diversity 0.0164 | 4.6 it/s
+step   28150 | cos 0.5303 | thought 0.9377 dec_ce 2.0064 diversity 0.014 | 4.7 it/s
+step   28200 | cos 0.5252 | thought 0.9403 dec_ce 1.9812 diversity 0.0127 | 4.6 it/s
+step   28250 | cos 0.5269 | thought 0.9227 dec_ce 2.0486 diversity 0.0164 | 4.6 it/s
+step   28300 | cos 0.5237 | thought 1.0393 dec_ce 2.1296 diversity 0.0141 | 4.5 it/s
+step   28350 | cos 0.5242 | thought 0.9845 dec_ce 2.108 diversity 0.0139 | 4.6 it/s
+step   28400 | cos 0.5225 | thought 1.009 dec_ce 2.1333 diversity 0.0161 | 4.6 it/s
+step   28450 | cos 0.5226 | thought 1.0256 dec_ce 2.0271 diversity 0.0158 | 4.7 it/s
+step   28500 | cos 0.5244 | thought 1.0001 dec_ce 2.0028 diversity 0.0174 | 4.6 it/s
+step   28500 | VAL cos 0.5338 | VAL dec CE 3.8202
+step   28550 | cos 0.5267 | thought 0.9581 dec_ce 2.0211 diversity 0.0181 | 3.9 it/s
+step   28600 | cos 0.5275 | thought 0.9492 dec_ce 2.0799 diversity 0.0146 | 4.6 it/s
+step   28650 | cos 0.5228 | thought 0.9635 dec_ce 1.9762 diversity 0.017 | 4.6 it/s
+step   28700 | cos 0.5266 | thought 0.9256 dec_ce 2.0151 diversity 0.0127 | 4.6 it/s
+step   28750 | cos 0.5253 | thought 0.9682 dec_ce 2.1465 diversity 0.0172 | 4.6 it/s
+step   28800 | cos 0.5220 | thought 0.9682 dec_ce 1.9958 diversity 0.0124 | 4.5 it/s
+step   28850 | cos 0.5242 | thought 1.027 dec_ce 2.0105 diversity 0.0134 | 4.6 it/s
+step   28900 | cos 0.5247 | thought 0.996 dec_ce 2.0046 diversity 0.014 | 4.7 it/s
+step   28950 | cos 0.5253 | thought 0.9468 dec_ce 1.8478 diversity 0.0119 | 4.7 it/s
+step   29000 | cos 0.5218 | thought 0.9714 dec_ce 2.0495 diversity 0.0149 | 4.6 it/s
+step   29000 | VAL cos 0.5336 | VAL dec CE 3.8178
+step   29050 | cos 0.5247 | thought 0.9403 dec_ce 2.0072 diversity 0.0161 | 3.8 it/s
+step   29100 | cos 0.5273 | thought 0.9346 dec_ce 1.9162 diversity 0.014 | 4.7 it/s
+step   29150 | cos 0.5246 | thought 0.9893 dec_ce 2.0076 diversity 0.0126 | 4.6 it/s
+step   29200 | cos 0.5276 | thought 0.9323 dec_ce 2.0429 diversity 0.0161 | 4.7 it/s
+step   29250 | cos 0.5266 | thought 0.9742 dec_ce 2.0502 diversity 0.0136 | 4.6 it/s
+step   29300 | cos 0.5255 | thought 0.9881 dec_ce 2.0954 diversity 0.0135 | 4.7 it/s
+step   29350 | cos 0.5251 | thought 1.0111 dec_ce 2.0689 diversity 0.0165 | 4.6 it/s
+step   29400 | cos 0.5199 | thought 1.0038 dec_ce 2.0563 diversity 0.0147 | 4.5 it/s
+step   29450 | cos 0.5260 | thought 0.9596 dec_ce 2.0731 diversity 0.0129 | 4.6 it/s
+step   29500 | cos 0.5262 | thought 0.923 dec_ce 1.8704 diversity 0.0139 | 4.6 it/s
+step   29500 | VAL cos 0.5339 | VAL dec CE 3.8135
+step   29550 | cos 0.5203 | thought 0.9888 dec_ce 2.1031 diversity 0.0154 | 3.8 it/s
+step   29600 | cos 0.5222 | thought 0.9766 dec_ce 2.0813 diversity 0.0146 | 4.6 it/s
+step   29650 | cos 0.5252 | thought 0.9966 dec_ce 2.1213 diversity 0.0156 | 4.5 it/s
+step   29700 | cos 0.5251 | thought 0.9603 dec_ce 2.0306 diversity 0.0131 | 4.5 it/s
+step   29750 | cos 0.5261 | thought 1.0056 dec_ce 2.0524 diversity 0.0167 | 4.7 it/s
+step   29800 | cos 0.5250 | thought 0.9391 dec_ce 2.0594 diversity 0.0155 | 4.6 it/s
+step   29850 | cos 0.5248 | thought 0.9607 dec_ce 2.0645 diversity 0.0133 | 4.6 it/s
+step   29900 | cos 0.5213 | thought 0.9445 dec_ce 2.0124 diversity 0.0147 | 4.5 it/s
+step   29950 | cos 0.5225 | thought 0.9679 dec_ce 2.1558 diversity 0.0165 | 4.5 it/s
+step   30000 | cos 0.5265 | thought 0.9526 dec_ce 2.061 diversity 0.0169 | 4.7 it/s
+step   30000 | VAL cos 0.5338 | VAL dec CE 3.8131
+step   30050 | cos 0.5256 | thought 0.9837 dec_ce 2.1716 diversity 0.0151 | 3.8 it/s
+step   30100 | cos 0.5266 | thought 0.9674 dec_ce 1.9618 diversity 0.0163 | 4.7 it/s
+step   30150 | cos 0.5256 | thought 1.0074 dec_ce 2.0509 diversity 0.0161 | 4.6 it/s
+step   30200 | cos 0.5191 | thought 0.9324 dec_ce 1.9678 diversity 0.013 | 4.5 it/s
+step   30250 | cos 0.5221 | thought 0.9637 dec_ce 2.0276 diversity 0.0148 | 4.6 it/s
+step   30300 | cos 0.5247 | thought 1.0212 dec_ce 2.2435 diversity 0.0162 | 4.6 it/s
+step   30350 | cos 0.5206 | thought 0.9861 dec_ce 2.0108 diversity 0.0138 | 4.7 it/s
+step   30400 | cos 0.5229 | thought 1.0396 dec_ce 2.2802 diversity 0.0158 | 4.7 it/s
+step   30450 | cos 0.5180 | thought 1.0081 dec_ce 2.1072 diversity 0.0146 | 4.5 it/s
+step   30500 | cos 0.5268 | thought 0.9437 dec_ce 1.9817 diversity 0.0145 | 4.7 it/s
+step   30500 | VAL cos 0.5340 | VAL dec CE 3.8207
+step   30550 | cos 0.5232 | thought 0.9781 dec_ce 1.8806 diversity 0.0133 | 3.8 it/s
+step   30600 | cos 0.5244 | thought 0.9749 dec_ce 2.0924 diversity 0.0151 | 4.8 it/s
+step   30650 | cos 0.5226 | thought 0.9306 dec_ce 1.8865 diversity 0.0133 | 4.6 it/s
+step   30700 | cos 0.5279 | thought 0.9382 dec_ce 1.9829 diversity 0.0152 | 4.6 it/s
+step   30750 | cos 0.5237 | thought 0.9779 dec_ce 2.0484 diversity 0.0154 | 4.7 it/s
+step   30800 | cos 0.5227 | thought 1.0174 dec_ce 2.1396 diversity 0.0144 | 4.5 it/s
+step   30850 | cos 0.5233 | thought 0.9619 dec_ce 2.0548 diversity 0.013 | 4.5 it/s
+step   30900 | cos 0.5232 | thought 0.9934 dec_ce 2.0702 diversity 0.0159 | 4.6 it/s
+step   30950 | cos 0.5217 | thought 0.9714 dec_ce 1.9378 diversity 0.0133 | 4.6 it/s
+step   31000 | cos 0.5238 | thought 0.95 dec_ce 1.869 diversity 0.0131 | 4.7 it/s
+step   31000 | VAL cos 0.5336 | VAL dec CE 3.8157
+step   31050 | cos 0.5300 | thought 0.9796 dec_ce 2.0009 diversity 0.0143 | 3.8 it/s
+step   31100 | cos 0.5228 | thought 0.9775 dec_ce 1.9739 diversity 0.0167 | 4.5 it/s
+step   31150 | cos 0.5244 | thought 0.9259 dec_ce 1.9881 diversity 0.0167 | 4.6 it/s
+step   31200 | cos 0.5237 | thought 0.9818 dec_ce 2.1015 diversity 0.0132 | 4.6 it/s
+step   31250 | cos 0.5267 | thought 0.9454 dec_ce 2.048 diversity 0.0144 | 4.6 it/s
+step   31300 | cos 0.5233 | thought 0.9579 dec_ce 2.1055 diversity 0.0153 | 4.6 it/s
+wall-clock cap reached at step 31322
+
+Run 'R4_DIV' done: 31322 steps | final val cos 0.5343 | dec CE 3.8133
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{"ckpt": "checkpoints/R4_DIV/best.pt", "val_cos": 0.403, "val_dec_ce": 4.0133, "ref_f1": 0.2693, "distinct1": 0.0095, "distinct2": 0.0382, "len_ratio": 1.055, "out_vectors": 8.0, "rows": 1024}

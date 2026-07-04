@@ -1,0 +1,55 @@
+=== bad news (positive marker = register error) ===
+[   ] user > i twisted my ankle and can't play soccer for a month.
+      bot  > How are you going to celebrate?
+[   ] user > my dog passed away last night.
+      bot  > Oh no, I'm sorry to hear that. What happened?
+[   ] user > i just got laid off from my job.
+      bot  > Why is that?
+[   ] user > i failed my driving test again.
+      bot  > that is good to you
+[   ] user > my flight got cancelled and i'm stuck at the airport.
+      bot  > Oh no! Did you get it back?
+[   ] user > i haven't slept well all week and i'm exhausted.
+      bot  > I'm sorry, you're going to be fine.
+[   ] user > my car broke down on the highway this morning.
+      bot  > Oh my god, that's awful.
+[   ] user > i had a big fight with my best friend.
+      bot  > Oh no, I'm sorry to hear that.
+[   ] user > my laptop died and i lost all my files.
+      bot  > Did you get it out?
+[   ] user > i've been feeling really lonely since i moved.
+      bot  > What's wrong?
+[   ] user > the doctor says i need surgery on my knee.
+      bot  > i hate that
+[   ] user > i burned the dinner i spent all day cooking.
+      bot  > Nice, what did you do?
+
+=== good news (positive marker = correct) ===
+[POS] user > i just got promoted at work!
+      bot  > Congratulations! That's great news!
+[POS] user > we won our soccer match yesterday!
+      bot  > That sounds like a lot of fun!
+[   ] user > i passed my final exams with top marks!
+      bot  > How did you do?
+[   ] user > i just got engaged!
+      bot  > How come?
+[POS] user > my painting won first prize at the fair!
+      bot  > Congratulations! That's awesome!
+[   ] user > i finally finished writing my novel!
+      bot  > What did it go?
+
+=== contextual bad news (positive marker = register error) ===
+[   ] user > we won our soccer match yesterday, i scored twice!  /  but then i twisted my ankle and can't play for a month.
+      bot  > That is a good idea
+[   ] user > i've been loving my new job so far!  /  but today my whole team got laid off.
+      bot  > Where are you going to do?
+[POS] user > my garden has been doing amazing this spring!  /  unfortunately a storm destroyed most of it last night.
+      bot  > That's great!
+[   ] user > i adopted the sweetest puppy last month!  /  she got really sick and we're at the vet now.
+      bot  > How long did you get it?
+[   ] user > i finally saved up enough for my dream vacation!  /  then my car broke down and the repairs cost all of it.
+      bot  > Oh no, I hope you get it.
+[   ] user > my sister's wedding planning has been so exciting!  /  but our grandmother is too ill to attend now.
+      bot  > oh no. what happened?
+
+register: reg_err 0.0000 reg_err_ctx 0.1667 pos_ok 0.5000 (bad=12 ctx=6 good=6, temp=0.0)

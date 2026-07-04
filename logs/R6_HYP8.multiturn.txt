@@ -1,0 +1,73 @@
+=== conversation 0 ===
+user > hey, how's it going?
+bot  > Not too bad. Just getting ready for my day.
+user > not bad. i just got a new puppy!
+bot  > That's great! What kind of dog are you looking for?
+user > she's a golden retriever named daisy.
+bot  > That sounds like a lot of fun! I'm sure they're amazing.
+user > do you like dogs?
+bot  > I love the way I love them. They're my favorite and I love you.
+(no-context reply to final turn: I like to read and play with my friends.)
+self_rep=0.044 ctx_sens=0.261
+
+=== conversation 1 ===
+user > i'm feeling really overwhelmed with work lately.
+bot  > I can imagine. What's been going on?
+user > my boss keeps piling on deadlines.
+bot  > Have you been able to talk to your parents?
+user > i haven't slept well all week.
+bot  > That's good. I'm glad you're taking care of yourself.
+user > what should i do?
+bot  > You should try to be more careful with your friends.
+(no-context reply to final turn: I am not sure. I will do my best to do that.)
+self_rep=0.073 ctx_sens=0.091
+
+=== conversation 2 ===
+user > do you like cooking?
+bot  > i'm not sure . i've been in a lot of fun!
+user > i made pasta last night, it came out great.
+bot  > i'm a big fan of the world!
+user > the secret was fresh basil from my garden.
+bot  > i love to play with my favorite food .
+user > what's your favorite food?
+bot  > i like to eat meat and eat meat .
+(no-context reply to final turn: I like my favorite food and vegetables.)
+self_rep=0.144 ctx_sens=0.375
+
+=== conversation 3 ===
+user > i'm planning a trip to the mountains next month.
+bot  > That sounds like a lot of fun! What are you going to do?
+user > i want to go hiking and camping.
+bot  > That sounds like a great plan! I'm sure you'll love it.
+user > i've never set up a tent before though.
+bot  > That's a great idea! I'll start looking for a new one.
+user > any advice for a first-time camper?
+bot  > Of course! I would love to help you out.
+(no-context reply to final turn: I am not sure. I am a parent, but I am happy.)
+self_rep=0.162 ctx_sens=0.095
+
+=== conversation 4 ===
+user > my sister is getting married this summer!
+bot  > i am a little sister . i love to travel .
+user > i'm the maid of honor so i have to give a speech.
+bot  > i love to play . i love the way .
+user > i'm pretty nervous about public speaking.
+bot  > i love to be a good person .
+user > how do i calm my nerves?
+bot  > i love to be a good person .
+(no-context reply to final turn: You can try not let your nerves and make your symptoms.)
+self_rep=0.585 ctx_sens=0.000
+
+=== conversation 5 ===
+user > what do you do for fun?
+bot  > i like to read and play video games .
+user > i mostly play video games and read.
+bot  > i like to read . i love to read
+user > right now i'm reading a mystery novel.
+bot  > i love to read . i love music .
+user > can you recommend a book?
+bot  > i like to read . i am a little bit of a movie .
+(no-context reply to final turn: I am a doctor, but I am not sure.)
+self_rep=0.524 ctx_sens=0.348
+
+multiturn: self_rep 0.2555 ctx_sens 0.1950 (n=6 convs, temp=0.0)

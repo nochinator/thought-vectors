@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Checkpoints (model weights are large binaries)
+checkpoints/*.pt
+checkpoints/*.bin
+!checkpoints/gpt2_tokenizer.json
+
+# Tokenizer artifacts
+*.tokenizer.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# GPU core dumps
+gpucore.*
+
+# Logs
+*.log
+
+# Datasets are large; track the code, not the data
+datasets/
+
+# Legacy artifacts — extracted to legacy/ dir
+legacy/thought-vectors/scripts/artifacts/
+
+# Zip files
+*.zip

@@ -1,0 +1,18 @@
+{
+  "train": {
+    "tokenizer": "artifacts/tokenizer/spm16k_bpe.model",
+    "num_turns": 3283232,
+    "num_convs": 408230,
+    "total_tokens": 75975498,
+    "turn_len_mean": 23.14045976647401,
+    "turn_len_p90": 40.0
+  },
+  "val": {
+    "tokenizer": "artifacts/tokenizer/spm16k_bpe.model",
+    "num_turns": 33069,
+    "num_convs": 4106,
+    "total_tokens": 767232,
+    "turn_len_mean": 23.20094348181076,
+    "turn_len_p90": 40.0
+  }
+}

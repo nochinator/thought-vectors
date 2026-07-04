@@ -1,0 +1,73 @@
+=== conversation 0 ===
+user > hey, how's it going?
+bot  > Not too bad. Just been busy with work and you're going to.
+user > not bad. i just got a new puppy!
+bot  > I know, me too. I'm really happy with you.
+user > she's a golden retriever named daisy.
+bot  > I know. I'm really glad we were able to make it.
+user > do you like dogs?
+bot  > I like to read and see how much more often.
+(no-context reply to final turn: I like to read and see how much you have to do.)
+self_rep=0.130 ctx_sens=0.727
+
+=== conversation 1 ===
+user > i'm feeling really overwhelmed with work lately.
+bot  > It sounds like you're feeling really overwhelmed. What's been going on?
+user > my boss keeps piling on deadlines.
+bot  > It sounds like you're feeling overwhelmed. Have you been able to help?
+user > i haven't slept well all week.
+bot  > That sounds like a lot of stress. Have you been able to help?
+user > what should i do?
+bot  > You're not going to be able to help you.
+(no-context reply to final turn: You're not sure. You'll be able to help.)
+self_rep=0.361 ctx_sens=0.588
+
+=== conversation 2 ===
+user > do you like cooking?
+bot  > I like to read and play video games.
+user > i made pasta last night, it came out great.
+bot  > I'm not sure yet. I'll get it in the world
+user > the secret was fresh basil from my garden.
+bot  > That sounds like a great plan! I'm glad you had a lot.
+user > what's your favorite food?
+bot  > I'm really happy to have a lot of fun.
+(no-context reply to final turn: I'm really happy to help.)
+self_rep=0.101 ctx_sens=0.571
+
+=== conversation 3 ===
+user > i'm planning a trip to the mountains next month.
+bot  > I'm going to miss you too.
+user > i want to go hiking and camping.
+bot  > i'm sure i've been working on the beach
+user > i've never set up a tent before though.
+bot  > i'm a great day . i've been a great job .
+user > any advice for a first-time camper?
+bot  > i'm a great job . i've been a great day .
+(no-context reply to final turn: I'm not sure. I'll be able to help you.)
+self_rep=0.335 ctx_sens=0.100
+
+=== conversation 4 ===
+user > my sister is getting married this summer!
+bot  > i'm a big car . i've been a great day .
+user > i'm the maid of honor so i have to give a speech.
+bot  > i'm a great job . i've been a great day .
+user > i'm pretty nervous about public speaking.
+bot  > i'm a great job . i've been a great day .
+user > how do i calm my nerves?
+bot  > i'm a great job . i've been a great day .
+(no-context reply to final turn: You can be a good idea. You can't imagine my body.)
+self_rep=0.909 ctx_sens=0.091
+
+=== conversation 5 ===
+user > what do you do for fun?
+bot  > I like to read and play video games.
+user > i mostly play video games and read.
+bot  > i like to read a new car ?
+user > right now i'm reading a mystery novel.
+bot  > i'm a great job for you ?
+user > can you recommend a book?
+bot  > i'm a great job for a new job .
+(no-context reply to final turn: I can tell! What do you want to do?)
+self_rep=0.271 ctx_sens=0.000
+
+multiturn: self_rep 0.3512 ctx_sens 0.3463 (n=6 convs, temp=0.0)

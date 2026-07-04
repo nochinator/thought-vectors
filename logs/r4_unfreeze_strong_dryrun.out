@@ -1,0 +1,38 @@
+wall-clock cap reached at step 629
+
+Run 'R4_UNFREEZE_STRONG' done: 629 steps | final val cos 0.4459 | dec CE 3.7899
+--- guard ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{
+  "ckpt": "checkpoints/R4_UNFREEZE_STRONG/best.pt",
+  "verdict": "PASS",
+  "worst_delta": 0.0488,
+  "tol": 0.05,
+  "per_prefix": [
+    {
+      "k": 2,
+      "frozen_ce": 4.9181,
+      "modified_ce": 4.9669,
+      "delta": 0.0488
+    },
+    {
+      "k": 8,
+      "frozen_ce": 2.6382,
+      "modified_ce": 2.6479,
+      "delta": 0.0097
+    },
+    {
+      "k": 128,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": -0.0
+    },
+    {
+      "k": 256,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": 0.0
+    }
+  ]
+}

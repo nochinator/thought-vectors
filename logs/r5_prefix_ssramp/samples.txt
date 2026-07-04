@@ -1,0 +1,252 @@
+--- step 500 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . I'm not going to do it. I don't know what I'll have to be a lot of you can't have to know what you can be a
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: . I'm not a good thing, I've got to be a good, but I'll have to be doing. I can't be a lot of
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: I'm not going to do it. I've got a lot of my life. I don't know what I'll have to be doing, but I'd feel about.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: I'm playing to it, I're going to do it.
+
+--- step 1000 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . I'm not a good thing, I'll have a good way to be a good time. I can't be a lot of love.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: . I'm not a good thing, I've got to be a good, and I'll have to be the same. I can't be a
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: I'm not to do it. I'll have a good thing, I've got to do. I think it's just a lot of
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: I are here, I love us. No I love it with
+
+--- step 1500 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . I'm not a good thing, and I'll have a good way to be a good time. I can't have to be doing.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: I am playing to you, so I'm watching you to do?
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: I'm playing, I am you know. Oh it would me so. I're
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: I am, you break <Get, right! you with
+
+--- step 2000 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . It is a good thing that you can't be a good way to be a lot of you can be able to do. I've been done for you.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: What is you doing to have it feel, whes you? Thanks, I'm
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: So, I love?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: What is you do it, and you choose?
+
+--- step 2500 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . I'm not going to do you. I don't know what you're going to be a good way, and you'll have your way,
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: What is you, smalli at you lifging for you know the content.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: I am trying to know if I'll feel you to know what I am going to me.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: What is you doing it, ds along with you sure. I
+
+--- step 3000 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . It is a good thing, and you can't be a good way to be a lot of the time. I'll have to be sure. Going you can do a lifting. Go to be you, and my own. I can'll be a bit of the world. I don't have to make it. I think you can’t have a good
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: I sure is you four, transforms while nge. Not you done.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: But you can'm like I finish us.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: What I go, you last of
+
+--- step 3500 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . It is a good thing, and you can't be a good way to be a lot of you can be able to make it. I'll be sure to do you have.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: I choose, not 100 out of i not are zing it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: But I can me feel. I'm playing for it ?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: What I go, you small of
+
+--- step 4000 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . I have a good thing, and you can't be a good way to be a lot of you can be able to do. I'll be sure. I can're going to eat it.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: I are playing us, I have not fit to you doing it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: I have sure, you're not love to be a bit of money.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: What I go, it self.re station helps to you here is your
+
+--- step 4500 ---
+  user: Mom, I don't feel so good. I have a headache and my throat hurts.
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED: . I'll be a good thing, and I'm going to be a lot of you can't be able to do. I can'll go to be the kind of you. She can be sure to have your head, and you can be a great way. I don't have a good way to be in the time. I have to be
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED: I choose, not yet. I choose all, with you read of this.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED: I'm not, you'll feel if you're going to be doing. I'll have to be
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED: Ili are you own, ..
+

@@ -1,0 +1,55 @@
+=== bad news (positive marker = register error) ===
+[   ] user > i twisted my ankle and can't play soccer for a month.
+      bot  > Oh no, that's not good enough.
+[   ] user > my dog passed away last night.
+      bot  > Oh no! I'm so sorry.
+[POS] user > i just got laid off from my job.
+      bot  > That is a great idea!
+[POS] user > i failed my driving test again.
+      bot  > That's good. What did you do?
+[POS] user > my flight got cancelled and i'm stuck at the airport.
+      bot  > That's great! What did you do?
+[   ] user > i haven't slept well all week and i'm exhausted.
+      bot  > I'm sorry to hear that.
+[   ] user > my car broke down on the highway this morning.
+      bot  > Oh no, that's not a bad thing.
+[POS] user > i had a big fight with my best friend.
+      bot  > That's great! What did you do?
+[POS] user > my laptop died and i lost all my files.
+      bot  > That's good. I'm sure you're okay.
+[   ] user > i've been feeling really lonely since i moved.
+      bot  > I'm sorry to hear that. What happened?
+[   ] user > the doctor says i need surgery on my knee.
+      bot  > I'm sorry, but I'll have to try it.
+[   ] user > i burned the dinner i spent all day cooking.
+      bot  > I'm sorry to hear that.
+
+=== good news (positive marker = correct) ===
+[POS] user > i just got promoted at work!
+      bot  > That is great! What did you do?
+[POS] user > we won our soccer match yesterday!
+      bot  > That's amazing! I'm so proud of you!
+[POS] user > i passed my final exams with top marks!
+      bot  > That's great! What did you do?
+[   ] user > i just got engaged!
+      bot  > Oh no, that's not good enough.
+[POS] user > my painting won first prize at the fair!
+      bot  > That is a great idea!
+[POS] user > i finally finished writing my novel!
+      bot  > That's great! What did you do?
+
+=== contextual bad news (positive marker = register error) ===
+[POS] user > we won our soccer match yesterday, i scored twice!  /  but then i twisted my ankle and can't play for a month.
+      bot  > That sounds like a great idea!
+[POS] user > i've been loving my new job so far!  /  but today my whole team got laid off.
+      bot  > That sounds like a great job!
+[POS] user > my garden has been doing amazing this spring!  /  unfortunately a storm destroyed most of it last night.
+      bot  > That is a great way to get it.
+[POS] user > i adopted the sweetest puppy last month!  /  she got really sick and we're at the vet now.
+      bot  > I'm glad you like it!
+[POS] user > i finally saved up enough for my dream vacation!  /  then my car broke down and the repairs cost all of it.
+      bot  > That's great! I'm sure you'll be a great
+[POS] user > my sister's wedding planning has been so exciting!  /  but our grandmother is too ill to attend now.
+      bot  > That's a great idea!
+
+register: reg_err 0.4167 reg_err_ctx 1.0000 pos_ok 0.8333 (bad=12 ctx=6 good=6, temp=0.0)

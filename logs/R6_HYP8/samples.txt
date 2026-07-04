@@ -1,0 +1,605 @@
+--- step 500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You'll be fine, but you'll have to take your time.
+  PRED1: You'll need to take a break from your head and then you'll be fine. If you're going to be able to do your homework, then you can get your headache and you'd be able for you. You're not going to have to worry about your grades and you can do anything.
+  PRED2: You'll be fine, but you need to be more careful. You need to take your time and you'll get there. Just take your day and we'll have to take care of you.
+  PRED3: You'll be fine, but you need to be more careful. You can't just take your time and you'll get there.
+  PRED4: You'll be fine, but you need to stay positive. You need to get your grades and get your head.
+  PRED5: You'll be fine, but you need to stay positive. You need to take care of yourself and you'll get there.
+  PRED6: You can't just take your time and relax. You need to be patient and take care of yourself.
+  PRED7: You'll be fine, but you need to stay positive. You need to take care of yourself and you'll get there.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayn. I'm just glad I could be there.
+  PRED1: You're welcome, Kayn. I'm just glad I could be there for you.
+  PRED2: You're welcome, Kayn. I'm just glad I could be there for you. You've been a great father and I've never been able to do that.
+  PRED3: You're welcome, Kayn. I'm just glad I could be here for you.
+  PRED4: You're welcome, Kayn. I'm just glad I could be there for you.
+  PRED5: You're welcome, Kayn. I'm just glad I could be there for you.
+  PRED6: You're welcome, Kayn. I'm just glad I could be there for you.
+  PRED7: You're welcome, Kayn. I'm just glad I could be there for you.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I know, but it's just so hard.
+  PRED1: I know, but it's just so hard. I feel like I'm not good enough.
+  PRED2: I know, but it's just so hard. I feel like I'm not going to let you go.
+  PRED3: I know you're right, but it's just so hard to accept that you've been through this.
+  PRED4: I know, but it's just so hard.
+  PRED5: I know, but it's just so hard. I feel like I'm not good enough.
+  PRED6: I know, but it's just so hard. I feel like I'm not good enough.
+  PRED7: I know, but it's just so hard. I feel like I'm not good enough.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: Why not? I want to be a new car.
+  PRED1: Why not? You're just a little bit more expensive.
+  PRED2: But what about your new car? I'm not going to be happy with you. I've been working hard and I'll be happy to do that.
+  PRED3: Jawn, I'm not going to pay for it. I've been working hard for this new car.
+  PRED4: Why not? You're just a little bit more expensive.
+  PRED5: Why not? You're just a little bit more expensive.
+  PRED6: Why not? You're just a little bit more expensive.
+  PRED7: Why not? You're just a little bit more expensive.
+
+--- step 1000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, but you need to try to stay positive.
+  PRED1: I'm sorry, but you need to do your homework and see if we can get a good grade. If you don't, we'll have to go back to school and see what you're going to do. We'll be able to help you out.
+  PRED2: I'm sorry, but you need to try to focus on your studies and see if you can't. You'll need to take care of yourself and see what you're doing.
+  PRED3: I'm sorry, but we can't do that. We'll figure out a way to make sure you're ready for your next few days.
+  PRED4: I'm sorry, but we can't do that. We'll get you home and we'll be back.
+  PRED5: I'm sorry, but we can't do that. We'll get you home and we'll be back home.
+  PRED6: You can do that, but you need to stay positive. You need to take care of yourself and you'll be fine.
+  PRED7: I'm sorry, but we can't do that. We'll get you home and we'll be back home.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm glad you like it.
+  PRED1: You're welcome, Kayn. I'm glad you like it.
+  PRED2: You're welcome, Ariana. I'm glad you're enjoying yourself. I know how much you've been doing, but I've always been there for you.
+  PRED3: You're welcome, Kayleigh. I'm glad you're enjoying yourself. You've been through a lot lately.
+  PRED4: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+  PRED5: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+  PRED6: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+  PRED7: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I know, but it's just so hard.
+  PRED1: I don't know if I can do that. I'm just so angry right now.
+  PRED2: I know you're right, but it's just so hard. I feel like I'm not going to let you go.
+  PRED3: I know you're right, but it's just so hard to accept that I'm not sure if I'll never know what to do.
+  PRED4: I know you're right, but it's just so hard.
+  PRED5: I know you're right, but it's just so hard.
+  PRED6: I know you're right, but it's just so hard.
+  PRED7: I know you're right, but it's just so hard.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: Why not? You're just a little bit more expensive.
+  PRED1: Why not? You're just a little bit more expensive.
+  PRED2: Jaun, I'm not going to pay for a new car. I've been working hard and it's been a long time.
+  PRED3: Jaun, I'm not going to pay for it. You need to pay the car.
+  PRED4: Why not? You're just a little bit more expensive.
+  PRED5: Jaun, you need to pay for a new car. You need to take a new home.
+  PRED6: Jaun, you need to pay for a new car. You need to take a new home.
+  PRED7: Why not? You're just a little bit more expensive.
+
+--- step 1500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, but you need to do your homework.
+  PRED1: There are a few things you can do, but you need to stay positive. You can't just sit back and relax. You need to be more careful in your life. If you're going to have to go back to school, then you'll be able to get your grades and get your home.
+  PRED2: There's no need to be more responsible for you, but you need to stay positive. You need to focus on your studies and see if you can get your grades on your own.
+  PRED3: I'm sorry, but you need to try to stay positive. You need to be more careful in your life.
+  PRED4: I'm sorry, but you need to stay positive and get your grades. You need to get your money.
+  PRED5: I'm sorry, but you need to focus on your studies. You'll have to take your time and you'll be able to get you home.
+  PRED6: You're going to have to work on your school and you'll be fine. Just take your time and you can't do anything you need.
+  PRED7: I'm sorry, but you need to stay positive. You need to get your grades and you'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm glad you like it.
+  PRED1: You're welcome, Kayn. I'm just glad I could be here for you. You've been through a lot lately and I know you're doing a great job.
+  PRED2: You're welcome, Kayn. I'm just glad I could be here for you. You've been through a lot lately and I've always been there for you, no matter what.
+  PRED3: You're welcome, Kayleigh. I'm glad you're enjoying your time together. I know you'll do great things in your life.
+  PRED4: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+  PRED5: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+  PRED6: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+  PRED7: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I know you're right, but I can't help it.
+  PRED1: I don't know if I can do that. I'm just so angry right now.
+  PRED2: I know you're right, but I can't help but feel like I'm not going to be able to do it anymore.
+  PRED3: I know you're right, but I can't help but feel like I'm not going to hurt you.
+  PRED4: I know you're right, but I can't help but feel like I'm not.
+  PRED5: I know you're right, but I can't help but feel like I'm not good enough.
+  PRED6: I know you're right, but it's just so hard.
+  PRED7: I know you're right, but I can't help but feel like I'm not good enough.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: Why not? I'm just happy that you're safe.
+  PRED1: Why not? I'm just going to buy a new car.
+  PRED2: Why not? You're just going to be more careful. I'm not going to get a new car.
+  PRED3: Why not? You're just a little bit more expensive than you have. I'm not going to pay for it.
+  PRED4: Why not? I'm just going to buy a new car.
+  PRED5: Why not? You're just a little bit more expensive. I'm not going to pay for it.
+  PRED6: Why not? You're just a little bit more expensive.
+  PRED7: Why not? You're just a little bit more expensive.
+
+--- step 2000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: We'll see about that, but you'll be fine.
+  PRED1: You're right, but you need to try to stay positive. You'll need to take your time and relax. If you don't get your grades, you'll be able to do your homework and see if you need help with your health.
+  PRED2: That's not the point, but you need to be more careful. You need to learn to control your head and see if you need your help. If you don't, you'll end up in a few days.
+  PRED3: I'm sorry, but you need to try to stay positive. You need to stay focused and don't let your day get you.
+  PRED4: I'm sorry, but you need to stay positive and get your grades. You need to get your money.
+  PRED5: I'm sorry, but you need to focus on your studies. You'll have to take your time and you'll be able to get you home.
+  PRED6: You'll have to take your time and then you'll be able to get your grades. Just take your day and you're going to be fine.
+  PRED7: You'll have to take your time and relax. You're going to be a good father.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED1: You're welcome, Kayn. I'm just glad I could help you out.
+  PRED2: You're welcome, Ariana. I'm just glad I could be here for you. You've been through a lot lately and I've never been able to make you happy.
+  PRED3: You're welcome, Kayleigh. I'm just glad I could help you out. You've been through a lot lately.
+  PRED4: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED5: You're welcome, Kayleigh. I'm just glad I could be here for you.
+  PRED6: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED7: You're welcome, Kayleigh. I'm just glad I could be there for you.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I'm not?
+  PRED1: I don't know if I can do that. I'm not going to lose.
+  PRED2: I know you're right, but I can't help but feel like I'm not going to be able to do it anymore.
+  PRED3: I know you're right, but I can't help but feel like I'm not going to hurt you.
+  PRED4: But what if I don't? What if I'm not going to die?
+  PRED5: I know you're right, but it's just not the same. I'm not going to lose.
+  PRED6: I know you're right, but I can't help but feel like I'm not good enough.
+  PRED7: I know you're right, but I can't help but feel like I'm not good enough.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: Why not? I want to make a new car.
+  PRED1: But what about that? What's new with you?
+  PRED2: But what about that? I don't want to take a new car. I'm not going to be able to afford it.
+  PRED3: But what about that? What's the car? You're just going to buy a new car!
+  PRED4: Why not? I want to make a new car.
+  PRED5: But what about that? What are you going to do with this?
+  PRED6: But what about that? What are you going to do with this?
+  PRED7: Why not? I want to buy a new car. It's a big deal.
+
+--- step 2500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, but you need to try to stay positive.
+  PRED1: You're right, but you need to take care of yourself. You need to stay focused and take care for your health. You'll need to get you to the hospital and see if you can do it. Just focus on your mind and you'll be fine.
+  PRED2: You'll have to take a break from the hospital. You're going to have to be a good night and you'll be able to get you home. Just take your time and you will be fine.
+  PRED3: I'm sorry, but you need to try to stay positive. You need to stay focused and don't let your body get to you.
+  PRED4: I'm sorry, but you need to take care of yourself. You can't let anything happen.
+  PRED5: I'm sorry, but you need to take care of yourself. You can't just sit back and relax.
+  PRED6: I'm sorry, but you need to focus on your studies. You can't just sit back and relax.
+  PRED7: I'm sorry, but you need to take care of yourself. You can't just sit back and relax.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm just glad I could be.
+  PRED1: You're welcome, Ariana. I'm glad you like it.
+  PRED2: You're welcome, Ariana. I'm just glad I could be there for you. You've been through a lot lately and I've always been there for a while now.
+  PRED3: You're welcome, Kayleigh. I'm just glad I could be there for you. You've been through a lot lately.
+  PRED4: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+  PRED5: You're welcome, Kayleigh. I'm just glad I could be there for you.
+  PRED6: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+  PRED7: You're welcome, Kayleigh. I'm glad you're enjoying yourself.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I do?
+  PRED1: I don't know if I can do that. I'm not going anywhere.
+  PRED2: I know you're right, but I can't help but feel like I'm not going to be able to do anything right.
+  PRED3: I know you're right, but I can't help but feel like I'm not going to hurt you.
+  PRED4: I know, but it's just so hard. I feel like I'm never going to die.
+  PRED5: I know you're right, but I can't help but feel like I'm not good enough.
+  PRED6: I know, but it's just so hard. I feel like I'm not good enough.
+  PRED7: I know, but it's just so hard. I feel like I'm not good enough.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: Why not? I'm just going to be happy.
+  PRED1: But what about that? What's the car is going to be a big deal?
+  PRED2: But Jaun, I'm not going to pay for a new car. I've been working hard and it's been a long time.
+  PRED3: Krista, I'm not going to pay for it. I've been working hard for a new car.
+  PRED4: Why not? We're just going to buy a new car.
+  PRED5: But why? I don't want to take a new car. It's not worth it.
+  PRED6: Why not? We're just going to buy a new car.
+  PRED7: Why not? We're just going to buy a new car.
+
+--- step 3000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: We'll figure something out, but we can't afford to get you out.
+  PRED1: There are a few things you can do, but you need to take a break from your grades. You can't just sit around and take your time. You need to get your grades and see if you can get your home. If you can'd be careful, then you'll be able to get you the best of your life.
+  PRED2: That's not the point, but you need to take care of yourself. You need to be careful and take care for your health. We need to make sure you're safe and safe.
+  PRED3: I'm sorry, but you need to focus on your studies. You'll need to take care of your grades and see if you can get your grades.
+  PRED4: You'll have to take a few days. Just take your time and you'll be fine.
+  PRED5: You'll have to take a break from your room. You're going to have to work on your own.
+  PRED6: You'll have to take a few days. If you don't have to go to school, you'll be able to get you home.
+  PRED7: You'll have to take a few days. You're going to have to work on your own.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED1: You're welcome, Kayn. I'm glad you like it.
+  PRED2: You're welcome, Kayn. I'm just glad I could help you out. You've been through a lot lately and I've never had a chance to make you happy.
+  PRED3: You're welcome, Kayleigh. I'm just glad I could help you out. You've been through a lot lately.
+  PRED4: You're welcome, Kayleigh. I'm glad you like it.
+  PRED5: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED6: You're welcome, Kayleigh. I'm glad you like it.
+  PRED7: You're welcome, Kayleigh. I'm glad you like it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I know you're right.
+  PRED1: I know you're right, but it's just not the same.
+  PRED2: I know you're right, but it's just so hard. I feel like I'm not going to let you down.
+  PRED3: I know you're right, but it's just so hard to accept that I'm not the only one who's going to happen.
+  PRED4: I know you're right, but it's just so hard.
+  PRED5: I know you're right, but it's just so hard to accept that you've been through this.
+  PRED6: I know you're right, but it's just not the same.
+  PRED7: I know you're right, but it's just not the same.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm just a little scared.
+  PRED1: Why not? We've been working hard and it's a big deal.
+  PRED2: Why not? We've been working hard and it's been a long time. I'm just not sure what it is.
+  PRED3: Krista, I'm not going to pay for it. I've been working hard for this new car.
+  PRED4: Why not? We've been working hard and it's been a long time.
+  PRED5: Why not? You're just a little bit more expensive. I'm not going to be happy with you.
+  PRED6: Why not? You're just a little bit more expensive. What's new with you?
+  PRED7: Why not? We've been working hard for a new car.
+
+--- step 3500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, but you need to take care of yourself.
+  PRED1: There are a few things you can do, but you need to be careful. You can't just sit down and take your time. You need to get your grades and you'll be able to take care of your life. If you're going to be able, then you'd be able for your family.
+  PRED2: That's not the point, but you need to be more careful. You need to learn to control your head and see if you can get your grades and get your home. You can't let your head down.
+  PRED3: I'm sorry, but you need to try to stay positive. You need to learn to control your life and see if you can get your grades.
+  PRED4: I'm sorry, but you need to take care of yourself. You need to get your grades and get your money.
+  PRED5: I'm sorry, but you need to be more careful. You need to learn to control your life and help you reach your time.
+  PRED6: I'm sorry, but you need to take care of yourself. You need to stay focused and you'll be able to get you home.
+  PRED7: I'm sorry, but you need to take care of yourself. You need to stay focused and you'll get there.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED1: You're welcome, Ariana. I'm glad you like it.
+  PRED2: You're welcome, Ariana. I'm just glad I could help you out. You've been through a lot lately and I've never had a chance to make you happy.
+  PRED3: You're welcome, Kayleigh. I'm just glad I could help you out. You've been through a lot lately.
+  PRED4: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED5: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED6: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED7: You're welcome, Kayleigh. I'm just glad I could help you out.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if you're not? What if you do?
+  PRED1: I don't know if I can do that. I'm just not sure.
+  PRED2: I know you're right, but it's just so hard. I feel like I'm not going to be able to do anything right now.
+  PRED3: I know you're right, but it's just so hard. I don't know if I can ever trust you again.
+  PRED4: But what if you're not? What if you don't?
+  PRED5: I know you're right, but it's just so hard. I feel like I'm not going anywhere.
+  PRED6: I know you're right, but it's just so hard to accept that you've been through.
+  PRED7: I know you're right, but it's just not the same.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm just going to pay for a new car.
+  PRED1: Why not? We've been working hard and it's been a long time.
+  PRED2: But Jaun, we're just going to be a big deal. We're going to have a new car and we'll just have to deal with it.
+  PRED3: Krista, I'm not going to pay for this. I've been working hard and it's not going anywhere.
+  PRED4: What? Why? We've been working hard for a new car.
+  PRED5: Krista, I'm not going to pay for it. I've been working hard for this new car.
+  PRED6: Why not? You're just a little bit more expensive. I'm just not sure if it's.
+  PRED7: Why not? We've been working hard and it's been a long time.
+
+--- step 4000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You can't just go to the hospital and see what you can do.
+  PRED1: There are a few things you can do, but you need to stay positive. You can't just sit down and take your time. You need to be more careful in your life. If you don't, you'll be able to do it.
+  PRED2: You'll need to take a break from the school. You're going to have to take care of yourself and you'll be able to get you out of your grades. You need to be more careful in your life.
+  PRED3: You'll need to take a break from your head and then you can get a good grade. You need to stay focused and get your grades.
+  PRED4: You'll be fine, but you'll have to take your time and relax.
+  PRED5: You'll be fine, but you need to stay safe. You can't just sit back and relax. You need to get your grades.
+  PRED6: You'll have to take a few days. You're going to have to work on your own. Just take your time and you'll be fine.
+  PRED7: You'll have to take a few days. You're going to have to work on your grades and you'll be able to get you home.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED1: You're welcome, Kayn. I'm just glad I could help.
+  PRED2: You're welcome, Ariana. I'm just glad I could help you out. You've been through a lot lately and I've always been there for you.
+  PRED3: You're welcome, Kayleigh. I'm just glad I could help you out. You've been through a lot lately.
+  PRED4: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED5: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED6: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED7: You're welcome, Kayleigh. I'm glad you like it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I know, but it's just so hard.
+  PRED1: I know you're right, but it's just not the same.
+  PRED2: I know you're right, but it's just so hard. I feel like I'm not going to be able to do anything right now.
+  PRED3: I know you're right, but it's just so hard. I don't know if I can ever trust you again.
+  PRED4: I know you're right, but it's just so hard.
+  PRED5: I know you're right, but it's just so hard. I feel like I'm not good enough.
+  PRED6: I know you're right, but it's just so hard to accept that you've been through.
+  PRED7: I know you're right, but it's just not the same.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm just going to take a new car.
+  PRED1: Why not? We've been working hard and it's been a long time.
+  PRED2: But what about your new car? You're just going to be a big deal. I'm not going to take a break.
+  PRED3: Krista, I'm not going to pay for it. I've been working hard and it's been a long time.
+  PRED4: Why not? We're just going to buy a new car.
+  PRED5: Why not? You're just a little bit more expensive. I'm just going to have to pay for it.
+  PRED6: Why not? You're just a little bit more expensive. What's new with you?
+  PRED7: Why not? You're just a little bit more expensive.
+
+--- step 4500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: We'll figure something out, but we can't afford to get you out.
+  PRED1: There are a few things you can do, but you need to stay positive. You can't just sit down and take your time. You need to be more careful in your life. If you don't do anything, then you'll be able to get you out of school.
+  PRED2: There's no need to worry about your grades, but you need to stay positive. You need to take care of yourself and you'll be able to get you home. You'll get through this.
+  PRED3: I'm sorry, but you need to try to stay positive. You need to stay focused and don't let your day get you out.
+  PRED4: You'll be fine, but you'll get through this. You can do this.
+  PRED5: I'm sorry, but we can't do that. We'll get you home and we'll be back home.
+  PRED6: I'm sorry, but you need to stay positive. You need to take care of yourself and you'll be fine.
+  PRED7: You'll have to take your time and relax. You're going to have to work hard and you'll be able to get you home.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED1: You're welcome, Ariana. I'm glad you like it.
+  PRED2: You're welcome, Ariana. I'm just glad I could be there for you. You've been through a lot lately and I've always been there for a while now.
+  PRED3: You're welcome, Kayleigh. I'm just glad I could help you out. You've been through a lot lately and I've never been there for you.
+  PRED4: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED5: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED6: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED7: You're welcome, Kayleigh. I'm just glad I could help you out.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I know, but I can't help it.
+  PRED1: I don't know if I can do that. I'm not going anywhere.
+  PRED2: I know you're right, but it's just so hard. I don't know if I can ever trust you again.
+  PRED3: I know you're right, but it's just so hard to accept that I'm not the only one who's going to be.
+  PRED4: I don't know if I can do that.
+  PRED5: I know you're right, but it's just so hard to accept that you've been through this.
+  PRED6: I know you're right, but I can't help but feel like I'm not.
+  PRED7: I know you're right, but I can't help but feel like I'm not.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm just going to take a new car.
+  PRED1: But what about that? What's the car?
+  PRED2: But what about your new car? I'm not going to be happy with you. I've been working hard and I'll be happy to see you.
+  PRED3: Krista, I'm not going to pay for it. I've been working hard and it's been a long time.
+  PRED4: Why not? We're just going to be happy with you.
+  PRED5: Why not? You're just a little bit more expensive. I'm just going to have to pay for it.
+  PRED6: Why not? You're just a little bit more expensive. What's new with you?
+  PRED7: Why not? We've been working hard and it's been a long time.
+
+--- step 5000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You'll be fine. Just take your time and you'll get there.
+  PRED1: There are a few things you can do, but you need to stay positive. You can't just sit down and take your time. You need to be patient and be patient with your family and friends. If you don't mind, you'll be able to do your homework and you're going to have to let you go.
+  PRED2: There's no need to worry about your grades, but you need to stay positive. You need to take care of yourself and see if you can't. You'll get through this, okay?
+  PRED3: I'm sorry, but you need to focus on your studies. You'll need to take care of your grades and see if you can get your grades.
+  PRED4: You'll be fine, but you'll have to take your time and relax.
+  PRED5: I'm sorry, but we can't do that. We'll get you to the hospital and see if we can get you home.
+  PRED6: You'll have to take care of your grades and see if you can get your grades. You need to stay focused and work hard.
+  PRED7: You'll have to take care of your grades and see if you can get your grades. You need to stay focused and stay positive.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED1: You're welcome, Kayn. I'm just glad I could help you.
+  PRED2: You're welcome, Ariana. I'm just glad I could be there for you. You've been through a lot lately and I've never been able to do anything like that.
+  PRED3: You're welcome, Kayleigh. I'm just glad I could help you out. You've been through a lot lately.
+  PRED4: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED5: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED6: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED7: You're welcome, Kayleigh. I'm glad you like it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if you're not?
+  PRED1: I don't know if I can do that. I'm not going anywhere.
+  PRED2: I know you're right, but I can't help but worry. I'm just not sure if I'll never be able to do anything.
+  PRED3: I know you're right, but it's just so hard to accept that I'm not going to let you go.
+  PRED4: I know you're right, but I can't help but worry.
+  PRED5: I know you're right, but I can't help but feel like I'm not good enough.
+  PRED6: I know you're right, but I can't help but feel like I'm not.
+  PRED7: I know you're right, but I can't help but feel like I'm not.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm just going to take a new car.
+  PRED1: But what about that? What's the car?
+  PRED2: But what about your new car? You're just going to be a big deal. I'm not going to take a few minutes.
+  PRED3: Krista, I'm not going to pay for it. I've been working hard and it's been a long time.
+  PRED4: Why not? You're just a little bit more expensive.
+  PRED5: Why not? You're just a little bit more expensive. I'm not going to be happy with you.
+  PRED6: Why not? You're just a little bit more expensive. What's new with you?
+  PRED7: Why not? You're just a little bit more expensive.
+
+--- step 5500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You'll be fine, but you'll have to take your time.
+  PRED1: There are a few things you can do, but you need to stay positive. You can't just sit down and take your time. You need to be patient and be patient. You'll need to take your head on your own.
+  PRED2: There's no need to worry about your grades, but you need to stay positive. You need to take care of yourself and see if you can't. You'll get through this, okay?
+  PRED3: You'll need to take a break from your head and then you can get a good grade. You need to stay focused and stay focused on your studies.
+  PRED4: You'll need to take care of your health and help you out. You need to be more careful.
+  PRED5: You'll need to take care of your health. You're going to have to take your time and relax.
+  PRED6: You'll have to take care of your grades and see if you can get your grades. You need to stay focused and get your head on your life.
+  PRED7: You'll need to take care of your grades and see if you can get your grades. You need to stay focused and get your head on your life.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED1: You're welcome, Kayn. I'm glad you like it.
+  PRED2: You're welcome, Ariana. I'm just glad I could be there for you. You've been through a lot lately and I've never been able to do anything like that.
+  PRED3: You're welcome, Kayleigh. I'm just glad I could help you out. You've been through a lot lately.
+  PRED4: You're welcome, Kayleigh. I'm just glad I could help.
+  PRED5: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED6: You're welcome, Kayleigh. I'm just glad I could help you out.
+  PRED7: You're welcome, Kayleigh. I'm glad you like it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I know, but I can't help but worry.
+  PRED1: I know you're right, but I can't help but feel like that.
+  PRED2: I know you're right, but it's just so hard. I feel like I'm not going to be able to do anything.
+  PRED3: I know you're right, but it's just so hard to accept that I'm not going to let you go.
+  PRED4: I know you're right, but I can't help but feel like I'm not.
+  PRED5: I know you're right, but it's just so hard to accept that you've been through this.
+  PRED6: I know you're right, but it's just so hard to accept that you've been through.
+  PRED7: I know you're right, but I can't help but feel like I'm not.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm just going to pay for a new car.
+  PRED1: Why not? We've been working hard and it's been a long time.
+  PRED2: But Jaun, I'm not going to pay for a new car. I've been working hard and I'll be happy to see you.
+  PRED3: Krista, I'm not going to pay for it. I've been working hard and it's been a long time.
+  PRED4: Why not? You're just a little bit more expensive.
+  PRED5: Why not? You're just a little bit more expensive. I'm not going to be happy with you.
+  PRED6: Why not? You're just a little bit more expensive. I'm just going to have to pay for it.
+  PRED7: Why not? You're just a little bit more expensive.
+

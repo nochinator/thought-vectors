@@ -1,0 +1,61 @@
+=== thinker ablation R4_UNFREEZE (180s): thinker.n_hypotheses=4 thinker.w_decoder=0.5 thinker.k_ctx=8 thinker.k_out=8 thinker.k_out_random_prefix=true thinker.k_out_min=4 data.shard_dir=data/dialogue_combined thinker.unfreeze=decoder thinker.compress_frac=0.2 ===
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+thinker params: 15.10M (codec d=384, frozen=False)
+step      50 | cos 0.1900 | thought 1.8764 dec_ce 2.1327 | 3.4 it/s
+step     100 | cos 0.3223 | thought 1.7914 dec_ce 2.1903 | 3.8 it/s
+step     150 | cos 0.3307 | thought 1.7068 dec_ce 2.0368 | 3.7 it/s
+step     200 | cos 0.3378 | thought 1.7339 dec_ce 2.2213 | 3.7 it/s
+step     250 | cos 0.3716 | thought 1.561 dec_ce 2.0913 | 3.7 it/s
+step     300 | cos 0.4096 | thought 1.4549 dec_ce 1.9741 | 4.0 it/s
+step     350 | cos 0.4285 | thought 1.3896 dec_ce 1.8216 | 4.0 it/s
+step     400 | cos 0.4354 | thought 1.4514 dec_ce 2.1621 | 3.7 it/s
+step     450 | cos 0.4409 | thought 1.3542 dec_ce 1.9901 | 3.7 it/s
+step     500 | cos 0.4510 | thought 1.3857 dec_ce 1.8992 | 3.9 it/s
+step     500 | VAL cos 0.4669 | VAL dec CE 3.6438
+step     550 | cos 0.4534 | thought 1.3175 dec_ce 1.9037 | 3.3 it/s
+step     600 | cos 0.4574 | compress_ce 0.0 | 3.8 it/s
+step     650 | cos 0.4527 | thought 1.3168 dec_ce 1.9268 | 4.0 it/s
+wall-clock cap reached at step 672
+
+Run 'R4_UNFREEZE' done: 672 steps | final val cos 0.4732 | dec CE 3.6152
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{"ckpt": "checkpoints/R4_UNFREEZE/best.pt", "val_cos": 0.4265, "val_dec_ce": 3.6201, "ref_f1": 0.2344, "distinct1": 0.0035, "distinct2": 0.0079, "len_ratio": 0.804, "out_vectors": 8.0, "rows": 1024}
+--- round-trip guard R4_UNFREEZE ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{
+  "ckpt": "checkpoints/R4_UNFREEZE/best.pt",
+  "verdict": "FAIL",
+  "worst_delta": 0.1003,
+  "tol": 0.05,
+  "per_prefix": [
+    {
+      "k": 2,
+      "frozen_ce": 4.9181,
+      "modified_ce": 5.0184,
+      "delta": 0.1003
+    },
+    {
+      "k": 8,
+      "frozen_ce": 2.6382,
+      "modified_ce": 2.6774,
+      "delta": 0.0392
+    },
+    {
+      "k": 128,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": 0.0
+    },
+    {
+      "k": 256,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": 0.0
+    }
+  ]
+}
+ROUND-TRIP FAIL R4_UNFREEZE — DISQUALIFIED from 12h stack
+=== round-4 bracket done: R4_UNFREEZE ===

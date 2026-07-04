@@ -1,0 +1,126 @@
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+thinker weights warm-started from checkpoints/FINAL_12H/best.pt (loaded: 94, skipped: 0)
+codec warm-started from the same checkpoint (adapted decoder restored)
+thinker params: 15.10M (codec d=384, frozen=False)
+step      50 | cos 0.5361 | thought 0.8824 dec_ce 2.6681 cycle 0.4151 | 1.4 it/s
+step     100 | cos 0.5363 | thought 0.8838 dec_ce 2.512 cycle 0.3904 | 1.8 it/s
+step     150 | cos 0.5360 | compress_ce 0.0 | 1.3 it/s
+step     200 | cos 0.5335 | compress_ce 0.0 | 1.2 it/s
+step     250 | cos 0.5408 | compress_ce 0.0 | 1.5 it/s
+step     300 | cos 0.5337 | thought 0.9567 dec_ce 2.7286 | 1.3 it/s
+step     350 | cos 0.5367 | thought 0.95 dec_ce 3.2128 cycle 0.3773 | 0.8 it/s
+step     400 | cos 0.5372 | thought 0.9798 dec_ce 2.8543 cycle 0.3907 | 1.2 it/s
+step     450 | cos 0.5346 | compress_ce 0.0 | 1.8 it/s
+step     500 | cos 0.5359 | thought 0.8854 dec_ce 2.3209 cycle 0.3775 | 1.7 it/s
+step     500 | VAL cos 0.5427 | VAL dec CE 2.3957
+step     550 | cos 0.5336 | compress_ce 0.0004 | 1.5 it/s
+step     600 | cos 0.5342 | compress_ce 0.1164 | 1.4 it/s
+step     650 | cos 0.5369 | thought 0.906 dec_ce 2.7458 | 1.2 it/s
+step     700 | cos 0.5327 | compress_ce 0.0001 | 1.2 it/s
+step     750 | cos 0.5356 | compress_ce 0.0 | 1.1 it/s
+step     800 | cos 0.5320 | compress_ce 0.0 | 1.2 it/s
+step     850 | cos 0.5343 | thought 0.9336 dec_ce 3.009 | 1.1 it/s
+step     900 | cos 0.5324 | compress_ce 0.0001 | 1.3 it/s
+step     950 | cos 0.5311 | thought 0.9265 dec_ce 2.6165 cycle 0.3707 | 1.2 it/s
+step    1000 | cos 0.5375 | compress_ce 0.0 | 1.2 it/s
+step    1000 | VAL cos 0.5404 | VAL dec CE 2.4015
+step    1050 | cos 0.5366 | thought 0.9334 dec_ce 2.5277 | 1.3 it/s
+step    1100 | cos 0.5337 | thought 0.9097 dec_ce 2.6082 | 1.2 it/s
+step    1150 | cos 0.5335 | compress_ce 0.0 | 1.6 it/s
+step    1200 | cos 0.5366 | thought 0.9058 dec_ce 2.8231 | 1.0 it/s
+step    1250 | cos 0.5311 | compress_ce 0.0001 | 1.3 it/s
+step    1300 | cos 0.5347 | compress_ce 0.0006 | 1.2 it/s
+step    1350 | cos 0.5345 | compress_ce 0.0002 | 1.0 it/s
+step    1400 | cos 0.5316 | thought 0.9206 dec_ce 2.6814 | 0.9 it/s
+step    1450 | cos 0.5249 | compress_ce 0.0 | 1.1 it/s
+step    1500 | cos 0.5330 | thought 0.9675 dec_ce 2.9593 | 1.6 it/s
+step    1500 | VAL cos 0.5396 | VAL dec CE 2.3969
+step    1550 | cos 0.5340 | thought 0.983 dec_ce 2.8323 cycle 0.3652 | 1.5 it/s
+step    1600 | cos 0.5312 | compress_ce 0.0 | 1.4 it/s
+step    1650 | cos 0.5326 | compress_ce 0.0 | 1.1 it/s
+step    1700 | cos 0.5340 | compress_ce 0.0002 | 1.9 it/s
+step    1750 | cos 0.5380 | thought 0.9658 dec_ce 2.8905 | 1.2 it/s
+step    1800 | cos 0.5313 | thought 0.924 dec_ce 2.9673 | 1.2 it/s
+step    1850 | cos 0.5312 | thought 1.01 dec_ce 3.4419 | 1.2 it/s
+step    1900 | cos 0.5302 | compress_ce 0.0188 | 1.3 it/s
+step    1950 | cos 0.5334 | thought 0.9158 dec_ce 2.6467 cycle 0.3575 | 1.2 it/s
+step    2000 | cos 0.5300 | thought 0.9967 dec_ce 3.2103 cycle 0.3879 | 1.2 it/s
+step    2000 | VAL cos 0.5415 | VAL dec CE 2.3894
+step    2050 | cos 0.5311 | thought 0.9315 dec_ce 2.6637 | 0.8 it/s
+step    2100 | cos 0.5324 | thought 0.9289 dec_ce 2.4453 cycle 0.3596 | 1.5 it/s
+step    2150 | cos 0.5368 | thought 0.9823 dec_ce 3.1722 | 2.0 it/s
+step    2200 | cos 0.5381 | thought 0.9109 dec_ce 2.9722 cycle 0.3781 | 0.9 it/s
+step    2250 | cos 0.5334 | thought 0.9225 dec_ce 2.8879 | 1.4 it/s
+step    2300 | cos 0.5376 | thought 0.9401 dec_ce 2.8255 | 1.8 it/s
+step    2350 | cos 0.5372 | compress_ce 0.0 | 1.8 it/s
+step    2400 | cos 0.5403 | thought 0.8978 dec_ce 2.6792 cycle 0.3268 | 1.6 it/s
+step    2450 | cos 0.5312 | compress_ce 0.0001 | 1.2 it/s
+step    2500 | cos 0.5394 | thought 0.9409 dec_ce 3.0097 | 0.7 it/s
+step    2500 | VAL cos 0.5419 | VAL dec CE 2.3897
+step    2550 | cos 0.5344 | compress_ce 0.0 | 0.5 it/s
+step    2600 | cos 0.5326 | compress_ce 0.0 | 0.4 it/s
+step    2650 | cos 0.5320 | compress_ce 0.0 | 1.1 it/s
+step    2700 | cos 0.5312 | thought 0.945 dec_ce 3.1377 cycle 0.3805 | 1.2 it/s
+step    2750 | cos 0.5404 | thought 0.8983 dec_ce 2.7641 cycle 0.3618 | 1.6 it/s
+step    2800 | cos 0.5368 | thought 0.978 dec_ce 2.8407 cycle 0.3713 | 1.6 it/s
+step    2850 | cos 0.5326 | thought 0.9031 dec_ce 3.1978 cycle 0.3431 | 1.3 it/s
+step    2900 | cos 0.5340 | thought 1.0164 dec_ce 2.9091 cycle 0.3594 | 1.2 it/s
+step    2950 | cos 0.5391 | thought 0.908 dec_ce 2.6168 | 1.4 it/s
+step    3000 | cos 0.5346 | compress_ce 4.0323 | 1.4 it/s
+step    3000 | VAL cos 0.5416 | VAL dec CE 2.3881
+step    3050 | cos 0.5331 | compress_ce 0.0001 | 1.0 it/s
+step    3100 | cos 0.5342 | compress_ce 0.0 | 1.2 it/s
+step    3150 | cos 0.5342 | thought 0.9649 dec_ce 2.8484 | 1.4 it/s
+step    3200 | cos 0.5360 | thought 0.9588 dec_ce 2.9883 cycle 0.3865 | 1.5 it/s
+wall-clock cap reached at step 3224
+
+Run 'R7_EMP1X' done: 3224 steps | final val cos 0.5414 | dec CE 2.3875
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{"ckpt": "checkpoints/R7_EMP1X/best.pt", "val_cos": 0.4287, "val_dec_ce": 2.6848, "ref_f1": 0.2977, "distinct1": 0.0313, "distinct2": 0.1294, "len_ratio": 1.142, "out_vectors": 8.0, "rows": 1024}
+--- multiturn eval R7_EMP1X ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+multiturn: self_rep 0.1915 ctx_sens 0.2258 (n=6 convs, temp=0.0)
+transcripts -> logs/R7_EMP1X.multiturn.txt
+--- register eval R7_EMP1X ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+register: reg_err 0.4167 reg_err_ctx 0.8333 pos_ok 0.8333 (bad=12 ctx=6 good=6, temp=0.0)
+transcripts -> logs/R7_EMP1X.register.txt
+--- round-trip guard R7_EMP1X ---
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{
+  "ckpt": "checkpoints/R7_EMP1X/best.pt",
+  "verdict": "PASS",
+  "worst_delta": 0.0001,
+  "tol": 0.05,
+  "per_prefix": [
+    {
+      "k": 2,
+      "frozen_ce": 4.9181,
+      "modified_ce": 4.8575,
+      "delta": -0.0606
+    },
+    {
+      "k": 8,
+      "frozen_ce": 2.6382,
+      "modified_ce": 2.572,
+      "delta": -0.0663
+    },
+    {
+      "k": 128,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0001,
+      "delta": 0.0001
+    },
+    {
+      "k": 256,
+      "frozen_ce": 0.0,
+      "modified_ce": 0.0,
+      "delta": 0.0
+    }
+  ]
+}

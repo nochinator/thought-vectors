@@ -1,0 +1,39 @@
+--- step 500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, I'll be a great way.
+  PRED1: I'm sorry, I'll be a great way.
+  PRED2: I'm sorry, I'll be a great way.
+  PRED3: That's great! I'm not going to be a great way.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I've been a lot of you.
+  PRED1: I'm sorry, I've been a lot of you.
+  PRED2: I'm sorry, I've been a lot of you.
+  PRED3: I'm sorry, I've been a lot of you.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I'm sorry, I've been a lot of things.
+  PRED1: I'm sorry, I've been a lot of it.
+  PRED2: I'm sorry, I've been a lot of it.
+  PRED3: I'm sorry, I've been a lot of the time.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I'll be a great way.
+  PRED1: I'm sorry, I'll be a great way.
+  PRED2: I'm sorry, I've been a lot of you.
+  PRED3: I'm sorry, I've been a lot of you.
+

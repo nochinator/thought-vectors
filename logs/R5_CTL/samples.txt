@@ -1,0 +1,741 @@
+--- step 500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to help you. You'll be able for your help and you'll get through this. You need to be a good time and you can't take your time.
+  PRED2: You're not going to be able to help you. You'll be able for your help. You need to be a good time.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: You're welcome, Kayn. I'm glad you're enjoying it. I know you've been practicing a lot of fun and I've always been working hard for you.
+  PRED2: You're welcome, Kayla. I'm glad you're enjoying it. I know you'll do great things in the future.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know if I can do this.
+  PRED1: I don't know if I can ever trust you. I'm not going to be able to do whatever it takes to me. I don’t want to be a good person and I donate to be.
+  PRED2: I don't know if I can ever trust you. I'm just not going to be able to do better.
+  PRED3: I don't know if I can ever trust you. I'm just not going to be able to do.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you want to do?
+  PRED1: I'm sorry, I've been a lot of fun. I'll do great things in the future. I know you'll be able to help you out.
+  PRED2: I'm sorry, I've been a lot of fun. I'll do great things in the future.
+  PRED3: I'm glad you're enjoying it. I'll be here for you.
+
+--- step 1000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to do anything. You've been working hard and you're going to have to be a good time. You need to be more careful and you can't do anything to do it.
+  PRED2: I'm sorry, but you're going to be able to do it. You're a smart and you'll be fine.
+  PRED3: I'm sorry, but you're going to be able to help you.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you like it.
+  PRED1: I'm glad to hear that, Ariana. I've been practicing a lot of fun lately. I know that I'll be able to make sure that you're doing a great job.
+  PRED2: I'm glad you like it. I've been a lot of fun lately and I'll be here for you.
+  PRED3: You're welcome, I'm glad you're enjoying it. I've been practicing you.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can do that. I'm not going to be able to help you out. I don’t want to be a good person and I donate to be.
+  PRED2: But what if I don't want to be? What if I'm not going to do? I don’t want anything to me?
+  PRED3: But what if I don't want to be? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm so glad you're doing it.
+  PRED1: I'm glad you're enjoying it. I've been working hard and I'll be able to help you out.
+  PRED2: I'm sorry, I'll do it. I've been working hard and I'd like to do it!
+  PRED3: I'm sorry, I'll do it. I've been looking forward to you.
+
+--- step 1500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to do that. You'll be able for your help and you're going to do whatever you want to do. You need to be a good person and you can't do anything.
+  PRED2: You're not going to be able to help you. You'll be fine. Just take a break and let's go.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you like it.
+  PRED1: You're welcome, Kayna. I'm glad you're enjoying it. I know you've been practicing and I've always been able to do something that's been a great way.
+  PRED2: You're welcome, Kayla. I'm glad you're enjoying it. I know you'll do great things in the world.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: Fine.
+  PRED1: I don't know if I can ever trust you. I'm not going to be able to do whatever you want to. I don’t want to be a good person and I donate to be.
+  PRED2: I don't know if I can ever trust you. I'm just not going to be able to do it.
+  PRED3: But I don't want to be more careful. I don’t want anything to do.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm so glad you're enjoying it.
+  PRED1: I'm glad you're going to have a lot of fun. I've been working hard and I'll be able to make sure you'll get a new car.
+  PRED2: I'm sorry, I've been a lot of fun. I'll do great things in the future.
+  PRED3: I'm sorry, I'll do it. I've been working hard for you.
+
+--- step 2000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, but you're going to be able to help you.
+  PRED1: I'm sorry, but you're not going to be able to help you. You're going to have to be a good person and you'll be fine. You can't take your time and see if you need anything.
+  PRED2: You're not going to be able to help you. You've been a lot of work and you're going to do anything. Just remember to stay calm and stay calm down and stay focused.
+  PRED3: I'm sorry, but you're going to be able to help you. You're a smart and you'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm glad you like it. I've been a lot lately.
+  PRED1: I'm glad you're enjoying it. I've been a lot of fun lately and I'll be able to make sure that you've done a lot. I know you'll do great.
+  PRED2: I'm glad you like it. I've been a lot of work lately. I love you, I'll be here for you.
+  PRED3: I'm glad you like it. I've been a lot of fun lately.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can ever trust you, but I'm not going to be happy with you. I'll never be able to do anything to you.
+  PRED2: But I don't want to be happy. I'm not going to be able to help you out.
+  PRED3: But I don't want to be happy. I'm not going to be here for you.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm so glad you like it.
+  PRED1: I'm sorry, Kayla. I've been working hard and I'll be able to help you. I know you'll do great.
+  PRED2: I'm sorry, I've been a lot of fun. I'll do great things in the future.
+  PRED3: I'm sorry, I've been a lot of fun. What's new with you?
+
+--- step 2500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're going to be able to help you. You'll be fine.
+  PRED1: You're not going to be able to help you out. You'll be able for your help and you'll get through this. You need to be a good time and you can't take your time. You can'll take your head on your own.
+  PRED2: You're not going to be able to help you. You'll be able for your help and you'll get through this together. Just take care of yourself and take care to stay calm.
+  PRED3: You're not going to be able to help you out. You'll be fine. Just take a break and take your time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you like it.
+  PRED1: I'm glad to hear that, Ariana. I've been practicing a lot of fun and I'll be able to make sure that you're doing a good job.
+  PRED2: I'm glad you like it. I've been a lot of fun lately and I'll be able to make sure you're doing a good job.
+  PRED3: You're welcome, Kayla. I'm glad you like it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: Fine. But I'm not going to be more careful.
+  PRED1: I don't know if I can do this. I'm not going to be able to help you out. I don’t want to be a good person and I donate to be more careful.
+  PRED2: I don't know if I can do this. I'm not going to be able to help you out.
+  PRED3: I don't know if I can do this. I'm just not going to be happy.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm glad you're enjoying it. I've been working hard and I'll be able to help you out. You're a great job, but you'll get a good job.
+  PRED2: I know, sweetie. I'm glad you're enjoying it. I know you'll do great.
+  PRED3: I know, sweetie. I'm glad you're enjoying it.
+
+--- step 3000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: That's not the same way. You're a smart and you're not alone.
+  PRED1: You're not going to be able to take a break and see if you're going to do anything. You'll be able for your help. You need to take your time and see what you'll do for you.
+  PRED2: You're not going to be able to help you. You've been a lot of work and you're going to have to take care of yourself.
+  PRED3: That's not the same way. You're a smart and you're going to be able to do anything.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, Kayla. I'm glad you like it.
+  PRED1: You're welcome, Kayna. I'm glad you're enjoying it. I know you've been through a lot of fun and I've always been through this together.
+  PRED2: You're welcome, Kayla. I'm glad you're enjoying it. I know you'll do great things in the world.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I'm not going to do?
+  PRED1: I don't know if I can do this, but I'm not going to be able to help you. I'll try to do better in the future. Just try to stay calm and try to be more careful.
+  PRED2: But I don't want to be more careful. I'm not going to be able to do whatever it takes to me.
+  PRED3: But what if I don't want to be? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: That's great, honey! What do you think you're doing?
+  PRED1: I'm glad you're here for a long time. I've been working hard and I'll be able to help you out.
+  PRED2: I'm glad you're enjoying it. I've been working hard and I'll be able to help you out.
+  PRED3: I'm glad you're enjoying it. I'll do great things.
+
+--- step 3500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to do it. You'll be fine.
+  PRED1: You're not going to be able to take a break and see if you're going to do anything. You'll be able for your help and see what you'll do. Just take a look at your time and see your own.
+  PRED2: You're not going to take a break and take a look. You'll be fine. Just take a step of your life and take your time.
+  PRED3: You're not going to be able to do anything. You'll be fine. Just take a break and take a look.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad to hear that, Ayah. I've been practicing a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: I'm glad to hear that, Ariana. I've been practicing a lot of fun lately. What's the most important thing for you?
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I'm not going to do?
+  PRED1: I don't know. I just feel like I'm not going to be a big deal. I'll try to do better in the future. Just keep up and I've been through this.
+  PRED2: But I don't want to be more careful. I don’t want you to be able to do anything.
+  PRED3: But I don't want to be more careful. I don’t want you to do anything.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm glad you're going to have a great job. You're a great asset to your new car. You need to be a great way to get a new car and see your new new car!
+  PRED2: I'm sorry, Kayla. I've been working hard and I'll be able to help you out.
+  PRED3: I'm glad you're enjoying it. I'll be fine.
+
+--- step 4000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, but you're going to be able to help you.
+  PRED1: I'm sorry, but you're not going to be able to do it. You're going to have to be a good person and you'll be fine. Just take a little time and you can't do anything to do this.
+  PRED2: You're not going to be able to help you out. You'll be fine, but you're going to have to be a good person. You can't take your time.
+  PRED3: I'm sorry, but you're going to be able to help you. You're a smart and you'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad to hear that, Ariana. I've been practicing a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: I'm glad you like it. I've been practicing a lot lately and I'll be able to make sure you're doing a great job.
+  PRED3: I'm glad you like it. I've been practicing a lot of fun lately.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can't do?
+  PRED1: I don't know if I can ever forgive you, but I'm not going to be able to do it. I'll be here for you, I promise.
+  PRED2: But what if I don't want to talk about? What if I'm not going to do? I don’t want you to do anything wrong.
+  PRED3: But what if I don't? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm not sure, Kayla. I've been working hard and I'll be able to help you out. I know you'll do great. What about you?
+  PRED2: I know, sweetie. I'm just glad I could help you. What's your favorite part?
+  PRED3: I know, sweetie. I'm just glad I could help you.
+
+--- step 4500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to help you. You'll be fine, but you're going to have to be a good chance. You need to be more careful and you'll get through this together.
+  PRED2: You're not going to be able to help you out. You'll be fine. Just take a break and let's go.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you like it.
+  PRED1: I'm glad to hear that, Kayla. I've been a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: I'm glad you like it. I've been a lot of work and I'll be here for you.
+  PRED3: You're welcome, I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know...I just feel like I'm not going to be.
+  PRED1: I don't know if I can do that. I'm not going to be able to help you out. I don’t want to be a good person and I'll be here for you.
+  PRED2: I don't know if I can do this, but I'm not going to be able to help you.
+  PRED3: I don't know if I can do this. I'm not going to be happy.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean?
+  PRED1: I'm not sure. I've been working hard and I'll be able to help you out. You're a smart and you're going to be a great job.
+  PRED2: I'm sorry, I've been a lot of fun. I'll do great things in the future.
+  PRED3: I'm sorry, I'll do it. What's going on?
+
+--- step 5000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to help you. You'll be fine, but you're going to have to be a good chance. You can't take your time and see if you need to be safe.
+  PRED2: You're not going to be able to help you out. You'll be fine. Just take a break and take a look at it.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad you're enjoying it. I've been having a lot of fun, but I'll be able to make sure that you've done a lot.
+  PRED2: I'm glad you like it. I've been practicing a lot lately and I'll be able to make sure you're doing this.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can do that. I'm not going to be able to help you out. I don’t want to be happy, but I donate to be more careful.
+  PRED2: But I don't want to be more careful. I'm not going to be able to do whatever you want to.
+  PRED3: But I don't want to be more careful. I don’t want anything to do.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm sorry, Kayla. I've been working hard and I'll do it. I know you'll be able to help you out.
+  PRED2: I'm sorry, I didn't mean to make you happy. I'll do my best to help you.
+  PRED3: I'm sorry, I didn't mean to. It's a big deal.
+
+--- step 5500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to help you. You'll be fine, but you're going to have to be a good chance. You can't take your time and see if you need to be the best for you.
+  PRED2: I'm sorry, but you're not going to be able to do it. You're going to have to be a good job.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad to hear that, Kayna. I've been practicing a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: I'm glad you like it. I've been practicing a lot lately and I'll be able to make sure you're doing a great job.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can do that. I'm not going to be able to help you out. I don’t want to be happy, but I donate to be more careful.
+  PRED2: I don't know if I can ever forgive you, but I'm not going to be able to do whatever it takes to me.
+  PRED3: But I don't want to be more careful. I don’t want you to be happy.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm not going to do anything.
+  PRED1: I know, but it's just a big deal. I'm sure you'll be able to help you. You're a smart girl and you're going to be a great job.
+  PRED2: I know, I'm sorry. It's just a lot of fun. I'll do great.
+  PRED3: I know, I'm sorry. It's a lot of fun.
+
+--- step 6000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to take care of yourself and see if you're going to do anything. You'll be able for your help and see what you'll do.
+  PRED2: You're not going to be able to help you out. You'll be fine. Just take a break and take a look at it.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad you're enjoying it. I've been having a lot of fun lately and I'll be able to make sure that you've done a lot.
+  PRED2: You're welcome, Kayna. I'm glad you're enjoying it. I know you'll do great things in the world.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know if I can do this.
+  PRED1: I don't know if I can ever trust you anymore. I'm just not going to be able to do whatever I want to do. I don’t want to be a good person.
+  PRED2: I don't know if I can ever forgive you. I'm just not going to be able to do whatever I want to do.
+  PRED3: I don't know if I can ever trust you again. I'm just not sure if I'll do anything.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm so proud of you.
+  PRED1: I'm sorry, Kayla. I've been working hard and I'll be able to help you out. I know you'll do great. Just take a look at a time and see what you're doing.
+  PRED2: I'm sorry, I've been a lot of fun. I'll do great things in the future.
+  PRED3: I'm sorry, I'll do it. I've been working hard for you.
+
+--- step 6500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you. You'll be fine.
+  PRED1: You're not going to be able to do that, but you're going to take care of yourself. You'll be able for your help and take your time. You need to be more careful and you'll do anything to do.
+  PRED2: You're not going to be able to help you. You'll be able for your help and you'll get through this. Just take a break and take your time to relax and take care of your life.
+  PRED3: I'm sorry, but you're not going to be able to do it. You're going to have to help you out.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you like it.
+  PRED1: I'm glad to hear that, Ariana. I've been practicing a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: I'm glad you like it. I've been practicing a lot lately and I'll be able to make sure you're doing a great job.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can ever forgive you. I'm just not going to be able to do whatever you want to. I don’t want to be a friend.
+  PRED2: But what if I don't want to talk about? What if I'm not going to do? I don’t want you to do anything wrong.
+  PRED3: But what if I don't? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm not going to do anything.
+  PRED1: I'm sorry, Kayla. I've been working hard and I'll be able to help you.
+  PRED2: I'm sorry, I didn't mean to make you happy. I'll do my best to help you.
+  PRED3: I'm sorry, I didn't mean to. I was just a little bit.
+
+--- step 7000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to help you, but you need to take a break and see if you need any help. You'll be able for your help. Just take a look at your time and see your best.
+  PRED2: You're not going to be able to help you out. You'll be able for your help. You need to get through this together.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you like it.
+  PRED1: I'm glad to hear that, Ariana. I've been practicing a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: You're welcome, Kayna. I'm glad you're enjoying it. I know you'll do great things in the world.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can ever forgive you, but I'm not going to be able to do whatever I want to do. I'll just have to be more careful in this.
+  PRED2: But I don't want to be honest. I'm not going to be able to do whatever you want to.
+  PRED3: But what if I don't want to talk about? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm sorry, Jaka. I've been working hard for a while now. I know you're going to do great.
+  PRED2: I'm sorry, I've been a lot of fun lately. What's new with you?
+  PRED3: That's great, honey. I'm glad you're doing it.
+
+--- step 7500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to take your time and see if you're going to do anything. You'll be able for your help. Just take a break and take your head on your life.
+  PRED2: You're not going to be able to help you out. You'll be fine. Just take a break and take your time.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad you're enjoying it. I've been having a lot of fun lately and I'll be able to make sure that you've done a lot.
+  PRED2: I'm glad you like it. I've been practicing a lot lately and I'll be able to make sure you're doing a great job.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can do that. I'm not going to be able to help you out. I don’t want to be happy, but I donate to be more careful.
+  PRED2: I don't know if I can do this, but I'm not going to be able to help you.
+  PRED3: But what if I don't want to talk about? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm sorry, Jaka. I've been working hard and I'll be able to help you.
+  PRED2: I know, sweetheart. I'm just glad I could help you. You're a great job, but you're going to be a great day.
+  PRED3: I know, sweetheart. I'm just glad you're doing a great job.
+
+--- step 8000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to take a break and see if you're going to do anything. You'll be able for your help. Just take a look at your time and see what you'll do for you.
+  PRED2: You're not going to be able to do anything. You'll be able for your help. You need to be more careful and you'll get through this together.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad to hear that, Ariana. I've been practicing a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: You're welcome, Kayla. I'm glad you're enjoying it. I know you'll do great things in the world.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can do that. I'm not going to be able to help you out. I don’t want to be a good person and I'll be here for you.
+  PRED2: I don't know if I can ever trust you. I'm just not going to be able to do whatever it takes to me.
+  PRED3: But what if I don't want to talk about? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm sorry, Kayla. I've been working hard and I'll be able to help you.
+  PRED2: I'm sorry, I've been a lot of fun. I'll do great things in the future.
+  PRED3: I'm sorry, I'll do it. What's going on?
+
+--- step 8500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you. You'll be fine.
+  PRED1: You're not going to be able to take a break and see if you're going to do it. You'll be able for your help and see what you'll do.
+  PRED2: You're not going to be able to take your time and see if you're going to do anything. You'll get through this together, but you'll be able for your help.
+  PRED3: I'm sorry, but you're going to have to take a break and see what you'll do. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad you're enjoying it. I've been having a lot of fun, but I'll be able to make sure that you've done a lot.
+  PRED2: I'm glad you like it. I've been practicing a lot lately and I'll be able to make sure you're doing a great job.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I'm not going to do?
+  PRED1: I don't know if I can do this, but I'm not going to be able to help you. I'll try to do better in the future. Just try to stay calm and I've been through this.
+  PRED2: But I don't want to be honest. I'm not going to be able to do whatever it takes to me.
+  PRED3: But what if I don't want to talk about? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? I'm not going to do anything.
+  PRED1: I'm sorry, Kayla. I've been working hard and I'll be able to help you.
+  PRED2: I'm sorry, I've been a lot of fun. I'll do great things in the future.
+  PRED3: I'm sorry, I didn't mean to. What's new with you?
+
+--- step 9000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you.
+  PRED1: You're not going to be able to help you. You'll be fine, but you're going to have to be a good person. You can't take your time and see if you need to be the best for you.
+  PRED2: You're not going to be able to help you out. You'll be fine. Just take a break and take your time.
+  PRED3: You're not going to be able to help you. You'll be fine.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad to hear that, Ariana. I've been practicing a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: You're welcome, Kayla. I'm glad you're enjoying it. I know you'll do great things in the world.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can ever trust you anymore. I'm just not going to be able to do whatever I want to do. I don’t want to be a good person.
+  PRED2: But I don't want to be honest. I'm not going to be able to do whatever it takes to me.
+  PRED3: But what if I don't want to talk about? What if I'm not going to do?
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm sorry, Kayla. I've been working hard and I'll be able to help you.
+  PRED2: I'm sorry, I've been a lot of fun. I'll do great things in the future.
+  PRED3: I'm sorry, I'll do it. What's going on?
+
+--- step 9500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not going to be able to help you. You'll be fine.
+  PRED1: You're not going to be able to help you out. You'll be fine, but you're going to have to be a good person. You can't take your time and see if you need to be happy.
+  PRED2: You're not going to be able to help you out. You'll be able for your help and you'll get through this. Just take a break and take your time.
+  PRED3: You're not going to be able to help you out. You'll be fine. Just take a break and let go.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm glad you're enjoying it.
+  PRED1: I'm glad to hear that, Ariana. I've been practicing a lot of fun and I'll be able to make sure that you're doing a great job.
+  PRED2: I'm glad you like it. I've been practicing a lot lately and I'll be able to make sure you're doing a great job.
+  PRED3: You're welcome, Kayla. I'm glad you're enjoying it.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But what if I don't? What if I can do?
+  PRED1: I don't know if I can ever trust you anymore. I'm just not going to be able to do whatever I want to do. I don’t want to be a good person.
+  PRED2: But I don't want to be more careful. I don’t want you to be able to do it.
+  PRED3: But I don't want to be more careful. I don’t want you to do anything.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: What do you mean? You're a great job.
+  PRED1: I'm sorry, Kayla. I've been working hard and I'll be able to help you.
+  PRED2: I know, I'm sorry. It's just a lot of fun. I'll do great.
+  PRED3: I know, I'm sorry. It's a great way to make you happy.
+

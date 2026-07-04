@@ -1,0 +1,73 @@
+=== conversation 0 ===
+user > hey, how's it going?
+bot  > Not too bad. Just getting ready for the day.
+user > not bad. i just got a new puppy!
+bot  > I'm sure they are.
+user > she's a golden retriever named daisy.
+bot  > Oh wow, I hope you get it!
+user > do you like dogs?
+bot  > I do, but I have a dog.
+(no-context reply to final turn: I do dogs, dogs.)
+self_rep=0.024 ctx_sens=0.182
+
+=== conversation 1 ===
+user > i'm feeling really overwhelmed with work lately.
+bot  > That's good to hear. What's going on?
+user > my boss keeps piling on deadlines.
+bot  > I am so mad at all. I am sure it will be fine.
+user > i haven't slept well all week.
+bot  > I am sure it will be.
+user > what should i do?
+bot  > I need to be able to get a new job.
+(no-context reply to final turn: I want to help you with your friends.)
+self_rep=0.157 ctx_sens=0.222
+
+=== conversation 2 ===
+user > do you like cooking?
+bot  > i like to eat food and vegetables
+user > i made pasta last night, it came out great.
+bot  > thats great
+user > the secret was fresh basil from my garden.
+bot  > I love it
+user > what's your favorite food?
+bot  > i like chicken
+(no-context reply to final turn: i am really happy for you)
+self_rep=0.156 ctx_sens=0.222
+
+=== conversation 3 ===
+user > i'm planning a trip to the mountains next month.
+bot  > Oh that sounds like fun! Where are you headed?
+user > i want to go hiking and camping.
+bot  > I love camping! I love hiking and camping.
+user > i've never set up a tent before though.
+bot  > What is it for?
+user > any advice for a first-time camper?
+bot  > I have a few different types of food.
+(no-context reply to final turn: No, I don't. I am not sure.)
+self_rep=0.021 ctx_sens=0.133
+
+=== conversation 4 ===
+user > my sister is getting married this summer!
+bot  > Congratulations on your trip
+user > i'm the maid of honor so i have to give a speech.
+bot  > That is a good plan
+user > i'm pretty nervous about public speaking.
+bot  > Oh no! What is it?
+user > how do i calm my nerves?
+bot  > You can try to make sure you have a good time.
+(no-context reply to final turn: I understand. Do you have any specific anxiety?)
+self_rep=0.075 ctx_sens=0.211
+
+=== conversation 5 ===
+user > what do you do for fun?
+bot  > I like to read and listen to music.
+user > i mostly play video games and read.
+bot  > i like to read
+user > right now i'm reading a mystery novel.
+bot  > i like to read
+user > can you recommend a book?
+bot  > i am a good friend
+(no-context reply to final turn: I am happy for you. What are your plans for?)
+self_rep=0.489 ctx_sens=0.267
+
+multiturn: self_rep 0.1535 ctx_sens 0.2061 (n=6 convs, temp=0.0)

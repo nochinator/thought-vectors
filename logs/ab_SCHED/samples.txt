@@ -1,0 +1,448 @@
+--- step 500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I' you. I
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: I, you' I
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Well, I'
+
+--- step 1000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I'
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: That, you'
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i am you said most to you doing I yourself
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: I'm, I'
+
+--- step 1500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I'm. you'
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: Well, I hear. you'm? you'
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i gives you do too love "
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Well, I'm. I'
+
+--- step 2000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: I, you'm forgot. you'
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: Well, I hear it. Please know as I hear. You do
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i tell something to I Stop it from much been for you feeling
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Well, I'm like it'm playing. I know
+
+--- step 2500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, please'm. you'
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: That, you am. you know as I. your now
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: I, so you'm watching I'm playing I work to you quite
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Well, I knows to you'm? I'm playing. I know
+
+--- step 3000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer. you doing that dook the schools.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: That, you am. you see'm forgot. you uses to I perfect'
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i FROM you will so Love to most said my talk is you feeling to both it is Please lots
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Well, I knows to you'm? I't like you'
+
+--- step 3500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, we'm like it'm playing. I work
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: Well, I wanting. I tell it. I wanting you. I laugh as you.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i tell something to I Stop here my seem eon you loved
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: What, I know thats? I know,
+
+--- step 4000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer." I go that 12 enjoyed that you do. D
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: Well, I offer." you doing that d grab it. Please know as you'
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i FROM you will so Love to not remembered you ... delight
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: What, I know thats!" I know: What
+
+--- step 4500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer. you doing to I yourself.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: Well, I yourself to be Well that 12 go. I yourself
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i FROM you ... fore love notbase are long anymore I uses you . do
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Well, I knows to you feeling. I wanting you is my here to trim it. YOU
+
+--- step 5000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer. you doing that d grab. you live thatby
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: That't knowing, you moved? I afford, you describe that right'
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i tell something to i Stop thatm leaving you favourite le there is you Lord
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Yeah, I'm? I'
+
+--- step 5500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer. you doing that dinclude. you choose
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: That't knowing, you moved. you spend that it try. you say to it pretty. you
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i bring . u do "unk not grab e love not couch
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: What, anybody's?
+
+--- step 6000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer. you doing to I yourself.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: That, you describe that you'm forgot that you describe. you make on
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i tell something to // song you to import there can very force . you'
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: What, anybody's?
+
+--- step 6500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer. you doing that d grab. you know that
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: Well, I offer. you doing that d grab. you know that c
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i gives you ; "o talking if I give us if I read
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: What, I'm? I'
+
+--- step 7000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer. you doing that d grab. } choose
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: That't while you'm like you' And it to be else. you'
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i bring . i like his do too Kings and well feel #q is you pipe
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Yeah, I'm? I'
+
+--- step 7500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: I, us have I sure.s please.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: Well, I offer you. And it to becoming here. I tell it.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i tell something to i Stop something to once look with you realized all
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Well, I knows to you feeling. I wanting is you feeling? I'
+
+--- step 8000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED: Well, I offer. you doing that d grab.t doing that
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED: Well, I offer you. And it to becoming here. I get
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED: i tell something to i Stop something to even os you think # everybody is long them!!!w
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED: Yeah, I'm? I'
+

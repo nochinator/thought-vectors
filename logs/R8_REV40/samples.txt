@@ -1,0 +1,272 @@
+--- step 500 ---
+  user: hate when the lawn guy makes noises early in the morning
+  REF : That can definitely get aggravating! It always seems to happen at the worst time.
+  PRED0: I'm sorry, I didn't mean to
+  PRED1: I'm sorry, I didn't mean to be in a bad way.
+  PRED2: I'm sorry, I didn't mean to be a good person. I was just a little bit of a little girl.
+  PRED3: I'm sorry, I didn't mean to. I was just a little kid.
+
+  user: Many of my friends go to medical school, they will be very successful in the future
+  bot: Well, they deserve it. Medical school is not easy and they spent unimaginable effort and hard work to finish it
+  user: I had to work with a partner for my senior thesis and he did nothing! Do you like group work?
+  bot: Oh I hate group work for that exact reason. I'd rather just have company while I did the work
+  user: Me too! I spent months on it and we ended up with the same grade.
+  REF : What a shame. I wouldn't make them my partner again. (and I might venture so far as to notify the professor)
+  PRED0: That's great! I'm sure you'll be a great
+  PRED1: I'm sorry to hear that. I'll try to be more careful in the future.
+  PRED2: I'm sorry, I didn't mean to be a good person. I've been working hard for a few years now and I'll have to do it.
+  PRED3: I'm sorry to hear that. I'll try to be more careful in the future.
+
+  user: I just had a brand new coworker start at my job. I've loved helping him learn the ropes!
+  REF : Cool. Most people dont like training.
+  PRED0: That's great! What did you do?
+  PRED1: That's great! I'm sure you'll be a good friend.
+  PRED2: That's great! I'm sure you'll be able to get a good job with your friends.
+  PRED3: That's great! I'm sure you'll be able to get a good job.
+
+  user: Thank you so much for the class, I really enjoyed it.
+  bot: I'm glad you enjoyed it. Do you feel like you learned anything useful?
+  REF : Yes, I definitely feel like I learned a lot. I never realized how important it was to keep track of your ideas and plan everything out before starting to write. It makes the whole process a lot easier and less stressful.
+  PRED0: Yes, I do. I'm really excited about it.
+  PRED1: Yes, I think it's a great way to get started. I'm really happy with how to make a difference in the world. I think I've been working on a lot of experience and I'd like to learn more about it.
+  PRED2: Yes, I think it's a great way to get started. I'm really excited about it and I've been working on it. I think I'll be able to find a way to do it.
+  PRED3: Yes, I think it's a great way to get started. I'm really glad I found a way to make it happen.
+
+--- step 1000 ---
+  user: hate when the lawn guy makes noises early in the morning
+  REF : That can definitely get aggravating! It always seems to happen at the worst time.
+  PRED0: I'm sorry, I didn't mean it.
+  PRED1: I'm sorry, I didn't mean to hurt your feelings.
+  PRED2: I'm sorry, I didn't mean to be a good person. I was just so angry and I didn’t know what I was going to do.
+  PRED3: I'm so sorry, I didn't mean to. I was just so angry and angry.
+
+  user: Many of my friends go to medical school, they will be very successful in the future
+  bot: Well, they deserve it. Medical school is not easy and they spent unimaginable effort and hard work to finish it
+  user: I had to work with a partner for my senior thesis and he did nothing! Do you like group work?
+  bot: Oh I hate group work for that exact reason. I'd rather just have company while I did the work
+  user: Me too! I spent months on it and we ended up with the same grade.
+  REF : What a shame. I wouldn't make them my partner again. (and I might venture so far as to notify the professor)
+  PRED0: That's great!
+  PRED1: That's great! I'm sure you'll be a great friend.
+  PRED2: That's great! I'm sure you'll be able to do it. I've been working hard and I'll have to do my best to make sure you have a good time.
+  PRED3: That's great! I'm sure you'll be able to get a good grade.
+
+  user: I just had a brand new coworker start at my job. I've loved helping him learn the ropes!
+  REF : Cool. Most people dont like training.
+  PRED0: That's great! What did you do?
+  PRED1: That's great! I'm sure you'll be a good friend.
+  PRED2: That's great! I'm sure you'll be able to get a good job with your friends.
+  PRED3: That's great! I'm sure you'll be able to get a good job.
+
+  user: Thank you so much for the class, I really enjoyed it.
+  bot: I'm glad you enjoyed it. Do you feel like you learned anything useful?
+  REF : Yes, I definitely feel like I learned a lot. I never realized how important it was to keep track of your ideas and plan everything out before starting to write. It makes the whole process a lot easier and less stressful.
+  PRED0: Yes, I do. I'm really excited about it.
+  PRED1: Yes, I did. I think it's important to be able to find a way to express myself and make a difference in the world. I'm also really interested in learning how to make a good grade and how to do it.
+  PRED2: Yes, I did. I've been thinking about it and I'm really excited about it. I think it's important to be able to help others and help others.
+  PRED3: Yes, I do. I'm really excited about it. I think it's important to be able to help others.
+
+--- step 1500 ---
+  user: hate when the lawn guy makes noises early in the morning
+  REF : That can definitely get aggravating! It always seems to happen at the worst time.
+  PRED0: I'm so sorry to hear that.
+  PRED1: I'm so sorry to hear that. What happened?
+  PRED2: I'm so sorry, I didn't mean to. I was just so angry and I didn’t know what I was doing.
+  PRED3: I'm so sorry, I didn't mean to. It was just a little bit of a person.
+
+  user: Many of my friends go to medical school, they will be very successful in the future
+  bot: Well, they deserve it. Medical school is not easy and they spent unimaginable effort and hard work to finish it
+  user: I had to work with a partner for my senior thesis and he did nothing! Do you like group work?
+  bot: Oh I hate group work for that exact reason. I'd rather just have company while I did the work
+  user: Me too! I spent months on it and we ended up with the same grade.
+  REF : What a shame. I wouldn't make them my partner again. (and I might venture so far as to notify the professor)
+  PRED0: Oh no! I'm so sorry.
+  PRED1: That's great! I'm sure you'll be a great friend.
+  PRED2: That's great! I'm sure you'll be able to get a good grade. I've been working hard and I'll have to do that.
+  PRED3: That's great! I'm sure you'll be able to get a good grade.
+
+  user: I just had a brand new coworker start at my job. I've loved helping him learn the ropes!
+  REF : Cool. Most people dont like training.
+  PRED0: That's great! What did you do?
+  PRED1: That's great! What did you do about it?
+  PRED2: That's great! I'm sure you'll be able to get a good dog. What do you think is the most important thing to do?
+  PRED3: That's great! I'm sure you'll be able to get some rest.
+
+  user: Thank you so much for the class, I really enjoyed it.
+  bot: I'm glad you enjoyed it. Do you feel like you learned anything useful?
+  REF : Yes, I definitely feel like I learned a lot. I never realized how important it was to keep track of your ideas and plan everything out before starting to write. It makes the whole process a lot easier and less stressful.
+  PRED0: Yes, I do. I'm really excited about it.
+  PRED1: Yes, I did. I think it's important to be able to find a way to express myself and learn more about the environment. I'm also very focused on how to use the information and how to make it work. I feel like I've been able to do something that I'll be able.
+  PRED2: Yes, I did. I think I've been working on a lot of different types of things. I'm also very excited to see how it works. Thanks for the advice, though.
+  PRED3: Yes, I think I've been working on a lot of different things. I'm really excited about it.
+
+--- step 2000 ---
+  user: hate when the lawn guy makes noises early in the morning
+  REF : That can definitely get aggravating! It always seems to happen at the worst time.
+  PRED0: I'm sorry to hear that.
+  PRED1: I'm sorry to hear that. What happened?
+  PRED2: I'm sorry to hear that, but I've been so busy with my friends and family. I'll be fine.
+  PRED3: I'm sorry to hear that. I'll try to be more careful in the future.
+
+  user: Many of my friends go to medical school, they will be very successful in the future
+  bot: Well, they deserve it. Medical school is not easy and they spent unimaginable effort and hard work to finish it
+  user: I had to work with a partner for my senior thesis and he did nothing! Do you like group work?
+  bot: Oh I hate group work for that exact reason. I'd rather just have company while I did the work
+  user: Me too! I spent months on it and we ended up with the same grade.
+  REF : What a shame. I wouldn't make them my partner again. (and I might venture so far as to notify the professor)
+  PRED0: That is so cool!
+  PRED1: That's great! I'm sure you'll be a great
+  PRED2: I'm sorry to hear that. I was just trying to get a good job and get a job done. I've been doing a lot of work for a while now.
+  PRED3: I'm sorry to hear that. I'll try to be more careful in the future.
+
+  user: I just had a brand new coworker start at my job. I've loved helping him learn the ropes!
+  REF : Cool. Most people dont like training.
+  PRED0: That's great! What did you do?
+  PRED1: That's great! I'm sure you'll be a good friend.
+  PRED2: That's great! I'm sure you'll be able to get a good dog. What do you think?
+  PRED3: That's great! I'm sure you'll be able to get some fresh air.
+
+  user: Thank you so much for the class, I really enjoyed it.
+  bot: I'm glad you enjoyed it. Do you feel like you learned anything useful?
+  REF : Yes, I definitely feel like I learned a lot. I never realized how important it was to keep track of your ideas and plan everything out before starting to write. It makes the whole process a lot easier and less stressful.
+  PRED0: Yes, I do. I'm really excited about it.
+  PRED1: Yes, I did. I think it's important to be able to find a way to express myself and make a difference in the world. I'm also very organized and I've been able to see how it works. It's been a lot of work, but I'll definitely be able for it.
+  PRED2: Yes, I did. I've been thinking about it and I'm really passionate about it. I think it's important to be able to help others and make a difference in the world.
+  PRED3: Yes, I do. I've been thinking about how I'm doing. I think I'll be able to find a way to make it happen.
+
+--- step 2500 ---
+  user: hate when the lawn guy makes noises early in the morning
+  REF : That can definitely get aggravating! It always seems to happen at the worst time.
+  PRED0: I'm sorry to hear that.
+  PRED1: I'm sorry to hear that. What happened?
+  PRED2: I'm sorry, I didn't mean to. I was just so angry and I didn’t know what I was doing.
+  PRED3: I'm sorry to hear that. I was just so angry and I didn't want to be in trouble.
+
+  user: Many of my friends go to medical school, they will be very successful in the future
+  bot: Well, they deserve it. Medical school is not easy and they spent unimaginable effort and hard work to finish it
+  user: I had to work with a partner for my senior thesis and he did nothing! Do you like group work?
+  bot: Oh I hate group work for that exact reason. I'd rather just have company while I did the work
+  user: Me too! I spent months on it and we ended up with the same grade.
+  REF : What a shame. I wouldn't make them my partner again. (and I might venture so far as to notify the professor)
+  PRED0: That is so cool.
+  PRED1: That's great! I'm sure you'll be a great
+  PRED2: That's great! I'm sure you'll be able to do it. I've been working hard and I'll have to do that.
+  PRED3: That's great! I'm sure you'll be able to get a good job.
+
+  user: I just had a brand new coworker start at my job. I've loved helping him learn the ropes!
+  REF : Cool. Most people dont like training.
+  PRED0: That's great! What did you do?
+  PRED1: That's great! What did you do?
+  PRED2: That's great! I'm sure you'll be able to get a good job with your friends.
+  PRED3: That's great! I'm sure you'll be able to get it done.
+
+  user: Thank you so much for the class, I really enjoyed it.
+  bot: I'm glad you enjoyed it. Do you feel like you learned anything useful?
+  REF : Yes, I definitely feel like I learned a lot. I never realized how important it was to keep track of your ideas and plan everything out before starting to write. It makes the whole process a lot easier and less stressful.
+  PRED0: Yes, I do. I'm really excited about it.
+  PRED1: Yes, I definitely feel like I've been working on a lot of experience and I'm really enjoying it. I'd like to read a new job and see how it works. Plus, I think it's a great way to get started.
+  PRED2: Yes, I do. I think I'm really excited about it. It's a great way to get started and I've learned how to do it. I'll be able to find a way to do that.
+  PRED3: Yes, I do. I've been working on a lot of different things and I'm really excited about it.
+
+--- step 3000 ---
+  user: hate when the lawn guy makes noises early in the morning
+  REF : That can definitely get aggravating! It always seems to happen at the worst time.
+  PRED0: I'm sorry to hear that.
+  PRED1: I'm sorry to hear that. What happened?
+  PRED2: I'm sorry, I didn't mean to. I was just so angry and I didn’t know what I was doing.
+  PRED3: I'm sorry to hear that. I'll try to be more careful in the future.
+
+  user: Many of my friends go to medical school, they will be very successful in the future
+  bot: Well, they deserve it. Medical school is not easy and they spent unimaginable effort and hard work to finish it
+  user: I had to work with a partner for my senior thesis and he did nothing! Do you like group work?
+  bot: Oh I hate group work for that exact reason. I'd rather just have company while I did the work
+  user: Me too! I spent months on it and we ended up with the same grade.
+  REF : What a shame. I wouldn't make them my partner again. (and I might venture so far as to notify the professor)
+  PRED0: That is great! I'm so happy for you.
+  PRED1: That's great! I'm sure you'll be a great
+  PRED2: That's great! I'm sure you'll be able to do it. I've been working hard and I'll have to do my best to make sure you have a good time.
+  PRED3: That's great! I'm sure you'll be able to get a good job.
+
+  user: I just had a brand new coworker start at my job. I've loved helping him learn the ropes!
+  REF : Cool. Most people dont like training.
+  PRED0: That's great! What did you do?
+  PRED1: That's great! What did you do?
+  PRED2: That's great! I'm sure you'll be able to get a good dog. What do you think is the best thing to do?
+  PRED3: That's great! I'm sure you'll be able to get it done.
+
+  user: Thank you so much for the class, I really enjoyed it.
+  bot: I'm glad you enjoyed it. Do you feel like you learned anything useful?
+  REF : Yes, I definitely feel like I learned a lot. I never realized how important it was to keep track of your ideas and plan everything out before starting to write. It makes the whole process a lot easier and less stressful.
+  PRED0: Yes, I do. I'm really excited about it.
+  PRED1: Yes, I think it's important to be able to learn more about the environment. I think I'm really enjoying it. It's a great way to get started on the project and see how it works. Plus, it'll be a great fit for me.
+  PRED2: Yes, I do. I think I've been working on a lot of different things. I'm really excited about it. It's been a lot more fun to see things in the future.
+  PRED3: Yes, I do. I've been working on a lot of different things and I'm really excited about it.
+
+--- step 3500 ---
+  user: hate when the lawn guy makes noises early in the morning
+  REF : That can definitely get aggravating! It always seems to happen at the worst time.
+  PRED0: I am so sorry to hear that.
+  PRED1: I'm sorry to hear that. What happened?
+  PRED2: I'm sorry, I didn't mean to. I was just a little kid. I've been so scared and I'll be able to do it.
+  PRED3: I'm sorry to hear that. I'll try to be more careful in the future.
+
+  user: Many of my friends go to medical school, they will be very successful in the future
+  bot: Well, they deserve it. Medical school is not easy and they spent unimaginable effort and hard work to finish it
+  user: I had to work with a partner for my senior thesis and he did nothing! Do you like group work?
+  bot: Oh I hate group work for that exact reason. I'd rather just have company while I did the work
+  user: Me too! I spent months on it and we ended up with the same grade.
+  REF : What a shame. I wouldn't make them my partner again. (and I might venture so far as to notify the professor)
+  PRED0: That is so cool.
+  PRED1: That's great! I'm sure you'll be a great
+  PRED2: That's great! I'm sure you'll be able to do it. I've been working hard and I'll have to do my best to make sure you have a good time.
+  PRED3: That's great! I'm sure you'll be able to get a good job.
+
+  user: I just had a brand new coworker start at my job. I've loved helping him learn the ropes!
+  REF : Cool. Most people dont like training.
+  PRED0: That's great! What did you do?
+  PRED1: That's great! I'm sure you'll be a great
+  PRED2: That's great! I'm sure you'll be able to get a good dog. I've been working hard on it for a while.
+  PRED3: That's great! I'm sure you'll be able to get a good dog.
+
+  user: Thank you so much for the class, I really enjoyed it.
+  bot: I'm glad you enjoyed it. Do you feel like you learned anything useful?
+  REF : Yes, I definitely feel like I learned a lot. I never realized how important it was to keep track of your ideas and plan everything out before starting to write. It makes the whole process a lot easier and less stressful.
+  PRED0: Yes, I do. I'm really excited about it.
+  PRED1: Yes, I did. I think it's a great way to get started. I'm really enjoying it and I've never been able to find the way to do it. Plus, I'll be able to get a good understanding of the material and the information I'd be able.
+  PRED2: Yes, I did. I've been working on a lot of different things and I'm really excited about it. I think I'll be able to find a way to make it happen.
+  PRED3: Yes, I did. I'm really excited about it. I think I've been working hard and I'll be able to find a way to make it happen.
+
+--- step 4000 ---
+  user: hate when the lawn guy makes noises early in the morning
+  REF : That can definitely get aggravating! It always seems to happen at the worst time.
+  PRED0: I am so sorry to hear that.
+  PRED1: I'm sorry to hear that. I was so scared.
+  PRED2: I'm sorry, I didn't mean to. I was just so angry and I didn’t know what I was doing.
+  PRED3: I'm sorry to hear that. I'll try to be more careful in the future.
+
+  user: Many of my friends go to medical school, they will be very successful in the future
+  bot: Well, they deserve it. Medical school is not easy and they spent unimaginable effort and hard work to finish it
+  user: I had to work with a partner for my senior thesis and he did nothing! Do you like group work?
+  bot: Oh I hate group work for that exact reason. I'd rather just have company while I did the work
+  user: Me too! I spent months on it and we ended up with the same grade.
+  REF : What a shame. I wouldn't make them my partner again. (and I might venture so far as to notify the professor)
+  PRED0: That is so cool.
+  PRED1: That's great! I'm sure you'll be a great
+  PRED2: That's great! I'm sure you'll be able to do it. I've been working hard and I'll have to do my best to make sure you have a good time.
+  PRED3: That's great! I'm sure you'll be able to get a good job.
+
+  user: I just had a brand new coworker start at my job. I've loved helping him learn the ropes!
+  REF : Cool. Most people dont like training.
+  PRED0: That's great! What did you do?
+  PRED1: That's great! I'm sure you'll be a good friend.
+  PRED2: That's great! I'm sure you'll be able to get a good dog. I've been working hard on it for a while.
+  PRED3: That's great! I'm sure you'll be able to get a good dog.
+
+  user: Thank you so much for the class, I really enjoyed it.
+  bot: I'm glad you enjoyed it. Do you feel like you learned anything useful?
+  REF : Yes, I definitely feel like I learned a lot. I never realized how important it was to keep track of your ideas and plan everything out before starting to write. It makes the whole process a lot easier and less stressful.
+  PRED0: Yes, I do. I'm really excited about it.
+  PRED1: Yes, I did. I think it's important to be able to find a way to express myself and make a difference in the world. I'm also very organized and I've been working on it. Plus, I think I'll be able for it.
+  PRED2: Yes, I did. I've been working on a lot of different things and I'm really excited about it. I think I'll be able to find a way to do it.
+  PRED3: Yes, I did. I'm really excited about it. I think I've been working hard and I'll be able to find a way to make it happen.
+

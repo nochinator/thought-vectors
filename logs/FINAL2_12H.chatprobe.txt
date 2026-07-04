@@ -1,0 +1,84 @@
+
+======================================================================
+### FINAL_12H
+======================================================================
+
+--- mood reversal (the target behavior) ---
+user > i just got back from an amazing beach vacation!
+bot  > i love to go to the beach and get a new dog
+user > the water was perfect and i learned to surf.
+bot  > i love to go to the beach and get a good night
+user > but when i got home i found out my apartment was broken into.
+bot  > i love to play a lot of fun
+user > they took my laptop and my grandmother's necklace.
+bot  > i love to play a lot of fun
+
+--- sustained bad news ---
+user > i'm feeling really overwhelmed with work lately.
+bot  > I can imagine. What's been going on?
+user > my boss keeps piling on deadlines.
+bot  > That sounds like a lot of pressure. Have you been able to talk to anyone else?
+user > i haven't slept well all week.
+bot  > That's good to hear. Have you been able to talk to anyone about how you're feeling?
+user > what should i do?
+bot  > We'll see. Just be careful and don't give up on your dreams.
+
+--- plain small talk ---
+user > hey! what do you like to do on weekends?
+bot  > I like to play video games and play video game .
+user > i've been getting into baking bread.
+bot  > i love to play video games and play video game games.
+user > my first sourdough came out pretty dense though.
+bot  > i'm a little bit of a play video game.
+user > any tips?
+bot  > i am a little bit of a play video game
+
+--- good news stays good ---
+user > i just found out i got into my dream school!
+bot  > i love to play with my friends and family .
+user > i'll be studying marine biology.
+bot  > i love to play with my family .
+user > i start in the fall and i can't wait.
+bot  > i love to play . i love my family .
+
+======================================================================
+### FINAL2_12H
+======================================================================
+
+--- mood reversal (the target behavior) ---
+user > i just got back from an amazing beach vacation!
+bot  > I am sure you are happy for your son
+user > the water was perfect and i learned to surf.
+bot  > I am sure you will be okay, you will have a great time!
+user > but when i got home i found out my apartment was broken into.
+bot  > I bet that was fun!
+user > they took my laptop and my grandmother's necklace.
+bot  > That's a good idea. What did you do?
+
+--- sustained bad news ---
+user > i'm feeling really overwhelmed with work lately.
+bot  > That's good to hear. What's going on?
+user > my boss keeps piling on deadlines.
+bot  > I am so mad at all. I am sure it will be fine.
+user > i haven't slept well all week.
+bot  > I am sure it will be.
+user > what should i do?
+bot  > I need to be able to get a new job.
+
+--- plain small talk ---
+user > hey! what do you like to do on weekends?
+bot  > I like to read and play video games.
+user > i've been getting into baking bread.
+bot  > I love to read and play with my friends.
+user > my first sourdough came out pretty dense though.
+bot  > I love cats.
+user > any tips?
+bot  > I have a lot of fun.
+
+--- good news stays good ---
+user > i just found out i got into my dream school!
+bot  > How long have you been there?
+user > i'll be studying marine biology.
+bot  > That's great!
+user > i start in the fall and i can't wait.
+bot  > What are you planning on doing?

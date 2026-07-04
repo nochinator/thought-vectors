@@ -1,0 +1,73 @@
+=== conversation 0 ===
+user > hey, how's it going?
+bot  > Not too bad. Just getting ready for the day.
+user > not bad. i just got a new puppy!
+bot  > I'm glad you like it.
+user > she's a golden retriever named daisy.
+bot  > That's great! I'm really happy for you.
+user > do you like dogs?
+bot  > I like to read and see how much I love you.
+(no-context reply to final turn: I like to read and see how you feel.)
+self_rep=0.088 ctx_sens=0.700
+
+=== conversation 1 ===
+user > i'm feeling really overwhelmed with work lately.
+bot  > It sounds like you're feeling really overwhelmed.
+user > my boss keeps piling on deadlines.
+bot  > It sounds like you're feeling overwhelmed.
+user > i haven't slept well all week.
+bot  > I can't wait to get some time to stay positive.
+user > what should i do?
+bot  > I don't know if I can help you.
+(no-context reply to final turn: You can be able to help you with your own business.)
+self_rep=0.172 ctx_sens=0.211
+
+=== conversation 2 ===
+user > do you like cooking?
+bot  > I like to read and play with my favorite music.
+user > i made pasta last night, it came out great.
+bot  > I'm glad you like it.
+user > the secret was fresh basil from my garden.
+bot  > That's great! I'm glad you like it.
+user > what's your favorite food?
+bot  > I like to read and see how much I love it.
+(no-context reply to final turn: I'm really happy to have you.)
+self_rep=0.339 ctx_sens=0.118
+
+=== conversation 3 ===
+user > i'm planning a trip to the mountains next month.
+bot  > I know, me too! I'm going to go to the park.
+user > i want to go hiking and camping.
+bot  > I love you too! I'm so glad we were here.
+user > i've never set up a tent before though.
+bot  > I know, me too. I'm just glad we were together.
+user > any advice for a first-time camper?
+bot  > I'm not sure. I'll do my best.
+(no-context reply to final turn: I'm not sure. I'll be able to help you.)
+self_rep=0.252 ctx_sens=0.500
+
+=== conversation 4 ===
+user > my sister is getting married this summer!
+bot  > i'm a big car ? i've been a great day .
+user > i'm the maid of honor so i have to give a speech.
+bot  > i'm a big car ? i've been a great day .
+user > i'm pretty nervous about public speaking.
+bot  > i'm a great job , i've been a great day
+user > how do i calm my nerves?
+bot  > i'm a great job , i've been a great day
+(no-context reply to final turn: You can be a good grade, but it's not like you're not a good person.)
+self_rep=0.778 ctx_sens=0.160
+
+=== conversation 5 ===
+user > what do you do for fun?
+bot  > I like to read and play video games.
+user > i mostly play video games and read.
+bot  > I love to play video games and play video game
+user > right now i'm reading a mystery novel.
+bot  > i'm a great job for a movie .
+user > can you recommend a book?
+bot  > I'm not sure yet. I'll do my best to help.
+(no-context reply to final turn: I can't believe you're not a good person.)
+self_rep=0.146 ctx_sens=0.111
+
+multiturn: self_rep 0.2959 ctx_sens 0.2999 (n=6 convs, temp=0.0)

@@ -1,0 +1,399 @@
+--- step 500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm gonna know.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: I'm
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I'm sorry. I've got to me. I don't know what I'll be a lot of
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: I'm doing.
+
+--- step 1000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: That's not a lot of you're going to be a good thing. I'm not going to do. I don't know what you've been a good way.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: I'm sorry. I'll have a good thing. I can't be a good.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I'm sorry. I've got to me. I don't know what I'll have to be a good thing. I can't be a lot of
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's doing, I'm doing about what you're doing. I've been a lot of things. I don't know what you can't be a better way to do you.
+
+--- step 1500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, I'll have to be a good thing. I've been a good way to be.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: I know. I'm sorry. I don't know what I'll have a good thing.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I don't know what I'm going to be a good thing. I've got to
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: I'm sorry, I've got to be a good thing. I're doing about you. I don't have a good way.
+
+--- step 2000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: It's a lot of the time. It'll be a good thing. I'm not going to make it.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah, I'm sorry. I've got a good thing. I can't be a good.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I'm sorry. I've got to me. I don't know what you're doing.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: I think that you're doing a lot of the world. I'm like that you can't be a lot. I think you've done in the way that you will be able to be a good way to do you.
+
+--- step 2500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, you're going to be a good thing. I've done.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah, I'm just a good thing. I've got a lot of it.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I know. It's a lot of the world. It is a lot that you're going to be better.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That sounds like it's a lot of the world. It's the most important thing that you're going to be a lot.
+
+--- step 3000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, but I'll have a good thing. I've got to be a good way.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: I'm sorry. I've got a good thing. I don't have a good way.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I know.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: I'm great! I've got a good thing. I're doing about you. I don't have a good way to do you.
+
+--- step 3500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, I'll know. I've got to be a good thing.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: I know. I'm sorry. I don't know what you've got to
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I know. I'm sorry that I've got to be a good thing. I don't know what you've been done.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's a good thing that you're doing a good idea of the world. I'm doing about you. I don't have a lot of
+
+--- step 4000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: You're not to be a good thing. You'll have to be the same. You can't have to make it. You will have to know what you're going to be.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah, I'm sorry. I've got a good thing. I don't have a good.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: But I'm not just like it. I've got a good thing. I don't have to be a good.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's great! I'm doing about what I'll have a lot of you're doing about you. I've done.
+
+--- step 4500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm not, you're going to be a good thing. I'll have to be better.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah, I'm sorry. I've got a good thing. I can't have a good.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: Yeah. I'm not just like you. I don't know what you're going to be a lot of
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's great! I'm sorry! I don't know what you're doing about you. I've done to do you know.
+
+--- step 5000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: You're not to be a good thing. You'll have to be the same. You can't know what you're going to be in your life.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah. I'm sorry. I can't be a good thing. I don't know what you've got a good.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: What is the first time. I have to be a good thing. I'm like that you're going to be
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That sounds like you can't have a good thing. I'm like that you're doing about about a lot of the world. It's a lot for you.
+
+--- step 5500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm not, you're going to be a good thing. I'll have a good way.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: That's great? I'm sorry!
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: Well, I don't know what you're going to be a good thing. I'm not going to do.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's great, you're doing about what you've done. I'm doing about you to make it. I think you'll be a good thing.
+
+--- step 6000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, you're going to do. I'll have a good thing. I don't have to be a good way.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: That sounds, I love to be a good thing.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: But I'm not going to do you.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That sounds like you can't know what you can be a good thing. I'm doing about you to make your own.
+
+--- step 6500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, you're going to make it. I'll have a good thing. I don't have to be a good way.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah, I'm sorry. I've got a good thing. I can't be a good.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I know, I'm sorry. I've got to be a good thing. I don't know what you're going to be
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's great, you're doing about what you'll be a good thing. I'm doing about you. I don't know what you can't be a better way to be a lot of
+
+--- step 7000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm not going to do you. I'll have a good thing. I don't have to be a good.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah, I'm like to do.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: But you're going to be a good thing. I'm not going to do you.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's a great thing that you're doing a lot of the world. It's very important to be a lot. I'm doing a good thing that I've done.
+
+--- step 7500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, you're going to be a good thing. I'll have to be the right.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: That's great! I'm going to do.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: But I'm not going to do.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That sounds like you can't think you're doing a good thing. I'm doing about you to make you've done.
+
+--- step 8000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, you're going to be a good thing. I'll have a lot of you.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah, I'm sorry. I've got a good thing. I don't have to be a lot of
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: What's not just a good thing. I'm not going to do.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's great! I'm sorry! I don't have a good thing that you're doing about you. I've been a lot of
+
+--- step 8500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, you're going to make it. I'll have a good thing. I don't have to be a good way.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: Yeah, I'm like you.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: But I'm sorry. I've got to be a good thing. I don't have to be better.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's great! I'm sorry about you're doing about you. I've been a lot of you can't have a lot about you to be a good thing.
+
+--- step 9000 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, you're going to be a good thing. I'll have to be the same. You're not going to do it.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: That sounds like it. I'm sorry.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: But I'm not just like you're going to be a good thing. I've got to me.
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That sounds like you are to make a good thing. I'm doing about you. I think you're doing about what you've done.
+
+--- step 9500 ---
+  user: Mom, can I please get that pink dress? I really like it.
+  bot: Miley, we can't afford to buy that dress. It's too expensive. Let's go look at something else.
+  user: But Mom, I really want that dress! Please can't we just buy it?
+  REF : I'm sorry Miley, but the answer is still no. We'll find something else for you to wear.
+  PRED: I'm sorry, you're going to make it. I'll have to be a good thing.
+
+  user: Hey, how was your weekend?
+  bot: It was alright. I just chilled at home mostly.
+  REF : Oh, okay. I did the same thing for the most part too. But I did go out with some friends on Saturday night. We went to this new bar that just opened up and it was really cool. The music was great and the atmosphere was really relaxed. We had a lot of fun.
+  PRED: That's great? I'm sorry about you.
+
+  user: So what the hell happened in there? I thought we had a plan!
+  bot: I don't know, man. It all just went to shit.
+  REF : What do you mean it all went to shit? We had a plan! What the hell happened?
+  PRED: I know what I'm not going to do. I've got to be a lot of
+
+  user: I definitely want to continue doing work that is creative and challenging. I love working on projects that push me outside of my comfort zone and force me to think creatively. I also want to continue working with people who are passionate and enthusiastic about their projects. It's so motivating to be surrounded by people who believe in what they're doing and are constantly striving to improve.
+  REF : That sounds great. Can you tell me a bit more about the type of work that you find creative and challenging?
+  PRED: That's really happy to do you know. I'm sorry about you're doing. I think you've done to do.
+

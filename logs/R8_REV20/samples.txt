@@ -1,0 +1,252 @@
+--- step 500 ---
+  user: I always make sure to self assure myself before i go for an interview
+  bot: that is a good tactic actually, it boosts your confidence
+  user: I recently flew for the first time on an airplane!
+  bot: Wow! That must have been exciting. Were you nervous?
+  user: My anxiety was through the roof, it was terrible!
+  REF : Oh, that sucks! Did you relax a bit after take off or were you anxious the whole time?
+  PRED0: That's great! I'm sure you'll be a great
+  PRED1: That's great! I'm sure you'll be a great friend.
+  PRED2: That's great! I'm sure you'll be able to get a good dog in the morning.
+  PRED3: That's good. I'm sure you'll be able to get some rest of the day.
+
+  user: "It's really nice out today, isn't it?"
+  bot: "Yeah, it is. I'm glad we decided to go for a walk."
+  REF : "Me too. I always enjoy getting some fresh air."
+  PRED0: "Yeah, me too. I'm just glad we came."
+  PRED1: "Yeah, me too. I'm just glad we were able to get through this."
+  PRED2: "Yeah, me too. I'm just glad we were able to get through this together."
+  PRED3: "Yeah, me too. I'm just glad that we were able to make a difference in the world."
+
+  user: My son said his first word today.
+  REF : Congratulations, thats amazing. What did he say?
+  PRED0: That's a great story.
+  PRED1: That's a great idea! I'm sure he's gone.
+  PRED2: That's a really good idea. I'm sure he'll be able to get a good dog.
+  PRED3: That's a really good idea. I'm sure he'll be able to get it.
+
+  user: Hey there! I haven't seen you around before. What's your name?
+  bot: I'm Person! I just moved here a few weeks ago.
+  user: That's great! Where did you move from?
+  REF : I moved from the city. It was really loud and crowded there, so I wanted to try something new.
+  PRED0: I was just thinking about the city.
+  PRED1: I was just thinking about the city. I've been doing it for years.
+  PRED2: I'm not sure yet. I've been doing a lot of work lately and I'd like to go to the park.
+  PRED3: I was just thinking about the city and the city. I'm really excited to see what it is.
+
+--- step 1000 ---
+  user: I always make sure to self assure myself before i go for an interview
+  bot: that is a good tactic actually, it boosts your confidence
+  user: I recently flew for the first time on an airplane!
+  bot: Wow! That must have been exciting. Were you nervous?
+  user: My anxiety was through the roof, it was terrible!
+  REF : Oh, that sucks! Did you relax a bit after take off or were you anxious the whole time?
+  PRED0: That's great! I'm glad you're enjoying it.
+  PRED1: That's great! I'm sure you'll be a great cook.
+  PRED2: That's great! I'm sure you'll be able to get a good dog. I've been working hard to get it for a while now.
+  PRED3: That's great! I'm sure you'll be able to get a good dog.
+
+  user: "It's really nice out today, isn't it?"
+  bot: "Yeah, it is. I'm glad we decided to go for a walk."
+  REF : "Me too. I always enjoy getting some fresh air."
+  PRED0: "Yeah, me too. It was nice to have a little bit."
+  PRED1: "Yeah, me too. I'm just glad we were able to get through this."
+  PRED2: "Yeah, me too. I'm just glad I could help out. It's been a long time coming here."
+  PRED3: "Yeah, me too. It's been a long time coming. I'm just glad we're finally here."
+
+  user: My son said his first word today.
+  REF : Congratulations, thats amazing. What did he say?
+  PRED0: That's great!
+  PRED1: That's great! I'm so happy to hear that.
+  PRED2: That's great! I'm so glad you're happy with me. I've been so busy with my friends and family.
+  PRED3: That's amazing! I'm so glad you're happy with him.
+
+  user: Hey there! I haven't seen you around before. What's your name?
+  bot: I'm Person! I just moved here a few weeks ago.
+  user: That's great! Where did you move from?
+  REF : I moved from the city. It was really loud and crowded there, so I wanted to try something new.
+  PRED0: I was just playing the piano.
+  PRED1: I was just thinking about the city. It was a great place to see it.
+  PRED2: I'm just really excited about it. I've been wanting to see the city and see the world. It's a lot of fun.
+  PRED3: I'm just really excited to get out of here. I've been looking for a new car.
+
+--- step 1500 ---
+  user: I always make sure to self assure myself before i go for an interview
+  bot: that is a good tactic actually, it boosts your confidence
+  user: I recently flew for the first time on an airplane!
+  bot: Wow! That must have been exciting. Were you nervous?
+  user: My anxiety was through the roof, it was terrible!
+  REF : Oh, that sucks! Did you relax a bit after take off or were you anxious the whole time?
+  PRED0: I'm glad you did.
+  PRED1: I'm glad you're enjoying it. I hope you can be a good friend.
+  PRED2: I'm glad you're enjoying it! I was a little worried that you were able to do it.
+  PRED3: I'm glad you're enjoying it. I hope you can be a great way to make it happen.
+
+  user: "It's really nice out today, isn't it?"
+  bot: "Yeah, it is. I'm glad we decided to go for a walk."
+  REF : "Me too. I always enjoy getting some fresh air."
+  PRED0: "Yeah, me too. It was a little bit of work."
+  PRED1: "Yeah, me too. I'm just glad we were able to get through this."
+  PRED2: "Yeah, me too. It's been a long time coming. But I'm glad we finally got back to the park."
+  PRED3: "Yeah, me too. It's been a long time coming. I'm just glad that we're together."
+
+  user: My son said his first word today.
+  REF : Congratulations, thats amazing. What did he say?
+  PRED0: That is a great story!
+  PRED1: That's a great idea! I'm sure he's so good.
+  PRED2: That's a really good idea. I'm sure he'll be able to get a good dog.
+  PRED3: That's a really good idea. I'm sure he'll be able to get a good time.
+
+  user: Hey there! I haven't seen you around before. What's your name?
+  bot: I'm Person! I just moved here a few weeks ago.
+  user: That's great! Where did you move from?
+  REF : I moved from the city. It was really loud and crowded there, so I wanted to try something new.
+  PRED0: I was just playing the piano and I saw it.
+  PRED1: I was just thinking about how to do that. It's a great place.
+  PRED2: I'm not sure yet. I've been working on a lot of different things, but I'd like to be able to get a new one.
+  PRED3: I'm just really excited to get out of here. I've been looking for a lot of fun.
+
+--- step 2000 ---
+  user: I always make sure to self assure myself before i go for an interview
+  bot: that is a good tactic actually, it boosts your confidence
+  user: I recently flew for the first time on an airplane!
+  bot: Wow! That must have been exciting. Were you nervous?
+  user: My anxiety was through the roof, it was terrible!
+  REF : Oh, that sucks! Did you relax a bit after take off or were you anxious the whole time?
+  PRED0: That's great! I'm glad you're enjoying it.
+  PRED1: That's great! I'm sure you'll be a great cook.
+  PRED2: I'm glad you're enjoying it! I was so glad you were able to get a good night.
+  PRED3: I'm glad you're enjoying it. I hope you can get a good time.
+
+  user: "It's really nice out today, isn't it?"
+  bot: "Yeah, it is. I'm glad we decided to go for a walk."
+  REF : "Me too. I always enjoy getting some fresh air."
+  PRED0: "Yeah, me too. It's been nice to meet."
+  PRED1: "Yeah, me too. It's been a long time coming.
+  PRED2: "Yeah, me too. It's been a long time coming. But I'm glad we finally got back to the park."
+  PRED3: "Yeah, me too. It's been a long time coming. I'm just glad we're together."
+
+  user: My son said his first word today.
+  REF : Congratulations, thats amazing. What did he say?
+  PRED0: That is a great story!
+  PRED1: That's great! I'm so glad you're happy with her.
+  PRED2: That's a great idea! I'm sure he'll be able to get a good dog.
+  PRED3: That's a great idea! I'm sure he'll be able to get a good friend.
+
+  user: Hey there! I haven't seen you around before. What's your name?
+  bot: I'm Person! I just moved here a few weeks ago.
+  user: That's great! Where did you move from?
+  REF : I moved from the city. It was really loud and crowded there, so I wanted to try something new.
+  PRED0: I'm just really excited to see them.
+  PRED1: I'm not sure yet. I've been working on a lot of fun.
+  PRED2: I'm just really excited about it. I've been thinking about it and I'd like to go to the park.
+  PRED3: I'm just really excited to see the city. I've been working on a lot of fun and I'd like to see it.
+
+--- step 2500 ---
+  user: I always make sure to self assure myself before i go for an interview
+  bot: that is a good tactic actually, it boosts your confidence
+  user: I recently flew for the first time on an airplane!
+  bot: Wow! That must have been exciting. Were you nervous?
+  user: My anxiety was through the roof, it was terrible!
+  REF : Oh, that sucks! Did you relax a bit after take off or were you anxious the whole time?
+  PRED0: That's great! I'm glad you're enjoying it.
+  PRED1: I'm glad you're enjoying it. I hope you can be a good friend.
+  PRED2: I'm glad you're enjoying it! I was so glad you were able to get a good night.
+  PRED3: I'm glad you're enjoying it. I hope you can get a good time.
+
+  user: "It's really nice out today, isn't it?"
+  bot: "Yeah, it is. I'm glad we decided to go for a walk."
+  REF : "Me too. I always enjoy getting some fresh air."
+  PRED0: "Yeah, me too. It was nice to have a little bit."
+  PRED1: "Yeah, me too. I'm just glad we were able to get through this together."
+  PRED2: "Yeah, me too. It's been a long time coming. But I'm glad we're here now."
+  PRED3: "Yeah, me too. It's been a long time coming. I'm just glad we're together."
+
+  user: My son said his first word today.
+  REF : Congratulations, thats amazing. What did he say?
+  PRED0: That's great! What was it like?
+  PRED1: That's great! I'm so happy for you.
+  PRED2: That's great! I'm so happy for you. I've been wanting to do a lot of time for years.
+  PRED3: That's great! I'm so happy for you. What was the most important thing about it?
+
+  user: Hey there! I haven't seen you around before. What's your name?
+  bot: I'm Person! I just moved here a few weeks ago.
+  user: That's great! Where did you move from?
+  REF : I moved from the city. It was really loud and crowded there, so I wanted to try something new.
+  PRED0: I'm from a new car. I've been working on a lot of different cultures and it's really helped.
+  PRED1: I've always been interested in the city and I'm not sure if I'd like to go. I'll be able to get a new one. But I're going to be able for the rest of the day and see what it takes to be.
+  PRED2: I've been working on a lot of different things, but I'm not sure if I'd like to go for it. I'll be able to get some of the things that I love.
+  PRED3: I'm just really excited to get out of it. I've been working on a lot of different things and I'll be able to do it.
+
+--- step 3000 ---
+  user: I always make sure to self assure myself before i go for an interview
+  bot: that is a good tactic actually, it boosts your confidence
+  user: I recently flew for the first time on an airplane!
+  bot: Wow! That must have been exciting. Were you nervous?
+  user: My anxiety was through the roof, it was terrible!
+  REF : Oh, that sucks! Did you relax a bit after take off or were you anxious the whole time?
+  PRED0: I'm glad you did.
+  PRED1: I'm glad you're enjoying it! I hope you can do it!
+  PRED2: I'm sorry to hear that. I was just thinking about how much I was going to do it. I've been doing it for a while now.
+  PRED3: I'm glad you're enjoying it. I hope you can be a great way to get it.
+
+  user: "It's really nice out today, isn't it?"
+  bot: "Yeah, it is. I'm glad we decided to go for a walk."
+  REF : "Me too. I always enjoy getting some fresh air."
+  PRED0: "Yeah, me too. It was nice to have a little bit."
+  PRED1: "Yeah, me too. I'm just glad we were able to get through this."
+  PRED2: "Yeah, me too. It's been a long time coming from now on. I'm just glad we're finally here."
+  PRED3: "Yeah, me too. It's been a long time coming. I'm just glad we're together."
+
+  user: My son said his first word today.
+  REF : Congratulations, thats amazing. What did he say?
+  PRED0: That is a great story!
+  PRED1: That's great! I'm sure he's a good idea.
+  PRED2: That's great! I'm so glad you're happy with my family. I've been working hard for a while now and I'd be happy to be.
+  PRED3: That's great! I'm so happy for you. What kind of dog is it?
+
+  user: Hey there! I haven't seen you around before. What's your name?
+  bot: I'm Person! I just moved here a few weeks ago.
+  user: That's great! Where did you move from?
+  REF : I moved from the city. It was really loud and crowded there, so I wanted to try something new.
+  PRED0: I'm from a new car. I've been looking for a new place.
+  PRED1: I'm not sure yet. I've been working on a lot of fun.
+  PRED2: I'm not sure yet. I've been working on a lot of different things, but I'd like to be able to get a new one.
+  PRED3: I'm just really excited to get out of it. I've been looking for a lot of fun too.
+
+--- step 3500 ---
+  user: I always make sure to self assure myself before i go for an interview
+  bot: that is a good tactic actually, it boosts your confidence
+  user: I recently flew for the first time on an airplane!
+  bot: Wow! That must have been exciting. Were you nervous?
+  user: My anxiety was through the roof, it was terrible!
+  REF : Oh, that sucks! Did you relax a bit after take off or were you anxious the whole time?
+  PRED0: I'm glad you did.
+  PRED1: I'm glad you're enjoying it. I hope you can be a good friend.
+  PRED2: I'm glad you're enjoying it! I was so glad you were able to get a good night.
+  PRED3: I'm glad you're enjoying it. I hope you can get a good time.
+
+  user: "It's really nice out today, isn't it?"
+  bot: "Yeah, it is. I'm glad we decided to go for a walk."
+  REF : "Me too. I always enjoy getting some fresh air."
+  PRED0: "Yeah, me too. It's been a long day."
+  PRED1: "Yeah, me too. I'm just glad we were able to get through this."
+  PRED2: "Yeah, me too. It's been a long time coming. But I'm glad we finally got back to the park."
+  PRED3: "Yeah, me too. It's been a long time coming. I'm just glad we're together."
+
+  user: My son said his first word today.
+  REF : Congratulations, thats amazing. What did he say?
+  PRED0: That is a great story!
+  PRED1: That's great! I'm so happy for you.
+  PRED2: That's great! I'm so happy for you. I've been wanting to do a lot of people like that.
+  PRED3: That's great! I'm so happy for you. What kind of dog is it?
+
+  user: Hey there! I haven't seen you around before. What's your name?
+  bot: I'm Person! I just moved here a few weeks ago.
+  user: That's great! Where did you move from?
+  REF : I moved from the city. It was really loud and crowded there, so I wanted to try something new.
+  PRED0: I'm from a new car. I've been looking for a new place.
+  PRED1: I've been working on a lot of different things. I'm really looking forward to it.
+  PRED2: I'm just looking for a new one. I've been thinking about it and I'd like to go to the park. It's been a long time coming.
+  PRED3: I'm just really excited to get out of here. I've been looking for a lot of fun and I'd like to see it.
+

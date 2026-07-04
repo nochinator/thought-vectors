@@ -1,0 +1,213 @@
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+thinker params: 13.17M (codec d=384, frozen=True)
+step      50 | cos 0.0939 | thought 1.437 dec_ce 2.2268 | 4.7 it/s
+step     100 | cos 0.2970 | thought 1.2788 dec_ce 2.1748 | 5.3 it/s
+step     150 | cos 0.3262 | thought 1.2602 dec_ce 2.188 | 5.2 it/s
+step     200 | cos 0.3653 | thought 1.2057 dec_ce 2.0844 | 5.2 it/s
+step     250 | cos 0.3732 | thought 1.282 dec_ce 0.925 | 5.3 it/s
+step     300 | cos 0.3602 | thought 1.122 dec_ce 0.3045 | 5.4 it/s
+step     350 | cos 0.3801 | thought 1.1184 dec_ce 0.0713 | 5.4 it/s
+step     400 | cos 0.4022 | thought 1.1768 dec_ce 0.0631 | 5.2 it/s
+step     450 | cos 0.4279 | thought 1.0928 dec_ce 0.0557 | 5.3 it/s
+step     500 | cos 0.4608 | thought 1.0465 dec_ce 0.0473 | 5.2 it/s
+step     500 | VAL cos 0.4869 | VAL dec CE 0.0897
+step     550 | cos 0.4886 | thought 0.952 dec_ce 0.048 | 4.2 it/s
+step     600 | cos 0.5226 | thought 0.8558 dec_ce 0.0215 | 5.4 it/s
+step     650 | cos 0.5538 | thought 0.866 dec_ce 0.022 | 5.4 it/s
+step     700 | cos 0.5725 | thought 0.7785 dec_ce 0.0299 | 5.4 it/s
+step     750 | cos 0.5941 | thought 0.8317 dec_ce 0.011 | 5.1 it/s
+step     800 | cos 0.6148 | thought 0.7577 dec_ce 0.0248 | 5.3 it/s
+step     850 | cos 0.6284 | thought 0.7533 dec_ce 0.0141 | 5.2 it/s
+step     900 | cos 0.6502 | thought 0.8272 dec_ce 0.0886 | 5.4 it/s
+step     950 | cos 0.6667 | thought 0.6419 dec_ce 0.037 | 5.3 it/s
+step    1000 | cos 0.6875 | thought 0.7099 dec_ce 0.0127 | 5.2 it/s
+step    1000 | VAL cos 0.6957 | VAL dec CE 0.0245
+step    1050 | cos 0.6965 | thought 0.577 dec_ce 0.0138 | 4.2 it/s
+step    1100 | cos 0.7082 | thought 0.647 dec_ce 0.0141 | 5.3 it/s
+step    1150 | cos 0.7224 | thought 0.6193 dec_ce 0.0168 | 5.3 it/s
+step    1200 | cos 0.7228 | thought 0.5446 dec_ce 0.0092 | 5.4 it/s
+step    1250 | cos 0.7330 | thought 0.6692 dec_ce 0.0239 | 5.1 it/s
+step    1300 | cos 0.7429 | thought 0.5103 dec_ce 0.0087 | 5.3 it/s
+step    1350 | cos 0.7451 | thought 0.4828 dec_ce 0.0058 | 5.3 it/s
+step    1400 | cos 0.7610 | thought 0.4115 dec_ce 0.0068 | 5.2 it/s
+step    1450 | cos 0.7587 | thought 0.4433 dec_ce 0.0069 | 5.2 it/s
+step    1500 | cos 0.7670 | thought 0.4327 dec_ce 0.0183 | 5.3 it/s
+step    1500 | VAL cos 0.7808 | VAL dec CE 0.0135
+step    1550 | cos 0.7751 | thought 0.459 dec_ce 0.0064 | 4.2 it/s
+step    1600 | cos 0.7824 | thought 0.4866 dec_ce 0.0113 | 5.4 it/s
+step    1650 | cos 0.7865 | thought 0.4032 dec_ce 0.0112 | 5.4 it/s
+step    1700 | cos 0.7895 | thought 0.4979 dec_ce 0.0171 | 5.2 it/s
+step    1750 | cos 0.7948 | thought 0.4462 dec_ce 0.0134 | 5.4 it/s
+step    1800 | cos 0.7945 | thought 0.4508 dec_ce 0.0186 | 5.3 it/s
+step    1850 | cos 0.8065 | thought 0.3973 dec_ce 0.0197 | 5.4 it/s
+step    1900 | cos 0.8094 | thought 0.3956 dec_ce 0.0107 | 5.4 it/s
+step    1950 | cos 0.8058 | thought 0.4054 dec_ce 0.0026 | 5.3 it/s
+step    2000 | cos 0.8094 | thought 0.3707 dec_ce 0.012 | 5.2 it/s
+step    2000 | VAL cos 0.8230 | VAL dec CE 0.0120
+step    2050 | cos 0.8194 | thought 0.3954 dec_ce 0.0105 | 4.2 it/s
+step    2100 | cos 0.8215 | thought 0.3881 dec_ce 0.0295 | 5.4 it/s
+step    2150 | cos 0.8206 | thought 0.3199 dec_ce 0.0005 | 5.3 it/s
+step    2200 | cos 0.8230 | thought 0.4414 dec_ce 0.0417 | 5.2 it/s
+step    2250 | cos 0.8264 | thought 0.3456 dec_ce 0.0085 | 5.3 it/s
+step    2300 | cos 0.8284 | thought 0.3396 dec_ce 0.0149 | 5.4 it/s
+step    2350 | cos 0.8332 | thought 0.3445 dec_ce 0.022 | 5.3 it/s
+step    2400 | cos 0.8308 | thought 0.3916 dec_ce 0.007 | 5.3 it/s
+step    2450 | cos 0.8337 | thought 0.2875 dec_ce 0.005 | 5.2 it/s
+step    2500 | cos 0.8390 | thought 0.3402 dec_ce 0.004 | 5.3 it/s
+step    2500 | VAL cos 0.8470 | VAL dec CE 0.0070
+step    2550 | cos 0.8376 | thought 0.2993 dec_ce 0.0021 | 4.1 it/s
+step    2600 | cos 0.8395 | thought 0.3222 dec_ce 0.0142 | 5.2 it/s
+step    2650 | cos 0.8465 | thought 0.2863 dec_ce 0.0052 | 5.3 it/s
+step    2700 | cos 0.8459 | thought 0.2892 dec_ce 0.0025 | 5.2 it/s
+step    2750 | cos 0.8462 | thought 0.2759 dec_ce 0.0012 | 5.3 it/s
+step    2800 | cos 0.8512 | thought 0.3161 dec_ce 0.0033 | 5.3 it/s
+step    2850 | cos 0.8496 | thought 0.3387 dec_ce 0.0134 | 5.3 it/s
+step    2900 | cos 0.8510 | thought 0.2945 dec_ce 0.0041 | 5.3 it/s
+step    2950 | cos 0.8491 | thought 0.3064 dec_ce 0.0079 | 5.2 it/s
+step    3000 | cos 0.8484 | thought 0.295 dec_ce 0.0066 | 5.3 it/s
+step    3000 | VAL cos 0.8593 | VAL dec CE 0.0054
+step    3050 | cos 0.8514 | thought 0.4027 dec_ce 0.0162 | 4.2 it/s
+step    3100 | cos 0.8593 | thought 0.2965 dec_ce 0.0015 | 5.4 it/s
+step    3150 | cos 0.8597 | thought 0.2775 dec_ce 0.0053 | 5.3 it/s
+step    3200 | cos 0.8619 | thought 0.283 dec_ce 0.0023 | 5.2 it/s
+step    3250 | cos 0.8622 | thought 0.321 dec_ce 0.0063 | 5.3 it/s
+step    3300 | cos 0.8617 | thought 0.3289 dec_ce 0.0033 | 5.4 it/s
+step    3350 | cos 0.8619 | thought 0.2833 dec_ce 0.0261 | 5.3 it/s
+step    3400 | cos 0.8592 | thought 0.3399 dec_ce 0.0129 | 5.3 it/s
+step    3450 | cos 0.8638 | thought 0.2941 dec_ce 0.0088 | 5.4 it/s
+step    3500 | cos 0.8653 | thought 0.2456 dec_ce 0.0019 | 5.3 it/s
+step    3500 | VAL cos 0.8731 | VAL dec CE 0.0023
+step    3550 | cos 0.8678 | thought 0.2717 dec_ce 0.0036 | 4.2 it/s
+step    3600 | cos 0.8655 | thought 0.3284 dec_ce 0.0044 | 5.3 it/s
+step    3650 | cos 0.8713 | thought 0.2649 dec_ce 0.0011 | 5.4 it/s
+step    3700 | cos 0.8680 | thought 0.2602 dec_ce 0.0031 | 5.3 it/s
+step    3750 | cos 0.8694 | thought 0.2627 dec_ce 0.0017 | 5.4 it/s
+step    3800 | cos 0.8624 | thought 0.2754 dec_ce 0.0096 | 5.3 it/s
+step    3850 | cos 0.8707 | thought 0.2925 dec_ce 0.0041 | 5.4 it/s
+step    3900 | cos 0.8733 | thought 0.2215 dec_ce 0.0001 | 5.3 it/s
+step    3950 | cos 0.8772 | thought 0.2384 dec_ce 0.0032 | 5.5 it/s
+step    4000 | cos 0.8723 | thought 0.2884 dec_ce 0.0112 | 5.4 it/s
+step    4000 | VAL cos 0.8811 | VAL dec CE 0.0039
+step    4050 | cos 0.8744 | thought 0.2884 dec_ce 0.0045 | 4.3 it/s
+step    4100 | cos 0.8748 | thought 0.2663 dec_ce 0.0035 | 5.5 it/s
+step    4150 | cos 0.8758 | thought 0.2661 dec_ce 0.0199 | 5.2 it/s
+step    4200 | cos 0.8759 | thought 0.2407 dec_ce 0.0004 | 5.3 it/s
+step    4250 | cos 0.8754 | thought 0.2245 dec_ce 0.0003 | 5.3 it/s
+step    4300 | cos 0.8810 | thought 0.2402 dec_ce 0.0001 | 5.4 it/s
+step    4350 | cos 0.8765 | thought 0.2393 dec_ce 0.0006 | 5.3 it/s
+step    4400 | cos 0.8810 | thought 0.2664 dec_ce 0.0048 | 5.5 it/s
+step    4450 | cos 0.8785 | thought 0.2844 dec_ce 0.0072 | 5.4 it/s
+step    4500 | cos 0.8818 | thought 0.226 dec_ce 0.0013 | 5.3 it/s
+step    4500 | VAL cos 0.8886 | VAL dec CE 0.0038
+step    4550 | cos 0.8802 | thought 0.2697 dec_ce 0.0183 | 4.3 it/s
+step    4600 | cos 0.8831 | thought 0.2471 dec_ce 0.0013 | 5.5 it/s
+step    4650 | cos 0.8822 | thought 0.2176 dec_ce 0.0001 | 5.4 it/s
+step    4700 | cos 0.8828 | thought 0.2491 dec_ce 0.0081 | 5.4 it/s
+step    4750 | cos 0.8817 | thought 0.2606 dec_ce 0.0006 | 5.1 it/s
+step    4800 | cos 0.8813 | thought 0.2428 dec_ce 0.0032 | 5.3 it/s
+step    4850 | cos 0.8856 | thought 0.2653 dec_ce 0.0077 | 5.3 it/s
+step    4900 | cos 0.8873 | thought 0.2285 dec_ce 0.0041 | 5.3 it/s
+step    4950 | cos 0.8880 | thought 0.2449 dec_ce 0.0032 | 5.4 it/s
+step    5000 | cos 0.8858 | thought 0.2721 dec_ce 0.0051 | 5.2 it/s
+step    5000 | VAL cos 0.8948 | VAL dec CE 0.0029
+step    5050 | cos 0.8891 | thought 0.1987 dec_ce 0.0007 | 4.4 it/s
+step    5100 | cos 0.8867 | thought 0.2306 dec_ce 0.0001 | 5.2 it/s
+step    5150 | cos 0.8840 | thought 0.2428 dec_ce 0.0061 | 5.2 it/s
+step    5200 | cos 0.8861 | thought 0.2314 dec_ce 0.0056 | 5.2 it/s
+step    5250 | cos 0.8874 | thought 0.2837 dec_ce 0.0167 | 5.1 it/s
+step    5300 | cos 0.8887 | thought 0.202 dec_ce 0.0008 | 5.3 it/s
+step    5350 | cos 0.8931 | thought 0.2112 dec_ce 0.0013 | 5.4 it/s
+step    5400 | cos 0.8925 | thought 0.2285 dec_ce 0.0009 | 5.4 it/s
+step    5450 | cos 0.8913 | thought 0.226 dec_ce 0.0061 | 5.4 it/s
+step    5500 | cos 0.8910 | thought 0.2379 dec_ce 0.0004 | 5.4 it/s
+step    5500 | VAL cos 0.8994 | VAL dec CE 0.0027
+step    5550 | cos 0.8909 | thought 0.2285 dec_ce 0.0008 | 4.3 it/s
+step    5600 | cos 0.8927 | thought 0.2657 dec_ce 0.0053 | 5.2 it/s
+step    5650 | cos 0.8918 | thought 0.2189 dec_ce 0.0008 | 5.4 it/s
+step    5700 | cos 0.8925 | thought 0.2141 dec_ce 0.0013 | 5.3 it/s
+step    5750 | cos 0.8944 | thought 0.2093 dec_ce 0.0023 | 5.4 it/s
+step    5800 | cos 0.8926 | thought 0.2454 dec_ce 0.0006 | 5.4 it/s
+step    5850 | cos 0.8956 | thought 0.215 dec_ce 0.0001 | 5.5 it/s
+step    5900 | cos 0.8936 | thought 0.2194 dec_ce 0.0056 | 5.4 it/s
+step    5950 | cos 0.8961 | thought 0.2122 dec_ce 0.0001 | 5.4 it/s
+step    6000 | cos 0.8975 | thought 0.2123 dec_ce 0.0014 | 5.5 it/s
+step    6000 | VAL cos 0.9041 | VAL dec CE 0.0016
+step    6050 | cos 0.8981 | thought 0.2 dec_ce 0.0002 | 4.2 it/s
+step    6100 | cos 0.8980 | thought 0.2096 dec_ce 0.0001 | 5.3 it/s
+step    6150 | cos 0.8973 | thought 0.2546 dec_ce 0.005 | 5.5 it/s
+step    6200 | cos 0.8980 | thought 0.272 dec_ce 0.0073 | 5.3 it/s
+step    6250 | cos 0.8952 | thought 0.2453 dec_ce 0.002 | 5.3 it/s
+step    6300 | cos 0.9001 | thought 0.2264 dec_ce 0.0011 | 5.2 it/s
+step    6350 | cos 0.9016 | thought 0.1803 dec_ce 0.0024 | 5.5 it/s
+step    6400 | cos 0.8980 | thought 0.2354 dec_ce 0.0015 | 5.2 it/s
+step    6450 | cos 0.8986 | thought 0.2166 dec_ce 0.0011 | 5.3 it/s
+step    6500 | cos 0.8984 | thought 0.2094 dec_ce 0.0051 | 5.3 it/s
+step    6500 | VAL cos 0.9063 | VAL dec CE 0.0009
+step    6550 | cos 0.8981 | thought 0.2367 dec_ce 0.0013 | 4.2 it/s
+step    6600 | cos 0.9006 | thought 0.1739 dec_ce 0.0001 | 5.5 it/s
+step    6650 | cos 0.8997 | thought 0.2167 dec_ce 0.0108 | 5.4 it/s
+step    6700 | cos 0.8975 | thought 0.2151 dec_ce 0.0012 | 5.3 it/s
+step    6750 | cos 0.9012 | thought 0.2229 dec_ce 0.0114 | 5.3 it/s
+step    6800 | cos 0.8983 | thought 0.2133 dec_ce 0.0009 | 5.2 it/s
+step    6850 | cos 0.9023 | thought 0.1685 dec_ce 0.0 | 5.2 it/s
+step    6900 | cos 0.9019 | thought 0.2009 dec_ce 0.0008 | 5.5 it/s
+step    6950 | cos 0.9007 | thought 0.1942 dec_ce 0.0 | 5.3 it/s
+step    7000 | cos 0.9020 | thought 0.2234 dec_ce 0.0013 | 5.4 it/s
+step    7000 | VAL cos 0.9091 | VAL dec CE 0.0012
+step    7050 | cos 0.8980 | thought 0.2227 dec_ce 0.0023 | 4.3 it/s
+step    7100 | cos 0.9040 | thought 0.203 dec_ce 0.0001 | 5.5 it/s
+step    7150 | cos 0.9026 | thought 0.1638 dec_ce 0.0001 | 5.3 it/s
+step    7200 | cos 0.9021 | thought 0.1952 dec_ce 0.0007 | 5.3 it/s
+step    7250 | cos 0.9015 | thought 0.2554 dec_ce 0.0011 | 5.4 it/s
+step    7300 | cos 0.9037 | thought 0.2165 dec_ce 0.0022 | 5.4 it/s
+step    7350 | cos 0.9018 | thought 0.1796 dec_ce 0.0017 | 5.3 it/s
+step    7400 | cos 0.9018 | thought 0.179 dec_ce 0.0015 | 5.3 it/s
+step    7450 | cos 0.9009 | thought 0.1812 dec_ce 0.0 | 5.2 it/s
+step    7500 | cos 0.9027 | thought 0.1643 dec_ce 0.0007 | 5.3 it/s
+step    7500 | VAL cos 0.9113 | VAL dec CE 0.0013
+step    7550 | cos 0.9071 | thought 0.1851 dec_ce 0.0001 | 4.4 it/s
+step    7600 | cos 0.9062 | thought 0.2104 dec_ce 0.008 | 5.4 it/s
+step    7650 | cos 0.9058 | thought 0.1844 dec_ce 0.0006 | 5.3 it/s
+step    7700 | cos 0.9054 | thought 0.1786 dec_ce 0.0001 | 5.4 it/s
+step    7750 | cos 0.9047 | thought 0.2228 dec_ce 0.0062 | 5.4 it/s
+step    7800 | cos 0.9040 | thought 0.211 dec_ce 0.0041 | 5.3 it/s
+step    7850 | cos 0.9013 | thought 0.1968 dec_ce 0.0009 | 5.4 it/s
+step    7900 | cos 0.9062 | thought 0.2228 dec_ce 0.0055 | 5.4 it/s
+step    7950 | cos 0.9058 | thought 0.1933 dec_ce 0.0002 | 5.3 it/s
+step    8000 | cos 0.9062 | thought 0.1777 dec_ce 0.0001 | 5.3 it/s
+step    8000 | VAL cos 0.9127 | VAL dec CE 0.0010
+step    8050 | cos 0.9070 | thought 0.1871 dec_ce 0.0 | 4.4 it/s
+step    8100 | cos 0.9035 | thought 0.2323 dec_ce 0.0003 | 5.4 it/s
+step    8150 | cos 0.9026 | thought 0.1615 dec_ce 0.0001 | 5.3 it/s
+step    8200 | cos 0.9035 | thought 0.196 dec_ce 0.0017 | 5.3 it/s
+step    8250 | cos 0.9006 | thought 0.161 dec_ce 0.0 | 5.2 it/s
+step    8300 | cos 0.9053 | thought 0.1957 dec_ce 0.0012 | 5.3 it/s
+step    8350 | cos 0.9052 | thought 0.2051 dec_ce 0.0004 | 5.3 it/s
+step    8400 | cos 0.9096 | thought 0.1819 dec_ce 0.0002 | 5.4 it/s
+step    8450 | cos 0.9055 | thought 0.1931 dec_ce 0.0001 | 5.3 it/s
+step    8500 | cos 0.9067 | thought 0.1848 dec_ce 0.0007 | 5.3 it/s
+step    8500 | VAL cos 0.9142 | VAL dec CE 0.0017
+step    8550 | cos 0.9069 | thought 0.1713 dec_ce 0.0002 | 4.3 it/s
+step    8600 | cos 0.9070 | thought 0.1768 dec_ce 0.0004 | 5.3 it/s
+step    8650 | cos 0.9072 | thought 0.1766 dec_ce 0.0001 | 5.5 it/s
+step    8700 | cos 0.9072 | thought 0.1839 dec_ce 0.0008 | 5.3 it/s
+step    8750 | cos 0.9063 | thought 0.1906 dec_ce 0.0001 | 5.2 it/s
+step    8800 | cos 0.9085 | thought 0.195 dec_ce 0.0015 | 5.3 it/s
+step    8850 | cos 0.9061 | thought 0.1823 dec_ce 0.0051 | 5.2 it/s
+step    8900 | cos 0.9063 | thought 0.2312 dec_ce 0.002 | 5.4 it/s
+step    8950 | cos 0.9048 | thought 0.2184 dec_ce 0.0003 | 5.3 it/s
+step    9000 | cos 0.9068 | thought 0.1837 dec_ce 0.0001 | 5.3 it/s
+step    9000 | VAL cos 0.9147 | VAL dec CE 0.0009
+step    9050 | cos 0.9091 | thought 0.1622 dec_ce 0.0001 | 4.3 it/s
+step    9100 | cos 0.9062 | thought 0.1794 dec_ce 0.0001 | 5.2 it/s
+step    9150 | cos 0.9082 | thought 0.179 dec_ce 0.0009 | 5.3 it/s
+step    9200 | cos 0.9077 | thought 0.1753 dec_ce 0.0035 | 5.3 it/s
+step    9250 | cos 0.9099 | thought 0.2054 dec_ce 0.0011 | 5.4 it/s
+step    9300 | cos 0.9097 | thought 0.1853 dec_ce 0.0001 | 5.3 it/s
+wall-clock cap reached at step 9345
+
+Run 'ab_PN3' done: 9345 steps | final val cos 0.9154 dec CE 0.0013 (best 0.0009)
+/home/nochi/vault/projects/ThoughtVectors/thoughtvec/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{"ckpt": "checkpoints/ab_PN3/best.pt", "val_cos": 0.3932, "val_dec_ce": 12.6822, "ref_f1": 0.1977, "distinct1": 0.0162, "distinct2": 0.0767, "len_ratio": 0.387, "rows": 1024}

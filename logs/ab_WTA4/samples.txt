@@ -1,0 +1,720 @@
+--- step 500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: I'm doing. I'll know what I've got to be a good thing.
+  PRED1: I'm doing.
+  PRED2: I'm doing. I'll know what I've got to to be a good thing. I don't know what you're doing.
+  PRED3: I'm doing. I'll know what you're doing.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: I'm doing. I'll know what you're doing.
+  PRED1: I'm doing. I'll know what you're doing.
+  PRED2: I'm doing. I've got a lot of you're doing.
+  PRED3: I'm doing. I'll know what you're doing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: I'm just just a good thing. I'll have a good time. I am
+  PRED1: I'm just just a good thing. I'll have a good time. I am
+  PRED2: I'm just just a good thing. I'll have a good time, but I've done a good way to do you do you have a lot of
+  PRED3: I'm just just a good thing. I'll have a good time. I am
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: I'm doing. I've got a lot of you. I don't know what I're doing.
+  PRED1: I'm doing.
+  PRED2: I'm doing. I've got a lot of you. I don't know what I're doing.
+  PRED3: I'm doing. I've got a lot of you. I don't know what I're doing.
+
+--- step 1000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: I'm doing. I'll have to be a good.
+  PRED1: 
+  PRED2: I'm sorry, I'll have a good thing. I've got to be a good time. I don't have to be better.
+  PRED3: I'm sorry, I'll have to be a good thing. I've
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: That's a good thing. I don't know what you can't be a good.
+  PRED1: What is you.
+  PRED2: That's a lot of you're doing. I'm not sure you'll have to be a lot.
+  PRED3: That's a good thing. I'm not sure that you're doing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i'm a good thing, I'm doing so much
+  PRED1: i
+  PRED2: i'm just a few of the world and I'm going to do it, but I'll be a bit of the time. I're going to be a good thing and I think it's a bit and I don't know what you're doing.
+  PRED3: i'm just a few minutes, but I'm not a good thing.
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: I'm sorry, I'll know what you're doing?
+  PRED1: What is you?
+  PRED2: Well, I'm sorry, I don't know what I'll have to be a lot of you.
+  PRED3: I'm sorry. I've got to you. I don't know what you're doing.
+
+--- step 1500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: Well, I'm doing. I'll have to be a good.
+  PRED1: What is the first time.
+  PRED2: Well, I'm sorry, I don't know what I'll have a lot of you. I've done on the time.
+  PRED3: Well, I'm sorry. I'll have a good thing. I don't have to be a lot of
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: What is the same. What is you to do?
+  PRED1: What is the first time?
+  PRED2: Well, I'm sorry, I don't know what I'll have a lot of you. I've got to be a good thing.
+  PRED3: I'm sorry. I'll have a good thing. I don't know what you're going to
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you do you to do
+  PRED1: i am a good thing?
+  PRED2: i'm just a few minutes to do it's a few years ago. I'm going to do you do it to do so I're going to be a good thing and I'll have a good way to do
+  PRED3: i am a lot of the world and I am going to do you to do it?
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Well, I'm sorry. What is you?
+  PRED1: What is the problem of your?
+  PRED2: Yeah, I'm sorry, I don't know what I'll have a lot of you're going to be a good thing.
+  PRED3: Yeah, I'm sorry. I've got to be a good thing. I don't know what?
+
+--- step 2000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: Well, I'll have to be a good thing.
+  PRED1: So, you can't know.
+  PRED2: Well, I'm not a good thing. I'll have a good time. I don't have to be a good job.
+  PRED3: Well, I'm not sure. I'll have to be a good thing.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: That's really good. I'm going to do?
+  PRED1: What you're going to
+  PRED2: Well, I'm sorry. I'll have a good thing. I don't have to be a good way.
+  PRED3: That's not a good thing. I'm not going to do you.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing and you can do you
+  PRED1: i am a good thing?
+  PRED2: i'm just a good thing and I'm going to do you're going to get a good time and you've done so much
+  PRED3: i'm just a good thing and I'm going to do you do you?
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm doing. What is you?
+  PRED1: What's what?
+  PRED2: Yeah, I'm sorry, I don't know what I'll have a lot of you're going to do.
+  PRED3: Yeah, I'm sorry. I've got to be a good thing.
+
+--- step 2500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: So, I'm doing. I'll have to be
+  PRED1: So, you can't be a good.
+  PRED2: Well, I'm not a good thing. I'll have a good way. I can't be able to make it.
+  PRED3: Well, I'm doing. I'll have a good thing.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: That's not a good thing. You can't have to be.
+  PRED1: What are you like to do you.
+  PRED2: Well, I'm not a good thing. I'll have a good way. I can't be able to do it.
+  PRED3: Well, I'm sorry. I'll have to be a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i'm not a good thing. I'm just like
+  PRED1: I am a good thing. I am
+  PRED2: i'm just a good thing. I'm going to do it. I think you're going to get a good way to do you
+  PRED3: i'm just a good thing. I'm not just a few minutes.
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: I'm sorry, I've got to me.
+  PRED1: What's what is you?
+  PRED2: I'm sorry, I've got to be a good thing. I'll have a good idea. I don't have to be better.
+  PRED3: I'm sorry, I'll know what I've got to you.
+
+--- step 3000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: So, I'm doing. I'll have to
+  PRED1: So, you're going to
+  PRED2: Well, I'm going to do. I'll have a good thing. I can't have to be a good.
+  PRED3: I'm doing, I'll have a good thing. I've got a good.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: So, you're doing. You're going to
+  PRED1: So, you're going to
+  PRED2: Well, I'm sorry, you're going to be a good thing. I'll have to be doing.
+  PRED3: So, I'm sorry, you're going to be a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you like
+  PRED1: i am a good thing?
+  PRED2: i'm just a good thing and I'm going to do it to do you like to do so I'll do you
+  PRED3: i'm just a good thing and I'm going to do you?
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm what. I've got up?
+  PRED1: What is what, I don't?
+  PRED2: Yeah, I'm sorry, I don't know what I've got to be a lot of time. I're going to do.
+  PRED3: Yeah, I'm sorry. I've got to be a lot of you.
+
+--- step 3500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: So, I'm doing. I'll have to be a good. I don't know. I think I've got to do.
+  PRED1: So, I'm going to
+  PRED2: I'm doing, but I'll have a good thing. I've got to be a good time. I don't have to be
+  PRED3: I'm doing, I'll have a good thing. I've got to be a good.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: I'm not, and I'll know what you'
+  PRED1: I'm not going to
+  PRED2: I'm not going to know what you're going to be a good thing. I'll have to be the same. I don't know what it's
+  PRED3: I'm not going to know what you're going to be a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing and I am going to do
+  PRED1: i am a good thing to do you
+  PRED2: i am a lot of the right and I am going to do it. I am not just like to do you do so much
+  PRED3: i am a lot of the right and I am going to do it.
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: I know, I'm sorry. I'd know?
+  PRED1: What is the wrong?
+  PRED2: I'm sorry, I've got to be a good thing. I'll have a lot of me. I don't know what I'd be a lot.
+  PRED3: I'm sorry, I'll know what I've got to me.
+
+--- step 4000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: So, I'm doing. I'll have to be
+  PRED1: So, I'm doing.
+  PRED2: Well, I'm not sure. I'll have a good thing. I can't be able to make it.
+  PRED3: Well, I'm sure you're going to make it.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: I'm doing, but I'll have to be a good.
+  PRED1: So, you can't know?
+  PRED2: Well, I'm sorry, but I'll have a good thing. I've got to be a lot of you.
+  PRED3: Well, I'm sorry. I'll have a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing and you do you do
+  PRED1: do you have a good thing you can
+  PRED2: i'm not just a good thing and I'm going to do it. I'll do you do so much
+  PRED3: i am a good thing and I am going to do you to do it?
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Of course, I'm sorry. What is
+  PRED1: What is what you're going?
+  PRED2: Well, I'm sorry. I've got to be a good thing. I don't know what I'll have to be better.
+  PRED3: Well, I'm sorry. I've got to be a good thing.
+
+--- step 4500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: Thanks, I'm doing. I'll have to be.
+  PRED1: So, I'm going to
+  PRED2: It's a good thing. I'm going to be a good time. I don't have to be doing.
+  PRED3: It's a good thing. I'm going to make it.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: I'm doing, but I'll have to be a good.
+  PRED1: So, you're going to
+  PRED2: I'm not, you're going to be a good thing. I'll have a good time. I can't be a lot of
+  PRED3: I'm sorry, I'll have to be a good way.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you like a
+  PRED1: i do you have a good thing?
+  PRED2: i'm not a good thing and I'm going to do it. I'll do you to do you?
+  PRED3: i am a good thing and I am going to do it. I am not a good
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: What is, I don't know what?
+  PRED1: What is what?
+  PRED2: I'm sorry, I don't know. I've got to be a lot of you're doing.
+  PRED3: I'm sorry, I don't know. I'd like you.
+
+--- step 5000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: It's a good time. I'm doing it.
+  PRED1: It's a good thing.
+  PRED2: It's not a good thing. I'll have a good way to make it. I can't be able to make the time.
+  PRED3: It's a good thing. I'm going to make it.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: So, you're going to do it.
+  PRED1: So you're going to
+  PRED2: It's not a good thing. I'm not going to make it. I don't have to be a good.
+  PRED3: It's not a good thing. I'm not going to make it.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i'm just a good thing to do
+  PRED1: i do you have a good thing
+  PRED2: i'm not a good thing and I'm going to do it to do you like to do so I'll do you
+  PRED3: i'm not a good thing and I'm going to do it?
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm sorry. I don't know?
+  PRED1: Well, what's?
+  PRED2: Yeah, I'm sorry, I don't know what I've got to be a lot of time. I're going to do.
+  PRED3: Yeah, I'm sorry. I've got a lot of you.
+
+--- step 5500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: Thanks, I'm doing. I'll have to
+  PRED1: Thanks.
+  PRED2: It's a good thing. I'll have a good time. I don't have a lot of money.
+  PRED3: Thanks, I'm doing. I'll have a good thing.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: You're doing. I'm going to do.
+  PRED1: You're doing.
+  PRED2: I'm sorry, you're going to be a good thing. I'll have a good time. I can't be a lot of you.
+  PRED3: That's not sure. I'm not going to make it.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you like
+  PRED1: i am a good thing you can
+  PRED2: i'm not a good thing and I'm going to do you're going to be a great way to do
+  PRED3: i am a good thing to do it. I am going to do you to do so
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Of course, I'm about it?
+  PRED1: Of course, it's?
+  PRED2: Yeah, I'm sorry. I've got to be a lot of people. I don't know what you're going to do.
+  PRED3: Yeah, I'm sorry. I've got to me. I don't know what you're
+
+--- step 6000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: So, I'm doing it.
+  PRED1: So, you can be a good.
+  PRED2: It's a good thing. I'm not going to make it. I don't have a good job.
+  PRED3: Thanks, I'm not going to make it. I'll have to be a good thing.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: So, you're going to do you.
+  PRED1: So you're going to do?
+  PRED2: I'm sorry, you're going to be a good thing. I'll have a good time. I don't have to be better.
+  PRED3: I'm not going to do you. I've got to be a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you like to do
+  PRED1: i am a good thing to do you
+  PRED2: i'm not just a few years ago and I'm going to do it. I'll do you do
+  PRED3: i'm not a good thing and I'm going to do you
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm sorry. What's
+  PRED1: What is what?
+  PRED2: Yeah, I'm sorry. I've got to be a good thing. I don't have to be doing. I can't know what I'll have to do you know.
+  PRED3: Yeah, I'm sorry. I've got to be a good thing.
+
+--- step 6500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: Thanks, I'll be a good thing.
+  PRED1: Thank you.
+  PRED2: It's a good time. I'm not going to be a good thing. I can't have a good job.
+  PRED3: Thanks, I'm not going to make it. I'll have a good thing.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: So, you're going to do you.
+  PRED1: So, you're going to
+  PRED2: Well, I'm not going to be a good thing. I'll have a good way to be the same.
+  PRED3: Well, you're going to be a good thing. I'm going to do.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing where you do not have a
+  PRED1: i do you have a good thing
+  PRED2: i'm not a good thing and I'm going to do it. I'll do you do you have to do you
+  PRED3: i am a good thing and i do not have a good way to do you
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: What is, I'm sorry. What is
+  PRED1: What is what?
+  PRED2: Yeah, I'm sorry. I've got a lot of people. I don't have a lot for you.
+  PRED3: Yeah, I'm sorry. I've got a lot of you.
+
+--- step 7000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: It's a good time. I'm doing it.
+  PRED1: What is you.
+  PRED2: It's a good thing. I'll have a good time. I can't be able to make it.
+  PRED3: It's a good thing. I'll have a good time.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: So, you're going to do.
+  PRED1: So you're going to do?
+  PRED2: I'm sorry, you're going to be a good thing. I'll be a lot of the time.
+  PRED3: I'm sorry. I'll have a good thing. I can't be a good way.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you like
+  PRED1: i am a good thing to do you
+  PRED2: i'm not a good thing and I'm going to do it to do you'm just a great way to do
+  PRED3: i am a good thing and i am going to do it to do you?
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm doing. What's up?
+  PRED1: Yeah, what's up?
+  PRED2: Yeah, I'm sorry. I've got a lot of the time. I don't know what I'll have to be doing.
+  PRED3: Yeah, I'm sorry. I've got a lot of you.
+
+--- step 7500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: It's a good time. I'll have a good.
+  PRED1: You'll be a good thing.
+  PRED2: It's not a good thing. I'll have a good job. I don't have to be a good time.
+  PRED3: It's a good thing. I'll have a good time.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: I'm doing, and you're going to do.
+  PRED1: I'm going to do.
+  PRED2: I'm not going to do. I'll have a good thing. I don't have to be a good.
+  PRED3: I'm not going to do. I'll have a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you like to do
+  PRED1: i do you have a good thing
+  PRED2: i'm not just a few minutes and it's a few hundred years ago. I'm just a great
+  PRED3: i am a good thing to do it. I am going to do you
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm sorry. I don't know.
+  PRED1: What is what?
+  PRED2: Yeah, I'm sorry. I've got a lot of my mind. I don't know what I'll have to be doing.
+  PRED3: Yeah, I'm sorry. I've got a lot of you.
+
+--- step 8000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: It's a good time. I'm doing it.
+  PRED1: Thanks.
+  PRED2: It's a good time. I'm not going to be a good thing. I don't have to be the same. I can't want to be.
+  PRED3: It's a good thing. I'm going to make it.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: I'm doing, and you're going to do.
+  PRED1: I'm going to do.
+  PRED2: I'm not going to do. I'll have a good thing. I don't have to be a good way.
+  PRED3: I'm not going to do. I'll have a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you like a
+  PRED1: i am a good thing to do you
+  PRED2: i'm not a good thing and I'm going to do it. I'll do it to do so much
+  PRED3: i am a good thing and i am going to do it. I am going
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm sorry. What's
+  PRED1: What's up?
+  PRED2: Yeah, I'm sorry. I've got a lot of my mind. I don't know what I'll have to be a lot.
+  PRED3: Yeah, I'm sorry. I've got a lot of you.
+
+--- step 8500 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: It's not a good time.
+  PRED1: Thanks.
+  PRED2: It's not sure that I'll have a good thing. I'm not going to make it. I can't have to be a good time.
+  PRED3: It's not sure. I'm not going to make it.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: I'm doing, but I'll have to be a good.
+  PRED1: So, you're going to
+  PRED2: I'm not going to do. I'll have a good thing. I don't have to be a good way.
+  PRED3: I'm not going to do. I'll have a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing and do you do not have a
+  PRED1: i am a good thing to do you
+  PRED2: i'm not just a few years ago and I'm going to do it. I'll have a great
+  PRED3: i am a good thing and i am going to do it. I am going
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm sorry. I've got to you.
+  PRED1: What's up?
+  PRED2: Yeah, I'm sorry. I've got a lot of things. I don't have to be doing.
+  PRED3: Yeah, I'm sorry. I've got a lot of you.
+
+--- step 9000 ---
+  user: Hi, boss. Thank you for hiring me.
+  bot: You're welcome, Larisa. I'm glad to have you on board.
+  user: So what do you need me to do?
+  bot: Well, we need someone to run the register and handle customer transactions.
+  user: That sounds easy enough. I can do that.
+  REF : Great. We'll also need you to stock shelves and help customers find what they're looking for.
+  PRED0: It's a good time. I'm doing it.
+  PRED1: It's not sure.
+  PRED2: It's not a good thing. I'll have a good job. I don't have to be a good time.
+  PRED3: It's not a good thing. I'll have a good time.
+
+  user: I'm so glad I could take over the driving, Mom. I was getting a little anxious back there.
+  bot: Yes, it's been a long day. But we're almost to Grandma's house now.
+  user: I know. I can't wait to see her and give her a big hug.
+  REF : She'll be happy to see you too, honey. You know how much she loves you.
+  PRED0: I'm doing. I'll have a good thing.
+  PRED1: So, you're going to
+  PRED2: I'm not just to be a good thing. I'll have a good way. I don't know what you're going to be
+  PRED3: I'm not going to do. I've got a good thing.
+
+  user: i live in portland in maine , so there are quite a bit of beautiful subjects to photograph
+  bot: i live in antarctica . we own a nice house here . where are you from ?
+  user: there must be great subjects for you to photograph , too !
+  bot: lot of good photographic scenic places in antarctica too
+  user: i love tofu , by the way . i live by myself , so i've to cook for myself .
+  bot: all of the underground caves and lakes that most people don't know about
+  REF : those sound gorgeous . the leaves are turning here , so it is great
+  PRED0: i am a good thing to do you like to do
+  PRED1: i am a good thing to do you
+  PRED2: i'm not a good thing and I'm going to do it. I'll do it to do so much
+  PRED3: i am a good thing and i am going to do it. I am going
+
+  user: Hey, do you know if Mr. Jenkins is home? I really need to talk to him about something.
+  REF : Um, no, I haven't seen him in a while. Is everything okay?
+  PRED0: Yeah, I'm sorry. I've got to me.
+  PRED1: Yeah, what's up?
+  PRED2: Yeah, I'm sorry. I've got a lot of my mind. I don't have a lot and I're going to do.
+  PRED3: Yeah, I'm sorry. I've got a lot of you.
+

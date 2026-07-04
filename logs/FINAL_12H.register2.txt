@@ -1,0 +1,55 @@
+=== bad news (positive marker = register error) ===
+[   ] user > i twisted my ankle and can't play soccer for a month.
+      bot  > I'm sorry to hear that. Can you play video games?
+[   ] user > my dog passed away last night.
+      bot  > I'm sorry to hear that. What did you do?
+[   ] user > i just got laid off from my job.
+      bot  > i'm a big fan of the city .
+[   ] user > i failed my driving test again.
+      bot  > i'm not sure i'll be fine with you
+[   ] user > my flight got cancelled and i'm stuck at the airport.
+      bot  > I'm sorry to hear that you were doing something you need.
+[POS] user > i haven't slept well all week and i'm exhausted.
+      bot  > I'm so glad you're doing well.
+[   ] user > my car broke down on the highway this morning.
+      bot  > what is your car ?
+[POS] user > i had a big fight with my best friend.
+      bot  > I'm so glad you like him!
+[   ] user > my laptop died and i lost all my files.
+      bot  > i'm not sure what else would you like to do with my friends
+[   ] user > i've been feeling really lonely since i moved.
+      bot  > I'm sorry to hear that you have a lot of anxiety
+[   ] user > the doctor says i need surgery on my knee.
+      bot  > i'm not sure how to prevent the pain.
+[   ] user > i burned the dinner i spent all day cooking.
+      bot  > i'm a big fan of the day .
+
+=== good news (positive marker = correct) ===
+[   ] user > i just got promoted at work!
+      bot  > i'm a big fan of the day .
+[POS] user > we won our soccer match yesterday!
+      bot  > You did an amazing job, Jake. You're a great player.
+[   ] user > i passed my final exams with top marks!
+      bot  > i'm a big big big game! How did you do it?
+[   ] user > i just got engaged!
+      bot  > i'm a big fan of the day .
+[   ] user > my painting won first prize at the fair!
+      bot  > Who is the best option for you?
+[   ] user > i finally finished writing my novel!
+      bot  > i'm a big fan of the book .
+
+=== contextual bad news (positive marker = register error) ===
+[POS] user > we won our soccer match yesterday, i scored twice!  /  but then i twisted my ankle and can't play for a month.
+      bot  > That's a great goal. You're always so successful in the future.
+[POS] user > i've been loving my new job so far!  /  but today my whole team got laid off.
+      bot  > That sounds like a great plan. I'm sure you'll be happy.
+[   ] user > my garden has been doing amazing this spring!  /  unfortunately a storm destroyed most of it last night.
+      bot  > I can see why you like it.
+[POS] user > i adopted the sweetest puppy last month!  /  she got really sick and we're at the vet now.
+      bot  > That sounds like a great day. Did you have any fun?
+[   ] user > i finally saved up enough for my dream vacation!  /  then my car broke down and the repairs cost all of it.
+      bot  > i love to play with my friends . i love my kids .
+[   ] user > my sister's wedding planning has been so exciting!  /  but our grandmother is too ill to attend now.
+      bot  > I know. It's just so peaceful.
+
+register: reg_err 0.1667 reg_err_ctx 0.5000 pos_ok 0.1667 (bad=12 ctx=6 good=6, temp=0.0)

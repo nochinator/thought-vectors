@@ -1,0 +1,780 @@
+--- step 500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry. I'll know what I've got to be a lot of
+  PRED1: . I don't know what you'll be a good thing. I'm going to be a lot of the time. I think that you're going to do.
+  PRED2: . I don't know what you're going to be a good thing. I'm sure that you've got to be. I think that you can't be a great way to be the right.
+  PRED3: . I don't know what you're going to be a good thing. I'm going to make it. I think that you've got to be the time. I know that you can't be a better.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry. I've got to me. I don't know.
+  PRED1: . I'm going to go to the right. I don't be a good thing. I love to go. I was a good, and you are going to be a great thing.
+  PRED2: . I'm going to go to the time. I don't be a good thing. I love to go. I think you're going to be a great thing.
+  PRED3: . I'm going to go to the time. I don't be a good thing. I love to go. I think you're going to be a great thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I'm sorry. I've got to me. I don't know what I'll have to be a good thing. I think that I're not a good idea that I don’t know that I think I't want to be
+  PRED1: . I don't know what I'm going to be a good thing. I've got to be the right. I think that I'll know that I have to be
+  PRED2: . I don't know what I'm going to be a lot of people. I've got to be the right. I think that I're going to do.
+  PRED3: . I don't know what I'm going to be a lot of people. I've got to be the right. I think that I're going to do.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry. I'll go to you.
+  PRED1: . I'm going to go to the right. I was going to be a good thing. I love to go.
+  PRED2: I'm going to go. I've got a good thing. I love to go to you. I got to go with a good time.
+  PRED3: . I'm going to go to the right. I was a good thing. I don't know what you're going to be a good time. I have a good way to be
+
+--- step 1000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, I'll have to be a good thing. I've got to the time.
+  PRED1: I'm doing. I'll have to be a good thing.
+  PRED2: I'm doing. I'll have a good thing. I don't know what I've got to be a good. I can't have a lot of of
+  PRED3: I'm sorry, I'll have to be a good time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I'll have a good thing. I've got to you. I don't have to be a good.
+  PRED1: I'm doing. I'll have a good thing. I don't have to be a good.
+  PRED2: I'm doing, I'll have a good thing. I've got to you. I don't have a lot of you.
+  PRED3: I'm sorry, I'll have to be a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I'm sorry, I'll have to be a lot of you. I've been a lot for you.
+  PRED1: I don't know.
+  PRED2: I don't know what I'm not going to make it. I've got to be a lot of
+  PRED3: I don't know. I don’t know what I'm going to
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I'll have a good thing. I've got to be a good.
+  PRED1: I'm sorry. I'll have a good thing. I don't have a lot of
+  PRED2: I'm sorry. I'll have a good thing. I don't have a lot of you.
+  PRED3: I'm sorry, I'll have a good thing.
+
+--- step 1500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, I'll have to be a good thing. I've got to the time. I don't have to make it.
+  PRED1: I'm sorry, I'll have to be better.
+  PRED2: I'm sorry, I'll have a good thing. I've got to be a good time. I don't have to be able to make it. I can't know what you're doing.
+  PRED3: I'm sorry, I'll have to be a good thing.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I'll have a good thing. I're doing about you. I don't have to be a good.
+  PRED1: I'm doing, I love you?
+  PRED2: I'm sorry, I'll have a good thing, I don't have a great thing to be a good, and I've got a good time. I're doing. I can't be a very good thing. I don’t know what you're going to be in the right. I am not going to do you.
+  PRED3: I'm sorry, I'll have a good thing. I're doing you.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what I'm not going to do. I'll have to be a good thing. I don’t have to do you
+  PRED1: But you don't know what you can't do?
+  PRED2: I'm sorry, I'll have a good thing. I've got to be a good way. I don't have to be doing.
+  PRED3: But I'm sorry, I'll have to be a good thing.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I'll have a good thing. I're going to be a good time. I don't have to be
+  PRED1: I'm not a good thing. I'll do you?
+  PRED2: I'm sorry, I'll have a good thing. I're going to be a good time. I don't have a lot of you're not a good way. I can't be a great way to be the right. I think you'll be a lot. I am going to do it. I know that you've got to the right and
+  PRED3: I'm sorry, I'll have a good thing. I're going to do it.
+
+--- step 2000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, I'll have to be a good thing. I've got to be able to do.
+  PRED1: I'm sorry, and I'll have to be a good.
+  PRED2: I'm sorry, I'll have a good thing. I've got to be a good way. I don't have to be able to make it.
+  PRED3: I'm sorry, I'll have to be a good thing.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I've been a good thing. I'll have a good way to be a lot of you.
+  PRED1: I'm sorry, I'll have a good thing.
+  PRED2: I'm sorry, I've been a good thing. I'll have a good way to be a good idea. I don't have a lot of
+  PRED3: I'm sorry, I'll have a good thing. I've got a good.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what I don’t know that I'm not going to do. I've got to be a good thing.
+  PRED1: But you can't know what you can
+  PRED2: I'm not about you. I've got to me. I don't know what I'll have to be a good thing. I can't be a lot of
+  PRED3: But I'm not a good thing. I've got to do.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, you're going to be a good thing. I've got a good. I don't have a good way.
+  PRED1: What is the same. I'm not going to do?
+  PRED2: I'm sorry, you're going to be a good thing. I've got a good way. I don't have a good time.
+  PRED3: I'm sorry, I'll have a good thing. I've got a good.
+
+--- step 2500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm not, and you're going to be a good thing. I've been a good way.
+  PRED1: But you're not to know.
+  PRED2: You're not sure, and you're going to be a good thing. I'm not going to do. I don't know what you'll be a lot of
+  PRED3: You're not sure, but you're going to be a good thing.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, you're doing. I've been a good thing. I don't have to be a good. I have been done.
+  PRED1: I'm sorry, you're doing.
+  PRED2: I'm sorry, you're doing. I've been a good thing. I don't have to be a good job. I can't be a great.
+  PRED3: I'm sorry, I'll have been a good thing. I've been a lot of you.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But I'm not just to do. I've got to be a good thing. I don't want to be.
+  PRED1: But I'm not to do.
+  PRED2: I'm not, I'll have a good thing. I've got to be a lot of you're doing. I don't know what I're going to do.
+  PRED3: But I'm not just to do. I've got to do you.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I'll have a good thing. I've got a lot of you. I don't have to be a lot.
+  PRED1: I'm sorry, I'll have been done.
+  PRED2: I'm sorry, you're going to be a good thing. I've been a good way to be the same. I don't have a good.
+  PRED3: I'm sorry, I'll have been a good thing. I've got to be a good.
+
+--- step 3000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, and I'll have a good thing. I've got to be a good time. I don't have to be able to
+  PRED1: I don't know what you can't want to be.
+  PRED2: I'm not a good thing. I'll have a good way to be a good time. I don't have a lot of you can't be a lot.
+  PRED3: I'm sorry, but I'll have a good thing. I've got to do.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I've been a good thing. I'll have a good way. I don't have a great thing.
+  PRED1: I'm doing, you're doing.
+  PRED2: I'm sorry, I've been a good thing. I'll have a good way to be a good. I don't have a great way. I can't know what you're going to be the
+  PRED3: I'm sorry, I've been a good thing. I're doing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what I'm not going to do. I've got to do it. I don’t want to do you.
+  PRED1: But I'm not going to do?
+  PRED2: I'm not to do it. I've got to me. I don't want to do you. I can't have to be a good thing. I have to do.
+  PRED3: I don't do you. I don’t want to do. I'm not to do it.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I've got a good thing. I'll have a good way. I don't have a great thing.
+  PRED1: "I'm doing it. I'm going to do?
+  PRED2: I'm sorry, I've got a good thing. I'll have a good way to make it. I don't have a lot of it.
+  PRED3: I'm sorry, I've got a good thing. I'll have a good way.
+
+--- step 3500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, you're going to be a good thing. I'll have to be able to do.
+  PRED1: You're not to know what you're going to do.
+  PRED2: I'm sorry, you're going to be a good thing. I'll have a good way to be the same. You're not going to make it.
+  PRED3: I'm sorry, you'll have to be a good thing. I'll be a lot of you.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I're gonna be a good thing. I've been a good way. I don't have been done.
+  PRED1: Of course, I'm sorry. I've been a good.
+  PRED2: I'm sorry, I've been a good thing. I'll have a good way to be a good idea. I can't have a lot of of the time. I don't know what you're not a good. I have a little good thing, and I're going to be in the same time.
+  PRED3: I'm sorry, I'll have been a good thing. I've been a lot of
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But I'm not just like you're not just to be a good thing. I've got to me.
+  PRED1: But I'm not to do?
+  PRED2: But I'm not just like you're not just to be a good thing. I've been a lot of you've done. I don't want to be
+  PRED3: But I don't know what I don’t want to do.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: "I'm sorry, you're going to be a good thing. I'm going to make it.
+  PRED1: "I'm sorry, you're going to be a good.
+  PRED2: "I'm sorry, you're going to be a good thing. I'm not going to make it. I can't have a lot of you.
+  PRED3: "I'm sorry, you're going to make it. I'm going to do.
+
+--- step 4000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, you'll have a good thing. I'll be a good way. I don't want to be a lot of
+  PRED1: You're not to know what you can't be a good.
+  PRED2: I'm sorry, you'll have a good thing. I'll be a good time. I don't want to be a lot of you can't be a better.
+  PRED3: You're not sure. You'll have a good thing. I'll be a good time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome to you. I'm not a good way. I don't have to be a good thing.
+  PRED1: Of course, I'm sorry, you're gonna love?
+  PRED2: You're welcome to the same time. I'm not a good thing. I don't have to be a good way. I can't be a great way to be.
+  PRED3: You're welcome to you. I'm sorry. I don't have to be a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I'm not sure you're going to be a good thing. I've got to me. I don't want to do you.
+  PRED1: But you're not going to do you.
+  PRED2: I'm not sure, I'll have a good thing. I've got to me. I don't want to be a good way. I can't be a lot of you. I think you're going to be. I know that you've done. I didn't know what you't have to be doing.
+  PRED3: I'm not sure you're going to do you. I've got to me.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, you're going to be a good thing. I've got a good. I don't have a good way.
+  PRED1: You're not a good thing. You've got a good.
+  PRED2: I'm sorry, you're going to be a good thing. I've got a good time. I don't have a good way.
+  PRED3: I'm sorry, I'll have a good thing. I've got a good.
+
+--- step 4500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, you'll have to be a good thing. I'll be a lot of you.
+  PRED1: You'll have a good thing. You can't have to be.
+  PRED2: I'm sorry, you'll have a good thing. I'll be a good time. I don't want to be a lot of you're not to be.
+  PRED3: I'm sorry, you'll have to be a good thing. I'll be a lot of you.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I've been a good thing. I're doing. I don't have to be a good.
+  PRED1: I'm sorry, I've got a good thing.
+  PRED2: I'm sorry, I've been a good thing. I'll have a good way to be a good. I don't have a lot of
+  PRED3: I'm sorry, I've been a good thing. I're doing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But I'm not just like you're not just to be a good thing. I've got to me.
+  PRED1: But I don't know what I don’t want to
+  PRED2: I don't know what I don’t know that I'm not going to do. I've got to me. I don
+  PRED3: But I don't know what I don’t want to be better.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: "I don't know, I'm not going to be a good thing. I've been a lot of you.
+  PRED1: "I'm sorry, I'm not going to do.
+  PRED2: "I'm sorry, I'm not a good thing, I don't have a good time. I've been a good way.
+  PRED3: "I'm sorry, I'm not going to make it. I've been a good thing.
+
+--- step 5000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not sure, but I'm not going to do. I'll have a good thing. I don't have to be able to
+  PRED1: You're not to know what you can't want to do.
+  PRED2: You're not a good thing. You'll have a good idea. You can't want to be able to do. You don't know what you can're going to do you.
+  PRED3: You're not sure. You'll have to be a good thing.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I've been a good thing. I're not a good way to be a good.
+  PRED1: I'm doing, I've been a good thing.
+  PRED2: I'm sorry, I've been a good thing. I'll have a good way to be a good. I don't have a lot of of the world. I can't be a great way to do you. I have a great thing. You're not a good idea of the way to make it.
+  PRED3: I'm sorry, I've been a good thing. I're doing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But I'm not just like you're not going to do. I've got to me. I don't want to do you.
+  PRED1: But you're not going to do.
+  PRED2: I'm not, but I'll have a good thing. I've got to me. I don't want to be a good way. I can't know what you're going to be
+  PRED3: But I'm not going to do. I've got to do you.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I'll have a good thing. I've got a good way. I don't have a lot of you.
+  PRED1: What is you want to do you?
+  PRED2: I'm sorry, I've got a good thing. I'll have a good way to make it. I don't have a lot of you.
+  PRED3: I'm sorry, I'll have a good thing. I've got a good.
+
+--- step 5500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, you're going to be a good thing. I'll have to be able to do.
+  PRED1: You're not a good thing. You'll have to be.
+  PRED2: It's not a good thing, you're going to be a good time. I'm not going to do. I don't know what you'll be a lot of
+  PRED3: I'm sorry, you'll have to be a good thing. I'll be a lot of you.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I've got a good thing. I're doing. I don't have to be a good way.
+  PRED1: You're doing. I think you're not a good thing. I'm not a lot of you.
+  PRED2: You're doing, I'm sorry, I don't have a good thing. I've got to the same thing. You've been a good way to be a good. I can't be a great thing.
+  PRED3: You're doing, I'm sorry. I've got to be a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what I don’t want to be a good thing. I'm not going to do. I don
+  PRED1: I don't know what you can't want to me.
+  PRED2: I don't know what I don’t know that I'm not going to do. I've got to me. I don\'t know about me.
+  PRED3: I don't know what I don’t want to do you.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: "I'm sorry, you're going to be a good thing. I'm not going to make you.
+  PRED1: "I'm sorry, you're going to be a good.
+  PRED2: "I'm sorry, you're going to be a good thing. I'm not going to make it. I don't have a lot of you.
+  PRED3: "I'm sorry, you're going to make you. I'm going to do.
+
+--- step 6000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, but you're going to be a good thing. I'll have to be able to do.
+  PRED1: You'll know what you can't know.
+  PRED2: I'm sorry, and you're going to be a good thing. I'll be a lot of you'll have to be able to do you.
+  PRED3: I'm sorry, but you'll have to be a good thing.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm sorry. I've been a good thing. I have a good way to be a good.
+  PRED1: You're welcome to do you. I have been a good thing.
+  PRED2: You're welcome, I'm sorry, I don't have a good thing. I've been a good way. I don’t have been a lot of
+  PRED3: You're welcome, I'm sorry. I've been a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what I don’t know that I'm going to do. I don
+  PRED1: But I don't know what I can't do?
+  PRED2: I don't know what I don’t know that I'm not going to do. I've got to me. I don don're going to be a good thing.
+  PRED3: But I don't know what I don’t want to do you.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: "I'm sorry, I'm not going to make it. I've been a good thing. I can't have a good time.
+  PRED1: "I'm doing, you're going to be a good.
+  PRED2: "I'm sorry, I'm not a good thing. I've got a good time. I don't have a good way.
+  PRED3: "I'm sorry, I'm going to make it. I've done.
+
+--- step 6500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm not going to do. You'll have a good thing. You can't have to be able to do you.
+  PRED1: You'll know what you can't know.
+  PRED2: You're not a good thing. You'll have a good way to be a good time. You can't be a lot of you're going to be.
+  PRED3: You'll know what you'll have to be a good thing. I'll be a lot of you.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: I'm sorry, I've been a good thing. I're doing. I think I'll have been a lot of you.
+  PRED1: I'm sorry, I're gonna be happy.
+  PRED2: I'm sorry, I've been a good thing. I'll have a good way to be a good. I don't have been a lot of
+  PRED3: I'm sorry, I've been a good thing. I're doing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I'm not, I've got to me. I'll do you're going to do. I don't know what you've
+  PRED1: But I'm not going to do.
+  PRED2: I'm not, I've got to me. I'll do you're going to do. I don't know what I're not going to be a good way.
+  PRED3: I don't know what I'm going to do you. I've got to me.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I've got a good thing. I'll have a good way. I don't have a lot of you.
+  PRED1: I'm sorry, I've got a good thing.
+  PRED2: I'm sorry, I've got a good thing. I'll have a good way to make it. I don't have a lot of
+  PRED3: I'm sorry, I'll have a good thing. I've got a good.
+
+--- step 7000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: I'm sorry, you'll have to be a good thing. You're going to be able to do.
+  PRED1: You'll know what you can't know.
+  PRED2: I'm sorry, you'll have to be a good thing. You're going to be able to do. You can't have to take your time. You will be able.
+  PRED3: I'm sorry, and you're going to go to the time. You're not to do.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm sorry. I've been a good thing. I don't have to be a good.
+  PRED1: You're welcome, I'm sorry.
+  PRED2: You're welcome, I'm sorry, I don't have a good thing. I've been a good way. I don’t have been a great way to be
+  PRED3: You're welcome, I'm sorry. I've been a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what you're going to be a good thing. I'm not going to do. I don’t know that you've
+  PRED1: But I don't know what you can't do?
+  PRED2: I don't know what I don’t know that I'm not going to do. I've got to me. I don don're going to be a good thing.
+  PRED3: I don't know what I'm not going to do you. I don’t know that
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: "I'm sorry, you're going to be a good thing. I'm not going to make it.
+  PRED1: "I'm sorry, you're going to make it.
+  PRED2: "I'm sorry, you're going to be a good thing. I'm going to make it. I don't have a good time. I can't be a lot of you.
+  PRED3: "I'm sorry, you're going to make it. I'm not going to do.
+
+--- step 7500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not sure to do you. You'll have to be a good thing. You can't want to be.
+  PRED1: You'll know what you can't know.
+  PRED2: You're not to do you. You'll have a good thing. You can't know what you're going to be a good time. You will be a bad to do.
+  PRED3: You'll have a good thing. You're going to be a good time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm sorry. I've been a good thing. I have been a lot of you.
+  PRED1: You're welcome, I'm like you. I've
+  PRED2: You're not a good thing. I'm not a great thing. You've been a good idea that you're doing. I think you've done to be a good way. I have a good
+  PRED3: You're welcome, I'm sorry. I've been a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what I'm not going to do. I've got to me. I don’t want to do you.
+  PRED1: But I don't know what I can't do?
+  PRED2: I don't know what I don’t know that I'm not going to do it. I've got to me. I don don're going to be a good thing. I can't be a better. I think I'd been going to get the right. I know what you're not going on the right, and I're doing me.
+  PRED3: I don't know what I'm going to do you. I've got to me.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I've got a good thing. I'll have a good way. I don't have a lot of you.
+  PRED1: "I'm sorry, you're going to make it.
+  PRED2: I'm sorry, I've got a good thing. I'll have a good way to make it. I don't have a lot of you.
+  PRED3: I'm sorry, I'll have a good thing. I've got a good.
+
+--- step 8000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not a good thing. You'll have a good way. You can't have to be able to do.
+  PRED1: You're not a good thing. You can't have to be.
+  PRED2: You're not a good thing. You'll have a good time. You can't have to be a good. You will have to make you. You are not to be able to do.
+  PRED3: You're not a good thing. You'll have to be a good time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm sorry. I've been a good thing. I have a good way. I don't have been a lot of
+  PRED1: You're welcome, I'm sorry. I have been
+  PRED2: You're welcome, I'm sorry, I don't have a good thing. I've been a good way. I don’t have been a lot of you.
+  PRED3: You're welcome, I'm sorry. I've been a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But I'm not going to do you. I've got to me. I don't know what I'll have to do.
+  PRED1: But I'm not to do.
+  PRED2: No. I'm not going to do you're going to be a good thing. I don't want to be. I think I've done. I can't know what I'll have to be
+  PRED3: But I'm not going to do you. I've got to me.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: "I'm sorry, I'm not going to make it. I've been a good thing. I don't have a good.
+  PRED1: "I'm sorry, you're going to make it.
+  PRED2: "I'm sorry, I'm not a good thing. I've got a lot of you're going to be a good. I don't have a good time.
+  PRED3: "I'm sorry, I'm going to make it. I've got a good.
+
+--- step 8500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not a good thing. You'll have to be a good way. You can't have to go on the day. You will have
+  PRED1: You're not a good thing. You can't have to be.
+  PRED2: You're not a good thing. You'll have a good way to be a good time. You can't be a lot of you're going to be.
+  PRED3: You're not a good thing. You'll have to be a good time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm sorry. I've been a good thing. I have a good way to be a good.
+  PRED1: You're welcome to do you. I'm not like you.
+  PRED2: You're welcome, I'm sorry, I don't have a good thing. I've been a good way. I don’t have been a great way to be a good.
+  PRED3: You're welcome, I'm sorry. I've been a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But I'm not going to do you. I've got to me. I don't know what I'll be a good thing.
+  PRED1: But I'm not to do.
+  PRED2: I don't know what I don’t know that I'm not going to do you. I've got to me. I don don're going to be a good way.
+  PRED3: But I don't know what I'm not going to do you.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: "I'm sorry, I'm not going to make it. I've been a good thing. I can't have a good time.
+  PRED1: "I'm sorry, you're going to make it.
+  PRED2: "I'm sorry, I'm not a good thing. I've got a good time. I don't have a good way.
+  PRED3: "I'm sorry, I'm not going to make it. I've been a good thing.
+
+--- step 9000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not a good thing. You'll have to be a good way. You can't have to go on your life.
+  PRED1: You'll know what you can't know.
+  PRED2: You're not a good thing, but you're going to be a good time. You'll have to be the same. You can't have a good way to be
+  PRED3: You're not a good thing. You'll have to be a good time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm sorry. I've been a good thing. I have a good way to be a good.
+  PRED1: You're welcome, I'm like you.
+  PRED2: You're welcome, I'm sorry, I don't have a good thing. I've been a good way. I don’t have been a great way to be
+  PRED3: You're welcome, I'm sorry. I're not a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: But I'm not just like you're going to do. I've got to me. I don't want to do you.
+  PRED1: But I don't know what you can't do.
+  PRED2: I don't know what I don’t know that I'm not going to do you. I've got to me. I don don're going to be a good way.
+  PRED3: But I don't know what I don’t want to do you.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: "I'm sorry, I'm going to make it. I've got a good thing. I don't have a good.
+  PRED1: "I'm sorry, you're going to make it.
+  PRED2: "I'm sorry, I'm going to make it. I've got a good thing. I don't have a good time.
+  PRED3: "I'm sorry, I'm going to make it. I've got a good thing.
+
+--- step 9500 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not a good thing. You'll have to be a good way. You can't have to go on the day. You will have
+  PRED1: You're not a good thing. You can't have to be.
+  PRED2: You're not a good thing, but you're going to be a good time. You'll have to be the same. You can't have a good way to be
+  PRED3: You're not a good thing. You'll have to be a good time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm sorry. I're doing you. I have a good thing that you're going to
+  PRED1: You're welcome, I love you.
+  PRED2: You're a good thing, I'm sorry, I don't have a good way. I've been a good. I don’t have been a great way.
+  PRED3: You're welcome, I'm sorry. I're not a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what I'm not going to do. I've got to me. I don’t want to do you.
+  PRED1: But I don't know what I'm going to do?
+  PRED2: I don't know what I don’t know that I'm not going to do. I've got to me. I don don're going to be a good thing.
+  PRED3: But I don't know what I'm not going to do you.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I've got a good thing. I'll have a good way. I don't have a great way.
+  PRED1: "I'm sorry, you're going to make it.
+  PRED2: I'm sorry, I've got a good thing. I'll have a good way to make it. I don't have a lot of you.
+  PRED3: "I'm sorry, I'm going to make it. I'll be a good thing.
+
+--- step 10000 ---
+  bot: That doesn't sound good. Let me take your temperature.
+  user: Okay.
+  bot: (after taking his temperature) Emalynn, your temperature is 103 degrees Fahrenheit. You have a fever and you're not going to school today. You're going to stay home and rest.
+  user: But Mom, I don't want to miss school!
+  bot: I'm sorry, but you need to rest. You can't go to school when you're sick like this.
+  user: But what about my homework?
+  REF : We'll worry about that later. Right now, you need to focus on getting better.
+  PRED0: You're not a good thing. You'll have to be a good time. You can't have to go on the day. You will have to take your
+  PRED1: You'll know what you can't know.
+  PRED2: You're not a good thing, but you're going to be a good time. You'll have to be the same. You can't have a good way to be
+  PRED3: You're not a good thing. You'll have to be a good time.
+
+  user: Thank you, Dena, for being such a gentleman.
+  REF : It's no problem at all, Abril. I'm just happy to have you here with me.
+  PRED0: You're welcome, I'm sorry. I've been a good thing. I have a good way to be a good.
+  PRED1: You're welcome, I'm like you. I've done. I don't know what you're doing. I think I're gonna be
+  PRED2: You're welcome, I'm sorry, I don't have a good thing. I've been a good way. I don’t have been a great thing.
+  PRED3: You're welcome, I'm sorry. I're not a good thing.
+
+  user: I just can't help but worry that things are going to end badly between us. I know you're happy now, but what if you start to lose interest in me? What if I'm not enough for you?
+  bot: Marius, I love you and I'm attracted to you. I'm not going anywhere.
+  user: But what if you change your mind? What if you find someone else who makes you happier?
+  bot: That's not going to happen. I'm committed to this relationship and I'm not interested in anyone else.
+  user: But what if it does happen? What if you leave me and I'm all alone?
+  bot: Marius, I'm not going to leave you. We're in this together, remember? We're a team.
+  REF : I know, but I can't help but worry. It feels like everything is out of my control and I don't want to lose you.
+  PRED0: I don't know what I'm not going to do. I've got to me. I don’t want to do you.
+  PRED1: But I don't know what you can't do?
+  PRED2: I don't know what I don’t know that I'm not going to do you. I've got to me. I don don're going to be a good way.
+  PRED3: I don't know what I'm not going to do you. I don’t do to me.
+
+  user: Jaheim, I really need a new car.
+  REF : Maci, we've been over this. I can't afford to buy you a new car right now.
+  PRED0: I'm sorry, I've got a good thing. I'll have a good way. I don't have a great thing.
+  PRED1: "I'm sorry, you're going to make it.
+  PRED2: I'm sorry, I've got a good thing. I'll have a good way to make it. I don't have a lot of it.
+  PRED3: I'm sorry, I'll have a good thing. I've got a good.
+
