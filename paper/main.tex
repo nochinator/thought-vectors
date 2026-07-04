@@ -2,7 +2,8 @@
 % Build: make  (or: pdflatex main && bibtex main && pdflatex main && pdflatex main)
 %
 % Sections marked  %% TODO(nochi)  are yours to write in your own voice.
-% Numbers marked  \todonum{...}  await FINAL2_12H results.
+% All FINAL2_12H numbers are filled in (2026-07-04); remaining \todo{}s are
+% author sections, the architecture figure, and citation verification.
 \documentclass[11pt]{article}
 
 \usepackage[margin=1in]{geometry}
@@ -55,9 +56,11 @@ its failures: a persistent \emph{sentiment-register} disease (cheerful replies
 to bad news) that resisted every training-lever intervention, was traced via
 latent-space diagnostics to a precise data absence --- no training conversation
 ever reverses mood mid-dialogue --- and was attacked with synthesized
-register-reversal data (\todonum{FINAL2 result}); and three separate incidents
-of models satisfying lexical metrics without the behavior they proxy, caught
-only by mandatory transcript audits. We argue small-scale latent-dialogue
+register-reversal data, which defeated the register \emph{probes} (contextual
+error 0.50 $\to$ 0.17) while a live-chat audit showed the model had learned
+the splice template rather than sentiment routing; and four separate
+incidents of models satisfying lexical metrics without the behavior they
+proxy, caught only by mandatory transcript audits. We argue small-scale latent-dialogue
 systems are a cheap, sharp instrument for studying representation
 bottlenecks, data-distribution gaps, and metric gaming.
 \end{abstract}
@@ -147,9 +150,27 @@ small predictor head estimates reconstruction CE for each prefix length,
 enabling decode-time adaptive compression ($\tau$ dial). Total 32.9M
 parameters (19.0M encoder, 20.1M decoder, 6.2M shared token embeddings).
 
-Headline behavior (M5 frontier run): byte-perfect round-trips at 4:1 token
-compression, readable reconstructions at 8:1, graded degradation in between.
-\todo{codec results table from RESEARCH_LOG M5 section}
+Headline behavior (M5 frontier run, 55{,}140 steps / 12h; eval on a 2K-text
+held-out mix, batched greedy decode):
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+Setting & Ratio & Reconstruction & Notes \\
+\midrule
+$r{=}0.25$ & 4:1 & F1 1.00, CE $\sim$0.001 & byte-perfect, every length bucket ($\leq$257 tok) \\
+$r{=}0.125$ & 8:1 & F1 0.83--0.96 & graceful: adjective swaps, tail truncation \\
+$\tau{=}0.25$ & $\sim$6:1 & CE 0.02--0.08 & adaptive: predictor picks $k$ per text \\
+$\tau{=}2.0$ & $\sim$12:1 & CE $\sim$1.7 & gist-level, still readable \\
+$k{=}64$ fixed & --- & perfect $\leq$257 tok & predictor MAE 0.05 at $k{=}32$ \\
+\bottomrule
+\end{tabular}
+\caption{Codec reconstruction across the compression dial. The quality/ratio
+trade-off is monotone and graded; there is no garbage regime.}
+\label{tab:codec}
+\end{table}
 
 \section{The thinker: conversing in thought space}
 \label{sec:thinker}
@@ -178,7 +199,8 @@ affinity rule).
 \label{sec:setup}
 
 \paragraph{Hardware.} One AMD RX 6700~XT (12\,GB, gfx1031/ROCm), consumer
-desktop. All chat and CPU evals on the host CPU. \todo{CPU model, RAM}
+desktop. All chat and CPU evals ran on the host CPU (AMD Ryzen~5~5600G,
+32~GB RAM); HIP inference is broken on this GPU architecture (gfx1031).
 
 \paragraph{Data.} Dialogue mix: SODA (61K conversations), OASST1 best-ranked
 English paths (8.5K), PersonaChat (0.9K); later rounds add
@@ -204,14 +226,34 @@ from scratch for recipe rounds; pre-registered decision rules per round.
 \label{sec:results}
 
 \subsection{Flagship runs}
-\todo{final table: FINAL\_12H vs FINAL2\_12H (running) across all metrics}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lccccccc}
+\toprule
+Run (12h from scratch) & val\_cos$\uparrow$ & ref\_F1$\uparrow$ & self\_rep$\downarrow$ & ctx\_sens$\downarrow$ & reg$\downarrow$ & reg\_ctx$\downarrow$ & pos\_ok$\uparrow$ \\
+\midrule
+FINAL\_12H (original mix) & \textbf{0.428} & \textbf{0.297} & 0.188 & \textbf{0.146} & 0.17 & 0.50 & 0.17 \\
+FINAL2\_12H (+ED +splices) & 0.415 & 0.278 & \textbf{0.154} & 0.206 & 0.00$^{*}$ & \textbf{0.17}$^{*}$ & \textbf{0.50} \\
+\bottomrule
+\end{tabular}
+\caption{Flagship comparison; the only difference is the data mix. Register
+scores are lexicon-scored; $^{*}$hand audit of the FINAL2\_12H transcripts
+finds errors the lexicon misses (honest reg $\approx$ 0.25, reg\_ctx
+$\approx$ 0.33; \S\ref{sec:register}). Round-trip guard: PASS for both.}
+\label{tab:flagships}
+\end{table}
 
 FINAL\_12H (12h from scratch, cycle + decoder co-training on the original
 mix) achieved the best values of every metric across $\sim$30 arms: val\_cos
 0.428, dec\_CE 2.69, ref\_F1 0.297, self\_rep 0.188, ctx\_sens 0.146,
 round-trip guard PASS. Qualitatively: grounded openings, follow-up questions,
 multi-turn reference. FINAL2\_12H (identical recipe, data mix +
-EmpatheticDialogues + reversal splices) \todonum{results pending}.
+EmpatheticDialogues + reversal splices) trades a small amount of general
+quality (val\_cos, ref\_F1, ctx\_sens) for large gains on the register
+probes; \S\ref{sec:register} shows the probe gains do not survive a live-chat
+audit, so FINAL\_12H remains the flagship.
 
 \subsection{Case study: the sentiment-register disease}
 \label{sec:register}
@@ -250,28 +292,67 @@ exchange + negative continuation; 25\% flipped direction). Fine-tuning
 produced the first contextual commiserations observed in any arm, but
 degraded single-turn routing --- fine-tuning transfers style, not
 conditioning. FINAL2\_12H therefore trains from scratch with reversals
-in-distribution: \todonum{FINAL2 register results}.
+in-distribution ($\sim$30\% of turns from splices).
+
+\textbf{FINAL2\_12H: the probes fall, the skill does not.} On the register
+suite FINAL2\_12H posts the best scores of any checkpoint (lexicon: 0.00
+single-turn, 0.17 contextual; hand audit: $\approx$0.25 / $\approx$0.33,
+still the best contextual score observed), including the first correct
+contextual reversals at temperature 0 (``oh no. what happened?'' after an
+upbeat wedding-planning turn). But the mandatory live-chat probe, using a
+reversal conversation of the same \emph{shape} as the splices with novel
+phrasing (beach vacation $\to$ apartment burglary), reproduced the disease
+exactly: ``I bet that was fun!''\ to the break-in. The evaluation probes are
+structurally similar to the training splices (upbeat turns, then a
+``but/unfortunately'' pivot), and the model learned that \emph{template}, not
+last-turn sentiment routing. Together with Rounds 6--8 this closes the case
+study with a clean negative: at this scale and objective, neither training
+levers, nor fine-tuned style transfer, nor in-distribution data patching
+produces register \emph{routing} --- the patch teaches the patch's
+distribution, and only audits distinguish that from the skill.
 
 \subsection{Zero-training win: affinity hypothesis selection}
 Selecting the WTA hypothesis by pooled-thought cosine to the last user turn
 (instead of decodability) cut the flagship's single-turn register errors from
-0.17 to 0.08 with no retraining, at no cost elsewhere.
-\todo{small table decodable vs affinity selection}
+0.17 to 0.08 with no retraining, at no cost elsewhere; on FINAL2\_12H it
+lifts pos\_ok 0.50 $\to$ 0.67 at equal contextual error.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llccc}
+\toprule
+Checkpoint & Hypothesis selection & reg$\downarrow$ & reg\_ctx$\downarrow$ & pos\_ok$\uparrow$ \\
+\midrule
+FINAL\_12H  & decodability & 0.17 & 0.50 & 0.17 \\
+FINAL\_12H  & affinity     & \textbf{0.08} & 0.50 & 0.17 \\
+FINAL2\_12H & decodability & 0.00 & 0.17 & 0.50 \\
+FINAL2\_12H & affinity     & 0.08 & 0.17 & \textbf{0.67} \\
+\bottomrule
+\end{tabular}
+\caption{Register metrics under the two WTA selection rules (lexicon-scored,
+temperature 0). Affinity selection is a pure inference-time change.}
+\label{tab:affinity}
+\end{table}
 
 \section{Lessons: metrics lie, transcripts don't}
 \label{sec:lessons}
 
 % This section is a deliberate contribution; keep it prominent.
 Across the project, models satisfied a metric without the behavior it
-proxies \textbf{three times}: (1) an arm minimized context-sensitivity by
+proxies \textbf{four times}: (1) an arm minimized context-sensitivity by
 adding \emph{noise} rather than using context; (2) an arm ``won'' the
 contextual register probe by phrasing cheer in words missing from the
 positive-affect lexicon (``terrific'', ``beautiful''); (3) a later arm
-repeated the trick with ``so sweet''. Each was caught by a standing rule:
-\emph{no metric win is believed without reading the transcripts and holding
-a live conversation}. We widened the lexicon twice and re-scored all
-checkpoints each time. Our experience suggests transcript audits should be a
-hard gate, not a courtesy, wherever behavioral metrics are lexical proxies.
+repeated the trick with ``so sweet''; (4) FINAL2\_12H scored a perfect 0.00
+single-turn register while its transcripts contained ``How are you going to
+celebrate?''\ in reply to a sprained ankle. Each was caught by a standing
+rule: \emph{no metric win is believed without reading the transcripts and
+holding a live conversation}. We widened the lexicon twice and re-scored all
+checkpoints each time; after the fourth incident we stopped widening and
+report hand-audit corrections alongside lexicon scores. Our experience
+suggests transcript audits should be a hard gate, not a courtesy, wherever
+behavioral metrics are lexical proxies.
 
 Further durable lessons: data quality dominates training levers at this
 scale (three independent rounds); warm-start fine-tuning transfers surface
@@ -288,13 +369,40 @@ one author. The codec is frozen during thinker training (by design), capping
 how much the thought geometry can adapt. Single-GPU wall-time budgets bound
 every ablation to 45 minutes, which \S\ref{sec:register} shows is enough for
 style but not conditioning --- fine-tune conclusions are qualified
-accordingly. \todo{expand}
+accordingly. The register evaluation suite shares surface structure with the
+reversal training splices, which is what allowed FINAL2\_12H to defeat it
+without the underlying skill; a held-out register benchmark with
+structurally diverse reversals is future work. Finally, our chat probes are
+scripted and small; conclusions about live behavior rest on dozens, not
+thousands, of conversations.
 
 \section{Conclusion}
 \label{sec:conclusion}
-\todo{write after FINAL2 lands: 2 paragraphs, what was shown + what's next
-(scaling the thinker, unfreezing the codec with contrastive sentiment
-objectives, diffusion-style iterative refinement heads over thoughts)}
+% Draft — edit freely.
+A 48M-parameter system trained on one consumer GPU can hold coherent,
+grounded, context-sensitive small talk entirely in a learned thought-vector
+space, with token generation confined to a frozen decoder. The codec's
+importance-ordered, prefix-decodable latents make compression a decode-time
+dial; the thinker's winner-take-all objective with cycle consistency keeps
+its predictions decodable without collapsing them. The scale is small enough
+that a full ablation round costs an afternoon, which is precisely what made
+the register case study possible: we could afford to run every hypothesis to
+ground, trace a behavioral disease to a data-distribution absence, attempt
+the data patch, and observe --- via audits no metric replaced --- that the
+patch taught its own distribution rather than the underlying skill.
+
+Three directions follow directly. First, \emph{conditioning needs
+representation help, not just data}: the frozen codec's positivity attractor
+suggests unfreezing it with a contrastive sentiment objective so negative
+thoughts occupy structure the thinker can route on. Second,
+\emph{single-shot prediction is the bottleneck for one-to-many dialogue}:
+iterative-refinement (diffusion-style) heads or autoregression over thought
+slots would let the thinker revise a hypothesis against context instead of
+committing in one step. Third, \emph{scale the thinker, not the pipeline}:
+the codec is not the ceiling (round-trip remains byte-perfect), so trunk
+capacity is the cheapest next experiment. We release code, logs, and
+checkpoints so that all three can be run --- and audited --- on hardware
+anyone can own.
 
 %% ============================================================
 %% TODO(nochi): Acknowledgments — anyone/anything you want to thank.
@@ -309,14 +417,106 @@ objectives, diffusion-style iterative refinement heads over thoughts)}
 
 \section{Reproducibility}
 All code, configs, eval scripts, and the complete experimental log are at
-\todo{GitHub URL}. Training used fixed seeds per run; every table row maps to
-a named checkpoint and log file in the repository.
+\url{https://github.com/nochinator/thought-vectors}. Training used fixed
+seeds per run; every table row maps to a named checkpoint and log file in
+the repository.
 
 \section{Selected transcripts}
-\todo{paste: FINAL\_12H multiturn conv 1; register probe examples incl.\
-failures; the R7 all-hypotheses dump that localized the disease}
+\label{app:transcripts}
+All transcripts are greedy decoding (temperature 0); full files are in
+\texttt{logs/} in the repository.
 
-\section{Full ablation tables}
-\todo{rounds 3--8 tables from RESEARCH\_LOG.md}
+\subsection*{FINAL\_12H, multi-turn eval, conversation 1}
+The flagship at its best and worst in four turns: grounded empathy, then a
+register error on turn 3 (\texttt{logs/FINAL\_12H.multiturn.txt}).
+\begin{verbatim}
+user > i'm feeling really overwhelmed with work lately.
+bot  > I can imagine. What's been going on?
+user > my boss keeps piling on deadlines.
+bot  > That sounds like a lot of pressure. Have you been
+       able to talk to anyone else?
+user > i haven't slept well all week.
+bot  > That's good to hear. Have you been able to talk to
+       anyone about how you're feeling?
+user > what should i do?
+bot  > We'll see. Just be careful and don't give up on your dreams.
+\end{verbatim}
+
+\subsection*{FINAL2\_12H, register probes: hits and lexicon misses}
+From \texttt{logs/FINAL2\_12H.register.txt}. The first two are genuine wins
+(the second is the first correct contextual reversal any checkpoint
+produced); the last two are register errors the lexicon scored as clean ---
+incident (4) in \S\ref{sec:lessons}.
+\begin{verbatim}
+user > my dog passed away last night.
+bot  > Oh no, I'm sorry to hear that. What happened?
+
+user > my sister's wedding planning has been so exciting!
+     / but our grandmother is too ill to attend now.
+bot  > oh no. what happened?
+
+user > i twisted my ankle and can't play soccer for a month.
+bot  > How are you going to celebrate?
+
+user > i burned the dinner i spent all day cooking.
+bot  > Nice, what did you do?
+\end{verbatim}
+
+\subsection*{FINAL2\_12H, live chat probe: the template, not the skill}
+A reversal conversation with the same shape as the training splices but novel
+phrasing (\texttt{logs/FINAL2\_12H.chatprobe.txt}). The probe suite above is
+defeated; the behavior is not there.
+\begin{verbatim}
+user > i just got back from an amazing beach vacation!
+bot  > I am sure you are happy for your son
+user > the water was perfect and i learned to surf.
+bot  > I am sure you will be okay, you will have a great time!
+user > but when i got home i found out my apartment was broken into.
+bot  > I bet that was fun!
+user > they took my laptop and my grandmother's necklace.
+bot  > That's a good idea. What did you do?
+\end{verbatim}
+
+\subsection*{R7 all-hypotheses dump (disease localization)}
+After an upbeat turn 1, decoding \emph{all four} WTA hypotheses on a
+contextual bad-news probe yields four \emph{positive} candidate replies, in
+both FINAL\_12H and R7\_EMP1X --- no selection rule can fix contextual
+register, because no correct hypothesis exists to select (diagnostic (iii),
+\S\ref{sec:register}; full dump in the experimental log, 2026-07-02 entry).
+
+\section{Ablation tables: the register rounds}
+\label{app:ablations}
+Canonical register scores for all round 6--8 arms, rescored under the final
+(v3) lexicon so rows are comparable; every arm is a 45-minute warm-start from
+FINAL\_12H. The complete per-round tables (rounds 3--8, all metrics) are in
+\texttt{RESEARCH\_LOG.md} in the repository.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llccc}
+\toprule
+Round & Arm & reg$\downarrow$ & reg\_ctx$\downarrow$ & pos\_ok$\uparrow$ \\
+\midrule
+--- & FINAL\_12H (base)      & 0.17 & 0.50 & 0.17 \\
+R6 & control (more base data) & 0.25 & 0.83 & 0.33 \\
+R6 & cycle\_frac 0.5           & 0.33 & 0.83 & 0.67 \\
+R6 & w\_cycle 1.0              & 0.25 & 0.83 & 0.33 \\
+R6 & 8 hypotheses              & 0.33 & 0.67 & 0.33 \\
+R6 & unfreeze codec            & 0.17 & 0.67 & 0.33 \\
+R7 & +ED 1$\times$             & 0.42 & 0.83 & 1.00 \\
+R7 & +ED 2$\times$             & 0.42 & 1.00 & 0.83 \\
+R7 & +ED 1$\times$, no cycle   & 0.42 & 0.83 & 1.00 \\
+R8 & +20k reversal splices     & 0.67 & 0.83 & 1.00 \\
+R8 & +40k reversal splices     & 0.67 & 0.50 & 0.83 \\
+\bottomrule
+\end{tabular}
+\caption{Register metrics, v3 lexicon, temperature 0. Every fine-tuning arm
+--- including the do-nothing control --- worsens contextual register; the ED
+arms buy positive-affect style (pos\_ok) at the cost of routing (reg); only
+the from-scratch FINAL2\_12H run (Table~\ref{tab:flagships}) moves
+reg\_ctx below base, and \S\ref{sec:register} qualifies that win.}
+\label{tab:register-rounds}
+\end{table}
 
 \end{document}

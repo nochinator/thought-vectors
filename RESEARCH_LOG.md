@@ -1158,3 +1158,48 @@ routing that no fine-tune could patch in. Evals incl. register with both hyp_sel
 Confirms the hand audit: REV40 ctx = parity with base, not a win; the ED-derived arms trade
 single-turn routing for style. FINAL_12H remains the only checkpoint with acceptable
 single-turn register — everything now rides on FINAL2_12H.
+
+### 2026-07-04 — FINAL2_12H RESULTS: eval probes conquered, generalization not
+
+Run completed cleanly: 106,684 steps / 12h wall-clock, train cos plateau ~0.545,
+RT guard PASS (worst delta 0.0001). Eval suite vs flagship:
+
+| ckpt (12h from scratch) | val_cos | ref_f1 | self_rep↓ | ctx_sens↓ | reg_err↓ | reg_err_ctx↓ | pos_ok↑ |
+|---|---|---|---|---|---|---|---|
+| FINAL_12H (combined data) | 0.4281 | 0.2969 | 0.1882 | 0.1462 | 0.17 | 0.50 | 0.17 |
+| FINAL2_12H (+ED +40k splices) | 0.4146 | 0.2778 | **0.1535** | 0.2061 | **0.00** | **0.17** | **0.50** |
+| FINAL2_12H (affinity select) | — | — | — | — | 0.08 | 0.17 | 0.67 |
+
+**Transcript audit — FIFTH lexicon incident.** The 0.00 reg_err is not honest: hand audit
+finds 3/12 bad-news register errors the lexicon misses ("How are you going to celebrate?"
+to a twisted ankle; "that is good to you"; "Nice, what did you do?" to burned dinner) and
+2/6 contextual ("That is a good idea"; "That's great!" to a destroyed garden). Honest
+scores: reg_err ≈ 0.25, reg_err_ctx ≈ 0.33. We are NOT widening the lexicon again (v4 would
+be chasing our own tail); paper reports lexicon scores + hand-audit corrections side by side.
+Still the genuine best contextual score of any checkpoint, and the transcripts contain real
+firsts: "Oh no, I'm sorry to hear that. What happened?" (dog died), "oh no. what happened?"
+(wedding excitement → grandmother ill — a correct CONTEXTUAL reversal at temp 0).
+
+**Chat probe (4 fresh convs, side-by-side vs FINAL_12H, temp 0) — gate result: FAIL for
+"register solved", PASS for "model is usable".** On a novel mood-reversal conversation
+(beach vacation → apartment broken into) FINAL2 answered "I bet that was fun!" and "That's
+a good idea. What did you do?" — the exact disease, live. On sustained bad news it opened
+with "That's good to hear." (FINAL_12H handled the same conversation better). Small talk
+and good-news convs are coherent and roughly at parity (FINAL_12H showed its own collapse
+loops there, e.g. "i love to play a lot of fun" ×2).
+
+**Interpretation:** from-scratch training with 30% reversal splices teaches the SPLICE
+DISTRIBUTION, not register routing. The eval_register ctx probes are structurally identical
+to the training splices (2 upbeat turns + "but/unfortunately" pivot) and FINAL2 aces them;
+my chat-probe reversal uses the same shape with novel phrasing/length and FINAL2 misroutes
+it. The model learned "conversations of this template flip at turn 3", not "read the last
+turn's sentiment". Combined with R6–R8: neither fine-tuning (can't rewire conditioning) nor
+in-distribution data patching (memorizes the patch) fixes register at this scale/objective.
+That is the paper's case-study conclusion — an honest negative with a clean mechanism.
+
+**Flagship decision: FINAL_12H stays flagship** (better val_cos, ref_f1, ctx_sens, better
+live sustained-bad-news handling). FINAL2_12H is reported as the case-study endpoint: the
+data-patch experiment that beat the metric and not the skill. Affinity hyp-select stays a
+free win where it matters (FINAL_12H: reg_err 0.17→0.08; on FINAL2 it lifts pos_ok
+0.50→0.67 at equal ctx).
+Chat-probe transcripts: scratchpad/chat_probe_final2.py output, archived in paper appendix.
