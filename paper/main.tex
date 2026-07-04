@@ -163,6 +163,20 @@ trade-off is monotone and graded; there is no garbage regime.}
 \label{tab:codec}
 \end{table}
 
+\paragraph{Against the earlier prototype.} The project's first codec (a
+$d{=}256$, 16.5M-parameter GRU autoencoder with 128 latent slots; its full
+research log is preserved at \texttt{legacy/phase0/RESEARCH.md} in the
+repository) reached near-perfect reconstruction only up to $\sim$60 tokens;
+beyond $\sim$80 tokens it plateaued at 50--62\% word overlap \emph{regardless
+of how many latent vectors the decoder received} --- a $d$-model capacity
+ceiling, as its log correctly diagnosed. The present codec removes that
+ceiling (byte-perfect at 4:1 through 257 tokens, Table~\ref{tab:codec}) with
+only $d{=}384$; the decisive changes were training-side --- per-sample
+compression ratios from step~0, pre-norm layers with warmup, a single joint
+training phase instead of sequential fine-tunes, and paragraph-scale training
+text --- indicating the prototype's limits were artifacts of its recipe, not
+of the thought-vector idea.
+
 \section{The thinker: conversing in thought space}
 \label{sec:thinker}
 
@@ -457,9 +471,13 @@ maxing out around 100 tokens before complete collapse into gibberish --- much
 like an earlier attempt built with DeepSeek V4 --- even though,
 architecturally, it could handle sequences up to 256 tokens. The efficiency
 was also questionable, needing roughly one vector per 1.8 tokens for
-byte-perfect representation. It felt like there was something here, but Opus
-felt limiting on what to train on, how to train, and so forth. So I waited
-several more months.
+byte-perfect representation. The DeepSeek-era prototype's research log,
+preserved at \texttt{legacy/phase0/RESEARCH.md} in the repository, records
+these limits quantitatively: near-perfect reconstruction held only below
+$\sim$60 tokens, and past $\sim$80 tokens word overlap plateaued at 50--62\%
+no matter how many vectors were supplied. It felt like there was something
+here, but Opus felt limiting on what to train on, how to train, and so
+forth. So I waited several more months.
 
 Then Claude Fable released in early June. I gave it another shot, and with
 its insights, broad knowledge, and brutal iterative capability we created the
@@ -496,7 +514,12 @@ Latter-day Saints, for help during a mentally difficult time.
 All code, configs, eval scripts, and the complete experimental log are at
 \url{https://github.com/nochinator/thought-vectors}. Training used fixed
 seeds per run; every table row maps to a named checkpoint and log file in
-the repository.
+the repository (\texttt{logs/} holds all training logs, eval transcripts,
+and per-run metrics). The two earlier generations of the project are also
+preserved: \texttt{legacy/phase0/} contains the original prototype and its
+full research log (the source of the prior-attempt numbers in
+\S\ref{sec:codec}), and \texttt{legacy/phase1/} the intermediate rebuild,
+with its git history in \texttt{legacy/phase1-git-history.bundle}.
 
 \section{Selected transcripts}
 \label{app:transcripts}
