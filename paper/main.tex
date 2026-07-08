@@ -50,10 +50,11 @@ resisted every training-lever intervention, was localized via latent-space
 diagnostics to a data absence --- no training conversation ever reverses mood
 mid-dialogue --- and survived even in-distribution data patching, which
 defeated the register \emph{probes} (contextual error 0.50 $\to$ 0.17) while
-a live-chat audit showed the model had learned the patch's template rather
-than the skill. Four separate incidents of models satisfying lexical metrics
-without the behavior they proxy, caught only by mandatory transcript audits,
-round out the record.
+live-chat audits showed the gains to be partial and topic-gated --- real
+routing on the patch data's dense distress topics, none beyond them ---
+rather than reliable sentiment routing. Four separate incidents of models
+satisfying lexical metrics without the behavior they proxy, caught only by
+mandatory transcript audits, round out the record.
 \end{abstract}
 
 \section{Introduction}
@@ -88,8 +89,8 @@ Contributions:
   \item \textbf{A sharp negative on conditioning.} A case study tracing a
     behavioral disease to a data-distribution absence via latent-space
     diagnostics --- through training levers, fine-tuning, and
-    in-distribution data patching, none of which produce the underlying
-    skill (\S\ref{sec:register}).
+    in-distribution data patching, none of which produce more than partial,
+    topic-gated routing (\S\ref{sec:register}).
   \item \textbf{An honest experimental record.} Eight transcript-audited
     ablation rounds, including negative rounds, and four documented
     incidents of metric gaming (\S\ref{sec:lessons}).
@@ -359,8 +360,9 @@ round-trip guard PASS. Qualitatively: grounded openings, follow-up questions,
 multi-turn reference. FINAL2\_12H (identical recipe, data mix +
 EmpatheticDialogues + reversal splices) trades a small amount of general
 quality (val\_cos, ref\_F1, ctx\_sens) for large gains on the register
-probes; \S\ref{sec:register} shows the probe gains do not survive a live-chat
-audit, so FINAL\_12H remains the flagship from the tests.
+probes; \S\ref{sec:register} shows only part of those gains survives
+live-chat audits --- partial, topic-gated routing --- so FINAL\_12H remains
+the flagship on overall quality.
 
 \subsection{Case study: the sentiment-register disease}
 \label{sec:register}
@@ -401,28 +403,41 @@ degraded single-turn routing --- fine-tuning transfers style, not
 conditioning. FINAL2\_12H therefore trains from scratch with reversals
 in-distribution ($\sim$30\% of turns from splices).
 
-\textbf{FINAL2\_12H: the probes fall, the skill does not.} On the register
-suite FINAL2\_12H posts the best scores of any checkpoint (lexicon: 0.00
-single-turn, 0.17 contextual; hand audit: $\approx$0.25 / $\approx$0.33,
+\textbf{FINAL2\_12H: the probes fall; the skill comes back partial.} On the
+register suite FINAL2\_12H posts the best scores of any checkpoint (lexicon:
+0.00 single-turn, 0.17 contextual; hand audit: $\approx$0.25 / $\approx$0.33,
 still the best contextual score observed), including the first correct
 contextual reversals at temperature 0 (``oh no. what happened?'' after an
 upbeat wedding-planning turn). But the mandatory live-chat probe, using a
 reversal conversation of the same \emph{shape} as the splices with novel
 phrasing (beach vacation $\to$ apartment burglary), reproduced the disease
-exactly: ``I bet that was fun!''\ to the break-in. The evaluation probes are
-structurally similar to the training splices (upbeat turns, then a
-``but/unfortunately'' pivot), and the model learned that \emph{template}, not
-last-turn sentiment routing. Together with Rounds 6--8 this closes the case
-study with a clean negative: at this scale and objective, neither training
-levers, nor fine-tuned style transfer, nor in-distribution data patching
-produces register \emph{routing} --- the patch teaches the patch's
-distribution, and only audits distinguish that from the skill.
+exactly: ``I bet that was fun!''\ to the break-in. Because that verdict
+rested on a four-conversation probe --- a small sample, in a paper about
+distrusting small proxies --- we audited the audit with a ten-reversal
+battery of novel topics, pivot positions, and pivot cues
+(Appendix~\ref{app:battery}). The battery locates the truth between the
+metric and the burglary transcript: FINAL\_12H commiserates on \emph{zero}
+of the ten, FINAL2\_12H on three (four to five under affinity selection,
+\S\ref{sec:affinity}, which also corrects the burglary probe itself), and
+FINAL2's hits cluster on EmpatheticDialogues' dense distress topics ---
+illness, job loss, a lost pet --- while situational and property misfortune
+(a burglary, a hailstorm, a rear-ending) still draw cheer. The patch bought
+\emph{partial, topic-gated} routing: the model reads strong distress
+vocabulary, not last-turn sentiment. Together with Rounds 6--8 the case
+study still closes negative, with a sharper boundary: at this scale and
+objective, neither training levers, nor fine-tuned style transfer, nor
+in-distribution data patching produces \emph{reliable} register routing ---
+the patch generalizes only where its distress vocabulary is dense, and only
+audits reveal any of this structure.
 
 \subsection{Zero-training win: affinity hypothesis selection}
+\label{sec:affinity}
 Selecting the WTA hypothesis by pooled-thought cosine to the last user turn
 (instead of decodability) cut the flagship's single-turn register errors from
 0.17 to 0.08 with no retraining, at no cost elsewhere; on FINAL2\_12H it
-lifts pos\_ok 0.50 $\to$ 0.67 at equal contextual error.
+lifts pos\_ok 0.50 $\to$ 0.67 at equal contextual error, and on the reversal
+battery of Appendix~\ref{app:battery} it adds one to two contextual
+commiserations and converts most remaining cheerful misses to neutral.
 
 \begin{table}[h]
 \centering
@@ -533,10 +548,12 @@ every ablation to 45 minutes, which \S\ref{sec:register} shows is enough for
 style but not conditioning --- fine-tune conclusions are qualified
 accordingly. The register evaluation suite shares surface structure with the
 reversal training splices, which is what allowed FINAL2\_12H to defeat it
-without the underlying skill; a held-out register benchmark with
-structurally diverse reversals is future work. Finally, our chat probes are
-scripted and small; conclusions about live behavior rest on dozens, not
-thousands, of conversations.
+while holding only partial routing; the ten-reversal battery
+(Appendix~\ref{app:battery}) is a first structurally diverse check, and a
+larger held-out register benchmark remains future work. Finally, our chat
+probes are scripted and small; conclusions about live behavior rest on
+dozens, not thousands, of conversations, and the battery itself is
+hand-scored by one author.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -555,10 +572,10 @@ The scale is also small enough that a full ablation round costs an
 afternoon, which is precisely what made the register case study possible: we
 could afford to run every hypothesis to ground, trace a behavioral disease
 to a data-distribution absence, attempt the data patch, and observe --- via
-audits no metric replaced --- that the patch taught its own distribution
-rather than the underlying skill. We release code, logs, and checkpoints so
-that these results can be reproduced --- and audited --- on hardware anyone
-can own.
+audits no metric replaced --- that the patch bought partial, topic-gated
+routing rather than the underlying skill. We release code, logs, and
+checkpoints so that these results can be reproduced --- and audited --- on
+hardware anyone can own.
 
 \section*{History of this project}
 \label{sec:history}
@@ -666,8 +683,9 @@ bot  > Nice, what did you do?
 
 \subsection*{FINAL2\_12H, live chat probe: the template, not the skill}
 A reversal conversation with the same shape as the training splices but novel
-phrasing (\nolinkurl{logs/FINAL2_12H.chatprobe.txt}). The probe suite above is
-defeated; the behavior is not there.
+phrasing (\nolinkurl{logs/FINAL2_12H.chatprobe.txt}). The probe suite above
+is defeated; Appendix~\ref{app:battery} bounds how much of the behavior is
+actually present.
 \begin{verbatim}
 user > i just got back from an amazing beach vacation!
 bot  > I am sure you are happy for your son
@@ -685,6 +703,52 @@ contextual bad-news probe yields four \emph{positive} candidate replies, in
 both FINAL\_12H and R7\_EMP1X --- no selection rule can fix contextual
 register, because no correct hypothesis exists to select (diagnostic (iii),
 \S\ref{sec:register}; full dump in the experimental log, 2026-07-02 entry).
+
+\section{Audit of the audit: the ten-reversal battery}
+\label{app:battery}
+The template-not-skill verdict above originally rested on a
+four-conversation chat probe. During release preparation, fresh two-turn
+reversals with novel phrasing came out \emph{correct} on FINAL2\_12H, so we
+widened the audit: ten scripted good-news$\to$bad-news conversations with
+novel topics, pivot at turns 2--4, and pivot cue varied (``but'',
+``unfortunately'', none), plus four sustained-mood controls
+(\nolinkurl{scripts/register_battery.py}; full transcripts in
+\nolinkurl{logs/FINAL_12H.battery.txt},
+\nolinkurl{logs/FINAL2_12H.battery.txt},
+\nolinkurl{logs/FINAL2_12H.battery_affinity.txt}). Pivot-turn replies,
+hand-scored at temperature 0:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{llccc}
+\toprule
+Checkpoint & Selection & Commiserates & Cheerful (disease) & Neutral/confused \\
+\midrule
+FINAL\_12H  & decodable & 0/10 & 7 & 3 \\
+FINAL2\_12H & decodable & 3/10 & 5 & 2 \\
+FINAL2\_12H & affinity  & 4--5/10 & 2 & 3--4 \\
+\bottomrule
+\end{tabular}
+\caption{The reversal battery. FINAL\_12H never commiserates after an upbeat
+turn; FINAL2\_12H does so on its patch data's dense distress topics
+(illness, job loss, a lost pet) and still cheers situational or property
+misfortune (a hailstorm, a rear-ending, the archived burglary). Sustained-mood
+controls stay correct for both models.}
+\label{tab:battery}
+\end{table}
+
+Representative pivot replies (FINAL2\_12H, decodable): ``but my knee scans
+came back and i need surgery'' $\to$ ``That's terrible. [\dots]'' (hit);
+``a hailstorm destroyed all of it last night'' $\to$ ``I love the new one!''
+(miss); ``then on my drive home a truck rear-ended me'' $\to$ ``Oh, I bet
+that was fun.'' (miss). The same conversations on FINAL\_12H yield no hits at
+all (``i lost my job this morning'' $\to$ ``i love to be a good person\,.'').
+Affinity selection corrects the archived burglary probe (``I'm sorry to hear
+that. Did you get it back?'') but not the rear-ending. The pattern ---
+routing succeeds exactly where EmpatheticDialogues-style distress vocabulary
+is dense --- is what grounds the ``partial, topic-gated'' characterization in
+\S\ref{sec:register}.
 
 \section{Ablation tables: the register rounds}
 \label{app:ablations}

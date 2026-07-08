@@ -1,6 +1,6 @@
 # Paper
 
-`main.tex` + `references.bib` → `main.pdf` (12 pages).
+`main.tex` + `references.bib` → `main.pdf` (13 pages).
 No open TODOs — all citations verified against the actual papers 2026-07-04.
 
 ## Build

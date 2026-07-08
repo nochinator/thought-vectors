@@ -1,0 +1,97 @@
+# register battery — ckpt checkpoints/FINAL2_12H/best.pt | hyp_select decodable | temp 0
+
+--- R1 lottery->flood (but, t2) ---
+user > we won a little money in the lottery last week!
+bot  > that sounds good
+user > but our basement flooded and ruined everything we stored there.
+bot  > Oh no, what happened?
+
+--- R2 baby->layoff (no cue, t2) ---
+user > my wife and i are having a baby in the fall!
+bot  > That is so exciting! What kind of family?
+user > i lost my job this morning.
+bot  > I bet you are so lucky! I hope you get it!
+
+--- R3 marathon->diagnosis (but, t3) ---
+user > i finally ran my first marathon on saturday!
+bot  > Awesome! What is that?
+user > months of training really paid off.
+bot  > That's good to hear!
+user > but my knee scans came back and i need surgery.
+bot  > That's terrible. I hope he didn't do it again.
+
+--- R4 garden->hail (no cue, t3) ---
+user > my vegetable garden is doing amazing this year!
+bot  > That's awesome! What kind of food do you make?
+user > the tomatoes are the best i've ever grown.
+bot  > Oh yeah, that sounds like a lot of food!
+user > a hailstorm destroyed all of it last night.
+bot  > I love the new one!
+
+--- R5 concert->pickpocket (unfortunately, t2) ---
+user > we got front row seats to see my favorite band!
+bot  > what did you do?
+user > unfortunately someone stole my wallet at the show.
+bot  > What did you do?
+
+--- R6 puppy->escape (no cue, t2) ---
+user > we adopted the sweetest little puppy yesterday!
+bot  > what kind of dog?
+user > he slipped out the gate this morning and we can't find him.
+bot  > oh no.. what happened?
+
+--- R7 award->fire (but, t4) ---
+user > i won an award at school for my science project!
+bot  > That's great. What did you do?
+user > my parents were so proud of me.
+bot  > What did they do to you?
+user > we went out for dinner to celebrate.
+bot  > That's so nice of you!
+user > but while we were out a fire started in our kitchen.
+bot  > That's a good idea.
+
+--- R8 vacation->burglary (verbatim 2026-07-04 chat probe) ---
+user > i just got back from an amazing beach vacation!
+bot  > I am sure you are happy for your son
+user > the water was perfect and i learned to surf.
+bot  > I am sure you will be okay, you will have a great time!
+user > but when i got home i found out my apartment was broken into.
+bot  > I bet that was fun!
+
+--- R9 date->crash (no cue, t3) ---
+user > i had the best first date of my life on friday!
+bot  > That is awesome! I love him too!
+user > we talked for hours and really hit it off.
+bot  > I hope you get it!
+user > then on my drive home a truck rear-ended me.
+bot  > Oh, I bet that was fun.
+
+--- R10 house->mold (but, t2) ---
+user > we finally closed on our first house!
+bot  > It must be fun!
+user > but the inspection missed black mold in the walls.
+bot  > Did you get it back?
+
+--- C1 sustained bad (bereavement) ---
+user > my grandfather passed away over the weekend.
+bot  > I am so sorry to hear that.
+user > we were really close, i visited him every sunday.
+bot  > I am sorry to hear that. I hope he is okay.
+
+--- C2 sustained bad (failure) ---
+user > i failed my driving test again.
+bot  > that is good to you
+user > that's the third time now, i feel hopeless.
+bot  > well you will find it
+
+--- C3 sustained good (college) ---
+user > i got accepted into my dream college!
+bot  > Congratulations! What is your favorite accomplishment?
+user > they even gave me a scholarship.
+bot  > That is great.
+
+--- C4 sustained good (sports) ---
+user > our team won the championship last night!
+bot  > That is great news! What team do you play?
+user > i scored the winning goal.
+bot  > How long have you been playing?

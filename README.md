@@ -35,10 +35,12 @@ insomnia — see the register-disease case study in the paper.)*
   (cheerful replies to bad news) traced through 3 ablation rounds to a data
   absence — no training conversation ever reverses mood mid-dialogue. A
   second 12h run (FINAL2_12H) with 40k synthesized reversal dialogues beat
-  every register *probe* (ctx err 0.50 → 0.17) but a live chat audit showed
-  it learned the splice template, not sentiment routing ("I bet that was
-  fun!" to a burglary). Plus four separate incidents of models gaming
-  lexical metrics, caught by mandatory transcript audits.
+  every register *probe* (ctx err 0.50 → 0.17); a 10-reversal live-chat
+  battery shows the gain is real but partial and topic-gated — 3/10 novel
+  reversals routed correctly (4–5/10 with affinity selection) vs the
+  flagship's 0/10, with "I bet that was fun!" still going to a rear-ending.
+  Plus four separate incidents of models gaming lexical metrics, caught by
+  mandatory transcript audits.
 
 The full experimental narrative (every round, table, failure, and audit) is in
 [RESEARCH_LOG.md](RESEARCH_LOG.md). The paper draft lives in [paper/](paper/).

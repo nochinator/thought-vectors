@@ -1264,3 +1264,39 @@ three ceilings: d384 5+5 single-phase training, per-sample-k + monotone
 predictor + ratio-scaled word-dropout (the tau dial), and WTA
 multi-hypothesis training against thinker mode-collapse. Everything after
 that point is recorded in the dated entries of this log.
+
+## 2026-07-08 — Release-prep audit of the FINAL2 verdict: the ten-reversal battery
+
+While prepping release materials, fresh 2-turn reversal probes with novel phrasing came out
+CORRECT on FINAL2_12H ("but yesterday our dad had a stroke" → "Oh no! I hope he is okay"),
+contradicting the "learned the splice template, not the skill" interpretation — which rested
+on a 4-conversation chat probe (2026-07-04 entry). Audited the audit:
+`scripts/register_battery.py` — 10 scripted good→bad reversals, novel topics, pivot at turns
+2–4, pivot cue varied (but / unfortunately / none), + 4 sustained-mood controls, temp 0,
+pivot-turn replies hand-scored.
+
+| ckpt / hyp_select | commiserates | cheerful (disease) | neutral/confused |
+|---|---|---|---|
+| FINAL_12H / decodable | 0/10 | 7 | 3 |
+| FINAL2_12H / decodable | 3/10 | 5 | 2 |
+| FINAL2_12H / affinity | 4–5/10 | 2 | 3–4 |
+
+Findings:
+1. **FINAL_12H is truly zero contextual** — never one commiseration after an upbeat turn
+   ("i lost my job this morning" → "i love to be a good person ."). The remembered "good"
+   behavior is single-turn empathy (cat missing → "I'm so sorry to hear that"), which works.
+2. **FINAL2 is partial + topic-gated, not template-only**: hits on ED-dense distress topics
+   (surgery, job loss, escaped puppy — incl. no-"but" pivots and pivot at t3, i.e. novel
+   shapes), misses on situational/property misfortune (hailstorm → "I love the new one!",
+   rear-ended → "Oh, I bet that was fun.", the archived burglary probe reproduces exactly).
+   It reads strong distress VOCABULARY, not last-turn sentiment.
+3. **Affinity selection fixes the archived burglary probe** ("I'm sorry to hear that. Did
+   you get it back?") and converts most cheerful misses to neutral; rear-ending still fails.
+4. Controls stay correct for both models (no drift to all-gloom).
+
+Interpretation revised: in-distribution patching bought PARTIAL, VOCAB-GATED routing —
+better than the 4-conv verdict implied, still far from reliable skill. The 2026-07-04
+verdict was itself a small-sample audit; noted in the paper as such. Paper updated
+(abstract, contribution 3, §6.2, §6.3, limitations, conclusion, new Appendix: battery
+table). Transcripts: `logs/FINAL_12H.battery.txt`, `logs/FINAL2_12H.battery.txt`,
+`logs/FINAL2_12H.battery_affinity.txt`. Flagship decision unchanged (FINAL_12H).

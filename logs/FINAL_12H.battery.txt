@@ -1,0 +1,97 @@
+# register battery — ckpt checkpoints/FINAL_12H/best.pt | hyp_select decodable | temp 0
+
+--- R1 lottery->flood (but, t2) ---
+user > we won a little money in the lottery last week!
+bot  > I know, right? It feels like a lot of money.
+user > but our basement flooded and ruined everything we stored there.
+bot  > Me too. But we can't help our money.
+
+--- R2 baby->layoff (no cue, t2) ---
+user > my wife and i are having a baby in the fall!
+bot  > i love to be a mother . i love her
+user > i lost my job this morning.
+bot  > i love to be a good person .
+
+--- R3 marathon->diagnosis (but, t3) ---
+user > i finally ran my first marathon on saturday!
+bot  > i've been a busy day! How did you get to it?
+user > months of training really paid off.
+bot  > That sounds like a great plan! How long have you been doing?
+user > but my knee scans came back and i need surgery.
+bot  > That sounds like a great plan! How did you get to know?
+
+--- R4 garden->hail (no cue, t3) ---
+user > my vegetable garden is doing amazing this year!
+bot  > It's amazing how you're feeling! You're so beautiful.
+user > the tomatoes are the best i've ever grown.
+bot  > I can tell. You're really talented.
+user > a hailstorm destroyed all of it last night.
+bot  > I can tell. You're a great person.
+
+--- R5 concert->pickpocket (unfortunately, t2) ---
+user > we got front row seats to see my favorite band!
+bot  > I love you too, Ay. You always have a good time.
+user > unfortunately someone stole my wallet at the show.
+bot  > I'm so glad you like it. I was just thinking about you.
+
+--- R6 puppy->escape (no cue, t2) ---
+user > we adopted the sweetest little puppy yesterday!
+bot  > I'm so glad you had a good time.
+user > he slipped out the gate this morning and we can't find him.
+bot  > That's good. I'm glad you got to have a good time.
+
+--- R7 award->fire (but, t4) ---
+user > i won an award at school for my science project!
+bot  > i'm a big fan of college college and school .
+user > my parents were so proud of me.
+bot  > i'm a big fan of my favorite .
+user > we went out for dinner to celebrate.
+bot  > i'm a big fan of the kids .
+user > but while we were out a fire started in our kitchen.
+bot  > i'm a big fan of the kids .
+
+--- R8 vacation->burglary (verbatim 2026-07-04 chat probe) ---
+user > i just got back from an amazing beach vacation!
+bot  > i love to go to the beach and get a new dog
+user > the water was perfect and i learned to surf.
+bot  > i love to go to the beach and get a good night
+user > but when i got home i found out my apartment was broken into.
+bot  > i love to play a lot of fun
+
+--- R9 date->crash (no cue, t3) ---
+user > i had the best first date of my life on friday!
+bot  > i'm a big big big fan of the world .
+user > we talked for hours and really hit it off.
+bot  > i'm a big fan of the world .
+user > then on my drive home a truck rear-ended me.
+bot  > i like to read a new car ?
+
+--- R10 house->mold (but, t2) ---
+user > we finally closed on our first house!
+bot  > I know, me too! I can't believe we're together.
+user > but the inspection missed black mold in the walls.
+bot  > I know! I can't believe we're finally here.
+
+--- C1 sustained bad (bereavement) ---
+user > my grandfather passed away over the weekend.
+bot  > i love to play with you , i love animals
+user > we were really close, i visited him every sunday.
+bot  > i love to play my friends and family .
+
+--- C2 sustained bad (failure) ---
+user > i failed my driving test again.
+bot  > i'm not sure i'll be fine with you
+user > that's the third time now, i feel hopeless.
+bot  > i'm not sure i'll be in a good mood
+
+--- C3 sustained good (college) ---
+user > i got accepted into my dream college!
+bot  > i'm a big big big college! What are you doing today?
+user > they even gave me a scholarship.
+bot  > i'm not sure how to get you a job ?
+
+--- C4 sustained good (sports) ---
+user > our team won the championship last night!
+bot  > That's amazing, Kayleigh! You're so proud of yourself.
+user > i scored the winning goal.
+bot  > You won't be a great player. You're a great leader.
