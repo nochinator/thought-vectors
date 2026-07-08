@@ -1,5 +1,8 @@
 # thoughtvec — conversation in thought-vector space
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21262842.svg)](https://doi.org/10.5281/zenodo.21262842)
+[![Chat demo](https://img.shields.io/badge/%F0%9F%A4%97%20demo-thought--vectors--chat-blue)](https://huggingface.co/spaces/nochinator/thought-vectors-chat)
+
 Text → ordered **thought vectors** → text. An encoder compresses text into N
 latent vectors ordered by importance; **any prefix** of k vectors decodes back
 to text, so compression ratio is a decode-time choice, and a small predictor

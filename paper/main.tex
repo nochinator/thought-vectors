@@ -25,7 +25,8 @@
 
 \begin{abstract}
 We present a $\sim$48M-parameter conversational system, trained from scratch
-in 12 hours on a single consumer GPU (AMD RX~6700~XT), that conducts dialogue
+in $\sim$25 GPU-hours on a single consumer GPU (AMD RX~6700~XT) --- a
+12-hour run per component --- that conducts dialogue
 entirely in a learned sentence-latent space --- no token-level language
 modeling occurs in its reasoning component at all. A 32.9M-parameter
 \emph{codec} encodes text into a sequence of latent ``thought vectors''
@@ -328,21 +329,23 @@ from scratch for recipe rounds; pre-registered decision rules per round.
 \small
 \begin{tabular}{lccccccc}
 \toprule
-Run (12h from scratch) & val\_cos$\uparrow$ & ref\_F1$\uparrow$ & self\_rep$\downarrow$ & ctx\_sens$\downarrow$ & reg$\downarrow$ & reg\_ctx$\downarrow$ & pos\_ok$\uparrow$ \\
+Run (12h thinker) & val\_cos$\uparrow$ & ref\_F1$\uparrow$ & self\_rep$\downarrow$ & ctx\_sens$\downarrow$ & reg$\downarrow$ & reg\_ctx$\downarrow$ & pos\_ok$\uparrow$ \\
 \midrule
 FINAL\_12H (original mix) & \textbf{0.428} & \textbf{0.297} & 0.188 & \textbf{0.146} & 0.17 & 0.50 & 0.17 \\
 FINAL2\_12H (+ED +splices) & 0.415 & 0.278 & \textbf{0.154} & 0.206 & 0.00$^{*}$ & \textbf{0.17}$^{*}$ & \textbf{0.50} \\
 \bottomrule
 \end{tabular}
-\caption{Flagship comparison; the only difference is the data mix. Register
+\caption{Flagship comparison; both thinkers trained 12h from scratch on the
+frozen M5 codec --- the only difference is the data mix. Register
 scores are lexicon-scored; $^{*}$hand audit of the FINAL2\_12H transcripts
 finds errors the lexicon misses (honest reg $\approx$ 0.25, reg\_ctx
 $\approx$ 0.33; \S\ref{sec:register}). Round-trip guard: PASS for both.}
 \label{tab:flagships}
 \end{table}
 
-FINAL\_12H (12h from scratch, cycle + decoder co-training on the original
-mix) achieved the best values of every metric across $\sim$30 arms: val\_cos
+FINAL\_12H (thinker trained 12h from scratch on the frozen M5 codec, cycle +
+decoder co-training, original mix) achieved the best values of every metric
+across $\sim$30 arms: val\_cos
 0.428, dec\_CE 2.69, ref\_F1 0.297, self\_rep 0.188, ctx\_sens 0.146,
 round-trip guard PASS. Qualitatively: grounded openings, follow-up questions,
 multi-turn reference. FINAL2\_12H (identical recipe, data mix +
