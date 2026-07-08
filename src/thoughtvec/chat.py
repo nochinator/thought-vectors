@@ -8,6 +8,8 @@ is the one recorded in the thinker checkpoint (overridable); the user is role
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import torch
 
 from .config import Config, from_dict
@@ -32,6 +34,14 @@ class ChatSession:
         tk = self.cfg.thinker
 
         codec_path = codec_ckpt or ckpt.get("codec_ckpt", tk.codec_ckpt)
+        if not Path(codec_path).exists():
+            raise FileNotFoundError(
+                f"codec checkpoint not found at '{codec_path}'. The thinker "
+                "checkpoint embeds the codec weights but reads the codec CONFIG "
+                "from this file — download m5_frontier-best.pt from the GitHub "
+                "Release to checkpoints/m5_frontier/best.pt, or point --codec "
+                "at it."
+            )
         codec_state = torch.load(codec_path, map_location="cpu", weights_only=False)
         self.codec_cfg = from_dict(codec_state["config"])
         self.codec = ThoughtAutoencoder(self.codec_cfg.model)
@@ -101,8 +111,9 @@ class ChatSession:
         self.history.clear()
 
 
-def repl(ckpt_path: str, device: str = "cuda", temperature: float = 0.0) -> None:
-    session = ChatSession(ckpt_path, device=device)
+def repl(ckpt_path: str, device: str = "cuda", temperature: float = 0.0,
+         codec_ckpt: str | None = None) -> None:
+    session = ChatSession(ckpt_path, device=device, codec_ckpt=codec_ckpt)
     print(f"thoughtvec chat — ckpt {ckpt_path} | /reset clears history, /quit exits")
     while True:
         try:

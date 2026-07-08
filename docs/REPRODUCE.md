@@ -31,9 +31,12 @@ ROCm notes for gfx1031 (RX 6700 XT), all already baked into the scripts:
 
 ## Run the released checkpoints
 
-Download `FINAL_12H` (thinker flagship; contains the codec + tokenizer path
-inside the checkpoint) from the GitHub Release into `checkpoints/FINAL_12H/`,
-then:
+From the GitHub Release, download **both** files (the thinker checkpoint
+embeds the codec weights, but the codec *config* is read from the codec
+checkpoint):
+
+- `FINAL_12H-best.pt` → `checkpoints/FINAL_12H/best.pt` (thinker flagship)
+- `m5_frontier-best.pt` → `checkpoints/m5_frontier/best.pt` (codec)
 
 ```bash
 .venv/bin/tv-chat --ckpt checkpoints/FINAL_12H/best.pt --device cpu

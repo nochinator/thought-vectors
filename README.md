@@ -44,7 +44,10 @@ The full experimental narrative (every round, table, failure, and audit) is in
 
 ```bash
 scripts/setup_env.sh --cpu    # CPU-only setup is enough for chat/eval
-# download FINAL_12H from the GitHub Release into checkpoints/FINAL_12H/
+# from the GitHub Release (both files — the thinker checkpoint embeds the
+# codec weights but reads the codec config from the codec file):
+#   FINAL_12H-best.pt   -> checkpoints/FINAL_12H/best.pt
+#   m5_frontier-best.pt -> checkpoints/m5_frontier/best.pt
 .venv/bin/tv-chat --ckpt checkpoints/FINAL_12H/best.pt --device cpu   # REPL
 .venv/bin/python scripts/chat_web.py                                   # web UI on :7860 (LAN)
 ```

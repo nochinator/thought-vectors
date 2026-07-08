@@ -240,10 +240,13 @@ def chat_main() -> None:
     _rocm_env()
     parser = argparse.ArgumentParser(prog="tv-chat")
     parser.add_argument("--ckpt", required=True, help="thinker checkpoint")
+    parser.add_argument("--codec", default=None,
+                        help="codec checkpoint (default: path recorded in --ckpt)")
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--temperature", type=float, default=0.0)
     args = parser.parse_args()
 
     from .chat import repl
 
-    repl(args.ckpt, device=args.device, temperature=args.temperature)
+    repl(args.ckpt, device=args.device, temperature=args.temperature,
+         codec_ckpt=args.codec)
