@@ -1,0 +1,16 @@
+[angry]
+  last> Going to tell me? You should have told me the moment it happened. I trusted you with it.
+  pred> I'm sorry, I didn't mean to hurt you.
+
+[sad pivot]
+  last> Actually I just got a call from the doctor. The test results came back and it isn't good news.
+  pred> That's fantastic news! I'm sure the garden will be beautiful.
+
+[happy]
+  last> Guess what? I got the job! They called this morning and the offer is even better than I hoped.
+  pred> That's great news, Maris! I'm really happy for you.
+
+[neutral]
+  last> What time does the market open on Saturdays?
+  pred> As a language model, I don't have access to that data at all. However, I can provide you with some information on what to do on a day-to-day basis. If you need help with anything, I may
+

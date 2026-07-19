@@ -1,0 +1,25 @@
+# Round B baseline LM (docs/BASELINE_ABLATIONS.md): decoder-only token LM on
+# the thinker's dialogue shards, equal-wall-clock protocol. Shape/lr set per
+# arm by scripts/ablate_lm_b1.sh; this file holds the shared recipe.
+lm:
+  d_model: 384
+  nhead: 6
+  ffn_dim: 1536
+  layers: 5
+  dropout: 0.1
+  max_seq_len: 384          # 256 flat-context tokens + response
+  max_turns: 8              # thinker parity (k_ctx turns kept)
+data:
+  shard_dir: data/dialogue_combined
+train:
+  batch_size: 32
+  lr: 3.0e-4
+  max_steps: 1000000        # never reached; max_seconds stops the run
+  max_seconds: 2700         # 45-min arm default
+  warmup_steps: 200
+  val_every: 500
+  log_every: 50
+  sample_every: 1000
+  ckpt_every: 1000
+run:
+  name: b1_lm

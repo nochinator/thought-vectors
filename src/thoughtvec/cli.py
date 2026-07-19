@@ -95,6 +95,30 @@ def train_thinker_main() -> None:
     trainer.fit(train_loader, val_loader)
 
 
+def train_lm_main() -> None:
+    _rocm_env()
+    parser = argparse.ArgumentParser(prog="tv-train-lm")
+    parser.add_argument("--config", required=True)
+    parser.add_argument("--resume", default=None, help="checkpoint to resume from")
+    parser.add_argument("overrides", nargs="*", help="key.subkey=value")
+    args = parser.parse_args()
+
+    import torch
+
+    from .config import load_config
+    from .lm import LMTrainer
+    from .tokenizer import Tokenizer
+
+    cfg = load_config(args.config, args.overrides)
+    torch.manual_seed(cfg.train.seed)
+    trainer = LMTrainer(cfg, Tokenizer(cfg.run.tokenizer_path))
+    if args.resume:
+        trainer.load_checkpoint(args.resume)
+        print(f"resumed from {args.resume} at step {trainer.step} "
+              f"({trainer._resume_elapsed:.0f}s elapsed)", flush=True)
+    trainer.fit()
+
+
 def eval_main() -> None:
     _rocm_env()
     parser = argparse.ArgumentParser(prog="tv-eval")

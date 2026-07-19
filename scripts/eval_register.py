@@ -88,9 +88,16 @@ def main() -> None:
     ap.add_argument("--dump", default=None)
     ap.add_argument("--hyp-select", default="decodable",
                     help="WTA winner rule: decodable (default) or affinity")
+    ap.add_argument("--lm", action="store_true",
+                    help="ckpt is a Round B token-LM baseline, not a thinker")
     args = ap.parse_args()
 
-    session = ChatSession(args.ckpt, device=args.device, hyp_select=args.hyp_select)
+    if args.lm:
+        from thoughtvec.lm import LMChatSession
+        session = LMChatSession(args.ckpt, device=args.device)
+    else:
+        session = ChatSession(args.ckpt, device=args.device,
+                              hyp_select=args.hyp_select)
     lines: list[str] = []
 
     def run(probes: list[str], label: str) -> float:

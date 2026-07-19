@@ -1,0 +1,16 @@
+--- step 1000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > You'm just a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of of a lot of of
+--- step 1000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > That sounds like a lot of you, you, but it'm sorry, you, you, you, you, you, you, you. You'm just a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of
+--- step 1000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > That sounds like a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a lot of a
+--- step 1000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > That sounds like you, you. It't mean to be a lot of a lot of a lot of you, but it't mean to be a lot of a lot of it, you, you, you, you, you.

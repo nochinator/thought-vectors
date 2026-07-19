@@ -1,0 +1,54 @@
+=== [16:38:25] B1 arm: b1_lm_A_384x5_lr6 ===
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[lm] b1_lm_A_384x5_lr6: 15.3M params (d384 x 5L, ffn 1536)
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/functional.py:6044: UserWarning: Support for mismatched src_key_padding_mask and mask is deprecated. Use same type for both instead.
+  warnings.warn(
+[lm] done: 14896 steps, best val_ce 2.7183
+=== [17:24:06] B1 arm: b1_lm_B_512x12 ===
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[lm] b1_lm_B_512x12: 46.4M params (d512 x 12L, ffn 2048)
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/functional.py:6044: UserWarning: Support for mismatched src_key_padding_mask and mask is deprecated. Use same type for both instead.
+  warnings.warn(
+[lm] done: 5000 steps, best val_ce 4.0262
+=== [18:09:50] B1 arm: b1_lm_B_576x10 ===
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[lm] b1_lm_B_576x10: 49.5M params (d576 x 10L, ffn 2304)
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/functional.py:6044: UserWarning: Support for mismatched src_key_padding_mask and mask is deprecated. Use same type for both instead.
+  warnings.warn(
+Memory access fault by GPU node-1 (Agent handle: 0x160a7a90) on address 0x7be9e8205000. Reason: Page not present or supervisor privilege.
+scripts/ablate_lm_b1.sh: line 20: 317127 Aborted                 (core dumped) .venv/bin/tv-train-lm --config configs/b1_lm.yaml run.name="$name" train.max_seconds="$DUR" "$@"
+!!! [18:15:01] arm B_576x10 failed (attempt 1)
+=== [18:15:11] B1 arm: b1_lm_B_576x10 ===
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[lm] b1_lm_B_576x10: 49.5M params (d576 x 10L, ffn 2304)
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/functional.py:6044: UserWarning: Support for mismatched src_key_padding_mask and mask is deprecated. Use same type for both instead.
+  warnings.warn(
+Memory access fault by GPU node-1 (Agent handle: 0x17b3ee10) on address 0x7bd5b9c62000. Reason: Page not present or supervisor privilege.
+scripts/ablate_lm_b1.sh: line 20: 317291 Aborted                 (core dumped) .venv/bin/tv-train-lm --config configs/b1_lm.yaml run.name="$name" train.max_seconds="$DUR" "$@"
+!!! [18:51:48] arm B_576x10 failed (attempt 2)
+!!! arm B_576x10 skipped after 2 failures
+=== [18:51:58] B1 arm: b1_lm_B_640x8 ===
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[lm] b1_lm_B_640x8: 50.1M params (d640 x 8L, ffn 2560)
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/functional.py:6044: UserWarning: Support for mismatched src_key_padding_mask and mask is deprecated. Use same type for both instead.
+  warnings.warn(
+[lm] done: 8678 steps, best val_ce 3.3400
+=== [19:37:40] B1 arm: b1_lm_B_512x12_lr6 ===
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[lm] b1_lm_B_512x12_lr6: 46.4M params (d512 x 12L, ffn 2048)
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/functional.py:6044: UserWarning: Support for mismatched src_key_padding_mask and mask is deprecated. Use same type for both instead.
+  warnings.warn(
+[lm] done: 10141 steps, best val_ce 3.0046
+=== B1 bracket complete ===
+b1_lm_A_384x5_lr6  best "val_ce": 2.7183470869064332
+b1_lm_B_512x12  best "val_ce": 4.02624285697937
+grep: logs/b1_lm_B_576x10/metrics.jsonl: No such file or directory
+b1_lm_B_576x10  best 
+b1_lm_B_640x8  best "val_ce": 3.3399905872344973
+b1_lm_B_512x12_lr6  best "val_ce": 3.0046275663375854

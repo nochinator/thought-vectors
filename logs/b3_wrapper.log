@@ -1,0 +1,8 @@
+=== [07:07:53] b3_lm_48m_24h attempt 1 (fresh) ===
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[lm] b3_lm_48m_24h: 50.1M params (d640 x 8L, ffn 2560)
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/functional.py:6044: UserWarning: Support for mismatched src_key_padding_mask and mask is deprecated. Use same type for both instead.
+  warnings.warn(
+[lm] done: 308824 steps, best val_ce 1.5737
+=== [07:08:33] b3_lm_48m_24h finished cleanly ===

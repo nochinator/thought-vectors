@@ -1,0 +1,160 @@
+--- step 1000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > I's a lot of the the the world.
+--- step 1000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > I's a lot of the best.
+--- step 1000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > I's not the time.
+--- step 1000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > I's just so much.
+--- step 2000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > I'm sorry.
+--- step 2000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > I'm sorry.
+--- step 2000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > I'm sorry, I'm sorry, I'm sorry, I'm sorry, but I'm sorry, I'm sorry, I'm sorry, I'm sorry.
+--- step 2000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > I'm sorry, I'm sorry.
+--- step 3000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > That sounds like a great job.
+--- step 3000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > That sounds like a great job.
+--- step 3000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > That sounds like a great job.
+--- step 3000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > That sounds like you're going to do that you're not going to me.
+--- step 4000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > I'm sorry, but I'm sorry to hear that. I'm sorry to be more careful in the best way to be more careful.
+--- step 4000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > I'm not sure if I'm not sure. I'm not sure if I don't know, but I'm not sure if you're not going to be more careful.
+--- step 4000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > I'm not sure. I'm not sure.
+--- step 4000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > I'm sorry.
+--- step 5000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > I'm sorry, I'm sorry. I didn't mean to hurt you.
+--- step 5000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > That's not true, it's not fair. I'm not sure.
+--- step 5000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > That's not fair. I'm not sure yet. I'm not sure yet.
+--- step 5000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > That's not fair. I'm sorry. I'm sorry. I'm sorry.
+--- step 6000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > I'm not sure. I'm not sure if I can't help it.
+--- step 6000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > That's not true! I'm not sure. I'm not sure.
+--- step 6000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > That's not true. I'm not sure if I can't help but feel like I'm not going to be able to help you.
+--- step 6000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > That's not the best way. I'm sorry, but I didn't mean to hurt you.
+--- step 7000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > I'm sorry, but I didn't mean to hurt you. I didn't mean to hurt you.
+--- step 7000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > That's not true, but I'm not sure if I'm not sure if I can't believe you're not alone.
+--- step 7000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > That's a great idea! I'm glad you're enjoying it. I'm glad you're enjoying it.
+--- step 7000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > It's not fair. I'm sorry, but I'll try to be more careful in the future.
+--- step 8000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > That's great! I'm really proud of you.
+--- step 8000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > That's a great idea! I'm sure you'll be able to help out.
+--- step 8000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > That's a great idea. I'm sure you'll do great things in your life.
+--- step 8000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > It's not your fault. I'm sorry. I'll try to do better.
+--- step 9000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > I know, but I'm not sure if I don't have to be able to be able to do it.
+--- step 9000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > I know, but I'm not sure if I'm not sure if I'm just not sure if I can't help but feel like I'm not sure if I don't know if I can't do it.
+--- step 9000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > I know you're not going to have to be a good idea. I'm just glad I could help you.
+--- step 9000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > It's not your fault. I'm sorry, but I didn't mean to hurt you.
+--- step 10000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated.
+gold > What's your problem? I was just trying to contribute to the conversation.
+pred > I'm sorry, but I'm really sorry. I'll try to do better next time.
+--- step 10000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation.
+gold > My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+pred > That's not true, but I'm not sure if I'm just trying to help you.
+--- step 10000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it.
+gold > I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+pred > I'm sorry, but I'll try to be more careful in the future.
+--- step 10000
+ctx  > I was in the middle of telling my story when Breasia rudely interrupted me. Adah had been looking forward to sharing the details of his latest adventure, and Breasia's interruption made him feel angry and frustrated. What's your problem? I was just trying to contribute to the conversation. My problem is that you interrupted me in the middle of my story. I was enjoying sharing my adventure with everyone, and you ruined it. I'm sorry if I ruined your story, but I didn't mean to. I was just trying to add to the conversation.
+gold > It doesn't matter if you didn't mean to. The fact is that you did, and it made me angry.
+pred > It's not like you're not alone. I'm sorry, but I'll try to be more careful in the future.

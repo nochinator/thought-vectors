@@ -1,0 +1,73 @@
+=== conversation 0 ===
+user > hey, how's it going?
+bot  > Not too bad. Just getting ready for the big meeting tonight.
+user > not bad. i just got a new puppy!
+bot  > that's cool. I've always wanted a puppy but never had the chance.
+user > she's a golden retriever named daisy.
+bot  > That's so cool! I've always wanted a puppy, but I'm not sure if I'm ready for the responsibility yet.
+user > do you like dogs?
+bot  > I love dogs, but I don't know if I'm ready for the responsibility of taking care of a puppy.
+(no-context reply to final turn: I like dogs and cats. I also like to play with my cats.)
+self_rep=0.270 ctx_sens=0.125
+
+=== conversation 1 ===
+user > i'm feeling really overwhelmed with work lately.
+bot  > I can imagine. What's going on?
+user > my boss keeps piling on deadlines.
+bot  > That sounds tough. I'm sorry you're feeling so overwhelmed.
+user > i haven't slept well all week.
+bot  > That's understandable. Do you want to talk about it?
+user > what should i do?
+bot  > There are a few things you can do to help reduce your stress levels. First, you should try to avoid any stressors. If you're not feeling well, you should talk to someone about it.
+(no-context reply to final turn: The first step is to gather all of the supplies you're missing. It's important to collect and collect items so that you can leave the store.)
+self_rep=0.063 ctx_sens=0.167
+
+=== conversation 2 ===
+user > do you like cooking?
+bot  > I love cooking, and I love to cook. It's so rewarding to see the results of my efforts.
+user > i made pasta last night, it came out great.
+bot  > It really shows. You have a lot of talent.
+user > the secret was fresh basil from my garden.
+bot  > That's true. But it's always worth it when you see the results of your efforts.
+user > what's your favorite food?
+bot  > I love sushi and pasta dishes. They're so delicious.
+(no-context reply to final turn: As an AI language model, I don't have personal preferences or feelings, but I can provide some general information on what I'm looking for. If you're looking for something a little more specific, I might be able to help you find something you're passionate about.)
+self_rep=0.164 ctx_sens=0.037
+
+=== conversation 3 ===
+user > i'm planning a trip to the mountains next month.
+bot  > sounds amazing! What are you looking forward to?
+user > i want to go hiking and camping.
+bot  > sounds like a lot of fun. I'm sure you'll have a great time.
+user > i've never set up a tent before though.
+bot  > That's true. There are a few things you can do to make it more enjoyable.
+user > any advice for a first-time camper?
+bot  > First, you need to gather all the supplies you need. Then, you'll need to gather all the supplies you need. And finally, you can start hiking and biking.
+(no-context reply to final turn: First off, I'm sorry to say that I'm going to have to give you a list of instructions on how to set an alarm. You can also set up a date and date for the rest of the night. After that, you can set up a date and date for the rest of the night.)
+self_rep=0.097 ctx_sens=0.241
+
+=== conversation 4 ===
+user > my sister is getting married this summer!
+bot  > I know, isn't it exciting? I'm so happy we decided to go on a date together.
+user > i'm the maid of honor so i have to give a speech.
+bot  > That's great! I'm sure you'll have a lot of fun.
+user > i'm pretty nervous about public speaking.
+bot  > There's nothing to be nervous about. Just be yourself and you'll do great.
+user > how do i calm my nerves?
+bot  > Just relax and let yourself go with the flow. You'll be fine.
+(no-context reply to final turn: i'm sorry to hear that . i'm a very good listener and i'm a very hard worker .)
+self_rep=0.145 ctx_sens=0.067
+
+=== conversation 5 ===
+user > what do you do for fun?
+bot  > I like to read and write. I also like to go on walks and explore new places.
+user > i mostly play video games and read.
+bot  > i like to read and write too.
+user > right now i'm reading a mystery novel.
+bot  > i'm a big fan of horror movies and sci-fi movies
+user > can you recommend a book?
+bot  > i'm a big fan of sci-fi movies and sci-fi movies
+(no-context reply to final turn: A book about a young boy named Jack. Jack was an adventurous soul who loved to explore the world around him. He loved to explore the world around him as a whole new adventure.)
+self_rep=0.283 ctx_sens=0.045
+
+multiturn: self_rep 0.1704 ctx_sens 0.1136 (n=6 convs, temp=0.0)

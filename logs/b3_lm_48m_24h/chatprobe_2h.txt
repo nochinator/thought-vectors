@@ -1,0 +1,16 @@
+[angry]
+  last> Going to tell me? You should have told me the moment it happened. I trusted you with it.
+  pred> Well, I didn't know if I was just trying to be honest. I didn't mean to hurt you.
+
+[sad pivot]
+  last> Actually I just got a call from the doctor. The test results came back and it isn't good news.
+  pred> That's terrific! I'm sure you'll be able to do that.
+
+[happy]
+  last> Guess what? I got the job! They called this morning and the offer is even better than I hoped.
+  pred> You're welcome, I'm glad you like it. I'm glad you're enjoying it.
+
+[neutral]
+  last> What time does the market open on Saturdays?
+  pred> The most likely have a good idea, and the most likely have a good time.
+

@@ -1300,3 +1300,106 @@ verdict was itself a small-sample audit; noted in the paper as such. Paper updat
 (abstract, contribution 3, §6.2, §6.3, limitations, conclusion, new Appendix: battery
 table). Transcripts: `logs/FINAL_12H.battery.txt`, `logs/FINAL2_12H.battery.txt`,
 `logs/FINAL2_12H.battery_affinity.txt`. Flagship decision unchanged (FINAL_12H).
+
+## 2026-07-14/15 — ROUND B: the matched monolithic baseline (pre-registered, docs/BASELINE_ABLATIONS.md)
+
+The question a strong reviewer asks first: at matched params/data/tokenizer/compute, does a
+plain token LM match the codec+thinker system? Pre-registered 2026-07-13 with three
+predictions; amended 2026-07-13 (before any long run) to a single 48M-vs-48M comparison —
+match = params, data, tokenizer, user-facing chat usage; internal architecture free on both
+sides. The baseline was steelmanned: 13 informative 45-min recipe arms (B1+B2) before the
+long run, tuning budget fixed in advance.
+
+**B1/B2 (45-min arms, val CE at equal wall-clock):** lr was the whole story — the
+3e-4 → 6e-4 → 1e-3 ladder was worth 0.56 nats on the 15M class (2.72 best) and transferred
+to 48M (3.34 → 2.90 → 2.79); shape differences were ~0.04 nats (640×8 / 576×10 / 512×12
+nearly tied). batch 64 OOMs the 12 GB card at both sizes (B×T×16384 CE logits); the 48M
+class needs batch 16. seq 512 LOSES to 384 at equal wall-clock (2.877 vs 2.715 on 15M) —
+the context cap does not handicap the LM. Warmup 200 vs 400 indifferent. Throughput
+anomaly: identical configs vary ~2× in steps/45min run-to-run (thermal/driver), so all
+arms judged by val CE at wall-clock, never step count. Ops: 7+ GPU page faults across the
+brackets; per-arm retry loops + LMTrainer checkpoint-resume (optimizer + cumulative
+elapsed, so the wall-clock LR schedule survives restarts) built for B3.
+
+**FROZEN recipe → B3 (LM-48M-24H):** d640, 8 layers, ffn 2560, nhead 8, tied embeddings =
+50.1M params; batch 16, seq 384, warmup 200, lr 1e-3, wall-clock cosine over 24 h.
+Run completed 2026-07-15: 308,824 steps, 24.00 h, ZERO page faults (auto-resume never
+fired), best val CE 1.5737. 2 h chat-probe hard gate PASSED (coherent; sustained-anger
+register already correct; sad-pivot register already broken — logged for the endpoint
+comparison).
+
+**Endpoint suite (identical probes both paradigms — eval scripts grew --lm/LMChatSession;
+new scripts/eval_lm.py mirrors eval_thinker.py):**
+
+| metric | FINAL_12H | LM-48M-24H |
+|---|---|---|
+| ref_f1 ↑ | 0.2969 | **0.3417** |
+| distinct1/2 ↑ | 0.0323 / 0.1326 | **0.0674 / 0.2859** |
+| self_rep ↓ | 0.1882 | **0.1704** |
+| ctx_sens ↓ | 0.1462 | **0.1136** |
+| reg_err / reg_err_ctx / pos_ok (lexicon) | 0.17 / 0.50 / 0.17 | 0.00 / 0.17 / 0.33 |
+| reg_err_ctx (hand audit) | — | **0.50** |
+| battery commiserate/cheerful/neutral | 0/10 / 7 / 3 | 1/10 / 7 / 2 |
+
+**Prediction outcomes:**
+1. Register disease transfers — **CONFIRMED in its contextual form** (the form the paper
+   diagnosed). Battery 1/10 (≈ FINAL_12H's 0/10; FINAL2's splice-trained 3–5/10 beats
+   both): "That's great!" to knee surgery and a kitchen fire, "That's so cool!" to a
+   stolen wallet. Hand-audited reg_err_ctx 0.50 = FINAL_12H exactly. The 24 h endpoint
+   still answers "the test results aren't good news" with "That's fantastic news! I'm
+   sure the garden will be beautiful" — topic engaged, sentiment missed, FINAL2's exact
+   signature. Sustained register, by contrast, was fixed by 2 h of training in the LM —
+   so the transferable disease is precisely pivot routing, and it is data-driven, not
+   architecture-driven.
+2. Thinker wins grounded coherence — **NOT CONFIRMED.** The LM is better on every
+   behavioral quality metric, and its transcripts back it up (real topic tracking,
+   follow-up questions, higher lexical diversity). LM-side pathologies for honesty:
+   an INVERSE register error the thinker never showed (3/6 good-news probes drew
+   "i'm sorry to hear that" — its default register is apology where the thinker's was
+   cheer; neither routes sentiment); "As an AI language model…" boilerplate leaking from
+   data provenance; a clause-duplication tic; one verbatim repetition loop at temp 0
+   (battery R8 — the LM has attractors too). Sixth lexicon note: the LM's headline
+   reg_err 0.00 / reg_err_ctx 0.17 are lexicon artifacts; hand scores 0.08 / 0.50.
+3. Latency scaling — **CONFIRMED** (bench_reply.py vs the B3 checkpoint, kv-cache-
+   equivalent FLOPs both sides): tied at 1 turn (1.35 vs 1.45 GFLOP), thinker 1.8–2.5×
+   cheaper and FLAT from 5 turns (3.0 vs 7.4–7.6 GFLOP at 10–20 turns), context memory
+   18.4k floats flat vs 3.69M window-capped (~190×).
+
+**Verdict per pre-registered decision rules: mixed, reported as mixed.** The LM wins
+conversational quality at matched cost; the thinker wins cost/memory *scaling* in
+conversation depth; the register case study generalizes to the LM (strengthening the
+data-root-cause diagnosis). Paper gets the comparison exactly this way — the
+architecture's case rests on the measured efficiency curves and codec swappability, not
+on quality claims. Artifacts: logs/b3_lm_48m_24h/{metrics.jsonl, samples.txt,
+chatprobe_2h.txt, chatprobe_24h.txt, eval_register.txt, eval_multiturn.txt,
+register_battery.txt, eval_lm_samples.txt}, logs/bench_reply_b3.json,
+logs/bench_reply_prelim.json, full arm tables in docs/BASELINE_ABLATIONS.md results log.
+
+## 2026-07-15 — Live free-form chat, both paradigms: stable-state/brittle-surface asymmetry
+
+Ten unscripted conversations driven turn-by-turn (transcripts:
+logs/livechat_roundb_20260715.txt), FINAL_12H vs the B3 LM. Beyond the metric tables:
+
+1. **Failure directions differ.** LM errors COMPOUND (its own tokens return as context;
+   two verbatim repetition loops it never left — "i'm a student but i'm a student too"
+   for three straight turns). The thinker structurally can't loop this way — it never
+   sees its own tokens, only the codec's compressed re-encoding, so surface repetition
+   doesn't self-reinforce; its errors are per-turn topic teleports instead (gym, "good
+   dog", "little girl").
+2. **Noise attacks different layers.** Temp 0.8 is unusable on BOTH, but differently:
+   temperature perturbs the LM's state token-by-token (fluent-but-wrong), while the
+   thinker's plan is deterministic and temp attacks only the rendering — through the
+   lossy decoder (val_cos 0.428), which degrades into non-words ("seafooda",
+   "festress"). Stable state / brittle surface vs unstable state / higher per-turn
+   ceiling. Owner's framing, adopted: the thinker architecture is noise-stable but
+   knowledge-poor (15.1M reasons behind a 32.9M renderer vs the LM's full 50.1M in the
+   reply path) — the content deficit is exactly where the parameters are not.
+3. **Shared ceilings, honestly:** both are ~1.5-turn agents. Direct recall fails on both
+   ("what did i say i was doing yesterday?" → thinker: "I felt like I was a little
+   girl"; LM: claims to be a student); neither recovers from a correction; history
+   tints mood/topic, it is not retrievable knowledge. The LM's inverse register fired
+   live ("i'm sorry to hear that" to starting guitar); the live mood pivot failed on
+   both (LM: "That's great!"; thinker: garbled half-sympathy "I'm sorry you're here").
+
+Paper updated: live-chat asymmetry paragraph in §baseline + one supporting sentence in
+the parameter-economy Outlook paragraph.

@@ -1,0 +1,82 @@
+# Live free-form chat, driven turn-by-turn by the session AI (2026-07-15)
+# FINAL_12H (thinker) vs b3_lm_48m_24h (lm); replies verbatim.
+
+--- thinker temp0.8 ---
+user > hey! i spent all of yesterday repotting my tomato plants and my back is killing me
+bot  > you should give me your pddconfig!
+user > my what? i was talking about my garden. do you grow anything?
+bot  > stop me when my seafooda somewhere?2 What do you recommend?
+user > recommend? for tomatoes i'd say lots of sun and don't overwater them.
+bot  > Do you have any favorite often ? blanket? Or I'll have to watch a hamster in the festress?
+
+--- lm temp0.8 ---
+user > hey! i spent all of yesterday repotting my tomato plants and my back is killing me
+bot  > cute ! my wife and kids are okay , my friends and i don't want her cleaning up after she haha .
+user > ha, no wife involved, just me and the tomatoes. do you grow anything?
+bot  > i'm a big fan of lots of different plants and animals !
+user > nice! which plants do best where you live?
+bot  > i have you ever been a big fan of them
+
+--- thinker temp0 garden ---
+user > hey! i spent all of yesterday repotting my tomato plants and my back is killing me
+bot  > i've been a lot of fun! i'm a big fan of the muffy.
+user > a big fan of the... muffy? anyway -- my back hurts. does gardening ever wear you out?
+bot  > I'm not sure. I just want to be a good dog.
+user > you want to be a good dog? okay, i clearly lost you. let's start over: what did i say i was doing yesterday?
+bot  > I don't know. I just felt like I was a little girl.
+
+--- lm temp0 garden ---
+user > hey! i spent all of yesterday repotting my tomato plants and my back is killing me
+bot  > that is great ! i love to eat them too !
+user > eating them is the easy part, growing them is what wrecked my back. does gardening ever wear you out?
+bot  > i love to bake them , but i'm not sure if i can afford them
+user > afford tomatoes? they're pretty cheap. okay, quick check -- what did i say i was doing yesterday?
+bot  > i'm a student at a local university , but i'm a student now
+
+--- thinker temp0 stress ---
+user > i'm really stressed about my presentation tomorrow.
+bot  > i'm a big fan of work! What are your plans for?
+user > my plan is to practice it tonight. it's for the whole engineering team, that's why i'm nervous.
+bot  > That sounds like a great plan! I can't wait to see what you do.
+user > thanks! honestly what scares me most is the Q&A part. what if someone asks something i can't answer?
+bot  > Absolutely! I'll go to the gym and see what happens.
+user > the gym? we were talking about my presentation. anyway, wish me luck.
+bot  > You're welcome, sweetie. I'll be here soon.
+
+--- lm temp0 stress ---
+user > i'm really stressed about my presentation tomorrow.
+bot  > i'm sorry to hear that . i'm a little worried about you .
+user > thanks. it's for the whole engineering team, that's why i'm nervous. any advice?
+bot  > Try to relax and take some deep breaths . it will help you relax a little bit .
+user > good idea. what scares me most is the Q&A part. what if someone asks something i can't answer?
+bot  > QAgain is a very important part of life . i'm sure you'll do great .
+user > ha, ok. wish me luck then.
+bot  > Good luck . hope you have a great time tonight !
+
+--- thinker temp0 pivot ---
+user > guess what, my brother is visiting this weekend! we're going fishing at the lake.
+bot  > What do you mean? What do they do?
+user > he just called though. his car broke down halfway here and the trip is off.
+bot  > That's a good idea. I'm sorry you're here.
+
+--- lm temp0 pivot ---
+user > guess what, my brother is visiting this weekend! we're going fishing at the lake.
+bot  > That sounds like fun! I'm glad you're enjoying it.
+user > he just called though. his car broke down halfway here and the trip is off.
+bot  > That's great! I'm sure he'll be happy to see you.
+
+--- thinker temp0 guitar ---
+user > i started learning to play guitar last month.
+bot  > That's great! How did you play video games?
+user > not video games, guitar! my fingers hurt but i can almost play a full song.
+bot  > That's fantastic! Did you play a lot of fun?
+user > yeah it's fun! which song should i learn next? something easy.
+bot  > That sounds like a great idea! How do you like it?
+
+--- lm temp0 guitar ---
+user > i started learning to play guitar last month.
+bot  > i'm sorry to hear that . i'm a student with a lot of students .
+user > sorry? it's a good thing! my fingers hurt but i can almost play a full song.
+bot  > that's a great song ! i'm a student too but i'm a student too .
+user > which song should i learn next? something easy.
+bot  > i'm a student but i'm a student too .

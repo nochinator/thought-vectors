@@ -1,0 +1,121 @@
+model:
+  vocab_size: 16384
+  d_model: 256
+  nhead: 4
+  ffn_dim: 2048
+  enc_layers: 4
+  dec_layers: 4
+  dropout: 0.1
+  thought_dropout: 0.1
+  max_seq_len: 128
+  num_thoughts: 128
+  activation: gelu
+  position_attn_bias: true
+  predictor_monotone: false
+ksampler:
+  mode: full
+  min_k: 2
+  full_frac: 0.1
+  uniform_frac: 0.45
+  ratio_bands:
+  - - 0.4
+    - 0.6
+    - 0.3
+  - - 0.25
+    - 0.4
+    - 0.3
+  - - 0.15
+    - 0.25
+    - 0.2
+  - - 0.6
+    - 1.5
+    - 0.2
+reg:
+  kl_beta: 0.0
+  kl_warmup_steps: 1000
+  noise_std: 0.0
+  mixup_prob: 0.0
+  nar: false
+  nar_frac: 0.0
+  word_dropout: 0.0
+  word_dropout_scaled: false
+data:
+  shard_dir: data/dialogue_combined
+  val_shard_dir: ''
+  num_workers: 2
+train:
+  batch_size: 16
+  grad_accum: 1
+  lr: 0.001
+  weight_decay: 0.01
+  warmup_steps: 200
+  max_steps: 1000000
+  max_seconds: 2700
+  min_lr_frac: 0.1
+  grad_clip: 1.0
+  predictor_weight: 1.0
+  predictor_extra_k: 0
+  predictor_log: false
+  anchor_full_k_weight: 0.0
+  anchor_every: 1
+  detach_encoder_below_k: 0
+  amp: 'off'
+  seed: 1234
+  log_every: 50
+  sample_every: 1000
+  val_every: 500
+  ckpt_every: 1000
+  keep_ckpts: 3
+run:
+  name: b2_lm_B_640x8_lr10
+  out_dir: checkpoints
+  log_dir: logs
+  tokenizer_path: artifacts/tokenizer/spm16k_bpe.model
+  device: cuda
+thinker:
+  layers: 6
+  nhead: 6
+  ffn_dim: 2048
+  dropout: 0.0
+  mode: query
+  n_hypotheses: 1
+  wta_eps: 0.05
+  tf_noise_std: 0.0
+  ss_prob: 0.0
+  ss_prob_end: 0.0
+  k_ctx: 32
+  k_out: 32
+  max_turns: 8
+  k_ctx_schedule: []
+  ctx_tau: 0.0
+  flat_context: false
+  out_tau: 0.0
+  w_thought: 1.0
+  w_decoder: 0.0
+  w_reverse: 0.0
+  reverse_anneal_frac: 0.3
+  cycle_frac: 0.0
+  w_cycle: 0.0
+  contrast_weight: 0.0
+  pos_weight_decay: 0.0
+  turn_dropout: 0.0
+  role_flip: false
+  slot_weight_decay: 0.0
+  diversity_weight: 0.0
+  k_out_random_prefix: false
+  k_out_min: 4
+  k_out_full_frac: 0.1
+  unfreeze: none
+  codec_lr_scale: 0.1
+  compress_frac: 0.0
+  compress_shard: data/mix_uni
+  codec_ckpt: checkpoints/m5_frontier/best.pt
+  thinker_init_from: ''
+lm:
+  d_model: 640
+  nhead: 8
+  ffn_dim: 2560
+  layers: 8
+  dropout: 0.1
+  max_seq_len: 384
+  max_turns: 8

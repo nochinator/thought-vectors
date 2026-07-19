@@ -23,6 +23,7 @@ dev = ["pytest", "ruff"]
 [project.scripts]
 tv-train = "thoughtvec.cli:train_main"
 tv-train-thinker = "thoughtvec.cli:train_thinker_main"
+tv-train-lm = "thoughtvec.cli:train_lm_main"
 tv-eval = "thoughtvec.cli:eval_main"
 tv-tokenizer = "thoughtvec.cli:tokenizer_main"
 tv-pretokenize = "thoughtvec.cli:pretokenize_main"

@@ -25,16 +25,17 @@ The paper publishes as:
 2. **Hugging Face** — model repo `nochi/thought-vectors` (checkpoints +
    tokenizer + model card linking the DOI) and a free-CPU Gradio Space
    running the chat demo.
-3. **GitHub** — the repo stays the project home; Release v1.0.0 carries the
-   checkpoints; README gets the Zenodo DOI badge.
+3. **GitHub** — the repo stays the project home; Release v1.1.0 carries the
+   checkpoints (flagships + the matched token-LM baseline); README gets the
+   Zenodo DOI badge.
 
 Staged upload materials and step-by-step instructions: `publish/` at the
 repo root (untracked; delete after publishing).
 
 ## Pre-publication checklist
 
-- [x] GitHub Release v1.0.0 with the flagship checkpoints; repo URL in the
-      paper resolves.
+- [x] GitHub Release v1.1.0 with the flagship checkpoints and the matched
+      token-LM baseline; repo URL in the paper resolves.
 - [ ] Final read-through of the whole PDF by the author.
 - [ ] Zenodo record published; DOI badge added to the repo README and the
       HF model card.

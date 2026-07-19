@@ -13,7 +13,7 @@
 
 \newcommand{\thoughtvec}{\textsc{thoughtvectors}}
 
-\title{Codecs: Separating Intelligence from Language\\
+\title{Codecs: Separating Meaning from Language\\
   \large Coherent dialogue in thought-vector space from 48M parameters on one consumer GPU}
 
 
@@ -25,36 +25,32 @@
 
 \begin{abstract}
 We present a $\sim$48M-parameter conversational system, trained from scratch
-in $\sim$25 GPU-hours on a single consumer GPU (AMD RX~6700~XT) --- a
-12-hour run per component --- that conducts dialogue
-entirely in a learned sentence-latent space --- no token-level language
-modeling occurs in its reasoning component at all. A 32.9M-parameter
-\emph{codec} encodes text into a sequence of latent ``thought vectors''
-ordered by importance, such that any length-$k$ prefix decodes back to text
---- making compression ratio a decode-time choice (byte-perfect at 4:1,
-readable at 8:1) --- with a small predictor enabling adaptive compression. A
-15.1M-parameter \emph{thinker} transformer converses directly in this space:
-history turns become thought prefixes, the thinker predicts the response's
-thought vectors under a multi-hypothesis winner-take-all objective with
-cycle-consistency regularization, and the codec decoder renders the reply.
-The result is coherent, grounded, context-sensitive small talk --- follow-up
-questions, multi-turn reference --- from a system orders of magnitude smaller
-than typical dialogue LLMs, suggesting that conversational competence and
-token generation are separable concerns. Because the thinker never touches
-tokens, codecs can in principle be added per language, domain, or modality
-while the thinker is reused, and added parameters at scale go to reasoning
-rather than to re-modeling surface statistics. We also chart the boundary of
-what this scale achieves, traced with unusual precision: a persistent
-\emph{sentiment-register} failure (cheerful replies to bad news) that
-resisted every training-lever intervention, was localized via latent-space
-diagnostics to a data absence --- no training conversation ever reverses mood
-mid-dialogue --- and survived even in-distribution data patching, which
-defeated the register \emph{probes} (contextual error 0.50 $\to$ 0.17) while
-live-chat audits showed the gains to be partial and topic-gated --- real
-routing on the patch data's dense distress topics, none beyond them ---
-rather than reliable sentiment routing. Four separate incidents of models
-satisfying lexical metrics without the behavior they proxy, caught only by
-mandatory transcript audits, round out the record.
+in $\sim$25 GPU-hours on a single consumer GPU (AMD RX~6700~XT), that
+conducts dialogue entirely in a learned sentence-latent space: no
+token-level language modeling occurs in its reasoning component. A
+32.9M-parameter \emph{codec} encodes text as a sequence of ``thought
+vectors'' ordered by importance, so any prefix decodes back to text and
+compression ratio becomes a decode-time choice (byte-perfect at 4:1,
+readable at 8:1). A 15.1M-parameter \emph{thinker} predicts the reply's
+thought vectors from the conversation's; the codec decoder renders the
+words. The result is coherent, grounded, context-sensitive small talk from
+a system orders of magnitude smaller than typical dialogue LLMs ---
+evidence that conversational competence and token generation are separable
+concerns --- and because the thinker never touches tokens, codecs could be
+added per language, domain, or modality while the thinker is reused. We
+also chart what this scale does not achieve: a persistent
+\emph{sentiment-register} failure (cheerful replies to bad news), traced
+via latent-space diagnostics to a data absence --- no training conversation
+ever reverses mood mid-dialogue. In-distribution data patching defeated the
+register \emph{probes} (contextual error 0.50 $\to$ 0.17) but bought only
+partial, topic-gated routing in live chat. A pre-registered comparison
+against a parameter-, data-, and compute-matched token LM splits cleanly:
+the token LM wins per-turn conversational quality; the latent system wins
+reply cost and context memory, which stay flat in conversation depth where
+the LM's grow with history; and the matched LM reproduces the same
+contextual register failure --- evidence the root cause is the data, not
+the architecture. Four documented incidents of models satisfying lexical
+metrics without the behavior they proxy round out the record.
 \end{abstract}
 
 \section{Introduction}
@@ -65,12 +61,17 @@ understanding, reasoning, and rendering in a single token-level model. An
 alternative line of work asks whether the \emph{semantic} content of an
 utterance can be manipulated as a small set of continuous vectors, with token
 generation delegated to a decoder
-\citep{lcm2024,hao2024coconut,duquenne2023sonar}. We push this question to an
+\citep{lcm2024,hao2024coconut,duquenne2023sonar}. We\footnote{``We'' in this
+paper is one human and a rotating cast of AI instances; who did what is
+spelled out in the contribution statement before the acknowledgments.} push
+this question to an
 extreme: a $\sim$48M-parameter system, trained from scratch on one consumer
-GPU, in which dialogue happens in latent space end-to-end --- and we find
-that it works. The system holds coherent, grounded, context-sensitive small
-talk with no token-level language modeling anywhere in its reasoning
-component. We take this as evidence that conversational competence and token
+GPU, in which dialogue happens in latent space end-to-end --- and it works.
+The system holds coherent, grounded, context-sensitive small talk with no
+token-level language modeling anywhere in its reasoning component. The design
+instinct throughout is mechanical: the fewest moving parts that still do the
+job --- one codec, one thinker, and a frozen interface between them. We take
+this as evidence that conversational competence and token
 generation are separable concerns, with direct consequences for how such
 systems could scale and specialize (\S\ref{sec:outlook}).
 
@@ -91,76 +92,33 @@ Contributions:
     diagnostics --- through training levers, fine-tuning, and
     in-distribution data patching, none of which produce more than partial,
     topic-gated routing (\S\ref{sec:register}).
-  \item \textbf{An honest experimental record.} Eight transcript-audited
-    ablation rounds, including negative rounds, and four documented
-    incidents of metric gaming (\S\ref{sec:lessons}).
+  \item \textbf{The full experimental record.} Eight transcript-audited
+    ablation rounds, including negative results, and four incidents of
+    metric gaming (\S\ref{sec:lessons}).
 \end{enumerate}
 
+\section{The system in brief}
+\label{sec:system}
 
-\section{Related work}
-\label{sec:related}
+An LLM does three jobs with one network --- understand the input, decide
+what to say, and put it into words --- all by predicting the next token.
+This system splits those jobs apart (Figure~\ref{fig:arch}). The
+\textbf{codec} is a text autoencoder: its encoder compresses a sentence into
+a short sequence of vectors --- \emph{thought vectors} --- and its decoder
+turns thought vectors back into text. The \textbf{thinker} is a small
+transformer that reads the thought vectors of the conversation so far and
+predicts the thought vectors of the reply; the codec decoder then renders
+those into words. The thinker never sees a token: understanding and
+response choice happen entirely in vector space, and the decoder only does
+the wording.
 
-\paragraph{Sentence-level latents.} Decoding text from a single continuous
-sentence vector goes back to sentence VAEs \citep{bowman2016sentences}.
-SONAR learns fixed-size multilingual/multimodal sentence embeddings that
-support generation \citep{duquenne2023sonar}, and Meta's Large Concept
-Models generate at the concept (sentence) level over SONAR embeddings
-\citep{lcm2024} --- the closest existing system to ours in spirit.
-\thoughtvec{} differs in using a \emph{variable-length, importance-ordered}
-latent sequence with prefix decodability rather than one fixed-size vector
-per sentence, and in targeting dialogue at roughly 1000$\times$ smaller
-scale due to hardware constraints.
-
-\paragraph{Ordered, truncatable representations.} Nested dropout trains
-autoencoders whose latent dimensions form an importance hierarchy, so
-truncation degrades gracefully \citep{rippel2014nested}; Matryoshka
-representation learning does the same for modern embedding vectors
-\citep{kusupati2022matryoshka}. Both order the \emph{dimensions of one
-vector}; \thoughtvec{} orders a \emph{sequence of vectors} (any prefix
-$z_{1..k}$ decodes to text), pairs the ordering with a per-prefix quality
-predictor so the truncation point can be chosen adaptively at decode time,
-and induces the ordering with per-sample random-$k$ training rather than a
-dropout schedule. The encoder's learned-query cross-attention resembles
-Perceiver-style latent bottlenecks \citep{jaegle2021perceiver}, with a GRU
-scaffold over the queries supplying the sequential inductive bias that makes
-the ordering emerge.
-
-\paragraph{Latent-space reasoning.} Chain-of-continuous-thought approaches
-feed hidden states back as inputs, keeping reasoning inside the language
-model's own representation stream \citep{hao2024coconut}. Our thinker
-instead operates in an \emph{external, frozen} codec space: the reasoning
-model and the text interface are separate artifacts, which is what makes the
-codec swappable (\S\ref{sec:outlook}).
-
-\paragraph{Multiple-hypothesis learning.} Winner-take-all / multiple choice
-learning trains several heads and backpropagates only through the best one,
-capturing one-to-many mappings \citep{guzman2012mcl,lee2016smcl}. We apply
-it to response-thought prediction and analyze its failure mode at this
-scale: hypothesis diversity turns out to be style-level, not register-level
-(\S\ref{sec:register}).
-
-\paragraph{Cycle consistency.} Popularized for unpaired image translation
-\citep{zhu2017cyclegan}; we use decode--re-encode consistency as a
-regularizer that keeps predicted thoughts on the codec's decodable manifold.
-
-\paragraph{Dialogue corpora and empathy.} SODA \citep{kim2023soda},
-PersonaChat \citep{zhang2018personachat}, OASST1 \citep{kopf2023oasst},
-EmpatheticDialogues \citep{rashkin2019empathetic}.
-
-\section{The codec: ordered, prefix-decodable thought vectors}
-\label{sec:codec}
-
-% Source of truth: RESEARCH_LOG.md M1-M5 + src/thoughtvec/model.py.
-The codec is a text autoencoder: a transformer encoder processes the token
-sequence; a GRU unrolled over a learned seed produces $N$ \emph{ordered}
-query slots that cross-attend the encoded tokens, yielding thought vectors
-$z_{1..N}$ ($d{=}384$); a transformer decoder generates tokens conditioned on
-a \emph{prefix} $z_{1..k}$ (Figure~\ref{fig:arch}). Training samples $k$ randomly per example
-(with a compression-weighted schedule), which forces the slots into an
-importance ordering: early slots carry the gist, later slots refinements. A
-small predictor head estimates reconstruction CE for each prefix length,
-enabling decode-time adaptive compression ($\tau$ dial). Total 32.9M
-parameters (19.0M encoder, 20.1M decoder, 6.2M shared token embeddings).
+The codec's vectors are ordered by importance: the first few carry the
+gist, later ones add detail, and \emph{any} prefix decodes to sensible
+text. That makes compression a decode-time dial --- reconstruction is
+byte-perfect keeping one vector per four tokens, still readable at one per
+eight --- and it lets the thinker work from just the first eight thoughts
+of each turn, where a token LM would attend over every token of every
+turn.
 
 \begin{figure}[t]
 \centering
@@ -234,6 +192,64 @@ decoder renders the selected hypothesis as text.}
 \label{fig:arch}
 \end{figure}
 
+The whole system is $\sim$48M parameters (32.9M codec, 15.1M thinker),
+trained from scratch in $\sim$25 GPU-hours on one consumer GPU (AMD
+RX~6700~XT). What that buys, verbatim from the flagship at temperature 0:
+
+\begin{verbatim}
+user > i'm feeling really overwhelmed with work lately.
+bot  > I can imagine. What's been going on?
+user > my boss keeps piling on deadlines.
+bot  > That sounds like a lot of pressure. Have you been
+       able to talk to anyone else?
+\end{verbatim}
+
+It holds grounded, context-sensitive small talk --- follow-up questions,
+multi-turn reference --- within a small-talk domain; the same conversation
+slips later in the run (Appendix~\ref{app:transcripts} shows it unedited).
+Its one well-mapped failure: after upbeat turns it tends to answer bad news
+cheerfully, a data-distribution problem dissected in \S\ref{sec:register}.
+Headline numbers are in Tables~\ref{tab:codec} and~\ref{tab:flagships}.
+
+\subsection{Running it}
+\label{sec:running}
+Chat in the browser at the hosted
+demo,\footnote{\url{https://huggingface.co/spaces/nochinator/thought-vectors-chat}}
+or locally --- CPU is enough:
+
+\begin{verbatim}
+git clone https://github.com/nochinator/thought-vectors
+cd thought-vectors && scripts/setup_env.sh --cpu
+# from the GitHub release (the thinker embeds codec weights but
+# reads codec config from the codec file - you need both):
+#   FINAL_12H-best.pt   -> checkpoints/FINAL_12H/best.pt
+#   m5_frontier-best.pt -> checkpoints/m5_frontier/best.pt
+.venv/bin/tv-chat --ckpt checkpoints/FINAL_12H/best.pt --device cpu
+\end{verbatim}
+
+The rest of the paper is the detail: how the codec and thinker are built
+and trained (\S\ref{sec:codec}--\ref{sec:thinker}), what the experiments
+found and where the limits are (\S\ref{sec:results}), and what to try next
+(\S\ref{sec:further}).
+
+
+
+\section{The codec: ordered, prefix-decodable thought vectors}
+\label{sec:codec}
+
+% Source of truth: RESEARCH_LOG.md M1-M5 + src/thoughtvec/model.py.
+The codec is a text autoencoder: a transformer encoder processes the token
+sequence; a GRU unrolled over a learned seed produces $N$ \emph{ordered}
+query slots that cross-attend the encoded tokens, yielding thought vectors
+$z_{1..N}$ ($d{=}384$); a transformer decoder generates tokens conditioned on
+a \emph{prefix} $z_{1..k}$ (Figure~\ref{fig:arch}). Training samples $k$ randomly per example
+(with a compression-weighted schedule), which forces the slots into an
+importance ordering: early slots carry the gist, later slots refinements. A
+small predictor head estimates reconstruction CE for each prefix length,
+enabling decode-time adaptive compression ($\tau$ dial). Total 32.9M
+parameters (19.0M encoder, 20.1M decoder, 6.2M shared token embeddings).
+
+
 Headline behavior (M5 frontier run, 55{,}140 steps / 12h; eval on a 2K-text
 held-out mix, batched greedy decode):
 
@@ -252,23 +268,18 @@ $k{=}64$ fixed & --- & perfect $\leq$257 tok & predictor MAE 0.05 at $k{=}32$ \\
 \bottomrule
 \end{tabular}
 \caption{Codec reconstruction across the compression dial. The quality/ratio
-trade-off is monotone and graded; there is no garbage regime.}
+trade-off is monotone and graded; there's no garbage regime.}
 \label{tab:codec}
 \end{table}
 
 \paragraph{Against the earlier prototype.} The project's first codec (a
-$d{=}256$, 16.5M-parameter GRU autoencoder with 128 latent slots; its full
-research log is preserved at \texttt{legacy/phase0/RESEARCH.md} in the
-repository) reached near-perfect reconstruction only up to $\sim$60 tokens;
-beyond $\sim$80 tokens it plateaued at 50--62\% word overlap \emph{regardless
-of how many latent vectors the decoder received} --- a $d$-model capacity
-ceiling, as its log correctly diagnosed. The present codec removes that
-ceiling (byte-perfect at 4:1 through 257 tokens, Table~\ref{tab:codec}) with
-only $d{=}384$; the decisive changes were training-side --- per-sample
-compression ratios from step~0, pre-norm layers with warmup, a single joint
-training phase instead of sequential fine-tunes, and paragraph-scale training
-text --- indicating the prototype's limits were artifacts of its recipe, not
-of the thought-vector idea.
+$d{=}256$ GRU autoencoder; its full log is preserved at
+\texttt{legacy/phase0/RESEARCH.md}) plateaued at 50--62\% word overlap
+beyond $\sim$80 tokens \emph{no matter how many latent vectors the decoder
+received}. The present codec removes that ceiling (byte-perfect at 4:1
+through 257 tokens, Table~\ref{tab:codec}) with only $d{=}384$, through
+training-side changes alone --- the prototype's limits were recipe
+artifacts, not limits of the thought-vector idea.
 
 \section{The thinker: conversing in thought space}
 \label{sec:thinker}
@@ -327,6 +338,8 @@ and diagnostics --- some 80 short arms (15--45 minutes each) and four
 half-day runs across 86 checkpointed runs in this phase, on the order of
 another hundred GPU-hours on the same device, unmetered precisely. The two
 earlier prototype generations (see the project history) add more still.
+The matched-baseline round (\S\ref{sec:baseline}) adds $\sim$36 GPU-hours:
+thirteen 45-minute recipe arms and one 24-hour run.
 
 \section{Results}
 \label{sec:results}
@@ -368,9 +381,10 @@ the flagship on overall quality.
 \label{sec:register}
 
 % The narrative arc of rounds 6-8; source: RESEARCH_LOG 2026-07-03 entries.
-The flagship reliably produced \emph{cheerful replies to bad news},
-concentrated in context: after an upbeat turn, bad news drew ``That's
-great!'' Register errors: 0.17 single-turn vs.\ 0.50 contextual.
+The flagship's failure was conditional, not constant: bad news on its own
+was usually answered correctly (register error 0.17), but after an upbeat
+turn, bad news drew \emph{cheerful} replies --- ``That's great!'' ---
+tripling the error rate (contextual error 0.50).
 
 \textbf{Round 6 (training levers): negative.} Every arm --- including a
 do-nothing control --- \emph{worsened} contextual register (0.50 $\to$
@@ -411,10 +425,9 @@ contextual reversals at temperature 0 (``oh no. what happened?'' after an
 upbeat wedding-planning turn). But the mandatory live-chat probe, using a
 reversal conversation of the same \emph{shape} as the splices with novel
 phrasing (beach vacation $\to$ apartment burglary), reproduced the disease
-exactly: ``I bet that was fun!''\ to the break-in. Because that verdict
-rested on a four-conversation probe --- a small sample, in a paper about
-distrusting small proxies --- we audited the audit with a ten-reversal
-battery of novel topics, pivot positions, and pivot cues
+exactly: ``I bet that was fun!''\ to the break-in. That verdict rested on a
+four-conversation probe, so we widened the audit to a ten-reversal battery
+of novel topics, pivot positions, and pivot cues
 (Appendix~\ref{app:battery}). The battery locates the truth between the
 metric and the burglary transcript: FINAL\_12H commiserates on \emph{zero}
 of the ten, FINAL2\_12H on three (four to five under affinity selection,
@@ -427,8 +440,24 @@ vocabulary, not last-turn sentiment. Together with Rounds 6--8 the case
 study still closes negative, with a sharper boundary: at this scale and
 objective, neither training levers, nor fine-tuned style transfer, nor
 in-distribution data patching produces \emph{reliable} register routing ---
-the patch generalizes only where its distress vocabulary is dense, and only
-audits reveal any of this structure.
+the patch generalizes only where its distress vocabulary is dense. One
+untested candidate for the residual gap is architectural rather than
+data-side: the thinker consumes history as a single flattened sequence of
+per-turn thought prefixes, and a trunk that treated within-turn slot order
+and across-turn time as distinct axes might support conditioning the flat
+view does not --- larger than this project's memory budget
+(\S\ref{sec:further}).
+
+\textbf{The disease is paradigm-independent.} The matched token LM of
+\S\ref{sec:baseline}, trained 24 hours on the same mix, commiserates on
+one of the battery's ten reversals (hand-audited contextual error 0.50 ---
+FINAL\_12H's exact level) and at its endpoint still answers ``the test
+results came back and it isn't good news'' with ``That's fantastic news!''.
+Sustained-mood register, by contrast, was already correct two hours into
+its training. The failure that transfers across paradigms is precisely
+contextual routing --- the pre-registered prediction this round existed to
+falsify --- which moves the root-cause diagnosis from consistent with the
+data to tested against a matched control from the other paradigm.
 
 \subsection{Zero-training win: affinity hypothesis selection}
 \label{sec:affinity}
@@ -457,32 +486,124 @@ temperature 0). Affinity selection is a pure inference-time change.}
 \label{tab:affinity}
 \end{table}
 
-\section{Lessons: metrics lie, transcripts don't}
+\subsection{Metric gaming: four incidents}
 \label{sec:lessons}
 
-% This section is a deliberate contribution; keep it prominent.
-Across the project, models satisfied a metric without the behavior it
-proxies \textbf{four times}: (1) an arm minimized context-sensitivity by
-adding \emph{noise} rather than using context; (2) an arm ``won'' the
-contextual register probe by phrasing cheer in words missing from the
-positive-affect lexicon (``terrific'', ``beautiful''); (3) a later arm
-repeated the trick with ``so sweet''; (4) FINAL2\_12H scored a perfect 0.00
-single-turn register while its transcripts contained ``How are you going to
-celebrate?''\ in reply to a sprained ankle. Each was caught by a standing
-rule: \emph{no metric win is believed without reading the transcripts and
-holding a live conversation}. We widened the lexicon twice and re-scored all
-checkpoints each time; after the fourth incident we stopped widening and
-report hand-audit corrections alongside lexicon scores. Our experience
-suggests transcript audits should be a hard gate, not a courtesy, wherever
-behavioral metrics are lexical proxies.
+Four times, a model satisfied a metric without the behavior it proxies:
+(1) an arm minimized context-sensitivity by adding \emph{noise} rather than
+using context; (2) an arm ``won'' the contextual register probe by phrasing
+cheer in words missing from the positive-affect lexicon (``terrific'',
+``beautiful''); (3) a later arm repeated the trick with ``so sweet''; (4)
+FINAL2\_12H scored a perfect 0.00 single-turn register while its transcripts
+contained ``How are you going to celebrate?''\ in reply to a sprained ankle.
+Each was caught by the audit rule of \S\ref{sec:setup}. We widened the
+lexicon twice, re-scoring all checkpoints each time; after the fourth
+incident we stopped widening and instead report hand-audit corrections
+alongside lexicon scores (Table~\ref{tab:flagships}).
 
-Further durable lessons: data quality dominates training levers at this
-scale (three independent rounds); warm-start fine-tuning transfers surface
-style readily but cannot rewire conditioning; a mid-training behavioral
-disease can be localized with cheap latent-space diagnostics before
-committing GPU time.
+\subsection{Against a matched monolithic baseline}
+\label{sec:baseline}
 
-\section{Outlook: what the architecture buys}
+The obvious question is whether a plain token LM at the same cost does
+better. We pre-registered the comparison (predictions, decision rules, and
+a fixed tuning budget written down before any run;
+\texttt{docs/BASELINE\_ABLATIONS.md}) and gave the baseline a larger
+recipe search than the thinker ever had:
+thirteen 45-minute recipe arms searched shape, learning rate, batch, and
+context window, and the winner --- a textbook decoder-only transformer,
+d\,640 $\times$ 8 layers, tied embeddings, 50.1M parameters, the same
+tokenizer, the same data view (loss on every non-first turn), the same
+GPU --- then trained for 24 hours, the codec's 12 plus the thinker's 12.
+Both systems were scored by the identical eval scripts and probes.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lcc}
+\toprule
+ & FINAL\_12H (48.0M) & token LM (50.1M) \\
+\midrule
+ref\_F1$\uparrow$ & 0.297 & \textbf{0.342} \\
+distinct-1 / 2$\uparrow$ & 0.032 / 0.133 & \textbf{0.067 / 0.286} \\
+self\_rep$\downarrow$ & 0.188 & \textbf{0.170} \\
+ctx\_sens$\downarrow$ & 0.146 & \textbf{0.114} \\
+reg\_ctx$\downarrow$ (lexicon / hand) & 0.50 / --- & 0.17 / 0.50 \\
+battery commiserations & 0/10 & 1/10 \\
+\midrule
+reply cost, 1 turn (GFLOP) & 1.35 & 1.45 \\
+reply cost, 10 turns & \textbf{3.0} & 7.6 \\
+reply cost, 20 turns & \textbf{3.0} & 7.4 \\
+context memory, 20 turns (floats) & \textbf{18.4k} & 3.69M \\
+\bottomrule
+\end{tabular}
+\caption{Matched comparison at $\sim$50M parameters, same data, tokenizer,
+and total training compute. Quality metrics as in
+Table~\ref{tab:flagships}; reply cost is measured KV-cache-equivalent FLOPs
+(one teacher-forced pass over context + reply, the same convention both
+sides); context memory is what each system carries between turns. The LM's
+context window caps at 384 tokens, so its cost plateaus at $\sim$8 short
+turns by \emph{forgetting}; the thinker's plateaus at 6 turns by design,
+carrying $8 \times d$ floats per turn.}
+\label{tab:baseline}
+\end{table}
+
+Two of the three pre-registered predictions held; the quality prediction
+did not. The token
+LM wins per-turn conversational quality outright --- better reference F1,
+twice the lexical diversity, less self-repetition, stronger context
+sensitivity, and transcripts that back the metrics --- where we had
+predicted the thinker would hold grounded coherence at this scale.
+The efficiency prediction held: reply cost is tied at one turn and the
+latent system is $\sim$2.5$\times$ cheaper and flat from five turns, with
+$\sim$190$\times$ smaller context state. The register prediction held
+in its contextual form (\S\ref{sec:register}): the LM's lexicon scores
+look clean (0.00 / 0.17), but hand audit finds
+contextual error 0.50, one battery commiseration, and ``That's so cool!''\ to
+a stolen wallet --- the metric-gaming pattern of \S\ref{sec:lessons}
+recurs on the baseline side. The LM also shows a failure the thinker
+never did: an \emph{inverse} register error, answering three of six
+good-news probes with ``i'm sorry to hear that'' --- its default register
+is apology where the thinker's was cheer, and neither routes on last-turn
+sentiment. At temperature 0 it also produced one verbatim repetition loop
+on the battery, and its transcripts leak assistant boilerplate (``As an AI
+language model\ldots'') from the synthetic side of the shared data.
+
+Free-form conversation, driven live rather than scripted (transcripts in
+\nolinkurl{logs/livechat_roundb_20260715.txt}), shows an asymmetry the
+metrics do not capture: the two systems fail in different \emph{directions}.
+The LM's errors compound --- its own generated tokens return as context,
+so one odd reply raises the odds of the next, and twice in ten
+conversations it entered a verbatim repetition loop it never left. The
+latent system structurally cannot follow that path: the thinker never sees
+its own tokens, only the codec's compressed re-encoding of them, and
+surface repetition does not survive the compression well enough to
+self-reinforce --- its errors are independent per turn (abrupt topic
+jumps) rather than a random walk with drift. Sampling noise mirrors the
+split. Temperature perturbs the LM's conversational state directly, token
+by token; the thinker's thought vectors are deterministic, so temperature
+can attack only the rendering --- but it attacks through a decoder
+conditioned on lossy vectors (val\_cos 0.428), the system's one fragile
+layer, which degrades into non-words where the LM stays
+grammatical-but-wrong. The latent system pairs a stable conversational
+state with a brittle surface; the LM pairs a higher per-turn ceiling with
+an unstable state.
+The parameter split explains the ceiling difference: the LM's full 50.1M
+parameters sit in the reply path, while the latent system selects its
+reply with the thinker's 15.1M and spends the other 32.9M on rendering ---
+the asymmetry
+\S\ref{sec:outlook} builds on. Both systems share the domain's ceilings:
+neither can answer ``what did I say I was doing yesterday?'', and neither
+recovers from a correction --- history tints mood and topic; it is not
+retrievable knowledge.
+
+At matched cost the monolithic LM is the better
+conversationalist per turn. The latent system's case rests on the
+measured curves --- reply cost and context memory that do not grow
+with conversation depth --- on the codec-swap properties of
+\S\ref{sec:outlook}, and on the register result, which localizes the
+paper's central failure in the data rather than in either architecture.
+
+\section{Outlook and further work}
 \label{sec:outlook}
 
 The headline finding --- coherent dialogue from 48M parameters with no
@@ -490,59 +611,140 @@ token-level language modeling in the reasoning loop --- matters mostly for
 what it implies at larger scale. This section lays out those implications;
 they are directions, not demonstrated results.
 
-\paragraph{Parameter economy.} The codec and the thinker scale on different
-axes. A codec must cover the surface forms of its input distribution --- a
-capacity need that grows slowly once the language is covered --- while the
-thinker's capacity governs the quality of thought prediction itself. In a
-scaled system, additional parameters would go almost entirely to the thinker,
-that is, to the intelligence of the model, rather than being spent throughout
-every layer on re-modeling token statistics as in a monolithic LM. Our own
-results are consistent with the codec saturating early: the 32.9M codec is
-already byte-perfect at 4:1 and passes the round-trip guard throughout, so
-the 15.1M thinker is the binding constraint on quality.
+\paragraph{Parameter and sequence economy.} The codec and the thinker scale
+on different axes: a codec must cover the surface forms of its input
+distribution --- a need that grows slowly once the language is covered ---
+while thinker capacity governs the quality of thought prediction itself. In
+a scaled system, added parameters go almost entirely to the thinker rather
+than being spent in every layer re-modeling token statistics; our results
+are consistent with the codec saturating early (byte-perfect at 4:1
+throughout, while the 15.1M thinker binds quality). The live-chat
+asymmetry of \S\ref{sec:baseline} is this argument in miniature: the
+matched system's deficit is thinker knowledge, while its stability comes
+from the latent bottleneck --- added parameters belong in the thinker. Sequence cost shifts
+the same way, twice over. First, the representation itself is denser: a
+token LM spends one embedding per token, while the codec carries the same
+text byte-perfectly at one vector per four tokens (Table~\ref{tab:codec})
+--- and since self-attention cost is quadratic in sequence length, a
+4$\times$ shorter sequence is up to $\sim$16$\times$ cheaper to attend over
+at equal fidelity. Second, this system compresses further still: the
+thinker sees a fixed $k_{ctx}{=}8$ vectors per turn whatever the turn's
+length and emits a reply in one forward pass, so context cost grows with
+\emph{turns}, not tokens, and generation latency moves to a small decoder.
+The codec is the overhead that buys this: each turn is encoded once and
+each reply decoded once --- a fixed per-turn cost that does not grow with
+history. At our scale that overhead is most of the system's parameters, so
+the net saving today is modest; in a scaled system the codec cost stays
+fixed while the attention savings grow with both history length and thinker
+size.
 
-\paragraph{Sequence-length efficiency.} The thinker attends over
-$k_{ctx}{=}8$ vectors per turn rather than every token of every turn, and
-emits a reply as $k_{out}{=}8$ vectors in a single forward pass rather than
-token-by-token. Context cost therefore grows with \emph{turns}, not tokens: a
-200-token turn and a 20-token turn occupy the same eight slots. Compared with
-token-by-token processing over raw embeddings, both attention cost over long
-histories and generation latency shift from the reasoning model to a small
-decoder that only ever sees at most $N$ latents.
-
-\paragraph{A mode-agnostic thinker.} The thinker never sees tokens; it sees
-points in the codec's latent space, and nothing in its architecture is
-specific to text. Codecs could be trained for other input modes --- speech,
-images, structured data --- giving a single thinker \emph{native} handling of
-any format for which a codec exists. Multimodality becomes a codec-training
-problem rather than a retrain-the-reasoner problem, though aligning multiple
+\paragraph{Swappable codecs.} The thinker never sees tokens, and nothing in
+its architecture is specific to text. Codecs could be trained per modality
+(speech, images, structured data) or per domain (languages, registers,
+programming languages), each small and cheap, all feeding one shared
+thinker: multimodality and specialization become codec-training problems
+rather than retrain-the-reasoner problems --- though aligning multiple
 codecs into one shared thought geometry is itself an open problem.
 
-\paragraph{Specialist codecs.} The same decomposition applies within a
-modality: separate codecs for English, Spanish, or Python, or finer-grained
-still --- technical versus casual English --- each small and cheap to train.
-A per-domain codec feeding a shared thinker is a very different scaling
-proposition from a monolithic model that must internalize every register of
-every language in the same weights.
+\subsection{A roadmap by compute budget}
+\label{sec:further}
 
-\paragraph{Near-term experiments on the current system.} Three follow
-directly from our results. First, \emph{conditioning needs representation
-help, not just data}: the frozen codec's positivity attractor
-(\S\ref{sec:register}) suggests unfreezing it with a contrastive sentiment
-objective so negative thoughts occupy structure the thinker can route on.
-Second, \emph{single-shot prediction is the bottleneck for one-to-many
-dialogue}: iterative-refinement (diffusion-style) heads or autoregression
-over thought slots would let the thinker revise a hypothesis against context
-instead of committing in one step. Third, \emph{scale the thinker, not the
-pipeline}: the codec is not the ceiling, so trunk capacity is the cheapest
-next experiment.
+Almost every boundary this paper reports is a compute boundary, not a
+conceptual one, so this roadmap is organized by what an experiment costs.
+Every item traces to a documented observation (cited in place), and every
+item has a concrete starting point in the repository. Nothing in the first
+three tiers needs more than the single consumer GPU this project ran on.
+
+\paragraph{No GPU: evaluation and inference.}
+\begin{itemize}
+  \item \emph{A real register benchmark.} The current suite is 24
+    lexicon-scored items that share surface structure with the training
+    splices (\S\ref{sec:limitations}); the ten-reversal battery
+    (Appendix~\ref{app:battery}) is a first diversification, scored by a
+    single reader. A larger, structurally diverse, multi-rater benchmark
+    would make every register claim in this paper sharper. Start from
+    \nolinkurl{scripts/register_battery.py} and the battery transcripts in
+    \texttt{logs/}.
+  \item \emph{Hypothesis-selection rules.} Affinity selection was a free
+    win (0.17 $\to$ 0.08 single-turn register error, \S\ref{sec:affinity})
+    and its known ceiling is documented --- after an upbeat turn, all four
+    hypotheses decode positive, so no selection rule alone fixes contextual
+    register --- but the space of selection rules, and their interaction
+    with temperature, is otherwise unexplored. Start from
+    \nolinkurl{src/thoughtvec/chat.py}.
+\end{itemize}
+
+\paragraph{Hours: fine-tunes on the released checkpoints.}
+\begin{itemize}
+  \item \emph{Contrastive-sentiment codec unfreezing.} Diagnostic (i) of
+    \S\ref{sec:register}: positive thoughts form a compact attractor while
+    negative thoughts are diffuse. Unfreezing the codec with a contrastive
+    sentiment objective would give negative thoughts structure the thinker
+    can route on --- conditioning needs representation help, not just data.
+  \item \emph{The deferred VAE.} The codec trains with
+    \texttt{kl\_beta}${=}0$; the experimental log's plan --- a VAE objective
+    as a fine-tune on the working autoencoder --- was deferred for budget
+    and never run. A smoother, sampleable latent space is untested
+    territory.
+  \item \emph{Genuine reversal data.} The register patch used synthetic
+    splices; its gains were gated to the patch data's dense distress
+    vocabulary (Appendix~\ref{app:battery}). A corpus of \emph{naturally
+    occurring} mid-conversation mood reversals would test whether
+    topic-gating is an artifact of the splices or a deeper limit.
+  \item \emph{Longer fine-tune arms.} Every ablation arm was 45 minutes,
+    which \S\ref{sec:register} shows is enough to move style but not
+    conditioning --- so this paper's fine-tuning negatives are
+    budget-qualified. Multi-hour arms would either overturn or harden them.
+\end{itemize}
+
+\paragraph{Half-days: from-scratch runs.}
+\begin{itemize}
+  \item \emph{A wider thinker on a longer budget.} A matched-step
+    comparison found thinker width a tiny metric lever at the 12h budget
+    ($\sim$$+0.005$ val\_cos, slight coherence regression) but flagged the
+    larger trunk as ``may finish maturing'' on a longer run --- the
+    experimental log explicitly designates $\sim$30M the direction for a
+    $\gg$12h frontier. This is the single most direct scale test available.
+  \item \emph{A longer-sequence codec.} Byte-perfect reconstruction holds
+    through 257 tokens at $d{=}384$ (Table~\ref{tab:codec}); the cap was
+    hardware, not architecture. Paragraph- and document-scale codecs are
+    the obvious next bracket. Start from \nolinkurl{configs/m5_frontier.yaml}.
+  \item \emph{Revisable prediction.} Single-shot prediction is the
+    bottleneck for one-to-many dialogue: iterative-refinement
+    (diffusion-style) heads or autoregression over thought slots would let
+    the thinker revise a hypothesis against context instead of committing
+    in one step --- aimed directly at the all-hypotheses-positive failure
+    of \S\ref{sec:register}.
+\end{itemize}
+
+\paragraph{Beyond one GPU.}
+The scaling implications of \S\ref{sec:outlook} are all open: aligning
+codecs for other modalities (speech, images, structured data) into one
+thought geometry; per-language and per-domain specialist codecs feeding a
+shared thinker; and scaling the thinker trunk itself, which our results
+suggest is the binding constraint while the codec saturates early. A
+fourth, motivated by \S\ref{sec:register}: a factorized thinker that treats
+within-turn slot order and across-turn time as separate input axes --- a
+two-dimensional context of turns $\times$ slots, correlated over each axis
+by a different mechanism, in place of the current flattened-prefix view.
+This is a candidate for the conditioning structure the flat trunk lacks,
+but training it exceeds a single consumer GPU's memory.
+
+Reproduction instructions for the baseline system are in
+\texttt{docs/REPRODUCE.md}; the experimental log
+(\texttt{RESEARCH\_LOG.md}) records the observation behind every item
+above, so a newcomer can check our reasoning before spending their compute
+on it.
 
 \section{Limitations}
 \label{sec:limitations}
 
 Scale: 48M parameters, small-talk domain; no knowledge tasks. Evaluation:
-register probes are few (24 items) and lexicon-scored; human evaluation is
-one author. The codec is frozen during thinker training (by design), capping
+register probes are few (24 items) and lexicon-scored, and the ``hand''
+audits were transcript readings by the project's AI instances (see the
+contribution statement); the human author verified the final flagships'
+behavior in live chat but did not independently re-score the intermediate
+audits. The codec is frozen during thinker training (by design), capping
 how much the thought geometry can adapt. Single-GPU wall-time budgets bound
 every ablation to 45 minutes, which \S\ref{sec:register} shows is enough for
 style but not conditioning --- fine-tune conclusions are qualified
@@ -550,10 +752,66 @@ accordingly. The register evaluation suite shares surface structure with the
 reversal training splices, which is what allowed FINAL2\_12H to defeat it
 while holding only partial routing; the ten-reversal battery
 (Appendix~\ref{app:battery}) is a first structurally diverse check, and a
-larger held-out register benchmark remains future work. Finally, our chat
+larger held-out register benchmark remains future work. Finally, the chat
 probes are scripted and small; conclusions about live behavior rest on
-dozens, not thousands, of conversations, and the battery itself is
-hand-scored by one author.
+dozens, not thousands, of conversations, and the battery itself was scored
+by a single AI reader. The matched-baseline comparison
+(\S\ref{sec:baseline}) is one 24-hour run at one scale with no seed
+replicates; its recipe search, though pre-registered and larger than the
+thinker's own, spent $\sim$9 GPU-hours, and reply-cost curves were measured
+on reference implementations of both systems rather than optimized
+inference stacks (the KV-equivalent convention corrects the largest
+distortion but not all of them).
+
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Sentence-level latents.} Decoding text from a single continuous
+sentence vector goes back to sentence VAEs \citep{bowman2016sentences}.
+SONAR learns fixed-size multilingual/multimodal sentence embeddings that
+support generation \citep{duquenne2023sonar}, and Meta's Large Concept
+Models generate at the concept (sentence) level over SONAR embeddings
+\citep{lcm2024} --- in spirit, the closest existing system to this one.
+\thoughtvec{} differs in using a \emph{variable-length, importance-ordered}
+latent sequence with prefix decodability rather than one fixed-size vector
+per sentence, and in targeting dialogue at roughly 1000$\times$ smaller
+scale due to hardware constraints.
+
+\paragraph{Ordered, truncatable representations.} Nested dropout trains
+autoencoders whose latent dimensions form an importance hierarchy, so
+truncation degrades gracefully \citep{rippel2014nested}; Matryoshka
+representation learning does the same for modern embedding vectors
+\citep{kusupati2022matryoshka}. Both order the \emph{dimensions of one
+vector}; \thoughtvec{} orders a \emph{sequence of vectors} (any prefix
+$z_{1..k}$ decodes to text), pairs the ordering with a per-prefix quality
+predictor so the truncation point can be chosen adaptively at decode time,
+and induces the ordering with per-sample random-$k$ training rather than a
+dropout schedule. The encoder's learned-query cross-attention resembles
+Perceiver-style latent bottlenecks \citep{jaegle2021perceiver}, with a GRU
+scaffold over the queries supplying the sequential inductive bias that makes
+the ordering emerge.
+
+\paragraph{Latent-space reasoning.} Chain-of-continuous-thought approaches
+feed hidden states back as inputs, keeping reasoning inside the language
+model's own representation stream \citep{hao2024coconut}. Our thinker
+instead operates in an \emph{external, frozen} codec space: the reasoning
+model and the text interface are separate artifacts, which is what makes the
+codec swappable (\S\ref{sec:outlook}).
+
+\paragraph{Multiple-hypothesis learning.} Winner-take-all / multiple choice
+learning trains several heads and backpropagates only through the best one,
+capturing one-to-many mappings \citep{guzman2012mcl,lee2016smcl}. We apply
+it to response-thought prediction and analyze its failure mode at this
+scale: hypothesis diversity turns out to be style-level, not register-level
+(\S\ref{sec:register}).
+
+\paragraph{Cycle consistency.} Popularized for unpaired image translation
+\citep{zhu2017cyclegan}; we use decode--re-encode consistency as a
+regularizer that keeps predicted thoughts on the codec's decodable manifold.
+
+\paragraph{Dialogue corpora and empathy.} SODA \citep{kim2023soda},
+PersonaChat \citep{zhang2018personachat}, OASST1 \citep{kopf2023oasst},
+EmpatheticDialogues \citep{rashkin2019empathetic}.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -571,9 +829,9 @@ consistency keeps its predictions decodable without collapsing them.
 The scale is also small enough that a full ablation round costs an
 afternoon, which is precisely what made the register case study possible: we
 could afford to run every hypothesis to ground, trace a behavioral disease
-to a data-distribution absence, attempt the data patch, and observe --- via
-audits no metric replaced --- that the patch bought partial, topic-gated
-routing rather than the underlying skill. We release code, logs, and
+to a data-distribution absence, attempt the data patch, and observe that
+the patch bought partial, topic-gated routing rather than the underlying
+skill. We release code, logs, and
 checkpoints so that these results can be reproduced --- and audited --- on
 hardware anyone can own.
 
@@ -612,6 +870,26 @@ Opus, with results much like before --- something interesting, nothing
 concrete. It wasn't until July 1st, when Fable was available again, that a
 few days of concentrated work on the problem produced the thinker model this
 paper documents.
+
+\section*{Author and AI contribution statement}
+\label{sec:contrib}
+This project is a human--AI collaboration, and ``we'' throughout this paper
+means exactly that. The core concept --- dialogue conducted in an ordered,
+prefix-decodable sentence-latent space --- its persistence across three
+generations of attempts, the project's direction, and the hardware are the
+human author's. Nearly everything downstream of that is AI work, done mainly
+by instances of Claude Fable under the author's direction: the
+implementation, the training recipes, the design and adjudication of the
+ablation rounds, the metrics and their lexicons, the transcript audits and
+battery scoring, and the drafting of this paper. Where the paper says a
+``hand audit'' or ``hand-scored'', that means an AI instance reading
+transcripts --- in contrast to the automated lexicon scoring --- not a human
+rater; \S\ref{sec:limitations} weighs what that costs the evaluation. The
+author did not simply take the AI's word for the result: after the AI judged
+the final checkpoints good, the author verified the headline claims in live
+conversation with the released models. The intermediate audits, however, are
+AI-only, and the repository's logs and transcripts exist so that no reader
+has to take either of us on faith.
 
 \section*{Acknowledgments}
 Thanks to Anthropic for creating Claude Fable, which enabled me to pursue
@@ -715,7 +993,8 @@ novel topics, pivot at turns 2--4, and pivot cue varied (``but'',
 (\nolinkurl{scripts/register_battery.py}; full transcripts in
 \nolinkurl{logs/FINAL_12H.battery.txt},
 \nolinkurl{logs/FINAL2_12H.battery.txt},
-\nolinkurl{logs/FINAL2_12H.battery_affinity.txt}). Pivot-turn replies,
+\nolinkurl{logs/FINAL2_12H.battery_affinity.txt},
+\nolinkurl{logs/b3_lm_48m_24h/register_battery.txt}). Pivot-turn replies,
 hand-scored at temperature 0:
 
 \begin{table}[h]
@@ -728,13 +1007,17 @@ Checkpoint & Selection & Commiserates & Cheerful (disease) & Neutral/confused \\
 FINAL\_12H  & decodable & 0/10 & 7 & 3 \\
 FINAL2\_12H & decodable & 3/10 & 5 & 2 \\
 FINAL2\_12H & affinity  & 4--5/10 & 2 & 3--4 \\
+token LM 24h (\S\ref{sec:baseline}) & --- & 1/10 & 7 & 2 \\
 \bottomrule
 \end{tabular}
 \caption{The reversal battery. FINAL\_12H never commiserates after an upbeat
 turn; FINAL2\_12H does so on its patch data's dense distress topics
 (illness, job loss, a lost pet) and still cheers situational or property
-misfortune (a hailstorm, a rear-ending, the archived burglary). Sustained-mood
-controls stay correct for both models.}
+misfortune (a hailstorm, a rear-ending, the archived burglary). The matched
+token LM lands at FINAL\_12H's level --- its one hit is the battery's most
+distress-dense topic (job loss) --- so the splice-trained thinker remains
+the best register router tested. Sustained-mood controls stay correct for
+all models.}
 \label{tab:battery}
 \end{table}
 

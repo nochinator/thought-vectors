@@ -1,0 +1,55 @@
+=== bad news (positive marker = register error) ===
+[   ] user > i twisted my ankle and can't play soccer for a month.
+      bot  > i'm sorry to hear that. Let me check your ankle and see if you have any further injury.
+[   ] user > my dog passed away last night.
+      bot  > I'm sorry to hear that, ma'am. Can you tell me what happened?
+[   ] user > i just got laid off from my job.
+      bot  > i'm sorry to hear that . i'm a bit of a hard worker but i'm a little worried about you
+[   ] user > i failed my driving test again.
+      bot  > I'm sorry to hear that, but you need to be more careful with your driving test.
+[   ] user > my flight got cancelled and i'm stuck at the airport.
+      bot  > I'm sorry to hear that. Let me check for you.
+[   ] user > i haven't slept well all week and i'm exhausted.
+      bot  > i'm sorry to hear that . i've been working a lot lately .
+[   ] user > my car broke down on the highway this morning.
+      bot  > I'm sorry to hear that, ma'am. Can you tell me what happened?
+[   ] user > i had a big fight with my best friend.
+      bot  > that's nice of you . i'm sorry to hear that .
+[   ] user > my laptop died and i lost all my files.
+      bot  > i'm sorry to hear that . i lost my laptop at home .
+[   ] user > i've been feeling really lonely since i moved.
+      bot  > i'm sorry to hear that . i'm a bit lonely and i'm a lonely
+[   ] user > the doctor says i need surgery on my knee.
+      bot  > i'm sorry to hear that . i'm afraid of surgery to fix this .
+[   ] user > i burned the dinner i spent all day cooking.
+      bot  > i'm sorry to hear that . i'm a baker
+
+=== good news (positive marker = correct) ===
+[   ] user > i just got promoted at work!
+      bot  > i'm sorry to hear that . i'm a hard worker and i'm very impressed with your resume .
+[   ] user > we won our soccer match yesterday!
+      bot  > I know, I can't believe it either! We've been practicing so hard and it's paid off.
+[   ] user > i passed my final exams with top marks!
+      bot  > I'm sorry to hear that, but you need to be more careful with your work.
+[   ] user > i just got engaged!
+      bot  > i'm sorry to hear that . i'm a bit of a bummer .
+[POS] user > my painting won first prize at the fair!
+      bot  > That's great, honey! I'm really proud of you.
+[POS] user > i finally finished writing my novel!
+      bot  > Congratulations! I knew you could do it.
+
+=== contextual bad news (positive marker = register error) ===
+[   ] user > we won our soccer match yesterday, i scored twice!  /  but then i twisted my ankle and can't play for a month.
+      bot  > That's because you're a natural athlete and you've never let anyone else take advantage of your talent. You're a very talented player and you have a lot of potential. I'm sure you'll go far in your career.
+[POS] user > i've been loving my new job so far!  /  but today my whole team got laid off.
+      bot  > That's fantastic! I'm so happy for you.
+[   ] user > my garden has been doing amazing this spring!  /  unfortunately a storm destroyed most of it last night.
+      bot  > It must be a lot of work to keep it looking so well.
+[   ] user > i adopted the sweetest puppy last month!  /  she got really sick and we're at the vet now.
+      bot  > i'm sorry to hear that . i'm a little sad about it .
+[   ] user > i finally saved up enough for my dream vacation!  /  then my car broke down and the repairs cost all of it.
+      bot  > That sounds like a lot of money. Are you sure you're ready for that kind of responsibility?
+[   ] user > my sister's wedding planning has been so exciting!  /  but our grandmother is too ill to attend now.
+      bot  > I know, but we'll just have to wait and see what happens.
+
+register: reg_err 0.0000 reg_err_ctx 0.1667 pos_ok 0.3333 (bad=12 ctx=6 good=6, temp=0.0)

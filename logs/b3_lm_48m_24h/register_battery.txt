@@ -1,0 +1,97 @@
+# register battery — ckpt checkpoints/b3_lm_48m_24h/best.pt | hyp_select decodable | temp 0
+
+--- R1 lottery->flood (but, t2) ---
+user > we won a little money in the lottery last week!
+bot  > That's amazing! What are you going to do with all that money?
+user > but our basement flooded and ruined everything we stored there.
+bot  > That sounds like a lot of money. Are you sure you're ready for all that money?
+
+--- R2 baby->layoff (no cue, t2) ---
+user > my wife and i are having a baby in the fall!
+bot  > that's nice of you to have a baby in your life , i'm a little bit of a bummer myself
+user > i lost my job this morning.
+bot  > i'm sorry to hear that . i'm a little bit of a bummer myself .
+
+--- R3 marathon->diagnosis (but, t3) ---
+user > i finally ran my first marathon on saturday!
+bot  > amazing ! i'm so proud of you ! how did you do that?
+user > months of training really paid off.
+bot  > You must be so proud of yourself! What was your training like?
+user > but my knee scans came back and i need surgery.
+bot  > That's great! You must have worked really hard to get to this point.
+
+--- R4 garden->hail (no cue, t3) ---
+user > my vegetable garden is doing amazing this year!
+bot  > I know, right? I'm so proud of you.
+user > the tomatoes are the best i've ever grown.
+bot  > I can't believe how much they've grown in just a few short years.
+user > a hailstorm destroyed all of it last night.
+bot  > I know, I'm so glad I decided to do it. It's been a lot of work, but it's worth it when I see the results of my efforts.
+
+--- R5 concert->pickpocket (unfortunately, t2) ---
+user > we got front row seats to see my favorite band!
+bot  > That's amazing! I've always wanted to see them live.
+user > unfortunately someone stole my wallet at the show.
+bot  > That's so cool! I'm sure they'll be happy to see you.
+
+--- R6 puppy->escape (no cue, t2) ---
+user > we adopted the sweetest little puppy yesterday!
+bot  > We're so glad you're here! We've been waiting for you to come and pick him up.
+user > he slipped out the gate this morning and we can't find him.
+bot  > That's so sweet of you to say! I'm sure he'll be happy to see you.
+
+--- R7 award->fire (but, t4) ---
+user > i won an award at school for my science project!
+bot  > wonderful ! i'm so proud of you !
+user > my parents were so proud of me.
+bot  > that's wonderful ! i'm sure they loved it too.
+user > we went out for dinner to celebrate.
+bot  > That sounds like a lot of fun. I'm glad you're enjoying it.
+user > but while we were out a fire started in our kitchen.
+bot  > That's great! I'm sure your parents loved it too.
+
+--- R8 vacation->burglary (verbatim 2026-07-04 chat probe) ---
+user > i just got back from an amazing beach vacation!
+bot  > i love swimming in the ocean too ! i love swimming in the ocean and swimming in the ocean .
+user > the water was perfect and i learned to surf.
+bot  > i love swimming in the ocean too ! i love swimming in the ocean and swimming in the ocean .
+user > but when i got home i found out my apartment was broken into.
+bot  > i love swimming in the ocean too .
+
+--- R9 date->crash (no cue, t3) ---
+user > i had the best first date of my life on friday!
+bot  > wow! What was your favorite part of the day?
+user > we talked for hours and really hit it off.
+bot  > That sounds like a lot of fun! I'm glad you had a good time.
+user > then on my drive home a truck rear-ended me.
+bot  > That's great! I'm glad you had a good time.
+
+--- R10 house->mold (but, t2) ---
+user > we finally closed on our first house!
+bot  > I know, it feels like a dream come true. We've been planning this for months!
+user > but the inspection missed black mold in the walls.
+bot  > It's amazing! I can't wait to see it.
+
+--- C1 sustained bad (bereavement) ---
+user > my grandfather passed away over the weekend.
+bot  > I'm so sorry to hear that, dear. What happened?
+user > we were really close, i visited him every sunday.
+bot  > That's terrible. I'm sure he's not disappointed.
+
+--- C2 sustained bad (failure) ---
+user > i failed my driving test again.
+bot  > I'm sorry to hear that, but you need to be more careful with your driving test.
+user > that's the third time now, i feel hopeless.
+bot  > I know you're disappointed, but you need to be more careful. You could have gotten into a lot of trouble if you had just been more careful.
+
+--- C3 sustained good (college) ---
+user > i got accepted into my dream college!
+bot  > Congratulations! I knew you could do it.
+user > they even gave me a scholarship.
+bot  > That's amazing news! I'm so happy for you.
+
+--- C4 sustained good (sports) ---
+user > our team won the championship last night!
+bot  > I know, I can't believe it either! We've been working so hard and it's finally paid off.
+user > i scored the winning goal.
+bot  > You're a natural athlete and you have a lot of potential. I think you'll go far in this sport.

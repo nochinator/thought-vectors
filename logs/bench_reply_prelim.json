@@ -1,0 +1,140 @@
+{
+  "turns": {
+    "1": {
+      "thinker": {
+        "effective_turns": 1,
+        "reply_tokens": 16,
+        "time_s": {
+          "encode": 0.024141011061146855,
+          "thinker": 0.006768084014765918,
+          "decode": 0.15850752498954535,
+          "total": 0.18941662006545812
+        },
+        "flops": {
+          "encode": 721747968,
+          "thinker": 133496832,
+          "decode": 4105175040,
+          "total": 4960419840,
+          "kv_equiv": 1347747840
+        },
+        "ctx_repr_floats": 3072
+      },
+      "lm": {
+        "ctx_tokens": 43,
+        "reply_tokens": 12,
+        "time_s": {
+          "total": 0.43053115101065487
+        },
+        "flops": {
+          "total": 13631488000,
+          "kv_equiv": 1174405120
+        },
+        "ctx_repr_floats": 563200
+      }
+    },
+    "5": {
+      "thinker": {
+        "effective_turns": 5,
+        "reply_tokens": 22,
+        "time_s": {
+          "encode": 0.035193605930544436,
+          "thinker": 0.009203186957165599,
+          "decode": 0.23613537196069956,
+          "total": 0.2805321648484096
+        },
+        "flops": {
+          "encode": 1796800512,
+          "thinker": 210567168,
+          "decode": 7716667392,
+          "total": 9724035072,
+          "kv_equiv": 2687434752
+        },
+        "ctx_repr_floats": 15360
+      },
+      "lm": {
+        "ctx_tokens": 215,
+        "reply_tokens": 26,
+        "time_s": {
+          "total": 2.035892073996365
+        },
+        "flops": {
+          "total": 129666908160,
+          "kv_equiv": 5075107840
+        },
+        "ctx_repr_floats": 2467840
+      }
+    },
+    "10": {
+      "thinker": {
+        "effective_turns": 6,
+        "reply_tokens": 23,
+        "time_s": {
+          "encode": 0.042817880981601775,
+          "thinker": 0.010150870075449347,
+          "decode": 0.2511669209925458,
+          "total": 0.3041356720495969
+        },
+        "flops": {
+          "encode": 2071461888,
+          "thinker": 229834752,
+          "decode": 8427995136,
+          "total": 10729291776,
+          "kv_equiv": 3012624384
+        },
+        "ctx_repr_floats": 18432
+      },
+      "lm": {
+        "ctx_tokens": 335,
+        "reply_tokens": 4,
+        "time_s": {
+          "total": 0.6036477499874309
+        },
+        "flops": {
+          "total": 35441868800,
+          "kv_equiv": 7130316800
+        },
+        "ctx_repr_floats": 3471360
+      }
+    },
+    "20": {
+      "thinker": {
+        "effective_turns": 6,
+        "reply_tokens": 22,
+        "time_s": {
+          "encode": 0.04170229798182845,
+          "thinker": 0.01028999499976635,
+          "decode": 0.23538170801475644,
+          "total": 0.28737400099635124
+        },
+        "flops": {
+          "encode": 2071461888,
+          "thinker": 229834752,
+          "decode": 7716667392,
+          "total": 10017964032,
+          "kv_equiv": 2981363712
+        },
+        "ctx_repr_floats": 18432
+      },
+      "lm": {
+        "ctx_tokens": 335,
+        "reply_tokens": 4,
+        "time_s": {
+          "total": 0.7817301689647138
+        },
+        "flops": {
+          "total": 35441868800,
+          "kv_equiv": 7130316800
+        },
+        "ctx_repr_floats": 3471360
+      }
+    }
+  },
+  "meta": {
+    "thinker_ckpt": "checkpoints/FINAL_12H/best.pt",
+    "lm_ckpt": "checkpoints/b2_lm_B_640x8_lr6/best.pt",
+    "repeats": 5,
+    "turn_tokens": 40,
+    "device": "cpu",
+    "note": "reference implementations on both sides (no KV cache either side); FLOPs measured with FlopCounterMode"
+  }
+}

@@ -185,6 +185,19 @@ class ThinkerCfg:
 
 
 @dataclass
+class LMCfg:
+    # Round B monolithic baseline (docs/BASELINE_ABLATIONS.md): decoder-only
+    # token LM over the same dialogue shards; vocab_size from model.vocab_size.
+    d_model: int = 384
+    nhead: int = 6
+    ffn_dim: int = 1536
+    layers: int = 5
+    dropout: float = 0.1
+    max_seq_len: int = 384    # flat context + response window
+    max_turns: int = 8        # context turns kept (thinker parity)
+
+
+@dataclass
 class Config:
     model: ModelCfg = field(default_factory=ModelCfg)
     ksampler: KSamplerCfg = field(default_factory=KSamplerCfg)
@@ -193,6 +206,7 @@ class Config:
     train: TrainCfg = field(default_factory=TrainCfg)
     run: RunCfg = field(default_factory=RunCfg)
     thinker: ThinkerCfg = field(default_factory=ThinkerCfg)
+    lm: LMCfg = field(default_factory=LMCfg)
 
 
 def _coerce(value: str, current: Any) -> Any:

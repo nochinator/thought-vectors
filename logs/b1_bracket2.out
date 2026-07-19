@@ -1,0 +1,8 @@
+=== [13:18:02] B1 arm: b1_lm_A_320x8 ===
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:392: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+[lm] b1_lm_A_320x8: 15.2M params (d320 x 8L, ffn 1280)
+/home/nochi/vault/projects/ThoughtVectors/.venv/lib/python3.12/site-packages/torch/nn/functional.py:6044: UserWarning: Support for mismatched src_key_padding_mask and mask is deprecated. Use same type for both instead.
+  warnings.warn(
+Memory access fault by GPU node-1 (Agent handle: 0x1d67e840) on address 0x7d2482033000. Reason: Page not present or supervisor privilege.
+scripts/ablate_lm_b1.sh: line 20: 303436 Aborted                 (core dumped) .venv/bin/tv-train-lm --config configs/b1_lm.yaml run.name="$name" train.max_seconds="$DUR" "$@"

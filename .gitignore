@@ -23,3 +23,8 @@ paper/*.blg
 paper/*.log
 paper/*.out
 paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+
+# staged upload kit — never tracked; delete after publishing
+publish/
