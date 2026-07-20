@@ -1403,3 +1403,33 @@ logs/livechat_roundb_20260715.txt), FINAL_12H vs the B3 LM. Beyond the metric ta
 
 Paper updated: live-chat asymmetry paragraph in §baseline + one supporting sentence in
 the parameter-economy Outlook paragraph.
+
+## 2026-07-19 — Demo ships in-browser: ONNX port is byte-exact with the released model
+
+HF made all Gradio/Docker Spaces PRO-only, so the chat demo was ported to run
+client-side and shipped as a free Static Space at the original URL
+(huggingface.co/spaces/nochinator/thought-vectors-chat). Engineering results worth
+recording:
+
+1. **The export is byte-exact, not approximately faithful.** Encoder/thinker/decoder
+   exported to ONNX (scripts/export_web.py, dynamo exporter, opset 18) reproduce
+   ChatSession's greedy replies verbatim — 8/8 on a 4-turn conversation plus 4
+   register probes — under onnxruntime CPU, onnxruntime-web in Node, AND headless
+   Chromium against the live Space. The gate that made this tractable: crosscheck
+   every exported graph against torch before export (caught nn.MultiheadAttention's
+   float `dropout` attribute surviving a defuse that only zeroed nn.Dropout modules).
+2. **Precision is a per-component decision.** Greedy search over
+   {fp32,fp16,int8}³ judged by full-reply parity (scripts/quantize_web.py):
+   fp16 encoder + fp16 decoder keep 8/8, but the thinker must stay fp32 — and int8
+   anywhere breaks parity (5/8). Ships at 135 MB vs 212 MB fp32. Notable given the
+   prior: the decoder (conditioned on lossy vectors) was expected to break first;
+   instead the thinker is the precision-critical component.
+3. **Tokenizer needed zero reimplementation.** The real SentencePiece C++ via an
+   emscripten WASM build (@sctg/sentencepiece-js) matches the Python tokenizer
+   514/514 on encode and decode, including NFKC normalization and byte-fallback
+   stress cases.
+4. **It's fast.** ~0.3 s/reply single-threaded WASM — the in-browser demo is faster
+   than the Gradio CPU Space it replaced, with zero hosting compute.
+
+Port sources in webdemo/ (chat.js is the ChatSession loop, parity-tested by
+webdemo/test_parity.node.mjs against reference_replies.json).

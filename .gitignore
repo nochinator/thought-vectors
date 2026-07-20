@@ -28,3 +28,10 @@ paper/*.fdb_latexmk
 
 # staged upload kit — never tracked; delete after publishing
 publish/
+
+# in-browser demo: source is tracked; generated ONNX weights come from
+# scripts/export_web.py, vendored runtimes from `npm install && npm run vendor`
+webdemo/models/
+webdemo/node_modules/
+webdemo/lib/ort*
+webdemo/lib/sentencepiece.js

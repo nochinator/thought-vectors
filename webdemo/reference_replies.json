@@ -1,0 +1,24 @@
+{
+ "conversation": [
+  "i'm feeling really overwhelmed with work lately.",
+  "my boss keeps piling on deadlines.",
+  "i haven't slept well all week.",
+  "what should i do?"
+ ],
+ "oneshot": [
+  "my dog passed away last night.",
+  "i just got back from an amazing beach vacation!",
+  "what do you like to do on weekends?",
+  "i twisted my ankle and can't play soccer for a month."
+ ],
+ "replies": [
+  "I can imagine. What's been going on?",
+  "That sounds like a lot of pressure. Have you been able to talk to anyone else?",
+  "That's good to hear. Have you been able to talk to anyone about how you're feeling?",
+  "We'll see. Just be careful and don't give up on your dreams.",
+  "I'm sorry to hear that. What did you do?",
+  "i love to go to the beach and get a new dog",
+  "I like to read and play video games.",
+  "I'm sorry to hear that. Can you play video games?"
+ ]
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThoughtVectors — dialogue in thought-vector space</title>
+<style>
+  :root {
+    --bg: #12131a; --panel: #1b1d27; --text: #e6e6ef; --dim: #9a9ab0;
+    --accent: #6c7bdc; --user: #2a3050; --bot: #232634;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.5 system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center;
+    min-height: 100vh;
+  }
+  main { width: min(720px, 100%); padding: 1rem; display: flex;
+         flex-direction: column; flex: 1; }
+  h1 { font-size: 1.15rem; margin: .3rem 0 0; }
+  .sub { color: var(--dim); font-size: .85rem; margin: .2rem 0 .8rem; }
+  .sub a { color: var(--accent); }
+  #progress { background: var(--panel); border-radius: 6px; height: 6px;
+              overflow: hidden; margin-bottom: .4rem; }
+  #bar { background: var(--accent); height: 100%; width: 0; transition: width .2s; }
+  #status { color: var(--dim); font-size: .8rem; margin-bottom: .6rem; }
+  #messages { flex: 1; overflow-y: auto; background: var(--panel);
+              border-radius: 10px; padding: .8rem; min-height: 40vh;
+              display: flex; flex-direction: column; gap: .5rem; }
+  .msg { max-width: 85%; padding: .5rem .8rem; border-radius: 10px;
+         white-space: pre-wrap; overflow-wrap: break-word; }
+  .msg.user { background: var(--user); align-self: flex-end; }
+  .msg.bot { background: var(--bot); align-self: flex-start; }
+  .msg.note { color: var(--dim); font-size: .8rem; align-self: center;
+              background: none; }
+  #form { display: flex; gap: .5rem; margin-top: .7rem; }
+  #input { flex: 1; padding: .6rem .8rem; border-radius: 10px; border: none;
+           background: var(--panel); color: var(--text); font: inherit; }
+  #input:focus { outline: 1px solid var(--accent); }
+  button { padding: .6rem 1rem; border: none; border-radius: 10px;
+           background: var(--accent); color: #fff; font: inherit;
+           cursor: pointer; }
+  button:disabled { opacity: .4; cursor: default; }
+  #reset { background: var(--panel); color: var(--dim); }
+  .foot { color: var(--dim); font-size: .75rem; margin-top: .6rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>ThoughtVectors — dialogue in thought-vector space</h1>
+  <p class="sub">
+    A 48M-parameter model that converses without token-level language modeling
+    in its reasoning loop: your message becomes thought vectors, a thinker
+    predicts response thoughts, a frozen decoder renders the reply. Trained
+    from scratch in ~25 GPU-hours on one consumer GPU. The whole model runs
+    in your browser — nothing you type leaves this page.
+    <a href="https://github.com/nochinator/thought-vectors">Paper&nbsp;+&nbsp;code</a>
+  </p>
+  <div id="progress"><div id="bar"></div></div>
+  <div id="status">loading…</div>
+  <div id="messages">
+    <div class="msg note">
+      Small talk is its domain. Decoding is greedy, so the same conversation
+      always gets the same replies. Known failure: it may respond cheerfully
+      to bad news — that's the paper's case study, go ahead and probe it.
+    </div>
+  </div>
+  <form id="form">
+    <input id="input" autocomplete="off" placeholder="say something…" disabled>
+    <button id="send" type="submit" disabled>send</button>
+    <button id="reset" type="button">reset</button>
+  </form>
+  <p class="foot">
+    ~135&nbsp;MB downloads once and is cached. Byte-exact with the released
+    FINAL_12H checkpoint (fp16 encoder/decoder, fp32 thinker; 8/8 reply
+    parity vs the PyTorch reference).
+  </p>
+</main>
+<script type="importmap">
+  {"imports": {"fs": "./lib/shims/fs.js", "buffer": "./lib/shims/buffer.js"}}
+</script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
