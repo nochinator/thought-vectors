@@ -5,7 +5,8 @@ For each variant, runs a multi-turn conversation plus the register probes
 through the complete ONNX chat loop and compares replies verbatim with
 ChatSession. Exact match on all probes is the bar for shipping a smaller
 precision; the decoder (conditioned on lossy vectors, val_cos 0.428) is the
-layer expected to break first.
+layer expected to break first. The lm graph (paper §6.5's matched token-LM
+baseline) is judged the same way, independently, against LMChatSession.
 
 Usage: .venv/bin/python scripts/quantize_web.py [--models webdemo/models]
 """
@@ -22,9 +23,12 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from thoughtvec.chat import ChatSession  # noqa: E402
+from thoughtvec.lm import LMChatSession  # noqa: E402
 from thoughtvec.tokenizer import BOS_ID, EOS_ID  # noqa: E402
 
-GRAPHS = ("encoder", "thinker", "decoder")
+TV_GRAPHS = ("encoder", "thinker", "decoder")
+LM_GRAPHS = ("lm",)
+GRAPHS = TV_GRAPHS + LM_GRAPHS
 
 # One realistic conversation (each turn answered in sequence) + one-shot
 # register probes with a fresh history each.
@@ -90,6 +94,40 @@ class OnnxChat:
         return text_out
 
 
+class OnnxLmChat:
+    """The exact loop app.js will run for the LM baseline: flat token
+    history (no turn windowing), greedy, no repeat-ngram ban — mirrors
+    TokenLM.generate / LMChatSession.reply exactly, warts included."""
+
+    def __init__(self, session, tokenizer, max_len: int, max_new: int = 64):
+        self.s = session
+        self.tok = tokenizer
+        self.max_len = max_len
+        self.max_new = max_new
+        self.history: list[str] = []
+
+    def reply(self, text: str) -> str:
+        self.history.append(text.strip())
+        ids: list[int] = []
+        for t in self.history:
+            ids += [BOS_ID] + self.tok.encode(t, add_special=False) + [EOS_ID]
+        room = self.max_len - self.max_new - 1
+        out = ids[-room:] + [BOS_ID]
+        gen: list[int] = []
+        for _ in range(self.max_new):
+            pos = np.array([len(out) - 1], dtype=np.int64)
+            lg = self.s["lm"].run(None, {
+                "ids": np.array([out], dtype=np.int64), "pos": pos})[0][0]
+            nxt = int(lg.argmax())
+            if nxt == EOS_ID:
+                break
+            gen.append(nxt)
+            out.append(nxt)
+        text_out = self.tok.decode(gen)
+        self.history.append(text_out)
+        return text_out
+
+
 def torch_replies(session: ChatSession) -> list[str]:
     got = []
     session.history = []
@@ -110,11 +148,32 @@ def onnx_replies(sessions, tokenizer) -> list[str]:
     return got
 
 
+def lm_torch_replies(session: LMChatSession) -> list[str]:
+    got = []
+    session.history = []
+    for t in CONVERSATION:
+        got.append(session.reply(t, temperature=0.0))
+    for t in ONESHOT:
+        session.history = []
+        got.append(session.reply(t, temperature=0.0))
+    return got
+
+
+def lm_onnx_replies(sessions, tokenizer, max_len: int, max_new: int) -> list[str]:
+    chat = OnnxLmChat(sessions, tokenizer, max_len, max_new)
+    got = [chat.reply(t) for t in CONVERSATION]
+    for t in ONESHOT:
+        chat.history = []
+        got.append(chat.reply(t))
+    return got
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", default="webdemo/models")
     ap.add_argument("--ckpt", default="checkpoints/FINAL_12H/best.pt")
     ap.add_argument("--codec", default="checkpoints/m5_frontier/best.pt")
+    ap.add_argument("--lm-ckpt", default="checkpoints/b3_lm_48m_24h/best.pt")
     args = ap.parse_args()
     mdir = Path(args.models)
 
@@ -152,16 +211,37 @@ def main() -> None:
     print(f"sizes MB: fp32 {fp32:.0f}, fp16 {sizes['fp16']:.0f}, "
           f"int8 {sizes['int8']:.0f}")
 
-    session = ChatSession(args.ckpt, device="cpu", codec_ckpt=args.codec)
-    want = torch_replies(session)
-
     def path(n: str, tag: str) -> Path:
         return mdir / (f"{n}.onnx" if tag == "fp32" else f"{n}.{tag}.onnx")
+
+    def size_of(chosen: dict) -> float:
+        total = sum(path(g, chosen[g]).stat().st_size for g in chosen)
+        total += sum((mdir / f"{g}.onnx.data").stat().st_size
+                     for g in chosen if chosen[g] == "fp32"
+                     and (mdir / f"{g}.onnx.data").exists())
+        return total / 1e6
+
+    def search(graphs, matches_fn, n_want: int) -> dict:
+        for tag in ("fp32", "fp16", "int8"):
+            n_ok = matches_fn({g: tag for g in graphs})
+            print(f"uniform {tag}: {n_ok}/{n_want} replies match")
+        chosen = {g: "fp32" for g in graphs}
+        for g in graphs:
+            for cand in ("int8", "fp16"):
+                trial = dict(chosen, **{g: cand})
+                if matches_fn(trial) == n_want:
+                    chosen[g] = cand
+                    break
+        return chosen
+
+    # ---- thought-vector pipeline ----
+    session = ChatSession(args.ckpt, device="cpu", codec_ckpt=args.codec)
+    want = torch_replies(session)
 
     def load(tag_map: dict[str, str]):
         return {n: ort.InferenceSession(str(path(n, tag_map[n])),
                                         providers=["CPUExecutionProvider"])
-                for n in GRAPHS}
+                for n in tag_map}
 
     def matches(tag_map) -> int:
         try:
@@ -171,23 +251,30 @@ def main() -> None:
             return -1
         return sum(w == g for w, g in zip(want, got))
 
-    for tag in ("fp32", "fp16", "int8"):
-        n_ok = matches({g: tag for g in GRAPHS})
-        print(f"uniform {tag}: {n_ok}/{len(want)} replies match")
-
-    # greedy per-component: smallest precision that keeps every reply exact
-    chosen = {g: "fp32" for g in GRAPHS}
-    for g in GRAPHS:
-        for cand in ("int8", "fp16"):
-            trial = dict(chosen, **{g: cand})
-            if matches(trial) == len(want):
-                chosen[g] = cand
-                break
-    total = sum(path(g, chosen[g]).stat().st_size for g in GRAPHS)
-    total += sum((mdir / f"{g}.onnx.data").stat().st_size
-                 for g in GRAPHS if chosen[g] == "fp32")
-    print(f"chosen: {chosen} -> {total / 1e6:.0f} MB, "
+    print("-- thinker pipeline --")
+    chosen = search(TV_GRAPHS, matches, len(want))
+    print(f"chosen: {chosen} -> {size_of(chosen):.0f} MB, "
           f"{matches(chosen)}/{len(want)} exact")
+
+    # ---- lm baseline (independent — no shared graphs with the pipeline above) ----
+    lm_session = LMChatSession(args.lm_ckpt, device="cpu")
+    lm_want = lm_torch_replies(lm_session)
+    lm_max_len = lm_session.model.max_len
+    lm_max_new = lm_session.max_new
+
+    def lm_matches(tag_map) -> int:
+        try:
+            got = lm_onnx_replies(load(tag_map), lm_session.tokenizer,
+                                  lm_max_len, lm_max_new)
+        except Exception as e:
+            print(f"   {tag_map}: FAILED — {str(e)[:100]}")
+            return -1
+        return sum(w == g for w, g in zip(lm_want, got))
+
+    print("-- lm baseline --")
+    lm_chosen = search(LM_GRAPHS, lm_matches, len(lm_want))
+    print(f"chosen: {lm_chosen} -> {size_of(lm_chosen):.0f} MB, "
+          f"{lm_matches(lm_chosen)}/{len(lm_want)} exact")
 
 
 if __name__ == "__main__":

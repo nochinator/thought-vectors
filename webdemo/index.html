@@ -34,7 +34,14 @@
   .msg.bot { background: var(--bot); align-self: flex-start; }
   .msg.note { color: var(--dim); font-size: .8rem; align-self: center;
               background: none; }
-  #form { display: flex; gap: .5rem; margin-top: .7rem; }
+  .msg .tag { display: block; color: var(--dim); font-size: .7rem;
+              text-transform: uppercase; letter-spacing: .04em;
+              margin-bottom: .15rem; }
+  #picker { display: flex; gap: 1rem; margin-top: .7rem; font-size: .85rem;
+            color: var(--dim); }
+  #picker label { display: flex; align-items: center; gap: .35rem;
+                  cursor: pointer; }
+  #form { display: flex; gap: .5rem; margin-top: .5rem; }
   #input { flex: 1; padding: .6rem .8rem; border-radius: 10px; border: none;
            background: var(--panel); color: var(--text); font: inherit; }
   #input:focus { outline: 1px solid var(--accent); }
@@ -64,7 +71,17 @@
       Small talk is its domain. Decoding is greedy, so the same conversation
       always gets the same replies. Known failure: it may respond cheerfully
       to bad news — that's the paper's case study, go ahead and probe it.
+      The picker below swaps in the paper's matched token-LM baseline (same
+      data, tokenizer, and compute) for comparison — it has a higher
+      per-turn ceiling but fails differently: apology as its default
+      register and repetition loops it can't leave.
     </div>
+  </div>
+  <div id="picker">
+    <label><input type="radio" name="model" value="thinker" checked>
+      thinker (thought-vector space)</label>
+    <label><input type="radio" name="model" value="lm">
+      token-LM baseline (paper §6.5)</label>
   </div>
   <form id="form">
     <input id="input" autocomplete="off" placeholder="say something…" disabled>
@@ -72,9 +89,11 @@
     <button id="reset" type="button">reset</button>
   </form>
   <p class="foot">
-    ~135&nbsp;MB downloads once and is cached. Byte-exact with the released
-    FINAL_12H checkpoint (fp16 encoder/decoder, fp32 thinker; 8/8 reply
-    parity vs the PyTorch reference).
+    thinker: ~135&nbsp;MB, downloads once and is cached. token-LM baseline:
+    a further ~100&nbsp;MB, downloaded the first time you pick it. Both are
+    byte-exact with their released checkpoints (8/8 greedy-reply parity vs
+    the PyTorch reference). Switching models mid-conversation compares them
+    on the same transcript, same as the paper's live-chat comparison.
   </p>
 </main>
 <script type="importmap">

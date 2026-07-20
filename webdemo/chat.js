@@ -86,3 +86,64 @@ export class OnnxChat {
     return reply;
   }
 }
+
+// The paper's §6.5 matched token-LM baseline. Ported line-for-line from
+// OnnxLmChat in scripts/quantize_web.py. Deliberately un-improved: flat
+// token history (no turn windowing) and no repeat-ngram ban, because its
+// repetition loops and apology-default register are the paper's documented
+// finding about this paradigm, not bugs for this loop to paper over.
+export class OnnxLmChat {
+  /**
+   * @param ort onnxruntime-web module
+   * @param session {lm} InferenceSession
+   * @param tok {encode(text)->number[], decode(ids)->string}
+   * @param maxLen model's max_seq_len (384 for the released baseline)
+   * @param maxNew max new tokens per reply (64 for the released baseline)
+   */
+  constructor(ort, session, tok, maxLen, maxNew = 64) {
+    this.ort = ort;
+    this.s = session;
+    this.tok = tok;
+    this.maxLen = maxLen;
+    this.maxNew = maxNew;
+    this.history = [];
+  }
+
+  reset() {
+    this.history = [];
+  }
+
+  ids64(ids) {
+    return new this.ort.Tensor(
+      "int64", BigInt64Array.from(ids, BigInt), [1, ids.length]);
+  }
+
+  async reply(text, onToken) {
+    this.history.push(text.trim());
+    let ids = [];
+    for (const t of this.history) {
+      ids = ids.concat([BOS_ID], this.tok.encode(t), [EOS_ID]);
+    }
+    const room = this.maxLen - this.maxNew - 1;
+    const out = ids.slice(-room);
+    out.push(BOS_ID);
+    const gen = [];
+    for (let step = 0; step < this.maxNew; step++) {
+      const dec = await this.s.lm.run({
+        ids: this.ids64(out),
+        pos: new this.ort.Tensor(
+          "int64", BigInt64Array.from([BigInt(out.length - 1)]), [1]),
+      });
+      const lg = dec.logits.data;
+      let nxt = 0;
+      for (let v = 1; v < lg.length; v++) if (lg[v] > lg[nxt]) nxt = v;
+      if (nxt === EOS_ID) break;
+      gen.push(nxt);
+      out.push(nxt);
+      if (onToken) onToken(this.tok.decode(gen));
+    }
+    const reply = this.tok.decode(gen);
+    this.history.push(reply);
+    return reply;
+  }
+}

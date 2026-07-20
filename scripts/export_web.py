@@ -1,6 +1,7 @@
-"""Export FINAL_12H + m5_frontier to ONNX for the in-browser demo.
+"""Export FINAL_12H + m5_frontier + the b3 token-LM baseline to ONNX for the
+in-browser demo.
 
-Three graphs, mirroring ChatSession.reply exactly (decodable hypothesis
+Four graphs. Three mirror ChatSession.reply exactly (decodable hypothesis
 rule, resp_role=1, no slot budgets — the FINAL_12H chat configuration):
 
   encoder.onnx   ids [1,T] int64            -> thoughts [1,8,384]
@@ -8,11 +9,18 @@ rule, resp_role=1, no slot budgets — the FINAL_12H chat configuration):
                                             -> hyps [4,8,384], score [4]
   decoder.onnx   thoughts [1,8,384], ids [1,S] int64 -> logits [1,16384]
 
+The fourth mirrors LMChatSession.reply / TokenLM.generate (paper §6.5's
+matched baseline — flat token history, no turn windowing, no repeat-ngram
+ban: its repetition loops are a documented finding, not a bug to fix here):
+
+  lm.onnx        ids [1,S] int64, pos [1] int64 -> logits [1,16384]
+
 Turns are encoded one at a time (padding masks removed: identical math),
-the thinker's WTA queries are constants baked at export, and the decoder
-emits last-position logits only. Every graph is verified against the
-torch modules on real chat probes before writing; run with --parity to
-also compare full greedy replies.
+the thinker's WTA queries are constants baked at export, and both decoders
+emit last-position logits only (selected via a `pos` input — cheaper than
+returning every position and slicing in JS). Every graph is verified
+against the torch modules on real chat probes before writing; run with
+--parity to also compare full greedy replies.
 
 Usage: .venv/bin/python scripts/export_web.py [--out webdemo/models]
 """
@@ -29,6 +37,7 @@ import torch.nn as nn
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from thoughtvec.chat import ChatSession  # noqa: E402
+from thoughtvec.lm import LMChatSession  # noqa: E402
 
 K = 8  # k_ctx == k_out
 
@@ -159,10 +168,55 @@ class DecoderExport(nn.Module):
         return self.lm_head(self.final_norm(x))[:, 0]  # [1, vocab]
 
 
+class LMExport(nn.Module):
+    """TokenLM reimplemented with functional ops, mirroring DecoderExport:
+    nn.TransformerEncoder's fused self-attention path is bypassed entirely
+    by hand-rolling pre-norm layers from the raw submodules. Unlike the
+    codec decoder, no S==1 workaround is needed — LMChatSession always
+    seeds generation with a real (context + BOS) sequence, so S is never
+    less than 2 at export or at inference."""
+
+    def __init__(self, lm):
+        super().__init__()
+        self.emb = lm.tok
+        self.pos_emb = lm.pos
+        self.layers = lm.trunk.layers
+        self.final_norm = lm.norm
+        self.head = lm.head
+        self.nhead = lm.trunk.layers[0].self_attn.num_heads
+        smax = lm.max_len
+        causal = torch.zeros(smax, smax).masked_fill(
+            torch.ones(smax, smax, dtype=torch.bool).triu(1), float("-inf"))
+        self.register_buffer("causal", causal)
+
+    def _mha(self, mod, x, mask):
+        d = x.size(-1)
+        h = self.nhead
+        wq, wk, wv = mod.in_proj_weight.chunk(3)
+        bq, bk, bv = mod.in_proj_bias.chunk(3)
+        q = (x @ wq.T + bq).reshape(1, -1, h, d // h).transpose(1, 2)
+        k = (x @ wk.T + bk).reshape(1, -1, h, d // h).transpose(1, 2)
+        v = (x @ wv.T + bv).reshape(1, -1, h, d // h).transpose(1, 2)
+        att = q @ k.transpose(-2, -1) / (d // h) ** 0.5 + mask
+        out = (att.softmax(-1) @ v).transpose(1, 2).reshape(1, -1, d)
+        return out @ mod.out_proj.weight.T + mod.out_proj.bias
+
+    def forward(self, ids, pos):  # [1,S] int64, [1] int64
+        s = ids.size(1)
+        x = self.emb(ids) + self.pos_emb.weight[:s][None]
+        for lyr in self.layers:
+            x = x + self._mha(lyr.self_attn, lyr.norm1(x), self.causal[:s, :s])
+            y = lyr.norm2(x)
+            x = x + lyr.linear2(nn.functional.gelu(lyr.linear1(y)))
+        x = torch.index_select(self.final_norm(x), 1, pos)
+        return self.head(x)[:, 0]
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--ckpt", default="checkpoints/FINAL_12H/best.pt")
     ap.add_argument("--codec", default="checkpoints/m5_frontier/best.pt")
+    ap.add_argument("--lm-ckpt", default="checkpoints/b3_lm_48m_24h/best.pt")
     ap.add_argument("--out", default="webdemo/models")
     ap.add_argument("--parity", action="store_true",
                     help="also compare full greedy replies torch vs onnx")
@@ -173,6 +227,8 @@ def main() -> None:
     session = ChatSession(args.ckpt, device="cpu", codec_ckpt=args.codec)
     codec, thinker = session.codec.eval(), session.thinker.eval()
     d = codec.cfg.d_model
+    lm_session = LMChatSession(args.lm_ckpt, device="cpu")
+    lm = lm_session.model.eval()
 
     def defuse(m: nn.Module) -> nn.Module:
         # nn.Transformer's fused inference kernel is not ONNX-exportable;
@@ -188,6 +244,7 @@ def main() -> None:
     enc = defuse(EncoderExport(codec))
     thk = defuse(ThinkerExport(thinker, codec))
     dec = defuse(DecoderExport(codec))
+    lme = defuse(LMExport(lm))
 
     # reimplementation crosscheck: DecoderExport vs the original decoder
     with torch.no_grad():
@@ -202,6 +259,16 @@ def main() -> None:
     print(f"decoder reimpl vs nn.TransformerDecoder: {redc_worst:.3e}")
     assert redc_worst < 1e-4, "hand-rolled decoder diverges from the original"
 
+    with torch.no_grad():
+        relm_worst = 0.0
+        for S in (2, 20, 200):
+            i = torch.randint(4, 16000, (1, S))
+            ref = lm(i)[0, -1]
+            got_t = lme(i, torch.tensor([S - 1]))[0]
+            relm_worst = max(relm_worst, float((got_t - ref).abs().max()))
+    print(f"lm reimpl vs nn.TransformerEncoder: {relm_worst:.3e}")
+    assert relm_worst < 1e-4, "hand-rolled lm diverges from the original"
+
     ids = torch.tensor([[1, 17, 205, 3001, 2]])
     ctx_th = torch.randn(1, 3, K, d)
     ctx_roles = torch.tensor([[1, 0, 1]])  # parity-of-3-turns example... roles vary
@@ -209,6 +276,8 @@ def main() -> None:
     dth = torch.randn(1, K, d)
     dids = torch.tensor([[1, 42, 99]])
     dpos = torch.tensor([2])
+    lids = torch.tensor([[1, 17, 205, 3001, 2, 1]])
+    lpos = torch.tensor([5])
 
     with torch.no_grad():
         torch.onnx.export(
@@ -234,6 +303,13 @@ def main() -> None:
                             "pos": None},
             dynamo=True,
         )
+        torch.onnx.export(
+            lme, (lids, lpos), out / "lm.onnx", opset_version=18,
+            input_names=["ids", "pos"], output_names=["logits"],
+            dynamic_shapes={"ids": {1: torch.export.Dim("LS", min=2, max=lm.max_len)},
+                            "pos": None},
+            dynamo=True,
+        )
 
     # ---- graph-level parity on real shapes ----
     import numpy as np
@@ -241,7 +317,7 @@ def main() -> None:
 
     sess = {n: ort.InferenceSession(str(out / f"{n}.onnx"),
                                     providers=["CPUExecutionProvider"])
-            for n in ("encoder", "thinker", "decoder")}
+            for n in ("encoder", "thinker", "decoder", "lm")}
 
     def run(n, **kw):
         return sess[n].run(None, {k: v.numpy() for k, v in kw.items()})
@@ -269,6 +345,13 @@ def main() -> None:
         with torch.no_grad():
             want = dec(t, i, p_)
         got = run("decoder", thoughts=t, ids=i, pos=p_)[0]
+        worst = max(worst, float(np.abs(got - want.numpy()).max()))
+    for S in (2, 20, 200, 384):
+        i = torch.randint(4, 16000, (1, S))
+        p_ = torch.tensor([S - 1])
+        with torch.no_grad():
+            want = lme(i, p_)
+        got = run("lm", ids=i, pos=p_)[0]
         worst = max(worst, float(np.abs(got - want.numpy()).max()))
     print(f"graph parity: worst abs diff {worst:.3e}")
     assert worst < 2e-4, "ONNX outputs diverge from torch"
@@ -323,6 +406,40 @@ def main() -> None:
             print(f"[{status}] torch: {torch_reply!r}")
             if status == "DIFF":
                 print(f"         onnx : {onnx_reply!r}")
+
+        # LM baseline: flat history, greedy, no repeat-ngram ban (matches
+        # TokenLM.generate exactly — its repetition loops are the documented
+        # finding, not a bug this loop should paper over).
+        lm_hist: list[str] = []
+        for p in probes:
+            lm_hist.append(p)
+            ids_flat: list[int] = []
+            for t in lm_hist:
+                ids_flat += ([BOS_ID]
+                             + lm_session.tokenizer.encode(t, add_special=False)
+                             + [EOS_ID])
+            room = lm.max_len - lm_session.max_new - 1
+            ctx = ids_flat[-room:]
+            ids_out = ctx + [BOS_ID]
+            gen: list[int] = []
+            for _ in range(lm_session.max_new):
+                p_ = torch.tensor([len(ids_out) - 1])
+                lg = run("lm", ids=torch.tensor([ids_out]), pos=p_)[0][0]
+                nxt = int(lg.argmax())
+                if nxt == EOS_ID:
+                    break
+                gen.append(nxt)
+                ids_out.append(nxt)
+            onnx_reply = lm_session.tokenizer.decode(gen)
+            lm_hist.pop()
+            lm_session.history = list(lm_hist)
+            torch_reply = lm_session.reply(p, temperature=0.0)
+            lm_hist.append(p)
+            lm_hist.append(torch_reply)
+            status = "MATCH" if onnx_reply == torch_reply else "DIFF"
+            print(f"[{status}] lm torch: {torch_reply!r}")
+            if status == "DIFF":
+                print(f"            onnx : {onnx_reply!r}")
 
 
 if __name__ == "__main__":

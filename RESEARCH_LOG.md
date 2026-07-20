@@ -1433,3 +1433,35 @@ recording:
 
 Port sources in webdemo/ (chat.js is the ChatSession loop, parity-tested by
 webdemo/test_parity.node.mjs against reference_replies.json).
+
+## 2026-07-20 — Demo model picker: the §6.5 baseline joins the browser port
+
+Extended the in-browser demo with the paper's matched token-LM baseline
+(§6.5), byte-exact and switchable mid-conversation against the thinker.
+
+1. **The LM's causal self-attention exports the same way the codec's cross-
+   attention decoder did**: nn.TransformerEncoder trips the same fused-kernel
+   export problems as nn.TransformerDecoder, so LMExport hand-rolls it from
+   raw submodules (self_attn.in_proj_weight chunked into q/k/v) rather than
+   tracing nn.TransformerEncoderLayer.forward — the DecoderExport pattern
+   generalizes directly, self-attention only, no cross-attention block.
+2. **No 0/1 specialization workaround needed here.** The thought-vector
+   decoder's first token is a bare BOS (S=1), which trips torch.export's
+   S!=1 guard and needed a pad-to-2 trick. The LM's generation loop always
+   seeds with (flattened history + BOS), which is never shorter than 4
+   tokens in practice — S is provably >=2 at every step, so the graph
+   exports directly with a plain `pos` input.
+3. **fp16 the LM cleanly** (8/8 reply parity, 201MB to 101MB) — no
+   conversion breakage, unlike the thinker earlier. Precision fragility is
+   graph-specific, not a property of "the model with cross-attention" vs
+   "the model without."
+4. **Shared-transcript design costs nothing.** The chat loop's per-model
+   history is just overwritten from the visible conversation before each
+   reply; since that's a strict generalization of "always the same model"
+   (identical when only one model is ever used), it required no changes to
+   the already-parity-tested reply() logic to add live paradigm-switching —
+   only in the caller.
+
+Faithfully un-improved: the LM port keeps flat (unwindowed) history and no
+repeat-ngram ban, since its compounding repetition loops and apology-default
+register are the paper's documented finding, not implementation bugs.

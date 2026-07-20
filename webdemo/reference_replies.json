@@ -20,5 +20,17 @@
   "i love to go to the beach and get a new dog",
   "I like to read and play video games.",
   "I'm sorry to hear that. Can you play video games?"
- ]
+ ],
+ "lm_replies": [
+  "I can imagine. What's going on?",
+  "That sounds tough. I'm sorry you're feeling so overwhelmed.",
+  "That's understandable. Do you want to talk about it?",
+  "There are a few things you can do to help reduce your stress levels. First, you should try to avoid any stressors. If you're not feeling well, you should talk to someone about it.",
+  "I'm sorry to hear that, ma'am. Can you tell me what happened?",
+  "i love swimming in the ocean too ! i love swimming in the ocean and swimming in the ocean .",
+  "I like to read and listen to music.",
+  "i'm sorry to hear that. Let me check your ankle and see if you have any further injury."
+ ],
+ "lm_max_len": 384,
+ "lm_max_new": 64
 }

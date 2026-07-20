@@ -27,4 +27,9 @@ It does small talk, follow-up questions, and multi-turn reference. It also
 has a documented failure mode (cheerful replies to bad news) that the paper
 traces to a training-data absence — probing for it is encouraged.
 
+A model picker swaps in the paper's matched token-LM baseline (§6.5 — same
+data, tokenizer, and compute) so you can compare both paradigms on the same
+conversation, live. It downloads separately (~100 MB, fp16, byte-exact with
+the released checkpoint) the first time you select it.
+
 Paper, code, logs: https://github.com/nochinator/thought-vectors
